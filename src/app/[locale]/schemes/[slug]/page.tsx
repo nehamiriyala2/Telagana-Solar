@@ -48,7 +48,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
   return (
     <>
       <PageHero eyebrow={t("eyebrow")} title={k("name")} emphasis={L(titleEmphasis[slug as SchemeSlug])} subtitle={k("short")} Icon={Icon} calcType={scheme.audience === "farm" ? "farm" : "home"}
-        art={slug in solutionBanners ? <BannerArt kind={slug as "pm-surya-ghar" | "net-metering" | "state-schemes"} locale={locale} /> : undefined}>
+        art={slug in solutionBanners ? <BannerArt kind={slug as "pm-surya-ghar" | "pm-kusum" | "net-metering" | "state-schemes"} locale={locale} /> : undefined}>
         <dl className="grid gap-3 sm:grid-cols-3">
           <Glance label={t("cardWho")} value={k("cardWho")} />
           <Glance label={t("cardBenefit")} value={k("cardBenefit")} />

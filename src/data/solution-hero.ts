@@ -36,6 +36,10 @@ export const solutionBanners = {
     src: "/solutions/pm-surya-ghar-hero.webp", width: 872, height: 941, focus: "50% 50%", sun: { x: "57%", y: "14%" }, variant: "card",
     alt: { en: "Family in front of their home with rooftop solar panels", te: "పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న తమ ఇంటి ముందు కుటుంబం" },
   },
+  "pm-kusum": {
+    src: "/solutions/pm-kusum-hero.webp", width: 960, height: 857, focus: "50% 50%", sun: { x: "33%", y: "25%" }, variant: "card",
+    alt: { en: "Farmer standing beside a solar water pump that fills a tank in his green fields", te: "పచ్చని పొలాల్లో ట్యాంకును నింపుతున్న సోలార్ నీటి పంపు పక్కన నిలబడిన రైతు" },
+  },
   "net-metering": {
     src: "/solutions/net-metering-hero.webp", width: 1087, height: 941, focus: "50% 50%", sun: { x: "86%", y: "44%" }, variant: "card",
     alt: { en: "Illustration of net metering: solar power used at home, extra sent to the grid through a two-way meter", te: "నెట్ మీటరింగ్ చిత్రం: సోలార్ కరెంటు ఇంట్లో వాడకం, అదనపు కరెంటు రెండు వైపుల మీటర్ ద్వారా గ్రిడ్‌కు" },
