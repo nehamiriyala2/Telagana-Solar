@@ -48,6 +48,10 @@ export const solutionBanners = {
     src: "/solutions/state-schemes-hero.webp", width: 972, height: 941, focus: "50% 50%", sun: { x: "46%", y: "24%" }, variant: "card",
     alt: { en: "Building with rooftop solar panels, the Telangana flag and Charminar in the background", te: "పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న భవనం, వెనుక తెలంగాణ జెండా, చార్మినార్" },
   },
+  about: {
+    src: "/solutions/about-hero.webp", width: 1672, height: 941, focus: "50% 50%", sun: { x: "25%", y: "56%" }, variant: "card",
+    alt: { en: "Modern office building with ground-mounted solar panels at sunrise, Charminar and the Hyderabad skyline behind", te: "సూర్యోదయంలో సోలార్ ప్యానెల్స్‌తో ఆధునిక కార్యాలయ భవనం, వెనుక చార్మినార్, హైదరాబాద్ నగరం" },
+  },
   "subsidy-loans": {
     src: "/solutions/subsidy-loans-hero.webp", width: 1141, height: 941, focus: "50% 50%", sun: { x: "13%", y: "47%" }, variant: "card",
     alt: { en: "Illustration of solar finance: subsidy assistance, bank loans and easy documentation", te: "సోలార్ ఆర్థిక సహాయం చిత్రం: సబ్సిడీ సహాయం, బ్యాంకు లోన్లు, సులభమైన పత్రాలు" },

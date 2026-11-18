@@ -15,6 +15,7 @@ import { aboutPage as D } from "@/data/about";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { BannerArt } from "@/components/page/banner-art";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -40,7 +41,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} art={<BannerArt kind="about" locale={locale} />} />
 
       {/* Story + mission */}
       <section className="bg-section-white py-16 md:py-24">
