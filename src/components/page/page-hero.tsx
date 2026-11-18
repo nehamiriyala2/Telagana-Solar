@@ -14,10 +14,11 @@ const TYPE_TO_PERSONA: Record<string, GuidePersona> = { home: "urban", farm: "fa
  * Inner-page hero (typography-first): eyebrow pill, display title with a word mask reveal and
  * optional amber `emphasis` words, subtitle, magnetic CTAs, and parallax sun-lit icon art.
  * Text uses CSS entrances so it paints before JS. `children` renders under the hero copy (stats, chips…).
+ * `art` replaces the icon art with a custom illustration (shown on every screen size, below the copy on phones/tablets).
  */
-export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType, guidePersona, emphasis, children }: {
+export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType, guidePersona, emphasis, children, art }: {
   eyebrow: string; title: string; subtitle: string; Icon?: LucideIcon; ctas?: boolean; calcType?: string; guidePersona?: GuidePersona;
-  emphasis?: string; children?: React.ReactNode;
+  emphasis?: string; children?: React.ReactNode; art?: React.ReactNode;
 }) {
   const t = useTranslations("common");
   return (
@@ -25,7 +26,7 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
       <div aria-hidden className="orb -left-32 -top-24 size-[28rem] bg-yellow/25" />
       <div aria-hidden className="orb -right-40 bottom-0 size-[30rem] bg-sky/20" style={{ animationDelay: "-6s" }} />
       <div className="container-page grid items-center gap-10 pb-16 pt-12 md:pb-20 md:pt-16 lg:grid-cols-12 lg:pb-24 lg:pt-20">
-        <div className={Icon ? "lg:col-span-7" : "lg:col-span-10"}>
+        <div className={art ? "lg:col-span-6" : Icon ? "lg:col-span-7" : "lg:col-span-10"}>
           <Eyebrow className="animate-rise">{eyebrow}</Eyebrow>
           <DisplayTitle text={title} emphasis={emphasis} className="mt-6" />
           <p className="mt-6 max-w-2xl animate-rise text-muted md:text-body-lg" style={{ animationDelay: "0.3s" }}>{subtitle}</p>
@@ -39,7 +40,8 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
           )}
           {children && <div className="mt-10 animate-rise" style={{ animationDelay: "0.5s" }}>{children}</div>}
         </div>
-        {Icon && (
+        {art && <div className="relative lg:col-span-6">{art}</div>}
+        {Icon && !art && (
           <div className="relative hidden lg:col-span-5 lg:block" aria-hidden>
             <Parallax offset={70}>
               <div className="relative mx-auto grid aspect-square max-w-md place-items-center">

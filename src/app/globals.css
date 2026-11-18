@@ -311,7 +311,7 @@ html[lang="te"] .display-xl, html[lang="te"] .display-lg { font-family: var(--fo
 html[lang="te"] .display-xl { font-size: clamp(2.1rem, 5.2vw, 4.25rem); }
 html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 /* Word mask reveal (CSS, paints before JS) */
-.word-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.2em; margin-bottom: -0.2em; }
+.word-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.3em; margin-bottom: -0.3em; }
 .word-mask > span { display: inline-block; animation: wordUp 0.9s var(--ease-out-soft) both; }
 @keyframes wordUp { from { transform: translateY(110%); } to { transform: translateY(0); } }
 
