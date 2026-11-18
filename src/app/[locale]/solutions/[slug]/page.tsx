@@ -10,6 +10,7 @@ import { SectionTitle } from "@/components/page/section-title";
 import { BlurReveal as Reveal } from "@/components/motion/primitives";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { HomeHeroArt } from "@/components/page/home-hero-art";
+import { BannerArt } from "@/components/page/banner-art";
 import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
 import { PackageCard } from "@/components/cards/package-card";
@@ -53,7 +54,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
   return (
     <>
       <JsonLd data={faqJsonLd(FAQ_KEYS[s].map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
-      <PageHero eyebrow={p("eyebrow")} title={p("title")} emphasis={pick(titleEmphasis[s], locale)} subtitle={p("subtitle")} Icon={HERO_ICON[s]} calcType={TYPE[s]} art={s === "homes" ? <HomeHeroArt locale={locale} /> : undefined} />
+      <PageHero eyebrow={p("eyebrow")} title={p("title")} emphasis={pick(titleEmphasis[s], locale)} subtitle={p("subtitle")} Icon={HERO_ICON[s]} calcType={TYPE[s]} art={s === "homes" ? <HomeHeroArt locale={locale} /> : <BannerArt kind={s} locale={locale} />} />
 
       {/* Benefits */}
       <section className="bg-section-white py-16 md:py-24">

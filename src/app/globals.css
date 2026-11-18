@@ -416,3 +416,5 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 @media (prefers-reduced-motion: reduce) { .word-mask > .text-gold-shine { animation: none !important; } }
 /* Gradient text only paints inside its box: extend it so descenders (g, y, p) are not cut off */
 .text-gold-shine { padding-bottom: 0.18em; margin-bottom: -0.18em; }
+/* Page titles that share the hero with a picture (Homes / Farms / Business) are a little smaller */
+.display-xl.display-art { font-size: clamp(2.5rem, 5.4vw, 5rem); }

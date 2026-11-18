@@ -34,7 +34,7 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
       <div className={cn("container-page grid items-center gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:pt-20", dark ? "pb-24 md:pb-28 lg:pb-32" : "pb-16 md:pb-20 lg:pb-24")}>
         <div className={cn(art ? "lg:col-span-6" : Icon ? "lg:col-span-7" : center ? "text-center lg:col-span-10 lg:col-start-2" : "lg:col-span-10")}>
           <Eyebrow className={cn("animate-rise", dark && "eyebrow-pill--dark")}>{eyebrow}</Eyebrow>
-          <DisplayTitle text={title} emphasis={emphasis} className={cn("mt-6", dark && "text-white", center && "mx-auto max-w-4xl")} />
+          <DisplayTitle text={title} emphasis={emphasis} className={cn("mt-6", dark && "text-white", center && "mx-auto max-w-4xl", art && "display-art")} />
           <p className={cn("mt-6 max-w-2xl animate-rise md:text-body-lg", dark ? "text-silver/85" : "text-[var(--ts-text)]", center && "mx-auto")} style={{ animationDelay: "0.3s" }}>{subtitle}</p>
           {ctas && (
             <div className={cn("mt-9 flex animate-rise flex-col gap-3 sm:flex-row", center && "sm:justify-center")} style={{ animationDelay: "0.4s" }}>
