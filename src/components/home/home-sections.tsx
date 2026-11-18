@@ -89,8 +89,8 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
               <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={title ?? t("title")} className="mb-6" />
-              <div className="bg-premium-navy relative overflow-hidden rounded-[1.5rem] p-6 text-white">
-                <div aria-hidden className="absolute -right-12 -top-12 size-36 rounded-full border-2 border-yellow/40 shadow-[0_0_40px_-8px_rgb(255_199_44/0.6)]" />
+              <div className="bg-premium-sun relative overflow-hidden rounded-[1.5rem] p-6 text-navy shadow-[0_22px_48px_-30px_rgb(7_23_63/0.3)] ring-1 ring-gold/25">
+                <div aria-hidden className="absolute -right-12 -top-12 size-36 rounded-full border-2 border-yellow/50 shadow-[0_0_40px_-8px_rgb(255_199_44/0.5)]" />
                 <p className="relative text-[1.0625rem] font-bold" style={{ fontFamily: "var(--font-display), var(--font-jakarta), var(--font-telugu), sans-serif" }}>{tc("askWhatsapp")}</p>
                 <WhatsAppButton place="faq-card" className="relative mt-4 w-full" label={tc("askOnWhatsapp")} message={tc("askMessage")} />
               </div>
@@ -114,18 +114,18 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
 /** Bright gold banner with the site-visit form. */
 const TYPE_TO_PERSONA: Record<"home" | "farm" | "business", GuidePersona> = { home: "urban", farm: "farmer", business: "shop" };
 
-/** Deep-navy banner with gold glow: "Not sure which solar is right for you?" + guide + WhatsApp. */
+/** Bright warm-white banner with gold glow: "Not sure which solar is right for you?" + guide + WhatsApp. */
 export function FinalCta({ title, defaultType }: { title?: string; defaultType?: "home" | "farm" | "business" }) {
   const t = useTranslations();
   return (
     <section id="book" className="container-page scroll-mt-24 pb-16 pt-6 md:pb-24" aria-labelledby="cta-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-navy-glow p-6 shadow-ring md:p-12">
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_60%_80%_at_0%_0%,rgb(255_199_44/0.28),transparent_60%),radial-gradient(ellipse_55%_70%_at_100%_100%,rgb(77_163_255/0.18),transparent_60%),linear-gradient(135deg,#FFF8E6_0%,#FFFFFF_50%,#F1F7FF_100%)] p-6 shadow-[0_30px_70px_-40px_rgb(7_23_63/0.35)] ring-1 ring-gold/25 md:p-12">
           <div aria-hidden className="absolute -left-24 -top-24 -z-10 size-96 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.35),transparent_65%)]" />
           <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 -z-10 size-[30rem] rounded-full border-2 border-yellow/40 shadow-[0_0_60px_-10px_rgb(255_199_44/0.6)]" />
           <div className="mx-auto max-w-3xl py-4 text-center md:py-8">
-            <h2 id="cta-title" className="text-h2 text-white md:text-h2-lg">{title ?? t("cta.title")}</h2>
-            <p className="mx-auto mt-4 max-w-xl text-silver md:text-body-lg">{t("cta.subtitle")}</p>
+            <h2 id="cta-title" className="text-h2 text-navy md:text-h2-lg">{title ?? t("cta.title")}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted md:text-body-lg">{t("cta.subtitle")}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <GuideTrigger size="lg" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
               <WhatsAppButton place="final-banner" size="lg" label={t("common.askOnWhatsapp")} message={t("common.askMessage")} />

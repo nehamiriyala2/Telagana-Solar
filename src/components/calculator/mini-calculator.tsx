@@ -18,18 +18,18 @@ export function MiniCalculator() {
   const r = useMemo(() => calculate({ type: "home", mode: "bill", value: bill }), [bill]);
 
   return (
-    <section className="dot-grid relative isolate overflow-hidden bg-[linear-gradient(120deg,#07173F_0%,#0D2A6B_55%,#1E5BD8_100%)] py-16 md:py-24" aria-labelledby="mini-title">
-      <div aria-hidden className="orb -left-20 -top-20 size-96 bg-gold/25" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-40 -z-10 size-[34rem] rounded-full border-2 border-yellow/30 shadow-[0_0_80px_-20px_rgb(255_199_44/0.6)]" />
+    <section className="dot-grid relative isolate overflow-hidden bg-[radial-gradient(ellipse_55%_60%_at_0%_0%,rgb(255_199_44/0.20),transparent_62%),linear-gradient(135deg,#FFFBF2_0%,#FFFFFF_45%,#F1F7FF_100%)] py-16 md:py-24" aria-labelledby="mini-title">
+      <div aria-hidden className="orb -left-20 -top-20 size-96 bg-yellow/25" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-40 -z-10 size-[34rem] rounded-full border-2 border-yellow/40 shadow-[0_0_80px_-20px_rgb(255_199_44/0.5)]" />
       <div className="container-page grid items-center gap-10 lg:grid-cols-12">
         <Reveal className="lg:col-span-5">
-          <p className="eyebrow-pill eyebrow-pill--dark">{t("mini.eyebrow")}</p>
-          <h2 id="mini-title" className="mt-4 text-h2 text-white md:text-[3.25rem] md:leading-[3.75rem]">{t("mini.title")}</h2>
-          <p className="mt-4 text-silver/85 md:text-body-lg">{t("mini.subtitle")}</p>
+          <p className="eyebrow-pill">{t("mini.eyebrow")}</p>
+          <h2 id="mini-title" className="mt-4 text-h2 text-navy md:text-[3.25rem] md:leading-[3.75rem]">{t("mini.title")}</h2>
+          <p className="mt-4 text-muted md:text-body-lg">{t("mini.subtitle")}</p>
         </Reveal>
 
         <Reveal delay={0.1} className="lg:col-span-7">
-          <div className="relative grid gap-4 overflow-hidden rounded-[1.75rem] bg-white p-6 shadow-[0_30px_70px_-30px_rgb(0_0_0/0.6),0_0_60px_-25px_rgb(255_199_44/0.5)] md:grid-cols-2 md:p-8">
+          <div className="relative grid gap-4 overflow-hidden rounded-[1.75rem] bg-white p-6 shadow-[0_30px_70px_-34px_rgb(7_23_63/0.35),0_0_60px_-28px_rgb(255_199_44/0.45)] ring-1 ring-navy/[0.06] transition-shadow duration-500 hover:shadow-[0_36px_80px_-34px_rgb(7_23_63/0.42),0_0_70px_-26px_rgb(255_199_44/0.55)] md:grid-cols-2 md:p-8">
             <span aria-hidden className="absolute inset-x-0 top-0 h-1.5 bg-[linear-gradient(90deg,#FFC72C,#F5A800,#4DA3FF)]" />
             <div>
               <label htmlFor="mini-bill" className="text-caption font-semibold text-muted">{t("mini.billLabel")}</label>

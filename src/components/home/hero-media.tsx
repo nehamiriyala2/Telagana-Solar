@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { heroMedia as M } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 /**
  * Full-bleed cinematic hero background built from one photo.
@@ -13,11 +14,12 @@ import { heroMedia as M } from "@/config/site";
  *
  * All layers sit on a "stage" with the photo's exact aspect ratio that covers the hero, so overlay
  * positions (in % of the photo) always line up with the sun, panels and windows.
+ * `inline` renders the whole photo in a 16:9 frame (phones/tablets), so the full house and roof stay visible.
  */
 const PANELS = "polygon(29.6% 67.2%, 52% 44.6%, 99.6% 28.9%, 100% 31%, 86.1% 59.1%)"; // panel array outline
 const SUN = { x: "24%", y: "64%" };
 
-export function HeroMedia({ alt }: { alt: string }) {
+export function HeroMedia({ alt, inline = false, className }: { alt: string; inline?: boolean; className?: string }) {
   const [video, setVideo] = useState(false);
 
   useEffect(() => {
@@ -29,11 +31,11 @@ export function HeroMedia({ alt }: { alt: string }) {
   }, []);
 
   return (
-    <div className="hero-media absolute inset-0 -z-10 overflow-hidden bg-navy">
+    <div className={cn("hero-media overflow-hidden", inline ? "relative aspect-[1672/941] w-full bg-[#EAF3FF]" : "absolute inset-0 -z-10 bg-navy", className)}>
       {/* Stage 1: photo (or video) + overlays that sit under the readability fade */}
       <div className="hero-stage">
         <div className="hero-push">
-          <Image src={M.image} alt={alt} fill priority sizes="(max-width: 768px) 200vw, 100vw" className="object-cover" />
+          <Image src={M.image} alt={alt} fill priority sizes="100vw" className="object-cover" />
           {video && (
             <video className="absolute inset-0 size-full object-cover" autoPlay muted loop playsInline poster={M.poster} preload="auto" aria-hidden>
               {M.videoWebm && <source src={M.videoWebm} type="video/webm" />}
@@ -59,9 +61,13 @@ export function HeroMedia({ alt }: { alt: string }) {
         </div>
       </div>
 
-      {/* Readability fade: navy on the text side, light elsewhere */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(7_23_63/0.88)_0%,rgb(7_23_63/0.62)_34%,rgb(7_23_63/0.18)_58%,transparent_75%)] max-md:bg-[linear-gradient(180deg,rgb(7_23_63/0.86)_0%,rgb(7_23_63/0.62)_45%,rgb(7_23_63/0.15)_78%,rgb(7_23_63/0.3)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(0deg,rgb(7_23_63/0.55),transparent)]" />
+      {/* Readability fade (full-bleed only): navy on the text side, clear over the house */}
+      {!inline && (
+        <>
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(7_23_63/0.84)_0%,rgb(7_23_63/0.55)_34%,rgb(7_23_63/0.12)_58%,transparent_75%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-[linear-gradient(0deg,rgb(7_23_63/0.35),transparent)]" />
+        </>
+      )}
 
       {/* Stage 2: sun flare on top of the fade so the sun stays bright (same geometry + push-in) */}
       {!video && (

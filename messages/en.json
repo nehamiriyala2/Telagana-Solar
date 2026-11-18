@@ -976,6 +976,11 @@
       "name": "Hybrid",
       "desc": "Grid-connected with a battery for backup. Keeps essentials running during power cuts.",
       "best": "Areas with frequent cuts, hospitals, critical loads"
+    },
+    "scene": {
+      "alt": "Illustration: sunlight falls on rooftop solar panels, the house uses that power first and extra power flows to the grid",
+      "toHome": "Solar power used by your home",
+      "toGrid": "Extra power sent to the grid"
     }
   },
   "knowBefore": {
