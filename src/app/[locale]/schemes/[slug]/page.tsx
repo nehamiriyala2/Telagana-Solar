@@ -17,6 +17,9 @@ import { titleEmphasis } from "@/data/pages";
 import { routing } from "@/i18n/routing";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import Image from "next/image";
+import { BannerArt, Sunlight } from "@/components/page/banner-art";
+import { pmSuryaGharSign, solutionBanners } from "@/data/solution-hero";
 
 /** Scheme page: hero → at a glance → benefit → who can apply → documents → steps (self-drawing line) → how we help → other schemes. */
 export function generateStaticParams() {
@@ -44,7 +47,8 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={k("name")} emphasis={L(titleEmphasis[slug as SchemeSlug])} subtitle={k("short")} Icon={Icon} calcType={scheme.audience === "farm" ? "farm" : "home"}>
+      <PageHero eyebrow={t("eyebrow")} title={k("name")} emphasis={L(titleEmphasis[slug as SchemeSlug])} subtitle={k("short")} Icon={Icon} calcType={scheme.audience === "farm" ? "farm" : "home"}
+        art={slug in solutionBanners ? <BannerArt kind={slug as "pm-surya-ghar" | "net-metering" | "state-schemes"} locale={locale} /> : undefined}>
         <dl className="grid gap-3 sm:grid-cols-3">
           <Glance label={t("cardWho")} value={k("cardWho")} />
           <Glance label={t("cardBenefit")} value={k("cardBenefit")} />
@@ -61,6 +65,16 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
               <p className="relative mt-5 font-heading text-[1.25rem] font-bold leading-snug text-navy md:text-[1.5rem]">{k("benefit")}</p>
               <p className="relative mt-5 flex gap-2 text-caption font-semibold text-gold-ink"><Info className="mt-0.5 size-4 shrink-0" aria-hidden />{t("note")}</p>
             </BlurReveal>
+
+            {slug === "pm-surya-ghar" && (
+              <BlurReveal className="zoom-frame relative overflow-hidden rounded-[1.75rem] border border-white bg-white p-2 shadow-[0_30px_60px_-34px_rgb(7_23_63/0.5)]">
+                <div className="relative overflow-hidden rounded-[1.4rem]">
+                  <Image src={pmSuryaGharSign.src} alt={pick(pmSuryaGharSign.alt, locale)} width={pmSuryaGharSign.width} height={pmSuryaGharSign.height}
+                    sizes="(min-width: 1024px) 40rem, 100vw" className="zoom-img block h-auto w-full" />
+                  <Sunlight sun={pmSuryaGharSign.sun} />
+                </div>
+              </BlurReveal>
+            )}
 
             <BlurReveal className="rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-9">
               <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("who")}</h2>

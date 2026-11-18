@@ -13,14 +13,45 @@ export const homesHeroImageAlt: L10n = {
   te: "ఎండలో పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న రెండంతస్తుల ఇల్లు",
 };
 
-/** Banner photos on /solutions/farms and /solutions/business (cut from the supplied blueprint). */
+/**
+ * Hero / section photos cut from the supplied blueprints (one picture per page, never reused).
+ * - variant "bleed": wide photo, runs to the screen edge and fades into the hero (Farms, Business).
+ * - variant "card": framed glass card with depth (scheme pages, Subsidy & Loans).
+ * - sun: where the sun / brightest glare sits in the picture (% of the image), for the sunlight animation.
+ * Official marks in the PM Surya Ghar sign and the State Schemes picture are softened on purpose
+ * (a private company site must not look like a government page).
+ */
+type Banner = { src: string; width: number; height: number; focus: string; sun: { x: string; y: string }; variant: "bleed" | "card"; alt: L10n };
+
 export const solutionBanners = {
   farms: {
-    src: "/solutions/farms-hero.webp", width: 1132, height: 465, focus: "70% 50%",
+    src: "/solutions/farms-hero.webp", width: 1132, height: 465, focus: "70% 50%", sun: { x: "32%", y: "18%" }, variant: "bleed",
     alt: { en: "Farmer beside a solar water pump filling a well, with solar panels over green fields", te: "పచ్చని పొలాల మధ్య సోలార్ ప్యానెల్స్‌తో నడిచే నీటి పంపు పక్కన రైతు" },
   },
   business: {
-    src: "/solutions/business-hero.webp", width: 1032, height: 467, focus: "60% 50%",
+    src: "/solutions/business-hero.webp", width: 1032, height: 467, focus: "60% 50%", sun: { x: "24%", y: "16%" }, variant: "bleed",
     alt: { en: "Shop building with solar panels on the roof", te: "పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న దుకాణం భవనం" },
   },
-} satisfies Record<string, { src: string; width: number; height: number; focus: string; alt: L10n }>;
+  "pm-surya-ghar": {
+    src: "/solutions/pm-surya-ghar-hero.webp", width: 872, height: 941, focus: "50% 50%", sun: { x: "57%", y: "14%" }, variant: "card",
+    alt: { en: "Family in front of their home with rooftop solar panels", te: "పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న తమ ఇంటి ముందు కుటుంబం" },
+  },
+  "net-metering": {
+    src: "/solutions/net-metering-hero.webp", width: 1087, height: 941, focus: "50% 50%", sun: { x: "86%", y: "44%" }, variant: "card",
+    alt: { en: "Illustration of net metering: solar power used at home, extra sent to the grid through a two-way meter", te: "నెట్ మీటరింగ్ చిత్రం: సోలార్ కరెంటు ఇంట్లో వాడకం, అదనపు కరెంటు రెండు వైపుల మీటర్ ద్వారా గ్రిడ్‌కు" },
+  },
+  "state-schemes": {
+    src: "/solutions/state-schemes-hero.webp", width: 972, height: 941, focus: "50% 50%", sun: { x: "46%", y: "24%" }, variant: "card",
+    alt: { en: "Building with rooftop solar panels, the Telangana flag and Charminar in the background", te: "పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న భవనం, వెనుక తెలంగాణ జెండా, చార్మినార్" },
+  },
+  "subsidy-loans": {
+    src: "/solutions/subsidy-loans-hero.webp", width: 1141, height: 941, focus: "50% 50%", sun: { x: "13%", y: "47%" }, variant: "card",
+    alt: { en: "Illustration of solar finance: subsidy assistance, bank loans and easy documentation", te: "సోలార్ ఆర్థిక సహాయం చిత్రం: సబ్సిడీ సహాయం, బ్యాంకు లోన్లు, సులభమైన పత్రాలు" },
+  },
+} satisfies Record<string, Banner>;
+
+/** In-page picture on /schemes/pm-surya-ghar (house with the scheme sign), beside "What you get". */
+export const pmSuryaGharSign = {
+  src: "/solutions/pm-surya-ghar-sign.webp", width: 1672, height: 941, sun: { x: "8%", y: "4%" },
+  alt: { en: "Home with rooftop solar panels and an inverter, next to a PM Surya Ghar sign", te: "పైకప్పు సోలార్ ప్యానెల్స్, ఇన్వర్టర్ ఉన్న ఇల్లు, పక్కన పీఎం సూర్య ఘర్ బోర్డు" },
+};

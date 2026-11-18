@@ -1,30 +1,60 @@
 import Image from "next/image";
+import { TiltCard } from "@/components/motion/tilt-card";
+import { Parallax } from "@/components/motion/primitives";
 import { solutionBanners } from "@/data/solution-hero";
 import { pick } from "@/lib/utils";
 
 /**
- * Hero banner photo for /solutions/farms and /solutions/business (from the supplied blueprint).
- * - lg+: fills the right column and runs to the screen edge, fading into the hero background on the
- *   left/top/bottom. A 2:1 frame with object-fit: cover and a focus point chosen so the main subjects
- *   (farmer, pump, panels / building, roof panels, sign) always stay fully in view.
- * - Phones/tablets: the whole photo at its natural proportions (no cropping), full width, under the text.
+ * Hero picture for a page (from the supplied blueprints), with realistic sunlight:
+ * a soft glow + slowly turning rays at the sun's position, a gentle golden light band drifting across
+ * panels and roofs every few seconds, a few floating light particles, and a very slow camera drift.
+ * - variant "bleed" (Farms, Business): runs to the screen edge on desktop, fades into the hero on the left.
+ * - variant "card" (scheme pages, Subsidy & Loans): framed glass card with depth, 3D tilt on hover, float, parallax.
+ * Phones/tablets: the whole picture at natural proportions, under the text. All motion stops for reduced motion.
  */
 export function BannerArt({ kind, locale }: { kind: keyof typeof solutionBanners; locale: string }) {
   const b = solutionBanners[kind];
+  const img = (
+    <Image
+      src={b.src}
+      alt={pick(b.alt, locale)}
+      width={b.width}
+      height={b.height}
+      priority
+      sizes={b.variant === "bleed" ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 34rem, 100vw"}
+      className="banner-art__img banner-kenburns block h-auto w-full"
+      style={{ objectPosition: b.focus }}
+    />
+  );
+
+  if (b.variant === "card") {
+    return (
+      <Parallax offset={40} className="relative mx-auto w-full max-w-[34rem] lg:mr-0">
+        <div className="banner-reveal relative">
+        <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_68%)]" />
+        <div className="float-soft" style={{ animationDuration: "9s" }}>
+          <TiltCard max={4} className="rounded-[2rem]">
+            <div className="rounded-[2rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(7_23_63/0.55),0_0_0_1px_rgb(23_105_232/0.06)] backdrop-blur-md">
+              <div className="relative overflow-hidden rounded-[1.6rem]">
+                {img}
+                <Sunlight sun={b.sun} />
+                {/* glass highlight on the top edge for depth */}
+                <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-[linear-gradient(180deg,rgb(255_255_255/0.18),transparent)]" />
+              </div>
+            </div>
+          </TiltCard>
+        </div>
+        </div>
+      </Parallax>
+    );
+  }
+
   return (
-    <div className="banner-art relative">
+    <div className="banner-art banner-reveal relative">
       <div aria-hidden className="absolute left-[60%] top-1/2 -z-10 aspect-square w-[70%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_70%)] max-lg:hidden" />
       <div className="banner-art__frame relative overflow-hidden">
-        <Image
-          src={b.src}
-          alt={pick(b.alt, locale)}
-          width={b.width}
-          height={b.height}
-          priority
-          sizes="(min-width: 1024px) 60vw, 100vw"
-          className="banner-art__img block h-auto w-full"
-          style={{ objectPosition: b.focus }}
-        />
+        {img}
+        <Sunlight sun={b.sun} />
       </div>
       <style>{`
         /* Phones/tablets: full width (cancel the page padding), whole image, soft top/bottom edges */
@@ -47,6 +77,20 @@ export function BannerArt({ kind, locale }: { kind: keyof typeof solutionBanners
           .banner-art__img { height: 100%; object-fit: cover; }
         }
       `}</style>
+    </div>
+  );
+}
+
+/** Sunlight over a photo: glow + rays at the sun, a drifting light band, a few light particles. Decorative. */
+export function Sunlight({ sun }: { sun: { x: string; y: string } }) {
+  return (
+    <div aria-hidden className="sunlight">
+      <span className="sunlight__rays" style={{ left: sun.x, top: sun.y }} />
+      <span className="sunlight__glow" style={{ left: sun.x, top: sun.y }} />
+      <span className="sunlight__sweep" />
+      {[[18, 30, 0], [42, 62, -3], [66, 24, -6], [80, 70, -2], [30, 80, -8]].map(([x, y, d], i) => (
+        <span key={i} className="sunlight__p" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s` }} />
+      ))}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { SectionTitle } from "@/components/page/section-title";
 import { BlurReveal as Reveal, DrawLine } from "@/components/motion/primitives";
 import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
+import { BannerArt } from "@/components/page/banner-art";
 import { EmiCalculator } from "@/components/calculator/emi-calculator";
 import { FaqSection, FinalCta } from "@/components/home/home-sections";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
@@ -28,7 +29,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
   return (
     <>
       <JsonLd data={faqJsonLd(FAQ.map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" tone="dark" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" tone="dark" art={<BannerArt kind="subsidy-loans" locale={locale} />} />
 
       {/* Step-by-step subsidy guide */}
       <section className="bg-section-white py-16 md:py-24">
