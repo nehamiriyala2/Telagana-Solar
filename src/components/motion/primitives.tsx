@@ -42,10 +42,10 @@ export function Stagger({ children, className, as = "ul" }: { children: React.Re
     </Tag>
   );
 }
-export function StaggerItem({ children, className, as = "li" }: { children: React.ReactNode; className?: string; as?: "li" | "div" }) {
+export function StaggerItem({ children, className, as = "li", style }: { children: React.ReactNode; className?: string; as?: "li" | "div"; style?: React.CSSProperties }) {
   const reduce = useReducedMotion();
   const Tag = as === "div" ? motion.div : motion.li;
-  return <Tag variants={reduce ? staggerChildReduced : staggerChild} className={className}>{children}</Tag>;
+  return <Tag variants={reduce ? staggerChildReduced : staggerChild} className={className} style={style}>{children}</Tag>;
 }
 
 /** A line that draws itself (scaleY / scaleX from 0) when scrolled into view. */

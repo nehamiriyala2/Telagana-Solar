@@ -6,7 +6,7 @@ import { SectionTitle } from "@/components/page/section-title";
 import { StatCounter } from "@/components/page/stat-counter";
 import { EditMark } from "@/components/ui/badge";
 import { TiltCard } from "@/components/motion/tilt-card";
-import { BlurReveal, DrawLine, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { BlurReveal, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { FinalCta } from "@/components/home/home-sections";
 import { certifications, team } from "@/config/content";
 import { site } from "@/config/site";
@@ -16,6 +16,7 @@ import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
 import { BannerArt } from "@/components/page/banner-art";
+import { Bento } from "@/components/page/bento";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -41,7 +42,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} art={<BannerArt kind="about" locale={locale} />} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} art={<BannerArt kind="about" locale={locale} />} motif="waves" />
 
       {/* Story + mission */}
       <section className="bg-section-white py-16 md:py-24">
@@ -62,49 +63,32 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Values */}
-      <section className="bg-premium-light py-16 md:py-24">
+      <section className="tone tone-white py-16 md:py-24">
         <div className="container-page">
-          <SectionTitle title={t("valuesTitle")} emphasis={L(D.valuesEmphasis)} />
-          <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map(([k, Icon], i) => (
-              <StaggerItem key={k} className="list-none">
-                <TiltCard className="h-full rounded-[1.75rem]">
-                  <div className="card-glass-light h-full p-7 hover:transform-none">
-                    <span className="float-soft icon-royal grid size-14 place-items-center rounded-2xl" style={{ animationDelay: `${i * -1.4}s` }}><Icon className="size-7" strokeWidth={1.6} aria-hidden /></span>
-                    <h3 className="mt-6 font-heading text-[1.25rem] font-extrabold text-navy">{t(`${k}.title`)}</h3>
-                    <p className="mt-2 text-muted">{t(`${k}.desc`)}</p>
-                  </div>
-                </TiltCard>
+          <SectionTitle index="01" title={t("valuesTitle")} emphasis={L(D.valuesEmphasis)} />
+          <Bento tones={["gold", "navy", "mint", "blue"]} items={VALUES.map(([k, Icon]) => ({ title: t(`${k}.title`), desc: t(`${k}.desc`), Icon }))} />
+        </div>
+      </section>
+
+      {/* How we work */}
+      <section className="tone tone-navy py-16 md:py-24">
+        <span aria-hidden className="tone-beam" />
+        <div className="container-page">
+          <SectionTitle tone="dark" index="02" title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
+          <Stagger as="ol" className="grid gap-px overflow-hidden rounded-[1.75rem] bg-white/10 md:grid-cols-4">
+            {D.promise.map((p, i) => (
+              <StaggerItem key={i} className="group relative bg-[#081f55] p-7 transition-colors duration-500 hover:bg-[#0d2a6e]">
+                <span className="block font-heading text-[3.5rem] font-extrabold leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1.5px_#FFD76A] transition-colors duration-500 group-hover:text-[#FFB800]">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-6 font-heading text-[1.25rem] font-bold text-white">{L(p.title)}</h3>
+                <p className="on-dark-muted mt-2 text-caption">{L(p.desc)}</p>
               </StaggerItem>
             ))}
           </Stagger>
         </div>
       </section>
 
-      {/* How we work */}
-      <section className="bg-section-white py-16 md:py-24">
-        <div className="container-page">
-          <SectionTitle title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
-          <div className="relative">
-            <DrawLine axis="x" className="absolute left-[12%] right-[12%] top-7 hidden h-1 rounded-full bg-[linear-gradient(90deg,#FFC72C,#F5A800,#4DA3FF)] md:block" />
-            <DrawLine className="absolute bottom-6 left-7 top-6 w-1 rounded-full bg-[linear-gradient(180deg,#FFC72C,#F5A800,#4DA3FF)] md:hidden" />
-            <Stagger as="ol" className="relative grid gap-8 md:grid-cols-4 md:gap-6">
-              {D.promise.map((p, i) => (
-                <StaggerItem key={i} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
-                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-white">{i + 1}</span>
-                  <div>
-                    <h3 className="font-heading text-[1.125rem] font-bold text-navy">{L(p.title)}</h3>
-                    <p className="mt-1 text-caption text-muted">{L(p.desc)}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-        </div>
-      </section>
-
       {/* Reach */}
-      <section className="bg-premium-sun overflow-hidden py-16 md:py-20">
+      <section className="tone tone-cream py-16 md:py-20">
         <div className="container-page mb-10 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
           <BlurReveal>
             <p className="font-heading text-[clamp(4rem,12vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.04em] text-navy">
@@ -141,7 +125,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Certifications */}
-      <section className="bg-premium-light py-16 md:py-24">
+      <section className="tone tone-mint py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={t("certTitle")} subtitle={t("certNote")} align="center" />
           <Stagger className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">

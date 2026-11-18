@@ -6,7 +6,7 @@ import { GuideTrigger } from "@/components/tools/triggers";
 import { Magnetic } from "@/components/motion/magnetic";
 import { Parallax } from "@/components/motion/primitives";
 import { DisplayTitle, Eyebrow } from "@/components/ui/display-title";
-import { SolarBackdrop } from "./solar-backdrop";
+import { SolarBackdrop, type Motif } from "./solar-backdrop";
 import type { GuidePersona } from "@/config/personas";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +20,9 @@ const TYPE_TO_PERSONA: Record<string, GuidePersona> = { home: "urban", farm: "fa
  * - align="center": centred copy for pages without art.
  * Text uses CSS entrances so it paints before JS. `children` renders under the hero copy.
  */
-export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType, guidePersona, emphasis, children, art, tone = "light", align = "left" }: {
+export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType, guidePersona, emphasis, children, art, tone = "light", align = "left", motif = "rays" }: {
   eyebrow: string; title: string; subtitle: string; Icon?: LucideIcon; ctas?: boolean; calcType?: string; guidePersona?: GuidePersona;
-  emphasis?: string; children?: React.ReactNode; art?: React.ReactNode; tone?: "light" | "dark"; align?: "left" | "center";
+  emphasis?: string; children?: React.ReactNode; art?: React.ReactNode; tone?: "light" | "dark"; align?: "left" | "center"; motif?: Motif;
 }) {
   const t = useTranslations("common");
   const dark = tone === "dark";
@@ -30,7 +30,7 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
   const sun = center ? { x: "50%", y: "6%" } : art || Icon ? { x: "78%", y: "40%" } : { x: "88%", y: "16%" };
   return (
     <section className={cn("relative isolate overflow-hidden", dark && "text-white")}>
-      <SolarBackdrop tone={tone} sun={sun} />
+      <SolarBackdrop tone={tone} sun={sun} motif={motif} />
       <div className={cn("container-page grid items-center gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:pt-20", dark ? "pb-24 md:pb-28 lg:pb-32" : "pb-16 md:pb-20 lg:pb-24")}>
         <div className={cn(art ? "lg:col-span-6" : Icon ? "lg:col-span-7" : center ? "text-center lg:col-span-10 lg:col-start-2" : "lg:col-span-10")}>
           <Eyebrow className={cn("animate-rise", dark && "eyebrow-pill--dark")}>{eyebrow}</Eyebrow>

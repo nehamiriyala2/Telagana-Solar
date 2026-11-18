@@ -32,7 +32,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" />
 
       {/* Districts + schemes marquee */}
       <section aria-label={L(D.marqueeLabel)} className="border-y border-line bg-white py-6">
@@ -76,9 +76,10 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       </section>
 
       {/* Comparison */}
-      <section className="bg-premium-light py-16 md:py-24" aria-label={L(D.compareTitle)}>
+      <section className="tone tone-navy py-16 md:py-24" aria-label={L(D.compareTitle)}>
+        <span aria-hidden className="tone-beam" />
         <div className="container-page">
-          <SectionTitle title={L(D.compareTitle)} emphasis={L(D.compareEmphasis)} />
+          <SectionTitle tone="dark" index="02" title={L(D.compareTitle)} emphasis={L(D.compareEmphasis)} />
           <BlurReveal className="hidden overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-[0_24px_50px_-34px_rgb(7_23_63/0.35)] md:block">
             <table className="w-full text-left text-caption">
               <thead className="bg-[#F1F7FF] text-[0.75rem] uppercase tracking-wide text-royal">
@@ -114,16 +115,16 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       </section>
 
       {/* Process */}
-      <section className="py-16 md:py-24" aria-label={L(D.processTitle)}>
+      <section className="tone tone-cream py-16 md:py-24" aria-label={L(D.processTitle)}>
         <div className="container-page">
-          <SectionTitle title={L(D.processTitle)} emphasis={L(D.processEmphasis)} />
+          <SectionTitle index="03" title={L(D.processTitle)} emphasis={L(D.processEmphasis)} />
           <div className="relative">
             <DrawLine axis="x" className="absolute left-[12%] right-[12%] top-7 hidden h-1 rounded-full bg-[linear-gradient(90deg,#FFC72C,#F5A800,#4DA3FF)] md:block" />
             <DrawLine className="absolute bottom-6 left-7 top-6 w-1 rounded-full bg-[linear-gradient(180deg,#FFC72C,#F5A800,#4DA3FF)] md:hidden" />
             <Stagger as="ol" className="relative grid gap-8 md:grid-cols-4 md:gap-6">
               {D.process.map((p, i) => (
                 <StaggerItem key={i} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
-                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-white">{i + 1}</span>
+                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-[#FFF9E9]">{i + 1}</span>
                   <div>
                     <h3 className="font-heading text-[1.125rem] font-bold text-navy">{L(p.title)}</h3>
                     <p className="mt-1 text-caption text-muted">{L(p.desc)}</p>

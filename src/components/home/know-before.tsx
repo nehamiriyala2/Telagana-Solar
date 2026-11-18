@@ -17,8 +17,8 @@ const ITEMS = [
 export function KnowBefore() {
   const t = useTranslations("knowBefore");
   return (
-    <section className="dot-grid bg-premium-sun relative isolate overflow-hidden py-16 md:py-24" aria-labelledby="kb-title">
-      <div aria-hidden className="orb -right-24 top-1/3 size-96 bg-yellow/25" />
+    <section className="tone tone-mint py-16 md:py-24" aria-labelledby="kb-title">
+      <div aria-hidden className="orb -right-24 top-1/3 size-96 bg-[#24A66A]/15" />
       <div className="container-page">
         <SectionHeading premium eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <ol className="mx-auto grid max-w-5xl gap-3 md:grid-cols-2">

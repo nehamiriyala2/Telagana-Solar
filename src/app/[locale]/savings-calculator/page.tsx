@@ -34,7 +34,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.calculator)} subtitle={t("subtitle")} ctas={false} align="center" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.calculator)} subtitle={t("subtitle")} ctas={false} align="center" motif="orbits" />
 
       <section className="relative -mt-8 pb-16 md:-mt-12 md:pb-24">
         <div className="container-page">
@@ -44,17 +44,18 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
-      <section className="bg-premium-light py-16 md:py-24">
+      <section className="tone tone-navy py-16 md:py-24">
+        <span aria-hidden className="tone-beam" />
         <div className="container-page">
-          <SectionTitle title={L(D.assumptionsTitle)} emphasis={L(D.assumptionsEmphasis)} subtitle={L(D.assumptionsNote)} />
+          <SectionTitle tone="dark" index="01" title={L(D.assumptionsTitle)} emphasis={L(D.assumptionsEmphasis)} subtitle={L(D.assumptionsNote)} />
           <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s) => (
-              <StaggerItem key={s.key} className="card-glass-light list-none p-6">
-                <p className="font-heading text-[2.5rem] font-extrabold leading-none tracking-[-0.03em] text-navy">
+              <StaggerItem key={s.key} className="card-dark-glass list-none p-6">
+                <p className="font-heading text-[2.5rem] font-extrabold leading-none tracking-[-0.03em] text-white">
                   <StatCounter value={s.value} prefix={s.prefix} decimals={s.decimals} />
-                  <span className="ml-1 text-[1rem] font-bold text-gold-ink">{L(D.stats[s.key].suffix).trim()}</span>
+                  <span className="ml-1 text-[1rem] font-bold text-[#FFD76A]">{L(D.stats[s.key].suffix).trim()}</span>
                 </p>
-                <p className="mt-3 text-caption text-muted">{L(D.stats[s.key].label)}</p>
+                <p className="on-dark-muted mt-3 text-caption">{L(D.stats[s.key].label)}</p>
               </StaggerItem>
             ))}
           </Stagger>

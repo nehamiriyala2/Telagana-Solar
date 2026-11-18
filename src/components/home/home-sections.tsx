@@ -12,13 +12,14 @@ import type { GuidePersona } from "@/config/personas";
 import { featuredPackages } from "@/config/packages";
 
 /** `premium` is the homepage look; other pages keep the default. */
-export function Packages({ premium = false }: { premium?: boolean }) {
+export function Packages({ premium = false, blue = false }: { premium?: boolean; blue?: boolean }) {
   const t = useTranslations("packages");
   return (
-    <section className={premium ? "dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" : "section"} aria-labelledby="pkg-title">
+    <section className={blue ? "tone tone-blue py-16 md:py-24" : premium ? "dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" : "section"} aria-labelledby="pkg-title">
+      {blue && <span aria-hidden className="tone-beam" />}
       {premium && <div aria-hidden className="orb -left-24 top-1/4 size-96 bg-yellow/20" />}
       <div className="container-page">
-        <SectionHeading premium={premium} eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading premium={premium} tone={blue ? "dark" : "light"} eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <div className="grid gap-6 pt-3 md:grid-cols-3">
           {featuredPackages.map((p, i) => <Reveal key={p.id} delay={i * 0.08} className="h-full"><PackageCard pkg={p} premium={premium} /></Reveal>)}
         </div>
@@ -114,20 +115,22 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
 /** Bright gold banner with the site-visit form. */
 const TYPE_TO_PERSONA: Record<"home" | "farm" | "business", GuidePersona> = { home: "urban", farm: "farmer", business: "shop" };
 
-/** Bright warm-white banner with gold glow: "Not sure which solar is right for you?" + guide + WhatsApp. */
+/** Deep navy + golden banner: "Not sure which solar is right for you?" + guide + WhatsApp. */
 export function FinalCta({ title, defaultType }: { title?: string; defaultType?: "home" | "farm" | "business" }) {
   const t = useTranslations();
   return (
     <section id="book" className="container-page scroll-mt-24 pb-16 pt-6 md:pb-24" aria-labelledby="cta-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_60%_80%_at_0%_0%,rgb(255_199_44/0.28),transparent_60%),radial-gradient(ellipse_55%_70%_at_100%_100%,rgb(77_163_255/0.18),transparent_60%),linear-gradient(135deg,#FFF8E6_0%,#FFFFFF_50%,#F1F7FF_100%)] p-6 shadow-[0_30px_70px_-40px_rgb(7_23_63/0.35)] ring-1 ring-gold/25 md:p-12">
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_60%_80%_at_0%_0%,rgb(255_184_0/0.30),transparent_60%),radial-gradient(ellipse_55%_70%_at_100%_100%,rgb(255_215_106/0.22),transparent_60%),linear-gradient(135deg,#071B49_0%,#0B2A6E_55%,#123A8C_100%)] p-6 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.7)] ring-1 ring-[#FFD76A]/30 md:p-12">
+          <span aria-hidden className="tone-beam" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[repeating-conic-gradient(from_0deg_at_15%_0%,rgb(255_215_106/0.07)_0deg_3deg,transparent_3deg_14deg)]" />
           <div aria-hidden className="absolute -left-24 -top-24 -z-10 size-96 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.35),transparent_65%)]" />
           <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 -z-10 size-[30rem] rounded-full border-2 border-yellow/40 shadow-[0_0_60px_-10px_rgb(255_199_44/0.6)]" />
           <div className="mx-auto max-w-3xl py-4 text-center md:py-8">
-            <h2 id="cta-title" className="text-h2 text-navy md:text-h2-lg">{title ?? t("cta.title")}</h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted md:text-body-lg">{t("cta.subtitle")}</p>
+            <h2 id="cta-title" className="text-h2 text-white md:text-h2-lg">{title ?? t("cta.title")}</h2>
+            <p className="on-dark-muted mx-auto mt-4 max-w-xl md:text-body-lg">{t("cta.subtitle")}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <GuideTrigger size="lg" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
+              <GuideTrigger size="lg" className="btn-shine shadow-[0_14px_34px_-12px_rgb(255_184_0/0.9)]" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
               <WhatsAppButton place="final-banner" size="lg" label={t("common.askOnWhatsapp")} message={t("common.askMessage")} />
             </div>
           </div>

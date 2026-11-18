@@ -21,7 +21,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   return (
     <>
       <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.projects, locale)} subtitle={t("subtitle")} ctas={false} tone="dark" align="center" />
-      <section className="bg-section-white pb-16 pt-6 md:pb-24">
+      <section className="tone tone-sky pb-16 pt-10 md:pb-24">
         <div className="container-page">
           <ProjectsGallery />
         </div>

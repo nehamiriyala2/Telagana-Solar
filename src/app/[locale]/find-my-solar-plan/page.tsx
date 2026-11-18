@@ -21,8 +21,8 @@ export default async function PlanPage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations("guide");
   return (
     <>
-      <PageHero eyebrow={pick(D.eyebrow, locale)} title={t("title")} emphasis={pick(titleEmphasis.plan, locale)} subtitle={pick(D.subtitle, locale)} Icon={Sparkles} ctas={false} />
-      <section className="bg-premium-light pb-16 pt-6 md:pb-24">
+      <PageHero eyebrow={pick(D.eyebrow, locale)} title={t("title")} emphasis={pick(titleEmphasis.plan, locale)} subtitle={pick(D.subtitle, locale)} Icon={Sparkles} ctas={false} motif="grid" />
+      <section className="tone tone-cream pb-16 pt-10 md:pb-24">
         <div className="container-page max-w-5xl">
           <PlanStepper />
         </div>

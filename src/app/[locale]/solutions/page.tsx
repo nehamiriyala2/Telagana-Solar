@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/page/page-hero";
-import { Solutions } from "@/components/home/solutions";
+import { SolutionShowcase } from "@/components/page/solution-showcase";
 import { FinalCta } from "@/components/home/home-sections";
 import { pageMeta } from "@/lib/seo";
 import { titleEmphasis } from "@/data/pages";
@@ -19,8 +19,8 @@ export default async function SolutionsIndex({ params }: { params: Promise<{ loc
   const t = await getTranslations("solutions");
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.solutions, locale)} subtitle={t("subtitle")} />
-      <Solutions />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.solutions, locale)} subtitle={t("subtitle")} motif="waves" />
+      <SolutionShowcase />
       <FinalCta />
     </>
   );
