@@ -63,3 +63,20 @@ export const site = {
 } as const;
 
 export const hasValue = <T,>(v: T | null | undefined): v is T => v !== null && v !== undefined && v !== "";
+
+/**
+ * Homepage hero background.
+ * - image: shown always (poster + fallback), animated in code (push-in, sun flare, panel glint, glow, mist).
+ * - video: when you have the AI-generated loop, put the files in /public/hero/ and set the paths below. [EDIT]
+ *   Export MP4 (H.264) + WebM, 16:9, 8–10 s, ideally under 5 MB. The video replaces the code animation
+ *   (it is skipped for "reduce motion" and data-saver visitors, who see the still image).
+ */
+export const heroMedia = {
+  image: "/hero/house-sunrise.webp",
+  poster: "/hero/house-sunrise.jpg",
+  /** Pixel size of the image, used to keep the animated overlays aligned */
+  width: 1672,
+  height: 941,
+  videoMp4: null as string | null, // e.g. "/hero/house-sunrise.mp4"
+  videoWebm: null as string | null, // e.g. "/hero/house-sunrise.webm"
+};
