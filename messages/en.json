@@ -1,0 +1,1114 @@
+{
+  "meta": {
+    "title": "Telangana Solar | Solar for homes, farms and businesses",
+    "description": "Make your own power and pay less for it. Learn which solar suits you, which government schemes you can use, and get installation, subsidy paperwork and net metering across Telangana."
+  },
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "homes": "Solar for Homes",
+    "farms": "Solar for Farms",
+    "business": "Solar for Business",
+    "homesDesc": "Rooftop systems from 1 kW to 10 kW",
+    "farmsDesc": "Solar water pumps and farm power",
+    "businessDesc": "Shops, schools, hospitals, factories",
+    "calculator": "Savings Calculator",
+    "subsidy": "Subsidy & Loans",
+    "projects": "Projects",
+    "about": "About Us",
+    "contact": "Contact",
+    "whatsapp": "WhatsApp",
+    "siteVisit": "Find My Solar Plan",
+    "menu": "Open menu",
+    "close": "Close menu",
+    "call": "Call",
+    "skip": "Skip to content",
+    "languageLabel": "Language",
+    "schemes": "Schemes"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getQuote": "Get quote",
+    "bookVisit": "Find My Solar Plan",
+    "calculate": "Calculate My Savings",
+    "startingFrom": "Starting from {price}",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "years": "{count, plural, one {# year} other {# years}}",
+    "estimatesNote": "Estimates only, based on current rules. The final price depends on your site and system.",
+    "subsidyNote": "Subsidy amounts depend on current government rules. We confirm them for you.",
+    "asPerScheme": "as per current government scheme",
+    "popular": "Most popular",
+    "whatsappMessage": "Hi Telangana Solar! I would like help choosing the right solar for me.",
+    "whatsappMessageType": "Hi Telangana Solar! I would like to know about solar for my {type}.",
+    "notSet": "Not added yet",
+    "backHome": "Back to home",
+    "askWhatsapp": "Ask a question on WhatsApp",
+    "askOnWhatsapp": "Ask on WhatsApp",
+    "askMessage": "Hi Telangana Solar! I have a question about solar: "
+  },
+  "types": {
+    "home": {
+      "name": "Home",
+      "long": "home"
+    },
+    "farm": {
+      "name": "Farm",
+      "long": "farm"
+    },
+    "business": {
+      "name": "Business",
+      "long": "business"
+    }
+  },
+  "hero": {
+    "eyebrow": "Solar installation across Telangana",
+    "subtitle": "Solar for homes, farms and businesses across Telangana. Subsidy and paperwork handled by us.",
+    "primary": "Find My Solar Plan",
+    "secondary": "Check My Subsidy",
+    "titleA": "Make Your ",
+    "titleGold": "Own Power",
+    "titleB": ". Pay Less For It.",
+    "altLine": "మీ కరెంట్ మీరే తయారు చేసుకోండి. బిల్లు తగ్గించుకోండి.",
+    "altLang": "te",
+    "note": "Learn what solar suits your home and which government schemes you can use. No pressure."
+  },
+  "trust": {
+    "projects": "Projects installed",
+    "kw": "kW installed",
+    "districts": "Districts served",
+    "customers": "Happy customers",
+    "brands": "Panels and inverters we install"
+  },
+  "solutions": {
+    "eyebrow": "Our solutions",
+    "title": "Solar for every roof and every field",
+    "subtitle": "Tell us where you need power. We design the right system for it.",
+    "homes": {
+      "title": "Solar for Homes",
+      "b1": "Cut your monthly bill by running the house on sunlight",
+      "b2": "We handle the subsidy paperwork and net meter"
+    },
+    "farms": {
+      "title": "Solar for Farms",
+      "b1": "Run your water pump in the day, straight from the sun",
+      "b2": "No diesel cost, no waiting for grid power"
+    },
+    "business": {
+      "title": "Solar for Business",
+      "b1": "Lower power costs for shops, schools, hospitals and factories",
+      "b2": "Daytime use matches solar output, so payback is quick"
+    }
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "Five simple steps to your own power",
+    "s1": {
+      "title": "Learn your options",
+      "desc": "Understand what suits you, in simple words."
+    },
+    "s2": {
+      "title": "Pick a system and scheme",
+      "desc": "Choose the right size and the schemes you can use."
+    },
+    "s3": {
+      "title": "Subsidy and loan paperwork",
+      "desc": "We file the forms and track them for you."
+    },
+    "s4": {
+      "title": "Installation",
+      "desc": "Our team installs and tests everything."
+    },
+    "s5": {
+      "title": "Net meter and savings",
+      "desc": "DISCOM fits the net meter. You start saving."
+    }
+  },
+  "mini": {
+    "eyebrow": "Savings calculator",
+    "title": "How much could you save?",
+    "subtitle": "Move the slider to your monthly electricity bill.",
+    "billLabel": "Monthly electricity bill",
+    "resultTitle": "Your estimate",
+    "size": "System size",
+    "saving": "Monthly saving",
+    "payback": "Payback",
+    "fullReport": "Get full report",
+    "subsidy": "Estimated subsidy"
+  },
+  "packages": {
+    "eyebrow": "Popular packages",
+    "title": "Pick a size. We fine-tune it on site.",
+    "subtitle": "Typical systems for Telangana homes. Your final size depends on your roof and bill.",
+    "billRange": "For monthly bills of about {min} – {max}",
+    "generation": "Makes about {units} units a month",
+    "roof": "Needs about {sqft} sq ft of roof",
+    "getQuote": "Get quote"
+  },
+  "subsidyBand": {
+    "title": "Government subsidy can lower your cost",
+    "body": "Homes can get a subsidy on rooftop solar as per current government scheme. We check what you qualify for, fill the forms, and follow up until it reaches your bank account.",
+    "cta": "See how subsidy works"
+  },
+  "projects": {
+    "eyebrow": "Our projects",
+    "title": "Real installations across Telangana",
+    "subtitle": "Homes, farms and businesses now making their own power.",
+    "all": "All",
+    "type": "Type",
+    "district": "District",
+    "allDistricts": "All districts",
+    "empty": "No projects match these filters yet.",
+    "saving": "Saves {amount}/month",
+    "photo": "Project photo",
+    "viewAll": "View all projects",
+    "prev": "Previous project",
+    "next": "Next project"
+  },
+  "why": {
+    "eyebrow": "Why Telangana Solar",
+    "title": "A local team you can count on",
+    "local": {
+      "title": "Local team",
+      "desc": "We live and work in Telangana and know the DISCOM process well."
+    },
+    "transparent": {
+      "title": "Transparent pricing",
+      "desc": "One clear quote. No hidden charges after installation."
+    },
+    "endToEnd": {
+      "title": "End-to-end service",
+      "desc": "Design, paperwork, installation and net meter, all done by us."
+    },
+    "netMeter": {
+      "title": "Quick net metering",
+      "desc": "We apply and follow up so your meter is fitted on time."
+    },
+    "support": {
+      "title": "Long-term support",
+      "desc": "Warranty help, cleaning and maintenance for years to come."
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "title": "Frequently asked questions",
+    "q1": {
+      "q": "How much does a solar system cost?",
+      "a": "It depends on the size you need, which depends on your bill and roof. Use Find My Solar Plan or the calculator for an estimate. We give you one clear quote once we know your roof and needs."
+    },
+    "q2": {
+      "q": "Can I get a government subsidy?",
+      "a": "Homes can get a subsidy as per current government scheme. The amount depends on current rules and system size. We confirm what you qualify for and do the paperwork."
+    },
+    "q3": {
+      "q": "How long until it pays for itself?",
+      "a": "Most systems earn back their cost in a few years through lower bills. Your exact payback depends on your bill, system size and subsidy. The calculator shows an estimate."
+    },
+    "q4": {
+      "q": "Does solar work on cloudy or rainy days?",
+      "a": "Yes, but it makes less power. We size your system on yearly averages, so sunny months make up for cloudy ones. At night, you use grid power as usual."
+    },
+    "q5": {
+      "q": "How much maintenance is needed?",
+      "a": "Very little. Clean the panels with water every few weeks and get a yearly check. We offer maintenance (AMC) and cleaning plans if you prefer."
+    },
+    "q6": {
+      "q": "Can I pay in EMIs?",
+      "a": "Yes. Many banks offer solar loans. We guide you through the options and the paperwork. See the Subsidy & Loans page for an EMI estimate."
+    },
+    "q7": {
+      "q": "What is net metering?",
+      "a": "A two-way meter counts the power you use and the extra power you send to the grid. You pay only for the difference. We apply for it with your Telangana DISCOM."
+    },
+    "q8": {
+      "q": "What warranty do I get?",
+      "a": "Panels and inverters come with manufacturer warranties. We also give an installation warranty and after-sales service. We share all warranty papers at handover."
+    }
+  },
+  "cta": {
+    "title": "Not sure which solar is right for you?",
+    "subtitle": "Answer 3 quick questions and get a simple solar plan with schemes and savings. Or ask us anything on WhatsApp."
+  },
+  "form": {
+    "title": "Get my solar plan",
+    "name": "Your name",
+    "namePh": "Full name",
+    "phone": "Mobile number",
+    "phonePh": "10-digit mobile number",
+    "location": "Location",
+    "locationPh": "Select your district",
+    "propertyType": "Type of property",
+    "bill": "Monthly bill (₹)",
+    "billPh": "e.g. 3000",
+    "message": "Message",
+    "messagePh": "Tell us what you need (optional)",
+    "date": "Preferred date",
+    "time": "Preferred time",
+    "slotHint": "Pick a time for our visit (optional)",
+    "submit": "Get my solar plan",
+    "submitContact": "Send message",
+    "submitting": "Sending…",
+    "successTitle": "Thank you, {name}!",
+    "successBody": "We have your details. Our team will call you within {hours} hours.",
+    "successSlot": "Requested visit: {date} at {time}",
+    "successWhatsapp": "Chat with us on WhatsApp now",
+    "again": "Send another request",
+    "error": "Something went wrong. Please try again or message us on WhatsApp.",
+    "consent": "By submitting, you agree that Telangana Solar may contact you by phone or WhatsApp. See our",
+    "privacy": "Privacy Policy",
+    "optional": "optional",
+    "errors": {
+      "name": "Please enter your name",
+      "phone": "Please enter a valid 10-digit Indian mobile number",
+      "location": "Please choose your district",
+      "propertyType": "Please choose the type of property",
+      "slot": "Please choose a valid date and time"
+    }
+  },
+  "calculator": {
+    "eyebrow": "Savings calculator",
+    "title": "See what solar can save you",
+    "subtitle": "Enter your bill or units. We estimate the right system, cost, subsidy and savings.",
+    "byBill": "Monthly bill (₹)",
+    "byUnits": "Monthly units",
+    "billInput": "Monthly electricity bill in rupees",
+    "unitsInput": "Monthly units (kWh)",
+    "propertyType": "Type of property",
+    "roof": "Roof area (optional)",
+    "roofPh": "sq ft",
+    "roofHint": "Shade-free roof space. Leave empty if not sure.",
+    "district": "District",
+    "anyDistrict": "Select district (optional)",
+    "estimatedUnits": "About {units} units a month",
+    "estimatedBill": "About {bill} a month",
+    "size": "Recommended system",
+    "cost": "Approximate cost",
+    "subsidy": "Estimated subsidy",
+    "netCost": "Net cost",
+    "monthly": "Monthly savings",
+    "yearly": "Yearly savings",
+    "payback": "Payback period",
+    "co2": "CO₂ saved",
+    "co2Value": "{value} tonnes/year",
+    "lifetime": "25-year savings",
+    "roofNeeded": "Needs about {sqft} sq ft of roof",
+    "roofLimited": "Limited by your roof area. A bigger roof could save more.",
+    "chartTitle": "Your savings over 25 years",
+    "chartSaved": "Total saved",
+    "chartNet": "Gain after cost",
+    "chartYear": "Year {year}",
+    "table": "Show as table",
+    "reportTitle": "Send me this report on WhatsApp",
+    "reportSubtitle": "Get these numbers on WhatsApp and a free call from our team.",
+    "reportCta": "Send my report"
+  },
+  "solutionPages": {
+    "includedTitle": "What is included",
+    "processTitle": "How we do it",
+    "faqTitle": "Common questions",
+    "ctaTitle": "Get a solar plan for your {type}",
+    "homes": {
+      "eyebrow": "Solar for Homes",
+      "title": "Run your home on sunlight",
+      "subtitle": "Rooftop solar from 1 kW to 10 kW. We handle design, subsidy, installation and net metering.",
+      "b1": {
+        "title": "Lower bills from month one",
+        "desc": "Your panels power fans, lights, fridge and AC in the day."
+      },
+      "b2": {
+        "title": "Subsidy help",
+        "desc": "We file your subsidy as per current government scheme."
+      },
+      "b3": {
+        "title": "Net metering",
+        "desc": "Extra power goes to the grid and reduces your bill."
+      },
+      "b4": {
+        "title": "25+ years of power",
+        "desc": "Panels keep working for decades with little care."
+      },
+      "packagesTitle": "Home packages: 1 kW to 10 kW",
+      "packagesSubtitle": "Pick the size closest to your bill. We confirm it once we know your roof and needs.",
+      "i1": "Solar panels and mounting structure",
+      "i2": "Inverter sized for your home",
+      "i3": "Wiring, earthing and safety devices",
+      "i4": "Subsidy application and follow-up",
+      "i5": "Net meter application with your DISCOM",
+      "i6": "Monitoring app setup and handover"
+    },
+    "farms": {
+      "eyebrow": "Solar for Farms",
+      "title": "Water your fields with sunlight",
+      "subtitle": "Solar water pumps and farm power systems. Run your pump in the day without diesel or waiting for grid supply.",
+      "b1": {
+        "title": "No diesel cost",
+        "desc": "Sunlight is free. No fuel to buy or carry."
+      },
+      "b2": {
+        "title": "Daytime water",
+        "desc": "Pump runs when the sun is up, when crops need it."
+      },
+      "b3": {
+        "title": "Scheme support",
+        "desc": "We guide you on farm solar schemes as per current government rules."
+      },
+      "b4": {
+        "title": "Built for fields",
+        "desc": "Strong structures made for open, dusty conditions."
+      },
+      "pumpsTitle": "Solar pump sizes",
+      "pumpsSubtitle": "We size the pump for your borewell depth and water need.",
+      "hp": "{value} HP solar pump",
+      "pumpDesc": "Surface or submersible, AC or DC, chosen after a site check.",
+      "usesTitle": "Farm solar we install",
+      "u1": {
+        "title": "Solar water pumps",
+        "desc": "For borewells, open wells and canals."
+      },
+      "u2": {
+        "title": "Agri solar",
+        "desc": "Power for sheds, cold storage and processing."
+      },
+      "u3": {
+        "title": "Farm power",
+        "desc": "Lights, fans and motors for the farmhouse."
+      },
+      "i1": "Solar panels and strong field structure",
+      "i2": "Pump controller (drive)",
+      "i3": "Pump and motor sized for your well",
+      "i4": "Piping and wiring to the delivery point",
+      "i5": "Scheme paperwork help",
+      "i6": "Training and after-sales service"
+    },
+    "business": {
+      "eyebrow": "Solar for Business",
+      "title": "Lower power costs for your business",
+      "subtitle": "Commercial and industrial rooftop solar for shops, schools, hospitals and factories.",
+      "b1": {
+        "title": "Big savings on commercial tariff",
+        "desc": "Business power rates are high, so every solar unit saves more."
+      },
+      "b2": {
+        "title": "Daytime match",
+        "desc": "You use power when the sun shines, so payback is quick."
+      },
+      "b3": {
+        "title": "Tax benefits",
+        "desc": "Ask your accountant about depreciation benefits on solar."
+      },
+      "b4": {
+        "title": "Green image",
+        "desc": "Show customers and staff you care about clean energy."
+      },
+      "segmentsTitle": "Who we work with",
+      "shops": "Shops and showrooms",
+      "schools": "Schools and colleges",
+      "hospitals": "Hospitals and clinics",
+      "factories": "Factories and warehouses",
+      "offices": "Offices and IT parks",
+      "hotels": "Hotels and restaurants",
+      "packagesTitle": "Typical business system sizes",
+      "packagesSubtitle": "Every business is different. We design from your load and roof.",
+      "i1": "Load study and energy audit",
+      "i2": "Panels, inverters and structure",
+      "i3": "Safety, earthing and protection",
+      "i4": "Net metering with your DISCOM",
+      "i5": "Remote monitoring",
+      "i6": "AMC and cleaning plans"
+    }
+  },
+  "subsidyPage": {
+    "eyebrow": "Subsidy & Loans",
+    "title": "Subsidy and loans, made simple",
+    "subtitle": "How the subsidy works, how to pay in easy EMIs, and what papers you need.",
+    "stepsTitle": "How the home subsidy works",
+    "s1": {
+      "title": "Check your eligibility",
+      "desc": "We look at your bill and property and confirm what you may qualify for."
+    },
+    "s2": {
+      "title": "Register on the government portal",
+      "desc": "We help you register with your electricity consumer number."
+    },
+    "s3": {
+      "title": "Approval from DISCOM",
+      "desc": "Your DISCOM checks and approves the application."
+    },
+    "s4": {
+      "title": "Installation",
+      "desc": "We install your system with approved equipment."
+    },
+    "s5": {
+      "title": "Net meter and inspection",
+      "desc": "DISCOM fits the net meter and inspects the system."
+    },
+    "s6": {
+      "title": "Subsidy in your bank account",
+      "desc": "The subsidy is paid as per current government scheme."
+    },
+    "emiTitle": "EMI estimate",
+    "emiSubtitle": "See how a solar loan compares with your monthly saving.",
+    "systemCost": "System cost after subsidy",
+    "downPayment": "Down payment",
+    "loanAmount": "Loan amount",
+    "tenure": "Loan period",
+    "rate": "Interest rate",
+    "rateValue": "{rate}% per year",
+    "emi": "Monthly EMI",
+    "saving": "Estimated monthly saving",
+    "emiCovered": "Your monthly saving covers about {percent}% of the EMI.",
+    "emiNote": "Example only. Loan rates and terms depend on the bank. We help you compare.",
+    "loansTitle": "Ways to pay",
+    "l1": {
+      "title": "Full payment",
+      "desc": "Pay once and keep all the savings from day one."
+    },
+    "l2": {
+      "title": "Bank solar loan",
+      "desc": "Many banks offer loans for rooftop solar. We help with the papers."
+    },
+    "l3": {
+      "title": "EMI options",
+      "desc": "Spread the cost so your saving pays most of the EMI."
+    },
+    "docsTitle": "Documents usually needed",
+    "d1": "Latest electricity bill",
+    "d2": "Aadhaar card",
+    "d3": "Bank account details",
+    "d4": "Proof of ownership of the house",
+    "d5": "Passport-size photo",
+    "faqTitle": "Subsidy and loan questions"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "Helping Telangana make its own power",
+    "subtitle": "We are a solar installation company for homes, farms and businesses across Telangana.",
+    "storyTitle": "Our story",
+    "story": "[EDIT] Tell your story here: when you started, why, and what you have built since.",
+    "missionTitle": "Our mission",
+    "mission": "To help every home, farm and business in Telangana make its own clean power and pay less for it, with honest advice and complete service.",
+    "valuesTitle": "What we stand for",
+    "v1": {
+      "title": "Honest advice",
+      "desc": "We recommend only what you need."
+    },
+    "v2": {
+      "title": "Quality work",
+      "desc": "Good equipment, neat and safe installation."
+    },
+    "v3": {
+      "title": "Clear pricing",
+      "desc": "One quote. No surprises."
+    },
+    "v4": {
+      "title": "Always reachable",
+      "desc": "Support long after installation."
+    },
+    "teamTitle": "Our team",
+    "certTitle": "Certifications and registrations",
+    "certNote": "Copies available on request."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Talk to us. Get your solar plan.",
+    "subtitle": "Send your details, call us, or message us on WhatsApp. We reply fast.",
+    "formTitle": "Get my solar plan",
+    "callUs": "Call us",
+    "whatsappUs": "WhatsApp us",
+    "emailUs": "Email us",
+    "visitUs": "Visit our office",
+    "hours": "Working hours",
+    "hoursValue": "Monday to Saturday, 9 am to 7 pm",
+    "mapTitle": "Our location"
+  },
+  "city": {
+    "title": "Solar Installation in {city}",
+    "subtitle": "Rooftop solar, solar pumps and commercial solar in {city}. Subsidy help and net metering done for you.",
+    "whyTitle": "Why choose us in {city}",
+    "p1": {
+      "title": "Local team",
+      "desc": "We install and service solar systems in {city} and nearby areas."
+    },
+    "p2": {
+      "title": "DISCOM paperwork",
+      "desc": "We handle net metering with your local DISCOM office."
+    },
+    "p3": {
+      "title": "Fast service",
+      "desc": "Quick installation and support when you need it."
+    },
+    "areasTitle": "We also serve"
+  },
+  "footer": {
+    "about": "Solar installations for homes, farms and businesses across Telangana, so people make their own power and pay less for it.",
+    "quickLinks": "Quick links",
+    "solutions": "Solutions",
+    "contact": "Contact",
+    "areas": "Service areas",
+    "allTelangana": "and all of Telangana",
+    "rights": "© {year} Telangana Solar. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "follow": "Follow us",
+    "tagline": "Clean energy for a brighter Telangana",
+    "districtsTitle": "All 33 districts we serve"
+  },
+  "legal": {
+    "updated": "Last updated: {date}",
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "This policy explains what information Telangana Solar collects through this website and how we use it. [EDIT] Have this reviewed by your legal adviser.",
+      "s1": {
+        "h": "What we collect",
+        "p": "When you fill a form or use the calculator report, we collect your name, mobile number, location, type of property, electricity bill, preferred visit time, and calculator results. We also record which page you used and when."
+      },
+      "s2": {
+        "h": "How we use it",
+        "p": "We use your details to contact you about your enquiry, prepare your solar plan and quotes, and send you messages on WhatsApp, SMS or phone about your request."
+      },
+      "s3": {
+        "h": "Analytics and advertising",
+        "p": "We use Google Analytics, Meta Pixel and Google Ads to understand how the website is used and to measure our advertising. These services may use cookies."
+      },
+      "s4": {
+        "h": "Sharing",
+        "p": "We do not sell your data. We share it only with service providers who help us run our business (for example messaging, email and storage providers), and when required by law."
+      },
+      "s5": {
+        "h": "Your choices",
+        "p": "You can ask us to see, correct or delete your data, or to stop contacting you, at any time using the contact details below."
+      },
+      "s6": {
+        "h": "Contact",
+        "p": "For privacy questions, contact us using the details on our Contact page. [EDIT] Add your registered business name and address."
+      }
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "intro": "By using this website you agree to these terms. [EDIT] Have this reviewed by your legal adviser.",
+      "s1": {
+        "h": "Information only",
+        "p": "Content on this website, including calculator results, prices and subsidy information, is for general guidance. All figures are estimates. The final design and price depend on your site and system."
+      },
+      "s2": {
+        "h": "Subsidies",
+        "p": "Subsidy amounts and eligibility depend on current government rules, which can change. We help you apply but do not guarantee approval or amount."
+      },
+      "s3": {
+        "h": "Quotes and orders",
+        "p": "A written quote from us, accepted by you, forms the agreement for any installation. Website content does not form an offer."
+      },
+      "s4": {
+        "h": "Warranties",
+        "p": "Equipment warranties are provided by manufacturers. Our installation warranty terms are given in writing with your quote."
+      },
+      "s5": {
+        "h": "Liability",
+        "p": "We are not responsible for decisions made only on the basis of website estimates."
+      },
+      "s6": {
+        "h": "Governing law",
+        "p": "These terms are governed by the laws of India. Courts in Hyderabad, Telangana have jurisdiction. [EDIT]"
+      }
+    }
+  },
+  "notFound": {
+    "title": "This page is in the shade",
+    "body": "The page you are looking for does not exist or has moved.",
+    "cta": "Back to home"
+  },
+  "floating": {
+    "whatsapp": "Chat on WhatsApp"
+  },
+  "scene": {
+    "kw": "5 kW Solar",
+    "units": "600 units/month",
+    "saving": "Saving ₹2,800/month",
+    "bill": "Monthly bill",
+    "example": "Example home",
+    "poweredBySolar": "Powered by solar",
+    "day": "Day",
+    "night": "Night",
+    "toggle": "Switch between day and night view",
+    "alt": "3D house with blue solar panels on the roof, a glowing sun, and golden energy flowing into the home and electric meter"
+  },
+  "who": {
+    "eyebrow": "For you",
+    "title": "Which solar suits you?",
+    "subtitle": "Find yourself below and see what usually works best.",
+    "cta": "See details",
+    "quizCta": "Not sure? Find your solar plan in 1 minute"
+  },
+  "personas": {
+    "urban": {
+      "name": "Urban homeowner",
+      "question": "How do I cut my bill? How much subsidy can I get?",
+      "title": "Rooftop solar for your home",
+      "intro": "Cut your electricity bill with on-grid rooftop solar from 1 kW to 10 kW. We handle the PM Surya Ghar subsidy and net metering for you.",
+      "solution": "On-grid rooftop solar (1–10 kW) with PM Surya Ghar subsidy and net metering",
+      "p1": {
+        "title": "Lower bills every month",
+        "desc": "Your panels run fans, lights, fridge and AC during the day."
+      },
+      "p2": {
+        "title": "Subsidy paperwork done",
+        "desc": "We apply for the subsidy as per the current government scheme and follow up."
+      },
+      "p3": {
+        "title": "Net metering included",
+        "desc": "Extra power goes to the grid and reduces your bill."
+      },
+      "p4": {
+        "title": "25+ years of power",
+        "desc": "Panels keep working for decades with little care."
+      }
+    },
+    "apartment": {
+      "name": "Apartment or community",
+      "question": "Can our apartment or gated community go solar?",
+      "title": "Solar for apartments and gated communities",
+      "intro": "Use your common roof to power lifts, water pumps and corridor lights. Lower maintenance charges for every flat.",
+      "solution": "Common-area rooftop solar through your residents’ association, plus rooftop systems for individual villas",
+      "p1": {
+        "title": "Lower maintenance charges",
+        "desc": "Common-area power is often the biggest shared bill."
+      },
+      "p2": {
+        "title": "Society subsidy support",
+        "desc": "We check what your association qualifies for under current schemes."
+      },
+      "p3": {
+        "title": "We present to your committee",
+        "desc": "Clear numbers and a simple proposal for your members."
+      },
+      "p4": {
+        "title": "Villas and row houses",
+        "desc": "Independent homes in a community can each have their own system."
+      }
+    },
+    "farmer": {
+      "name": "Farmer",
+      "question": "How can I run my pump without diesel or waiting for power?",
+      "title": "Solar pumps and farm power",
+      "intro": "Water your fields in the day, straight from the sun. No diesel, no waiting for grid supply.",
+      "solution": "Solar water pump sized for your borewell, with PM-KUSUM support where available",
+      "p1": {
+        "title": "No diesel cost",
+        "desc": "Sunlight is free. No fuel to buy or carry to the field."
+      },
+      "p2": {
+        "title": "Pump sized for your well",
+        "desc": "We check depth and water need before choosing the pump."
+      },
+      "p3": {
+        "title": "Scheme support",
+        "desc": "We guide you on PM-KUSUM and state farm schemes as per current rules."
+      },
+      "p4": {
+        "title": "Built for open fields",
+        "desc": "Strong structures for dust, wind and heat."
+      }
+    },
+    "shop": {
+      "name": "Shop or small business",
+      "question": "How do I lower my shop’s electricity bill?",
+      "title": "Solar for shops and small businesses",
+      "intro": "Commercial power is expensive. Solar on your roof runs lights, fans, fridges and AC during business hours.",
+      "solution": "On-grid rooftop solar sized for your daytime load, with net metering",
+      "p1": {
+        "title": "Big savings on commercial tariff",
+        "desc": "Each solar unit replaces a costly commercial unit."
+      },
+      "p2": {
+        "title": "Daytime match",
+        "desc": "You use power when the sun shines, so payback is quick."
+      },
+      "p3": {
+        "title": "Small roofs work",
+        "desc": "Even a few kW can make a clear difference."
+      },
+      "p4": {
+        "title": "EMI options",
+        "desc": "We help you compare loans so savings cover most of the EMI."
+      }
+    },
+    "factory": {
+      "name": "Factory or industry",
+      "question": "How much can solar save on our industrial power bill?",
+      "title": "Solar for factories and industry",
+      "intro": "Large roofs and daytime loads make factories ideal for solar. We design from your load profile and roof.",
+      "solution": "Commercial and industrial rooftop or ground-mount solar, designed after a load study",
+      "p1": {
+        "title": "Load study first",
+        "desc": "We study your bills and load before suggesting a size."
+      },
+      "p2": {
+        "title": "Large systems",
+        "desc": "Rooftop and ground-mount systems for big power needs."
+      },
+      "p3": {
+        "title": "Tax benefits",
+        "desc": "Ask your accountant about depreciation benefits on solar."
+      },
+      "p4": {
+        "title": "Monitoring and AMC",
+        "desc": "Remote monitoring and planned maintenance keep output high."
+      }
+    },
+    "institution": {
+      "name": "School, hospital or institution",
+      "question": "Can our school, hospital or institution cut energy costs?",
+      "title": "Solar for schools, hospitals and institutions",
+      "intro": "Daytime classes, wards and offices match solar perfectly. Save money and show your commitment to clean energy.",
+      "solution": "Rooftop solar for daytime loads, with backup options for critical equipment",
+      "p1": {
+        "title": "Lower running costs",
+        "desc": "More budget for students, patients and staff."
+      },
+      "p2": {
+        "title": "Backup for critical loads",
+        "desc": "Hybrid options keep key equipment running during cuts."
+      },
+      "p3": {
+        "title": "A lesson in clean energy",
+        "desc": "A live example for students and visitors."
+      },
+      "p4": {
+        "title": "Safe installation",
+        "desc": "Careful work around people, with strong safety standards."
+      }
+    },
+    "landlord": {
+      "name": "Landlord or NRI owner",
+      "question": "I live elsewhere. Can you handle everything for my property?",
+      "title": "Solar for landlords and NRI owners",
+      "intro": "Own a house or building in Telangana but live elsewhere? We handle the survey, paperwork, installation and upkeep, and keep you updated.",
+      "solution": "End-to-end installation with photo updates, remote monitoring and maintenance, so you need not be there",
+      "p1": {
+        "title": "Updates on WhatsApp",
+        "desc": "Photos and progress at every step."
+      },
+      "p2": {
+        "title": "Paperwork handled",
+        "desc": "Subsidy and net metering filed as per current rules."
+      },
+      "p3": {
+        "title": "Remote monitoring",
+        "desc": "See generation on your phone from anywhere."
+      },
+      "p4": {
+        "title": "Maintenance plans",
+        "desc": "Cleaning and yearly checks without you being there."
+      }
+    }
+  },
+  "personaPage": {
+    "recommendTitle": "What we recommend for you",
+    "seeSolution": "See full details",
+    "schemesTitle": "Schemes you may be able to use",
+    "ctaTitle": "Get your solar plan"
+  },
+  "schemes": {
+    "eyebrow": "Schemes you can use",
+    "title": "Schemes available in Telangana",
+    "subtitle": "We check which schemes you qualify for and handle the paperwork.",
+    "learnMore": "Learn more",
+    "viewAll": "See all schemes",
+    "official": "Official website",
+    "who": "Who can apply",
+    "benefit": "What you get",
+    "documents": "Documents needed",
+    "steps": "Steps",
+    "help": "How we help",
+    "note": "Scheme rules and amounts are set by the government and can change. We confirm the current rules for you.",
+    "items": {
+      "pm-surya-ghar": {
+        "name": "PM Surya Ghar: Muft Bijli Yojana",
+        "short": "Central subsidy for rooftop solar on homes.",
+        "tag": "Homes",
+        "benefit": "A central subsidy on rooftop solar for eligible homes, as per the current scheme: up to ₹78,000 depending on system size. The subsidy is paid to your bank account after installation and inspection.",
+        "w1": "You own the house and have a suitable roof",
+        "w2": "A domestic electricity connection in your name",
+        "w3": "No solar subsidy already taken for this house",
+        "d1": "Latest electricity bill",
+        "d2": "Aadhaar card",
+        "d3": "Bank account details",
+        "d4": "Roof photo",
+        "s1": "Register on the national portal with your consumer number",
+        "s2": "Apply for rooftop solar and get DISCOM approval",
+        "s3": "Install with a registered vendor",
+        "s4": "Net meter fitted and system inspected",
+        "s5": "Subsidy credited to your bank account",
+        "h1": "Check your eligibility for free",
+        "h2": "Register and apply for you",
+        "h3": "Install with approved equipment",
+        "h4": "Follow up until the subsidy is paid",
+        "cardWho": "Home owners with a domestic connection",
+        "cardBenefit": "Subsidy on rooftop solar, as per current government scheme"
+      },
+      "pm-kusum": {
+        "name": "PM-KUSUM",
+        "short": "Support for solar water pumps and farm solar.",
+        "tag": "Farmers",
+        "benefit": "Government support for solar water pumps and farm solar, shared between central and state governments as per the current scheme. The farmer’s share and availability depend on the state’s current notification.",
+        "w1": "Individual farmers, groups, FPOs or cooperatives",
+        "w2": "Own or leased agricultural land with a water source",
+        "w3": "As per the current Telangana notification",
+        "d1": "Land records (pattadar passbook)",
+        "d2": "Aadhaar card",
+        "d3": "Bank account details",
+        "d4": "Water source details",
+        "s1": "Check whether applications are open in Telangana",
+        "s2": "Apply through the state agency",
+        "s3": "Pay the farmer share after selection",
+        "s4": "Pump installed and commissioned",
+        "s5": "Training and after-sales support",
+        "h1": "Tell you when applications open",
+        "h2": "Help with forms and documents",
+        "h3": "Size the right pump for your well",
+        "h4": "Install, train and service",
+        "cardWho": "Farmers, groups, FPOs and cooperatives",
+        "cardBenefit": "Support for solar pumps and farm solar, as per current scheme"
+      },
+      "net-metering": {
+        "name": "Telangana net metering",
+        "short": "Send extra solar power to the grid and pay only for the difference.",
+        "tag": "Homes · Business",
+        "benefit": "Your DISCOM (TGSPDCL or TGNPDCL) fits a two-way net meter. Units you export are adjusted against units you use, as per current regulations.",
+        "w1": "Consumers with a grid-connected solar system",
+        "w2": "System within the sanctioned load limits",
+        "w3": "As per current DISCOM rules",
+        "d1": "Electricity bill",
+        "d2": "Installation and inverter details",
+        "d3": "ID proof",
+        "d4": "Signed net metering agreement",
+        "s1": "Apply to your DISCOM",
+        "s2": "Technical feasibility check",
+        "s3": "Sign the net metering agreement",
+        "s4": "Net meter installed",
+        "s5": "System connected to the grid",
+        "h1": "File the application for you",
+        "h2": "Prepare all technical documents",
+        "h3": "Follow up with the DISCOM office",
+        "h4": "Get your system connected on time",
+        "cardWho": "Anyone with grid-connected solar",
+        "cardBenefit": "Extra units sent to the grid reduce your bill"
+      },
+      "state-schemes": {
+        "name": "Telangana state schemes",
+        "short": "State programmes for solar from time to time.",
+        "tag": "All",
+        "benefit": "The state announces solar programmes from time to time. Benefits and eligibility depend on the current notification.",
+        "w1": "As per the current state notification",
+        "w2": "Homes, farmers or businesses, depending on the programme",
+        "w3": "We tell you what is open right now",
+        "d1": "As per the notification",
+        "d2": "Electricity bill",
+        "d3": "Aadhaar card",
+        "d4": "Bank account details",
+        "s1": "Check current state notices",
+        "s2": "Confirm eligibility",
+        "s3": "Apply as directed",
+        "s4": "Install with approved equipment",
+        "s5": "Claim the benefit",
+        "h1": "Track new state programmes",
+        "h2": "Tell you if you qualify",
+        "h3": "Handle the application",
+        "h4": "Install and follow up",
+        "cardWho": "Depends on the current notification",
+        "cardBenefit": "Varies by programme"
+      }
+    },
+    "cardWho": "Who can apply",
+    "cardBenefit": "Benefit"
+  },
+  "solar60": {
+    "eyebrow": "Solar in 60 seconds",
+    "title": "How solar cuts your bill",
+    "what": {
+      "title": "What is solar?",
+      "desc": "Panels on your roof turn sunlight into electricity. An inverter makes it safe for your home. No fuel, no noise."
+    },
+    "cut": {
+      "title": "How does it cut your bill?",
+      "desc": "In the day, your home uses solar power first. Extra power goes to the grid through a net meter, and those units are reduced from your bill."
+    },
+    "flow": {
+      "sun": {
+        "title": "Sun",
+        "desc": "Free sunlight every day"
+      },
+      "panels": {
+        "title": "Panels",
+        "desc": "Turn light into power"
+      },
+      "inverter": {
+        "title": "Inverter",
+        "desc": "Makes it safe for home use"
+      },
+      "home": {
+        "title": "Home",
+        "desc": "Fans, lights, fridge, AC"
+      },
+      "meter": {
+        "title": "Net meter",
+        "desc": "Counts power in and out"
+      },
+      "grid": {
+        "title": "Grid",
+        "desc": "Takes extra, gives at night"
+      }
+    },
+    "typesTitle": "On-grid, off-grid or hybrid?",
+    "best": "Best for",
+    "ongrid": {
+      "name": "On-grid",
+      "desc": "Connected to the grid with a net meter. No battery. Lowest cost and fastest payback.",
+      "best": "Homes and businesses with steady power"
+    },
+    "offgrid": {
+      "name": "Off-grid",
+      "desc": "Works without the grid, using batteries. Costs more and needs battery care.",
+      "best": "Places with no grid connection"
+    },
+    "hybrid": {
+      "name": "Hybrid",
+      "desc": "Grid-connected with a battery for backup. Keeps essentials running during power cuts.",
+      "best": "Areas with frequent cuts, hospitals, critical loads"
+    }
+  },
+  "knowBefore": {
+    "eyebrow": "Know before you buy",
+    "title": "Your solar checklist",
+    "subtitle": "Check these before you choose any installer.",
+    "k1": {
+      "title": "Roof space",
+      "desc": "About 100 sq ft of usable roof for every 1 kW."
+    },
+    "k2": {
+      "title": "Shadow-free area",
+      "desc": "No shade from trees, tanks or buildings between 9 am and 4 pm."
+    },
+    "k3": {
+      "title": "Sanctioned load",
+      "desc": "Your connection’s sanctioned load may limit the system size."
+    },
+    "k4": {
+      "title": "Net metering",
+      "desc": "Make sure your installer applies for the net meter with the DISCOM."
+    },
+    "k5": {
+      "title": "Approved vendor",
+      "desc": "For subsidies, the vendor must be registered for the scheme."
+    },
+    "k6": {
+      "title": "Warranty",
+      "desc": "Ask for panel, inverter and installation warranties in writing."
+    },
+    "k7": {
+      "title": "After-sales service",
+      "desc": "Check who cleans, maintains and repairs the system later."
+    }
+  },
+  "guide": {
+    "title": "Find My Solar Plan",
+    "close": "Close",
+    "step": "Step {current} of {total}",
+    "q1": "Who are you?",
+    "q2": "Your monthly bill and space",
+    "q3": "Which district?",
+    "billLabel": "Monthly electricity bill",
+    "areaLabel": "Roof or land area (shade-free)",
+    "area": {
+      "xs": "Under 200 sq ft",
+      "s": "200–500 sq ft",
+      "m": "500–1,000 sq ft",
+      "l": "Over 1,000 sq ft",
+      "unsure": "Not sure"
+    },
+    "districtPh": "Select your district",
+    "next": "Next",
+    "back": "Back",
+    "see": "See my plan",
+    "resultTitle": "Your solar plan",
+    "whyTitle": "Why this suits you",
+    "size": "Recommended size",
+    "cost": "Approximate cost",
+    "saving": "Monthly saving",
+    "payback": "Payback",
+    "schemesTitle": "Schemes you can use",
+    "estimated": "Estimated {amount}",
+    "nextTitle": "What to do next",
+    "n1": "Check your roof is shade-free in the day",
+    "n2": "Keep your latest electricity bill ready",
+    "n3": "Note your sanctioned load from the bill",
+    "n4": "Talk to us to confirm size, price and schemes",
+    "sendWhatsapp": "Send my plan on WhatsApp",
+    "ask": "Ask a question",
+    "callbackTitle": "Prefer a call? Leave your number",
+    "note": "Estimates only, based on current rules.",
+    "waPlan": "Hi Telangana Solar! My solar plan: {type}, about {kw} kW, for a {bill} monthly bill in {district}. Please help me with the next steps.",
+    "who": {
+      "urban": "Home",
+      "apartment": "Apartment or community",
+      "farmer": "Farm",
+      "shop": "Shop or small business",
+      "factory": "Factory",
+      "institution": "School, hospital or institution"
+    },
+    "types": {
+      "ongrid": {
+        "name": "On-grid rooftop solar with net metering",
+        "why": "Your power supply is from the grid and you use most power in the day. On-grid solar has no battery to replace, so it costs less and pays back fastest."
+      },
+      "hybrid": {
+        "name": "Hybrid solar with battery backup",
+        "why": "Places like schools and hospitals cannot stop during power cuts. A hybrid system lowers your bill and keeps essential loads running."
+      },
+      "pump": {
+        "name": "Solar water pump",
+        "why": "Your pump can run straight from the sun in the day, with no diesel and no waiting for grid power. Farm schemes may support the cost."
+      },
+      "commercial": {
+        "name": "Commercial rooftop solar",
+        "why": "Business power is expensive and you use it in the day, when solar works best. Each solar unit replaces a costly unit."
+      }
+    }
+  },
+  "checker": {
+    "title": "Check My Subsidy",
+    "subtitle": "See which schemes you may qualify for. It takes 30 seconds.",
+    "property": "Type of property",
+    "by": "I know my",
+    "byKw": "System size",
+    "byBill": "Monthly bill",
+    "kwInput": "System size (kW)",
+    "billInput": "Monthly bill (₹)",
+    "district": "District",
+    "ownership": "Do you own the property?",
+    "own": "Own",
+    "rented": "Rented",
+    "see": "Check my subsidy",
+    "resultTitle": "Schemes you may qualify for",
+    "back": "Change answers",
+    "status": {
+      "likely": "Likely eligible",
+      "check": "Check details",
+      "owner": "Owner must apply"
+    },
+    "explain": {
+      "psgOwn": "You own a home with a domestic connection, so you can usually apply for rooftop solar subsidy.",
+      "psgRented": "Only the owner of the house can apply. Ask your landlord to apply, or share this page with them.",
+      "psgApartment": "Your residents’ association can apply for solar on the common roof for lifts, pumps and lights.",
+      "kusum": "Farmers with land and a water source can usually apply when the state opens applications.",
+      "net": "Any grid-connected solar system can usually apply for net metering with your DISCOM.",
+      "state": "State programmes change from time to time. We check what is open for you."
+    },
+    "estimated": "Estimated benefit: {amount}",
+    "benefitLabel": "Benefit",
+    "docsLabel": "Documents needed",
+    "stepsLabel": "Steps to apply",
+    "note": "As per current government rules. Please confirm on the official website.",
+    "callbackTitle": "Want help applying? Leave your number"
+  }
+}

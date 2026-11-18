@@ -1,0 +1,422 @@
+{
+  "meta": {
+    "title": "Telangana Solar: find the right solar for your home",
+    "description": "Free, simple guide to rooftop solar in Telangana. See what suits you, what it costs, which subsidies apply, and who installs near you."
+  },
+  "nav": {
+    "home": "Home",
+    "finder": "Solar Finder",
+    "appliances": "What can solar run?",
+    "bill": "Bill calculator",
+    "schemes": "Schemes",
+    "installers": "Installers",
+    "getStarted": "Find my solar",
+    "menu": "Open menu",
+    "close": "Close menu",
+    "language": "తెలుగు",
+    "languageLabel": "Switch to Telugu",
+    "themeLabel": "Toggle dark mode",
+    "skip": "Skip to content"
+  },
+  "common": {
+    "start": "Start",
+    "next": "Next",
+    "back": "Back",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "years": "{count, plural, one {# year} other {# years}}",
+    "kw": "{value} kW",
+    "units": "{value} units",
+    "sqft": "{value} sq ft",
+    "needsVerification": "Needs verification",
+    "lastVerified": "Verified {date}",
+    "officialSite": "Official site",
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "verified": "Verified",
+    "sample": "Sample listing",
+    "learnMore": "Learn more",
+    "startOver": "Start over",
+    "estimate": "Estimate",
+    "disclaimer": "All costs, savings and subsidies on this site are estimates. Amounts and rules change; always confirm on the official government or DISCOM website before you pay anyone."
+  },
+  "hero": {
+    "eyebrow": "Hyderabad · Telangana",
+    "title": "Find the right solar for your home in Telangana",
+    "subtitle": "Answer four quick questions. See the right system, the real cost after subsidy, and trusted installers near you, in English or Telugu.",
+    "cta": "Start",
+    "secondary": "How solar works",
+    "stat1": "Average sun hours a day",
+    "stat2": "Possible bill reduction",
+    "stat3": "Panel life"
+  },
+  "categories": {
+    "eyebrow": "Who are you?",
+    "title": "Solar that fits the way you live",
+    "subtitle": "Pick the one closest to you. We tailor everything after this.",
+    "cta": "See my options"
+  },
+  "personas": {
+    "urban": {
+      "name": "Urban home",
+      "desc": "Independent house in a city with your own roof"
+    },
+    "apartment": {
+      "name": "Apartment",
+      "desc": "Flat in a building with a shared roof"
+    },
+    "rural": {
+      "name": "Rural home",
+      "desc": "Village home, often with power cuts"
+    },
+    "farmer": {
+      "name": "Farmer",
+      "desc": "Solar water pump for your fields"
+    },
+    "business": {
+      "name": "Business",
+      "desc": "Shop, office, school or small factory"
+    }
+  },
+  "how": {
+    "eyebrow": "How solar works",
+    "title": "From sunlight to your ceiling fan",
+    "subtitle": "Scroll to follow the energy.",
+    "steps": {
+      "sun": {
+        "title": "Sun",
+        "desc": "Sunlight falls on your roof every day. Telangana gets plenty of it."
+      },
+      "panels": {
+        "title": "Panels make DC",
+        "desc": "Solar panels turn light into direct current (DC) electricity."
+      },
+      "inverter": {
+        "title": "Inverter makes AC",
+        "desc": "The inverter converts DC into the AC power your home uses."
+      },
+      "meter": {
+        "title": "Net meter",
+        "desc": "A two-way meter counts what you use and what you send out."
+      },
+      "home": {
+        "title": "Your appliances",
+        "desc": "Fans, lights, fridge and TV run on your own solar power first."
+      },
+      "grid": {
+        "title": "The grid",
+        "desc": "Extra power goes to the grid and reduces your bill. At night, you draw from the grid."
+      }
+    }
+  },
+  "savings": {
+    "eyebrow": "What you could save",
+    "title": "Small roof. Big difference.",
+    "subtitle": "Typical results for a Hyderabad home with a ₹3,000 monthly bill. Your numbers depend on your bill and roof.",
+    "monthly": "Saved every month",
+    "lifetime": "Saved over 25 years",
+    "co2": "Tonnes of CO₂ avoided every year",
+    "payback": "Years to earn your money back",
+    "cta": "Calculate for my bill",
+    "before": "Bill today",
+    "after": "Bill with solar"
+  },
+  "trust": {
+    "title": "Built to be trusted",
+    "items": {
+      "official": {
+        "title": "Official sources",
+        "desc": "Every scheme links to the government site with a verified date."
+      },
+      "neutral": {
+        "title": "No sales pressure",
+        "desc": "We explain first. You decide if and when to talk to an installer."
+      },
+      "verified": {
+        "title": "Verified installers",
+        "desc": "We check registration, past work and customer reviews."
+      },
+      "telugu": {
+        "title": "Telugu and English",
+        "desc": "Every page, every number, in the language you read best."
+      }
+    }
+  },
+  "faq": {
+    "title": "Questions people ask",
+    "items": {
+      "q1": {
+        "q": "Will solar work during the monsoon?",
+        "a": "Yes, but it makes less power on cloudy days. Systems are sized on yearly averages, so the sunny months make up for it."
+      },
+      "q2": {
+        "q": "Do I need a battery?",
+        "a": "Only if you have frequent power cuts or live off the grid. With reliable power, an on-grid system with net metering is cheaper and needs no battery."
+      },
+      "q3": {
+        "q": "How much roof space do I need?",
+        "a": "About 100 sq ft for every 1 kW. A typical home needs 2 to 3 kW, so 200 to 300 sq ft of shade-free roof."
+      },
+      "q4": {
+        "q": "Who gives the subsidy?",
+        "a": "Central subsidies for homes are paid directly into your bank account after installation and inspection. Check the Schemes page for current rules."
+      },
+      "q5": {
+        "q": "I live in an apartment. Can I still go solar?",
+        "a": "Yes. Your residents’ association can install solar on the common roof for lifts, lights and pumps, which lowers maintenance charges for everyone."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "An independent guide to solar for every home, farm and business in Telangana.",
+    "explore": "Explore",
+    "rights": "© {year} Telangana Solar. Information only, not financial advice."
+  },
+  "finder": {
+    "eyebrow": "Solar Finder",
+    "title": "Let’s find your solar",
+    "subtitle": "Four questions. About a minute.",
+    "progress": "Step {current} of {total}",
+    "q1": "Who are you?",
+    "q2": "Where do you live?",
+    "q3": "How is your power supply?",
+    "q4": "What is your monthly electricity bill?",
+    "q4farmer": "What size is your water pump?",
+    "q4farmerHint": "Agricultural power is billed differently, so we size by pump instead of bill.",
+    "searchDistrict": "Search district or city",
+    "phase2": "Installer listings coming soon",
+    "supply": {
+      "reliable": {
+        "title": "Reliable",
+        "desc": "Power is almost always on"
+      },
+      "occasional": {
+        "title": "Occasional cuts",
+        "desc": "A few short cuts a week"
+      },
+      "frequent": {
+        "title": "Frequent cuts",
+        "desc": "Cuts most days, for hours"
+      },
+      "remote": {
+        "title": "Remote area",
+        "desc": "No grid connection, or very weak"
+      }
+    },
+    "billLabel": "Monthly bill in rupees",
+    "billHint": "About {units} units a month",
+    "hp": "{value} HP",
+    "seeResult": "Show my solar",
+    "calculating": "Matching your home to the right system…",
+    "reason": {
+      "reliable": "Your power is reliable, so an on-grid system with net metering gives the best savings with no battery to replace.",
+      "occasional": "Cuts are rare, so on-grid with net metering is the best value. You can add a small battery later.",
+      "frequent": "Frequent cuts mean you need backup. A hybrid system powers your home and charges a battery for when the grid is down.",
+      "remote": "Without a dependable grid, an off-grid system with batteries keeps your lights and fans running day and night.",
+      "apartment": "Flats share a roof. The best route is solar on the common roof through your residents’ association, which cuts common charges for every flat.",
+      "business": "Your daytime use matches when the sun shines. A larger on-grid system pays back fast at commercial tariffs.",
+      "businessBackup": "Cuts hurt business. A hybrid system keeps essentials running and still lowers your bill.",
+      "farmer": "A solar pumpset runs your motor straight from the sun during the day, with central and state support under PM-KUSUM."
+    }
+  },
+  "result": {
+    "eyebrow": "Your recommendation",
+    "why": "Why this?",
+    "size": "System size",
+    "battery": "Battery",
+    "batteryKwh": "{value} kWh",
+    "noBattery": "Not needed",
+    "roof": "Roof space",
+    "land": "Space needed",
+    "cost": "Cost before subsidy",
+    "subsidy": "Subsidy",
+    "afterSubsidy": "Your cost after subsidy",
+    "saving": "Monthly saving",
+    "payback": "Payback",
+    "noPayback": "Main benefit is daytime water without depending on grid supply, and no diesel cost.",
+    "generation": "Makes about {units} units a month",
+    "co2": "Avoids about {value} tonnes of CO₂ a year",
+    "schemes": "Schemes you can use",
+    "installers": "Installers near you",
+    "lessons": "Lessons to read next",
+    "getQuote": "Get a free quote",
+    "seeAll": "See all",
+    "generationLabel": "Solar units a month",
+    "co2Label": "CO₂ avoided a year"
+  },
+  "types": {
+    "on-grid": {
+      "name": "On-grid solar with net metering",
+      "short": "On-grid"
+    },
+    "hybrid": {
+      "name": "Hybrid solar with battery",
+      "short": "Hybrid"
+    },
+    "off-grid": {
+      "name": "Off-grid solar with battery",
+      "short": "Off-grid"
+    },
+    "pumpset": {
+      "name": "Solar water pumpset",
+      "short": "Pumpset"
+    },
+    "community": {
+      "name": "Shared rooftop solar for your apartment",
+      "short": "Community"
+    },
+    "commercial": {
+      "name": "Commercial on-grid solar",
+      "short": "Commercial"
+    }
+  },
+  "lessons": {
+    "schemes": {
+      "title": "Which subsidies can I get?",
+      "desc": "Eligibility, documents and steps."
+    },
+    "appliances": {
+      "title": "What will my system run?",
+      "desc": "Fans, AC, fridge: check it yourself."
+    },
+    "bill": {
+      "title": "Your 25-year savings",
+      "desc": "See the full picture year by year."
+    },
+    "battery": {
+      "title": "Sizing a battery",
+      "desc": "How much backup you really need."
+    },
+    "kusum": {
+      "title": "PM-KUSUM explained",
+      "desc": "Solar pumps for farmers, step by step."
+    }
+  },
+  "appliances": {
+    "eyebrow": "What can solar run?",
+    "title": "Add what you use. We’ll size it.",
+    "subtitle": "Tap + for each appliance and set hours per day. Wattages are typical. Tap a number to edit it.",
+    "watts": "Watts",
+    "hours": "Hours/day",
+    "qty": "Quantity",
+    "unitsDay": "{value} units/day",
+    "unitsMonth": "{value} units/month",
+    "roof": "{value} sq ft roof",
+    "increase": "Add one {name}",
+    "decrease": "Remove one {name}",
+    "switchTo": "Switch to {name}",
+    "totalWatts": "Total load",
+    "dailyUse": "Daily use",
+    "monthlyUse": "Monthly use",
+    "recommended": "Recommended system",
+    "cutsToggle": "We have power cuts",
+    "batteryNeeded": "Battery of about {kwh} kWh needed for backup",
+    "noBattery": "No battery needed with reliable grid power",
+    "heavyNote": "AC and geyser run fine on solar during the day, but are not practical on battery backup.",
+    "friendly": "This needs a {kw} kW system, about {sqft} sq ft.",
+    "empty": "Add an appliance to see your system size.",
+    "reset": "Reset",
+    "gaugeLabel": "System size gauge"
+  },
+  "bill": {
+    "eyebrow": "Bill calculator",
+    "title": "Turn your bill into savings",
+    "subtitle": "Enter your monthly bill or units. We use Telangana DISCOM slab rates to work out your solar savings.",
+    "byBill": "My bill (₹)",
+    "byUnits": "My units",
+    "billInput": "Monthly bill in rupees",
+    "unitsInput": "Monthly units (kWh)",
+    "category": "Connection type",
+    "domestic": "Home",
+    "commercial": "Business",
+    "estimatedBill": "Estimated bill",
+    "estimatedUnits": "Estimated units",
+    "size": "System size",
+    "cost": "Cost",
+    "subsidy": "Subsidy",
+    "netCost": "After subsidy",
+    "monthly": "Monthly saving",
+    "yearly": "Yearly saving",
+    "payback": "Payback",
+    "lifetime": "25-year saving",
+    "co2": "CO₂ avoided",
+    "co2Value": "{value} t/year",
+    "chartTitle": "Your savings over 25 years",
+    "chartNet": "Net gain after cost",
+    "chartCumulative": "Total saved",
+    "chartYear": "Year {year}",
+    "slabTitle": "How your bill is calculated",
+    "slabNote": "Telescopic slabs: your slab group depends on total units. Rates are editable by the admin and shown with a verification date.",
+    "slabRange": "{from} to {to} units",
+    "slabAbove": "Above {from} units",
+    "fixed": "Fixed and customer charges",
+    "duty": "Electricity duty",
+    "group": "Applies when you use {max}",
+    "groupUpTo": "up to {max} units",
+    "groupAbove": "more than {min} units",
+    "table": "Show as table"
+  },
+  "schemes": {
+    "eyebrow": "Schemes and subsidies",
+    "title": "Every scheme, in plain words",
+    "subtitle": "Central and Telangana programmes for homes, apartments, farmers and businesses.",
+    "category": "For",
+    "level": "Level",
+    "all": "All",
+    "home": "Homes",
+    "farmer": "Farmers",
+    "business": "Business",
+    "apartment": "Apartments",
+    "central": "Central",
+    "telangana": "Telangana",
+    "what": "What it is",
+    "eligibility": "Who can apply",
+    "benefit": "What you get",
+    "subsidyRule": "Subsidy rule",
+    "perKwTier": "₹{amount} per kW up to {kw} kW",
+    "capRule": "Maximum ₹{amount}",
+    "percentRule": "About {percent}% of cost",
+    "documents": "Documents",
+    "howToApply": "How to apply",
+    "official": "Apply on official site",
+    "empty": "No schemes match these filters.",
+    "unverifiedNote": "These amounts have not yet been checked against the official site. Confirm before relying on them."
+  },
+  "installers": {
+    "eyebrow": "Installer locator",
+    "title": "Trusted installers near you",
+    "subtitle": "Starting with Hyderabad. More districts soon.",
+    "district": "District",
+    "type": "Solar type",
+    "allDistricts": "All districts",
+    "allTypes": "All types",
+    "verifiedOnly": "Verified only",
+    "count": "{count, plural, =0 {No installers} one {# installer} other {# installers}}",
+    "reviews": "{count} reviews",
+    "services": "Services",
+    "mapMissing": "Map preview. Add a Google Maps key to see the live map.",
+    "sampleNote": "These are sample listings while we verify real installers. Do not call these numbers.",
+    "empty": "No installers match. Try another district or type.",
+    "showOnMap": "Show {name} on map",
+    "whatsappText": "Hi, I found you on Telangana Solar and would like a solar quote."
+  },
+  "assistant": {
+    "open": "Ask Solar Mitra",
+    "title": "Solar Mitra",
+    "subtitle": "Ask anything about solar",
+    "placeholder": "e.g. My bill is ₹3,000, what should I get?",
+    "greeting": "Namaste! Tell me your monthly bill, where you live and how often the power goes off. I’ll suggest the right solar for you.",
+    "send": "Send",
+    "close": "Close assistant",
+    "error": "Sorry, something went wrong. Please try again.",
+    "suggestions": {
+      "s1": "My bill is ₹3,000, what should I get?",
+      "s2": "Do I need a battery?",
+      "s3": "How do I get the PM Surya Ghar subsidy?"
+    }
+  },
+  "notFound": {
+    "title": "This page is still in the shade",
+    "cta": "Go home"
+  }
+}
