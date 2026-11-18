@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
-import { Award, BadgeIndianRupee, HandHeart, Headset, ShieldCheck, Sun, UserRound } from "lucide-react";
+import { BadgeIndianRupee, HandHeart, Headset, ShieldCheck, Sun, UserRound } from "lucide-react";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
 import { StatCounter } from "@/components/page/stat-counter";
@@ -8,7 +8,7 @@ import { EditMark } from "@/components/ui/badge";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BlurReveal, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { FinalCta } from "@/components/home/home-sections";
-import { certifications, team } from "@/config/content";
+import { team } from "@/config/content";
 import { site } from "@/config/site";
 import { districts } from "@/data/districts";
 import { aboutPage as D } from "@/data/about";
@@ -34,7 +34,7 @@ function WithEdit({ text }: { text: string }) {
 
 const VALUES = [["v1", HandHeart], ["v2", ShieldCheck], ["v3", BadgeIndianRupee], ["v4", Headset]] as const;
 
-/** About: hero → story + mission → values (tilt cards) → how we work (self-drawing line) → reach (counter + districts marquee) → team → certifications → CTA. */
+/** About: hero → story + mission → values (tilt cards) → how we work (self-drawing line) → reach (counter + districts marquee) → team → CTA. */
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -123,22 +123,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     <p className="mt-1 text-caption text-muted">{m.role ? pick(m.role, loc) : <EditMark label="[EDIT] role" />}</p>
                   </div>
                 </TiltCard>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="tone tone-mint py-16 md:py-24">
-        <div className="container-page">
-          <SectionTitle title={t("certTitle")} subtitle={t("certNote")} align="center" />
-          <Stagger className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">
-            {certifications.map((c) => (
-              <StaggerItem key={c.name} className="card-glass-light flex list-none flex-col items-center gap-3 p-6 text-center">
-                <span className="icon-sun grid size-12 place-items-center rounded-2xl"><Award className="size-6" aria-hidden /></span>
-                <span className="font-semibold text-navy">{c.name.includes("[EDIT]") ? <WithEdit text={c.name} /> : c.name}</span>
-                {c.detail && <span className="text-caption text-muted">{c.detail}</span>}
               </StaggerItem>
             ))}
           </Stagger>
