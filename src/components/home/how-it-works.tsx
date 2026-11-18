@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { BookOpen, FileText, ListChecks, Wrench, Zap } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/utils";
+import { Wave } from "@/components/page/tone-section";
 
 const STEPS = [
   { key: "s1", Icon: BookOpen },
@@ -28,8 +29,9 @@ export function HowItWorks({ premium = false, dark = false }: { premium?: boolea
   const pct = useTransform(p, (v) => `${Math.min(100, Math.max(0, v * 100))}%`);
 
   return (
-    <section className={dark ? "tone tone-navy py-16 md:py-24" : premium ? "dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" : "section"} aria-labelledby="how-title">
+    <section className={dark ? "tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32" : premium ? "dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" : "section"} aria-labelledby="how-title">
       {dark && <span aria-hidden className="tone-beam" />}
+      {dark && <Wave color="#FFFFFF" position="top" />}
       {premium && <div aria-hidden className={cn("orb left-1/3 -top-24 size-96", dark ? "bg-yellow/15" : "bg-yellow/20")} />}
       <div className="container-page">
         <SectionHeading premium={premium} tone={dark ? "dark" : "light"} eyebrow={t("eyebrow")} title={t("title")} />

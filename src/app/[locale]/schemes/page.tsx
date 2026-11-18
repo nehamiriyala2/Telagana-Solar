@@ -14,6 +14,7 @@ import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { Wave } from "@/components/page/tone-section";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -32,7 +33,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" reveal="slide" />
 
       {/* Districts + schemes marquee */}
       <section aria-label={L(D.marqueeLabel)} className="border-y border-line bg-white py-6">
@@ -76,8 +77,9 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       </section>
 
       {/* Comparison */}
-      <section className="tone tone-navy py-16 md:py-24" aria-label={L(D.compareTitle)}>
+      <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32" aria-label={L(D.compareTitle)}>
         <span aria-hidden className="tone-beam" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.compareTitle)} emphasis={L(D.compareEmphasis)} />
           <BlurReveal className="hidden overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-[0_24px_50px_-34px_rgb(7_23_63/0.35)] md:block">

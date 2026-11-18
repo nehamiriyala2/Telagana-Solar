@@ -20,7 +20,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
   const t = await getTranslations("projects");
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.projects, locale)} subtitle={t("subtitle")} ctas={false} tone="dark" align="center" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.projects, locale)} subtitle={t("subtitle")} ctas={false} tone="dark" align="center" reveal="chars" />
       <section className="tone tone-sky pb-16 pt-10 md:pb-24">
         <div className="container-page">
           <ProjectsGallery />

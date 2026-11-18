@@ -19,7 +19,7 @@ export default async function SolutionsIndex({ params }: { params: Promise<{ loc
   const t = await getTranslations("solutions");
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.solutions, locale)} subtitle={t("subtitle")} motif="waves" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.solutions, locale)} subtitle={t("subtitle")} motif="waves" reveal="chars" />
       <SolutionShowcase />
       <FinalCta />
     </>

@@ -9,6 +9,9 @@ import { MiniCalculator } from "@/components/calculator/mini-calculator";
 import { KnowBefore } from "@/components/home/know-before";
 import { FaqSection, FinalCta, Packages } from "@/components/home/home-sections";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
+import { KineticBand } from "@/components/motion/kinetic-band";
+import { site } from "@/config/site";
+import { pick } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -34,6 +37,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <WhoAreYou />
       <SchemesSection premium />
       <HowItWorks premium dark />
+      <KineticBand phrases={pick(site.tagline, locale).split(/\.\s*/).filter(Boolean)} />
       <MiniCalculator />
       <KnowBefore />
       <Packages premium blue />

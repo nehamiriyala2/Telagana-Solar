@@ -60,7 +60,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
   return (
     <>
       <JsonLd data={faqJsonLd(FAQ_KEYS[s].map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
-      <PageHero eyebrow={p("eyebrow")} title={p("title")} emphasis={pick(titleEmphasis[s], locale)} subtitle={p("subtitle")} Icon={HERO_ICON[s]} calcType={TYPE[s]} art={s === "homes" ? <HomeHeroArt locale={locale} /> : <BannerArt kind={s} locale={locale} />} />
+      <PageHero eyebrow={p("eyebrow")} title={p("title")} emphasis={pick(titleEmphasis[s], locale)} subtitle={p("subtitle")} Icon={HERO_ICON[s]} calcType={TYPE[s]} underline art={s === "homes" ? <HomeHeroArt locale={locale} /> : <BannerArt kind={s} locale={locale} />} />
 
       {/* Benefits */}
       <section className="tone tone-white py-16 md:py-24">

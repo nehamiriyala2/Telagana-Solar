@@ -15,6 +15,8 @@ import { aboutPage as D } from "@/data/about";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { Wave } from "@/components/page/tone-section";
+import { KineticBand } from "@/components/motion/kinetic-band";
 import { BannerArt } from "@/components/page/banner-art";
 import { Bento } from "@/components/page/bento";
 
@@ -42,7 +44,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} art={<BannerArt kind="about" locale={locale} />} motif="waves" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} art={<BannerArt kind="about" locale={locale} />} motif="waves" reveal="slide" underline />
 
       {/* Story + mission */}
       <section className="bg-section-white py-16 md:py-24">
@@ -71,8 +73,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* How we work */}
-      <section className="tone tone-navy py-16 md:py-24">
+      <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
           <Stagger as="ol" className="grid gap-px overflow-hidden rounded-[1.75rem] bg-white/10 md:grid-cols-4">
@@ -86,6 +89,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </Stagger>
         </div>
       </section>
+
+      <KineticBand phrases={pick(site.tagline, locale).split(/\.\s*/).filter(Boolean)} className="bg-white" />
 
       {/* Reach */}
       <section className="tone tone-cream py-16 md:py-20">

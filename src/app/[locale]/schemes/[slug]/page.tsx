@@ -17,6 +17,7 @@ import { titleEmphasis } from "@/data/pages";
 import { routing } from "@/i18n/routing";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { Wave } from "@/components/page/tone-section";
 import Image from "next/image";
 import { BannerArt, Sunlight } from "@/components/page/banner-art";
 import { pmSuryaGharSign, solutionBanners } from "@/data/solution-hero";
@@ -47,7 +48,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
 
   return (
     <div data-accent={slug}>
-      <PageHero eyebrow={t("eyebrow")} title={k("name")} emphasis={L(titleEmphasis[slug as SchemeSlug])} subtitle={k("short")} Icon={Icon} calcType={scheme.audience === "farm" ? "farm" : "home"}
+      <PageHero eyebrow={t("eyebrow")} title={k("name")} emphasis={L(titleEmphasis[slug as SchemeSlug])} subtitle={k("short")} Icon={Icon} calcType={scheme.audience === "farm" ? "farm" : "home"} underline
         art={slug in solutionBanners ? <BannerArt kind={slug as "pm-surya-ghar" | "pm-kusum" | "net-metering" | "state-schemes"} locale={locale} /> : undefined}>
         <dl className="grid gap-3 sm:grid-cols-3">
           <Glance label={t("cardWho")} value={k("cardWho")} />
@@ -110,8 +111,9 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       </section>
 
       {/* Steps with a self-drawing line */}
-      <section className="tone tone-navy py-16 md:py-24">
+      <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page max-w-4xl">
           <SectionTitle tone="dark" title={t("steps")} />
           <div className="relative">

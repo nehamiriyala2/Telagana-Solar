@@ -555,3 +555,28 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 .solar-bg--dark .motif-grid__plane { background-image: linear-gradient(rgb(255 215 106 / 0.22) 1.5px, transparent 1.5px), linear-gradient(90deg, rgb(77 163 255 / 0.25) 1.5px, transparent 1.5px); }
 @keyframes gridFlow { to { background-position: 0 64px; } }
 @media (prefers-reduced-motion: reduce) { .motif-orbits__ring, .motif-waves__line, .motif-grid__plane { animation: none !important; } }
+
+/* ==========================================================================
+   TITLE REVEALS (DisplayTitle reveal="chars" | "slide") + hand-drawn underline
+   ========================================================================== */
+.char-word { display: inline-block; white-space: nowrap; }
+.char-up { display: inline-block; animation: charUp 0.7s var(--ease-out-soft) both; }
+@keyframes charUp { from { opacity: 0; transform: translateY(0.45em) rotate(4deg); } to { opacity: 1; transform: none; } }
+.char-up.text-gold-shine { animation: charUp 0.7s var(--ease-out-soft) both, tsShine 7s ease-in-out 1.2s infinite alternate; }
+.word-slide { display: inline-block; }
+.word-slide > span { display: inline-block; animation: wordSlide 0.9s var(--ease-out-soft) both; }
+@keyframes wordSlide { from { opacity: 0; transform: translateX(-0.35em); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
+.word-slide > .text-gold-shine { animation: wordSlide 0.9s var(--ease-out-soft) both, tsShine 7s ease-in-out 1.2s infinite alternate; }
+.title-underline { position: relative; display: inline-block; }
+.title-underline__svg { position: absolute; left: 0; right: 0.3em; bottom: -0.12em; width: calc(100% - 0.3em); height: 0.24em; overflow: visible; pointer-events: none; }
+.title-underline__svg path { fill: none; stroke: #ffb800; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: drawLine 1s var(--ease-out-soft) 0.9s forwards; filter: drop-shadow(0 2px 6px rgb(255 184 0 / 0.45)); }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .char-up, .word-slide > span { animation: none !important; }
+  .title-underline__svg path { animation: none !important; stroke-dashoffset: 0; }
+}
+
+/* Kinetic typography band */
+.kinetic-row { font: 800 clamp(3rem, 9vw, 7.5rem)/1 var(--font-jakarta), var(--font-telugu), sans-serif; letter-spacing: -0.04em; white-space: nowrap; }
+html[lang="te"] .kinetic-row { font-family: var(--font-telugu), var(--font-jakarta), sans-serif; letter-spacing: 0; line-height: 1.25; font-size: clamp(2.25rem, 7vw, 5.5rem); }
+.kinetic-outline { color: transparent; -webkit-text-stroke: 1.5px var(--stroke, #1265d8); }

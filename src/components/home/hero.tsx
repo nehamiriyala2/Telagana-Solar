@@ -25,7 +25,7 @@ export function Hero() {
         <div className="max-w-[40rem]">
           <p {...d(0)} className="eyebrow-pill hero-pill animate-rise backdrop-blur">{t("eyebrow")}</p>
           <h1 {...d(1)} id="hero-title" className="mt-5 animate-rise text-[2.5rem] font-extrabold leading-[1.06] text-navy sm:text-[3.25rem] lg:text-[4.25rem] lg:text-white lg:[text-shadow:0_4px_30px_rgb(7_23_63/0.45)]">
-            {t("titleA")}<span className="text-gold-gradient drop-shadow-[0_2px_16px_rgb(255_199_44/0.35)]">{t("titleGold")}</span>{t("titleB")}
+            {t("titleA")}<span className="text-gold-shine drop-shadow-[0_2px_16px_rgb(255_199_44/0.35)]">{t("titleGold")}</span>{t("titleB")}
           </h1>
           <p {...d(2)} lang={t("altLang")} className="mt-4 animate-rise border-l-4 border-yellow pl-3 font-heading text-[1.125rem] font-bold text-royal md:text-h4 lg:text-[#A9D2FF] lg:[text-shadow:0_2px_14px_rgb(7_23_63/0.8)]">{t("altLine")}</p>
           <p {...d(3)} className="mt-4 max-w-xl animate-rise text-muted md:text-body-lg lg:text-silver lg:[text-shadow:0_2px_14px_rgb(7_23_63/0.85)]">{t("subtitle")}</p>

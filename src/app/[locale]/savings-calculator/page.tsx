@@ -12,6 +12,7 @@ import { calculatorPage as D } from "@/data/calculator-page";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { Wave } from "@/components/page/tone-section";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -34,7 +35,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.calculator)} subtitle={t("subtitle")} ctas={false} align="center" motif="orbits" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.calculator)} subtitle={t("subtitle")} ctas={false} align="center" motif="orbits" reveal="slide" underline />
 
       <section className="relative -mt-8 pb-16 md:-mt-12 md:pb-24">
         <div className="container-page">
@@ -44,8 +45,9 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
-      <section className="tone tone-navy py-16 md:py-24">
+      <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="01" title={L(D.assumptionsTitle)} emphasis={L(D.assumptionsEmphasis)} subtitle={L(D.assumptionsNote)} />
           <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

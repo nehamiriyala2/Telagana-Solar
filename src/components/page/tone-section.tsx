@@ -21,7 +21,8 @@ export function ToneSection({ tone, children, className, waveTop, waveBottom, id
   );
 }
 
-function Wave({ color, position }: { color: string; position: "top" | "bottom" }) {
+/** Soft wave edge in the colour of the neighbouring section (place as the first/last child of a .tone section). */
+export function Wave({ color, position }: { color: string; position: "top" | "bottom" }) {
   return (
     <svg aria-hidden viewBox="0 0 1440 80" preserveAspectRatio="none" className={cn("tone-wave", position === "top" ? "tone-wave--top" : "tone-wave--bottom")}>
       <path d="M0 0 H1440 V34 C 1200 74 960 10 720 36 C 480 62 240 8 0 40 Z" fill={color} />

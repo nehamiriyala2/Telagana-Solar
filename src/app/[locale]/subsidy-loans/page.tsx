@@ -6,6 +6,7 @@ import { SectionTitle } from "@/components/page/section-title";
 import { BlurReveal as Reveal, DrawLine } from "@/components/motion/primitives";
 import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
+import { Wave } from "@/components/page/tone-section";
 import { BannerArt } from "@/components/page/banner-art";
 import { EmiCalculator } from "@/components/calculator/emi-calculator";
 import { FaqSection, FinalCta } from "@/components/home/home-sections";
@@ -29,7 +30,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
   return (
     <>
       <JsonLd data={faqJsonLd(FAQ.map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" tone="dark" motif="grid" art={<BannerArt kind="subsidy-loans" locale={locale} />} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" tone="dark" motif="grid" underline art={<BannerArt kind="subsidy-loans" locale={locale} />} />
 
       {/* Step-by-step subsidy guide */}
       <section className="tone tone-cream py-16 md:py-24">
@@ -53,8 +54,9 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* EMI */}
-      <section className="tone tone-blue py-16 md:py-24">
+      <section className="tone tone-blue pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
+        <Wave color="#FFFDF6" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={t("emiTitle")} subtitle={t("emiSubtitle")} />
           <Reveal className="rounded-[2rem] bg-white p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.55)] ring-1 ring-white/40 md:p-6"><EmiCalculator /></Reveal>

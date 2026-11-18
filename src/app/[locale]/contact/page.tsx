@@ -27,7 +27,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.contact, locale)} subtitle={t("subtitle")} ctas={false} tone="dark" align="center" motif="waves" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.contact, locale)} subtitle={t("subtitle")} ctas={false} tone="dark" align="center" motif="waves" reveal="chars" />
 
       <section className="tone tone-mint pb-16 pt-10 md:pb-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
