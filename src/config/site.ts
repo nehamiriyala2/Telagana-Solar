@@ -80,3 +80,19 @@ export const heroMedia = {
   videoMp4: null as string | null, // e.g. "/hero/house-sunrise.mp4"
   videoWebm: null as string | null, // e.g. "/hero/house-sunrise.webm"
 };
+
+/**
+ * "How solar cuts your bill" visual on the homepage.
+ * - poster/image: realistic still shown always (and while the video loads).
+ * - video: when you have the rendered/AI-generated loop, put it in /public/solutions/ and set the paths. [EDIT]
+ *   Export MP4 (H.264) + WebM (VP9), 16:10 or 6:5, 1280–1600 px wide, 8–12 s seamless loop, no audio, ideally under 4 MB.
+ *   The video replaces the still + light overlays (skipped for "reduce motion" and data-saver visitors).
+ */
+export const solarStoryMedia = {
+  image: "/solutions/how-solar-house.webp",
+  poster: "/solutions/how-solar-house.jpg",
+  width: 1100,
+  height: 941,
+  videoMp4: null as string | null, // e.g. "/solutions/how-solar-loop.mp4"
+  videoWebm: null as string | null, // e.g. "/solutions/how-solar-loop.webm"
+};
