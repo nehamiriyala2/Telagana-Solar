@@ -28,7 +28,9 @@
     "calculatorShort": "Calculator",
     "explore": "Explore",
     "promoTitle": "Not sure where to start?",
-    "promoBody": "Answer 3 quick questions and get a solar plan for your bill, roof and district."
+    "promoBody": "Answer 3 quick questions and get a solar plan for your bill, roof and district.",
+    "planShort": "My Plan",
+    "contactUs": "Contact Us"
   },
   "common": {
     "learnMore": "Learn more",

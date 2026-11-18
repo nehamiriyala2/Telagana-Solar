@@ -15,13 +15,13 @@ export const NAV = [
   { href: "/contact", key: "contact" },
 ] as const;
 
-/** Header menu, in order. `solutions` and `schemes` open mega-menus. `match` = path prefix for the active state. */
-export const HEADER_NAV: { href: string; key: string; label?: string; match?: string }[] = [
+
+/** Hamburger panel main links, in order (Solutions and Schemes also show their submenus beside these). */
+export const MENU_NAV: { href: string; key: string; label?: string }[] = [
   { href: "/", key: "home" },
   { href: "/solutions", key: "solutions" },
   { href: "/schemes", key: "schemes" },
-  { href: "/savings-calculator", key: "calculator", label: "calculatorShort" },
-  { href: "/projects", key: "projects" },
+  { href: "/subsidy-loans", key: "subsidy" },
   { href: "/about", key: "about" },
-  { href: "/contact", key: "contact" },
+  { href: "/contact", key: "contact", label: "contactUs" },
 ];
