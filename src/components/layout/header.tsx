@@ -16,9 +16,9 @@ const SOL_ICONS = { homes: Home, farms: Wheat, business: Store } as const;
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Global header: white, subtle shadow, sticky. Desktop (xl+): the main links in a row, Solutions/Schemes dropdowns.
+ * Global header: white, subtle shadow, sticky. Desktop (lg, 1024px+): the main links in a row, Solutions/Schemes dropdowns.
  * Left: logo. Right: EN | తెలుగు toggle, WhatsApp (green circle), "Find My Solar Plan", hamburger.
- * Below xl the hamburger opens a full-width panel under the header:
+ * Below 1024px the hamburger opens a full-width panel under the header:
  * Home, Solutions (+ submenu), Schemes (+ submenu), Subsidy & Loans, About Us, Contact Us.
  * Esc / outside click / route change closes it; focus moves into the panel and back to the button.
  */
@@ -39,7 +39,7 @@ export function Header() {
   useEffect(() => setOpen(false), [pathname]);
   // The hamburger panel is for phones/tablets only: close it if the window grows to desktop width.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1280px)");
+    const mq = window.matchMedia("(min-width: 1024px)");
     const onChange = () => { if (mq.matches) setOpen(false); };
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
@@ -72,11 +72,11 @@ export function Header() {
           <LanguageToggle />
           <WhatsAppButton place="header" size="icon" iconOnly className="size-9 shrink-0 rounded-full sm:size-10" />
           <GuideTrigger size="sm" className="btn-shine h-9 shrink-0 gap-1.5 px-2.5 shadow-[0_8px_22px_-10px_rgb(245_168_0/0.9)] sm:h-10 sm:px-4">
-            <Sparkles className="hidden min-[400px]:block sm:hidden" aria-hidden /><span className="sm:hidden">{t("planShort")}</span><span className="hidden sm:inline">{t("siteVisit")}</span>
+            <Sparkles className="hidden min-[400px]:block sm:hidden lg:block desk:hidden" aria-hidden /><span className="sm:hidden lg:inline desk:hidden">{t("planShort")}</span><span className="hidden sm:inline lg:hidden desk:inline">{t("siteVisit")}</span>
           </GuideTrigger>
           <button ref={btnRef} type="button" onClick={() => setOpen((o) => !o)}
             aria-expanded={open} aria-controls="site-menu" aria-label={open ? t("close") : t("menu")}
-            className={cn("grid size-9 shrink-0 place-items-center rounded-full border transition-colors duration-300 sm:size-10 xl:hidden", open ? "border-navy bg-navy text-white" : "border-line bg-white text-navy hover:border-navy/30")}>
+            className={cn("grid size-9 shrink-0 place-items-center rounded-full border transition-colors duration-300 sm:size-10 lg:hidden", open ? "border-navy bg-navy text-white" : "border-line bg-white text-navy hover:border-navy/30")}>
             <span aria-hidden className="relative block h-3 w-[18px]">
               <motion.span className="absolute left-0 top-0 h-0.5 w-full rounded-full bg-current" animate={open ? { y: 5, rotate: 45 } : { y: 0, rotate: 0 }} transition={{ duration: 0.3, ease: EASE }} />
               <motion.span className="absolute left-0 top-[5px] h-0.5 w-full rounded-full bg-current" animate={{ opacity: open ? 0 : 1 }} transition={{ duration: 0.15 }} />
@@ -92,7 +92,7 @@ export function Header() {
 }
 
 /**
- * Desktop (xl+): the six main links in a row. Solutions and Schemes link to their overview pages,
+ * Desktop (1024px+): the six main links in a row (compact sizes until 1280px). Solutions and Schemes link to their overview pages,
  * with a chevron button that opens a small dropdown (hover or click; Esc / outside click closes).
  * One gold underline glides to the hovered link and rests on the current page.
  */
@@ -121,7 +121,7 @@ function DesktopNav({ pathname }: { pathname: string }) {
     : SCHEMES.map((s) => ({ href: `/schemes/${s.slug}`, label: t(`schemes.items.${s.slug}.name`), desc: t(`schemes.items.${s.slug}.tag`), Icon: SCHEME_ICONS[s.slug], tone: "icon-sun" }));
 
   return (
-    <nav ref={ref} aria-label="Main" className="hidden min-w-0 flex-1 justify-center xl:flex">
+    <nav ref={ref} aria-label="Main" className="hidden min-w-0 flex-1 justify-center lg:flex">
       <ul className="flex items-center" onMouseLeave={() => setHover(null)}>
         {MENU_NAV.map((n) => {
           const sub = n.key === "solutions" || n.key === "schemes" ? (n.key as "solutions" | "schemes") : null;
@@ -135,13 +135,13 @@ function DesktopNav({ pathname }: { pathname: string }) {
               onMouseLeave={() => { if (sub) timer.current = setTimeout(() => setDrop((d) => (d === sub ? null : d)), 160); }}>
               <div className="flex items-center">
                 <Link href={n.href} aria-current={on ? "page" : undefined}
-                  className={cn("relative whitespace-nowrap rounded-full px-2.5 py-2 text-[0.9375rem] font-semibold transition-colors duration-300 2xl:px-3.5", on || (sub && drop === sub) ? "text-navy" : "text-muted hover:text-navy")}>
+                  className={cn("relative whitespace-nowrap rounded-full px-1.5 py-2 text-[0.875rem] font-semibold transition-colors duration-300 xl:px-2.5 xl:text-[0.9375rem] 2xl:px-3.5", on || (sub && drop === sub) ? "text-navy" : "text-muted hover:text-navy")}>
                   {t(`nav.${n.label ?? n.key}`)}{underline}
                 </Link>
                 {sub && (
                   <button id={`drop-btn-${sub}`} type="button" aria-expanded={drop === sub} aria-controls={`drop-${sub}`} aria-label={t(`nav.${sub}`)}
                     onClick={() => setDrop((d) => (d === sub ? null : sub))}
-                    className="-ml-2 grid size-7 place-items-center rounded-full text-muted transition-colors hover:text-navy">
+                    className="-ml-1.5 grid size-6 place-items-center rounded-full text-muted transition-colors hover:text-navy xl:-ml-2 xl:size-7">
                     <ChevronDown className={cn("size-4 transition-transform duration-300", drop === sub && "rotate-180")} aria-hidden />
                   </button>
                 )}
@@ -194,12 +194,12 @@ function MenuPanel({ open, pathname, onClose }: { open: boolean; pathname: strin
       {open && (
         <>
           {/* Dim the page behind the panel */}
-          <motion.div aria-hidden className="fixed inset-x-0 bottom-0 top-[var(--header-h)] -z-10 bg-navy/25 backdrop-blur-[2px] xl:hidden"
+          <motion.div aria-hidden className="fixed inset-x-0 bottom-0 top-[var(--header-h)] -z-10 bg-navy/25 backdrop-blur-[2px] lg:hidden"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }} onClick={onClose} />
           <motion.nav id="site-menu" aria-label="Mobile"
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 0 } : { opacity: 0, y: -12 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] xl:hidden overflow-y-auto border-t border-line bg-white shadow-[0_30px_60px_-30px_rgb(7_23_63/0.4)]" data-lenis-prevent>
+            className="absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto lg:hidden border-t border-line bg-white shadow-[0_30px_60px_-30px_rgb(7_23_63/0.4)]" data-lenis-prevent>
             <motion.div className="container-page grid gap-6 py-6 md:py-8 lg:grid-cols-12 lg:gap-8"
               initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } } }}>
               {/* Main links */}

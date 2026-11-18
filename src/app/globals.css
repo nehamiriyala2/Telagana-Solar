@@ -6,6 +6,7 @@
    Every token is a CSS variable AND a Tailwind utility (bg-gold, text-navy…).
    ========================================================================== */
 @theme {
+  --breakpoint-desk: 75rem;        /* 1200px: header shows the full "Find My Solar Plan" label beside the desktop links */
   /* Brand palette: taken from the logo */
   --color-white: #ffffff;
   --color-navy: #07173f;           /* Deep Navy: logo bg, footer, final banner, headings (17:1 on white) */
