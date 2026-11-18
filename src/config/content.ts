@@ -17,6 +17,14 @@ export interface Project {
   monthlySaving: number | null; // [EDIT] ₹ per month
   photo: string | null;    // [EDIT] e.g. "/projects/kondapur-5kw.webp"
   featured: boolean;
+  /** Case study (shown in the project pop-up). Real facts only; null shows [EDIT]. */
+  caseStudy?: {
+    scheme: string | null;              // [EDIT] e.g. "pm-surya-ghar" (slug from src/config/schemes.ts)
+    completed: string | null;           // [EDIT] e.g. "March 2026"
+    challenge: { en: string; te: string } | null; // [EDIT] what the customer needed
+    solution: { en: string; te: string } | null;  // [EDIT] what we installed and why
+    result: { en: string; te: string } | null;    // [EDIT] bill before/after, in the customer’s words
+  };
 }
 
 /** Placeholder slots: one per type in the main service areas. Replace with real projects. */

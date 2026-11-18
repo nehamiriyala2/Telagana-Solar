@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { PageHero } from "@/components/page/page-hero";
 import { ProjectsGallery } from "@/components/page/projects-gallery";
 import { FinalCta } from "@/components/home/home-sections";
+import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
+import { pick } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -11,18 +13,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return pageMeta({ locale, path: "/projects", title: t("eyebrow"), description: t("subtitle") });
 }
 
+/** Projects: hero → filterable gallery with case-study pop-ups → CTA. */
 export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("projects");
   return (
     <>
-      <div className="bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBF2_100%)]">
-        <div className="container-page pb-16 pt-12 md:pt-16">
-          <SectionHeading as="h1" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.projects, locale)} subtitle={t("subtitle")} ctas={false} />
+      <section className="pb-16 pt-4 md:pb-24">
+        <div className="container-page">
           <ProjectsGallery />
         </div>
-      </div>
+      </section>
       <FinalCta />
     </>
   );
