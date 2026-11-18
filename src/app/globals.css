@@ -302,6 +302,18 @@ html[lang="te"] .eyebrow-pill { letter-spacing: 0; text-transform: none; }
   .hero-pill { background: rgb(255 199 44 / 0.12); color: #ffc72c; border-color: rgb(255 199 44 / 0.3); }
 }
 
+/* Display typography for inner pages (Plus Jakarta Sans 800) */
+.display-xl, .display-lg { font-family: var(--font-jakarta), var(--font-telugu), sans-serif; font-weight: 800; letter-spacing: -0.03em; line-height: 0.95; text-wrap: balance; }
+.display-xl { font-size: clamp(2.5rem, 7vw, 6rem); }
+.display-lg { font-size: clamp(2rem, 4.6vw, 3.75rem); line-height: 1; }
+html[lang="te"] .display-xl, html[lang="te"] .display-lg { font-family: var(--font-telugu), var(--font-jakarta), sans-serif; letter-spacing: 0; line-height: 1.25; }
+html[lang="te"] .display-xl { font-size: clamp(2.1rem, 5.2vw, 4.25rem); }
+html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
+/* Word mask reveal (CSS, paints before JS) */
+.word-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.2em; margin-bottom: -0.2em; }
+.word-mask > span { display: inline-block; animation: wordUp 0.9s var(--ease-out-soft) both; }
+@keyframes wordUp { from { transform: translateY(110%); } to { transform: translateY(0); } }
+
 /* Gentle float for icons */
 .float-soft { animation: floatSoft 6s ease-in-out infinite; }
 @keyframes floatSoft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
