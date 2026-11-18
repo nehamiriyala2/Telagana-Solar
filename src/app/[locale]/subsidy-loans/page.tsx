@@ -28,10 +28,10 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
   return (
     <>
       <JsonLd data={faqJsonLd(FAQ.map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" tone="dark" />
 
       {/* Step-by-step subsidy guide */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={t("stepsTitle")} subtitle={tc("subsidyNote")} />
           <ol className="relative max-w-3xl">
@@ -60,7 +60,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* Ways to pay + documents */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-12 lg:grid-cols-2">
           <div>
             <SectionTitle title={t("loansTitle")} className="mb-8 md:mb-8" />

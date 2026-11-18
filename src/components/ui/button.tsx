@@ -12,7 +12,7 @@ export const buttonVariants = cva(
         primary: "bg-sun text-navy shadow-[0_6px_18px_-8px_rgb(245_168_0/0.6)] hover:shadow-glow",
         sky: "bg-sky text-white shadow-[0_6px_18px_-8px_rgb(77_163_255/0.6)] hover:shadow-[0_10px_30px_-8px_rgb(77_163_255/0.55)]",
         whatsapp: "bg-whatsapp text-white hover:bg-whatsapp-hover hover:shadow-[0_10px_30px_-10px_rgb(21_128_61/0.6)]",
-        outline: "border border-line bg-white text-navy hover:border-gold hover:shadow-soft",
+        outline: "border border-[#1769E8]/25 bg-white text-navy hover:border-[#1769E8]/60 hover:bg-[#F4F8FF] hover:shadow-soft",
         ghost: "text-navy hover:bg-navy/5 hover:translate-y-0",
         navy: "bg-navy text-white hover:bg-navy-700",
       },

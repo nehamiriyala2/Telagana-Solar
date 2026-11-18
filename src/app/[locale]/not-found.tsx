@@ -3,6 +3,7 @@ import { ArrowRight, Calculator, Landmark, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { DisplayTitle } from "@/components/ui/display-title";
+import { SolarBackdrop } from "@/components/page/solar-backdrop";
 import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
 
@@ -16,8 +17,8 @@ export default function NotFound() {
     { href: "/schemes", label: t("nav.schemes"), Icon: Landmark },
   ] as const;
   return (
-    <section className="bg-premium-light dot-grid relative isolate grid min-h-[78svh] place-items-center overflow-hidden py-16">
-      <div aria-hidden className="orb -left-32 top-10 size-96 bg-yellow/25" />
+    <section className="relative isolate grid min-h-[78svh] place-items-center overflow-hidden py-16">
+      <SolarBackdrop sun={{ x: "50%", y: "18%" }} rays={false} />
       <div className="container-page text-center">
         <div aria-hidden className="relative mx-auto mb-6 grid h-48 w-72 place-items-center">
           <span className="absolute size-44 animate-glow rounded-full bg-[radial-gradient(circle,rgb(245_168_0/0.4),transparent_68%)]" />

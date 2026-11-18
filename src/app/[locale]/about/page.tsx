@@ -43,7 +43,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} />
 
       {/* Story + mission */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <BlurReveal className="rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-10 lg:col-span-5">
             <p className="eyebrow-pill">{L(D.storyEyebrow)}</p>
@@ -81,7 +81,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* How we work */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
           <div className="relative">
@@ -117,7 +117,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       {/* Team */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={t("teamTitle")} />
           <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

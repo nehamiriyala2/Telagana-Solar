@@ -14,7 +14,7 @@ export function DisplayTitle({ text, emphasis, className, as: Tag = "h1", id, si
     <Tag id={id} aria-label={text} className={cn(size === "xl" ? "display-xl" : "display-lg", "text-navy", className)}>
       {words.map((w, i) => (
         <span key={i} aria-hidden className="word-mask">
-          <span className={cn(em.has(w.toLowerCase().replace(/[.,!?:]/g, "")) && "text-gold-gradient")} style={{ animationDelay: `${0.06 + i * 0.07}s` }}>{w}</span>
+          <span className={cn(em.has(w.toLowerCase().replace(/[.,!?:]/g, "")) && "text-gold-shine")} style={{ animationDelay: `${0.06 + i * 0.07}s` }}>{w}</span>
           {i < words.length - 1 && " "}
         </span>
       ))}

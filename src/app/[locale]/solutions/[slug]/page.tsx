@@ -56,7 +56,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
       <PageHero eyebrow={p("eyebrow")} title={p("title")} emphasis={pick(titleEmphasis[s], locale)} subtitle={p("subtitle")} Icon={HERO_ICON[s]} calcType={TYPE[s]} art={s === "homes" ? <HomeHeroArt locale={locale} /> : undefined} />
 
       {/* Benefits */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {(["b1", "b2", "b3", "b4"] as const).map((b, i) => {
@@ -105,7 +105,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
               </ul>
             </div>
           </section>
-          <section className="py-16 md:py-24">
+          <section className="bg-section-white py-16 md:py-24">
             <div className="container-page">
               <SectionTitle title={p("usesTitle")} />
               <ul className="grid gap-4 md:grid-cols-3">
@@ -141,7 +141,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
               </ul>
             </div>
           </section>
-          <section className="py-16 md:py-24">
+          <section className="bg-section-white py-16 md:py-24">
             <div className="container-page">
               <SectionTitle title={p("packagesTitle")} subtitle={p("packagesSubtitle")} />
               <div className="grid gap-6 pt-3 sm:grid-cols-2 lg:grid-cols-4">

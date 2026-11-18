@@ -27,9 +27,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.contact, locale)} subtitle={t("subtitle")} ctas={false} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.contact, locale)} subtitle={t("subtitle")} ctas={false} tone="dark" align="center" />
 
-      <section className="pb-16 pt-4 md:pb-24">
+      <section className="bg-section-white pb-16 pt-6 md:pb-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <BlurReveal id="book" className="min-w-0 scroll-mt-24 rounded-[1.75rem] border border-line bg-white p-6 shadow-[0_40px_90px_-50px_rgb(7_23_63/0.45)] md:p-9 lg:col-span-7">
             <h2 className="mb-6 font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("formTitle")}</h2>

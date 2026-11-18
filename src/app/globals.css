@@ -27,7 +27,7 @@
   --color-leaf-tint: #eaf6e7;
   --color-cream: #fffbf2;          /* Warm Off-White sections */
   --color-muted: #4a5670;          /* secondary text (7:1 on white) */
-  --color-line: #e3e8f0;
+  --color-line: #dce6f4;           /* subtle blue border for cards and fields */
   --color-whatsapp: #2b7a23;       /* green WhatsApp button, white text 5.1:1 */
   --color-whatsapp-hover: #23661c;
   --color-success: #2b7a23;
@@ -64,8 +64,8 @@
   --radius-xl: 1.5rem;
 
   /* Soft shadows */
-  --shadow-soft: 0 1px 2px rgb(11 31 58 / 0.04), 0 8px 24px -10px rgb(11 31 58 / 0.12);
-  --shadow-lift: 0 2px 6px rgb(11 31 58 / 0.05), 0 22px 44px -18px rgb(11 31 58 / 0.25);
+  --shadow-soft: 0 1px 2px rgb(11 31 58 / 0.04), 0 10px 28px -12px rgb(23 105 232 / 0.16);
+  --shadow-lift: 0 2px 6px rgb(11 31 58 / 0.05), 0 24px 48px -20px rgb(23 105 232 / 0.28);
   --shadow-glow: 0 10px 30px -8px rgb(245 168 0 / 0.55);
   --shadow-ring: 0 0 0 1px rgb(255 199 44 / 0.35), 0 0 40px -6px rgb(245 168 0 / 0.55);
   --shadow-header: 0 6px 24px -12px rgb(11 31 58 / 0.18);
@@ -329,3 +329,90 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
   .card-premium:hover, .card-glass-dark:hover, .card-glass-light:hover { transform: none; }
   .zoom-frame:hover .zoom-img { transform: none; }
 }
+
+/* ==========================================================================
+   SITE-WIDE SOLAR THEME (inner pages; homepage is the visual reference)
+   Palette: deep navy #071A45 · royal #1769E8 · light blue #EAF3FF · soft blue #F4F8FF
+            solar yellow #FFB800 · white · body text #52617D
+   ========================================================================== */
+:root {
+  --ts-navy: #071a45;
+  --ts-royal: #1769e8;
+  --ts-light-blue: #eaf3ff;
+  --ts-soft-blue: #f4f8ff;
+  --ts-yellow: #ffb800;
+  --ts-text: #52617d;
+}
+
+/* Animated backdrop used by <SolarBackdrop> (hero sections). Decorative only. */
+.solar-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.solar-bg__gradient {
+  position: absolute; inset: -15%;
+  background:
+    radial-gradient(38% 48% at 12% 18%, rgb(255 184 0 / 0.20), transparent 70%),
+    radial-gradient(42% 52% at 88% 26%, rgb(23 105 232 / 0.14), transparent 70%),
+    radial-gradient(50% 55% at 50% 105%, rgb(77 163 255 / 0.14), transparent 70%),
+    linear-gradient(180deg, var(--ts-soft-blue) 0%, var(--ts-light-blue) 62%, #ffffff 100%);
+  animation: tsDrift 26s ease-in-out infinite alternate;
+}
+.solar-bg--dark .solar-bg__gradient {
+  background:
+    radial-gradient(36% 46% at 14% 16%, rgb(255 184 0 / 0.22), transparent 70%),
+    radial-gradient(44% 56% at 90% 30%, rgb(23 105 232 / 0.45), transparent 70%),
+    radial-gradient(55% 60% at 40% 110%, rgb(77 163 255 / 0.30), transparent 70%),
+    linear-gradient(160deg, var(--ts-navy) 0%, #0b2463 58%, #123a8c 100%);
+}
+@keyframes tsDrift { from { transform: translate3d(-2.5%, -1.5%, 0) scale(1); } to { transform: translate3d(2.5%, 1.5%, 0) scale(1.06); } }
+.solar-bg__dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgb(7 26 69 / 0.08) 1px, transparent 1px); background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, black 25%, transparent 75%);
+}
+.solar-bg--dark .solar-bg__dots { background-image: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px); }
+.solar-bg__rays {
+  position: absolute; width: 70rem; height: 70rem; translate: -50% -50%; border-radius: 999px;
+  background: repeating-conic-gradient(from 0deg, rgb(255 199 44 / 0.10) 0deg 3deg, transparent 3deg 15deg);
+  mask-image: radial-gradient(circle, black 6%, transparent 58%);
+  animation: tsRays 90s linear infinite;
+}
+.solar-bg--dark .solar-bg__rays { background: repeating-conic-gradient(from 0deg, rgb(255 199 44 / 0.12) 0deg 3deg, transparent 3deg 15deg); }
+@keyframes tsRays { to { rotate: 360deg; } }
+.solar-bg__glow {
+  position: absolute; width: 34rem; height: 34rem; translate: -50% -50%; border-radius: 999px;
+  background: radial-gradient(circle, rgb(255 210 110 / 0.45), rgb(255 184 0 / 0.12) 45%, transparent 70%);
+  animation: tsGlow 7s ease-in-out infinite;
+}
+.solar-bg--dark .solar-bg__glow { background: radial-gradient(circle, rgb(255 199 44 / 0.35), rgb(255 184 0 / 0.08) 45%, transparent 70%); }
+@keyframes tsGlow { 0%, 100% { opacity: .75; scale: 1; } 50% { opacity: 1; scale: 1.08; } }
+.solar-bg__p {
+  position: absolute; border-radius: 999px; background: rgb(255 184 0 / 0.55); box-shadow: 0 0 10px rgb(255 199 44 / 0.7);
+  animation: tsFloat var(--d, 12s) ease-in-out infinite; animation-delay: var(--delay, 0s);
+}
+.solar-bg--dark .solar-bg__p:nth-child(odd) { background: rgb(255 255 255 / 0.7); box-shadow: 0 0 10px rgb(255 255 255 / 0.6); }
+@keyframes tsFloat { 0%, 100% { transform: translate3d(0, 0, 0); opacity: .25; } 50% { transform: translate3d(8px, -28px, 0); opacity: .9; } }
+/* Soft fade into the next (white) section */
+.solar-bg__fade { position: absolute; inset-inline: 0; bottom: 0; height: 6rem; background: linear-gradient(180deg, transparent, #ffffff); }
+
+/* Highlighted words: slowly moving golden gradient */
+.text-gold-shine {
+  background: linear-gradient(100deg, #f5a800 0%, #ffc72c 28%, #ffe08a 45%, #ffc72c 62%, #e88a00 100%);
+  background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: tsShine 7s ease-in-out infinite alternate;
+}
+@keyframes tsShine { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+/* Section backgrounds: alternate with .bg-premium-light (light blue) so no section is flat white */
+.bg-section-white {
+  background:
+    radial-gradient(ellipse 45% 40% at 100% 0%, rgb(255 184 0 / 0.07), transparent 65%),
+    linear-gradient(180deg, #ffffff 0%, #fafcff 60%, #ffffff 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solar-bg__gradient, .solar-bg__rays, .solar-bg__glow, .solar-bg__p, .text-gold-shine { animation: none !important; }
+}
+/* A highlighted word inside a page title: rise in, then shine */
+.word-mask > .text-gold-shine { animation: wordUp 0.9s var(--ease-out-soft) both, tsShine 7s ease-in-out 1.2s infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .word-mask > .text-gold-shine { animation: none !important; } }
+/* Gradient text only paints inside its box: extend it so descenders (g, y, p) are not cut off */
+.text-gold-shine { padding-bottom: 0.18em; margin-bottom: -0.18em; }

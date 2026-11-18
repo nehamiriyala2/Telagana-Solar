@@ -49,15 +49,15 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
       <JsonLd data={localBusinessJsonLd(locale, d.slug)} />
       <PageHero eyebrow={name} title={t("title", { city: name })} subtitle={t("subtitle", { city: name })} Icon={MapPin} />
 
-      <section className="section pt-12 md:pt-16">
+      <section className="bg-premium-light py-16 md:py-24">
         <div className="container-page">
-          <SectionHeading title={t("whyTitle", { city: name })} />
+          <SectionHeading premium title={t("whyTitle", { city: name })} />
           <ul className="grid gap-4 md:grid-cols-3">
             {([["p1", ClipboardCheck], ["p2", FileCheck2], ["p3", Zap]] as const).map(([k, Icon], i) => (
               <Reveal key={k} delay={i * 0.06}>
-                <li className="h-full list-none rounded-card border border-line bg-white p-6 shadow-soft">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-sky-tint text-sky-ink"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
-                  <h3 className="mt-5 font-heading font-bold">{t(`${k}.title`)}</h3>
+                <li className="card-glass-light h-full list-none p-6">
+                  <span className="float-soft icon-royal grid size-12 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
+                  <h3 className="mt-5 font-heading font-bold text-navy">{t(`${k}.title`)}</h3>
                   <p className="mt-1 text-caption text-muted">{t(`${k}.desc`, { city: name })}</p>
                 </li>
               </Reveal>
@@ -67,15 +67,15 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
       </section>
 
       <Solutions />
-      <Packages />
-      <HowItWorks />
+      <Packages premium />
+      <HowItWorks premium />
 
-      <section className="container-page pb-8">
-        <h2 className="mb-4 text-h4">{t("areasTitle")}</h2>
+      <section className="container-page pb-8 pt-4">
+        <h2 className="mb-4 text-h4 text-navy">{t("areasTitle")}</h2>
         <ul className="flex flex-wrap gap-2">
           {nearby.map((n) => (
             <li key={n.slug}>
-              <Link href={`/solar-installation/${n.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-caption font-semibold transition-colors hover:border-gold">
+              <Link href={`/solar-installation/${n.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-caption font-semibold text-navy shadow-soft transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-gold">
                 <MapPin className="size-4 text-sky-ink" aria-hidden />{pick(n.name, locale)}
               </Link>
             </li>

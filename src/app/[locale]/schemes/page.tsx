@@ -32,7 +32,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" />
 
       {/* Districts + schemes marquee */}
       <section aria-label={L(D.marqueeLabel)} className="border-y border-line bg-white py-6">
@@ -44,7 +44,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       </section>
 
       {/* Scheme cards */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <Stagger className="grid gap-5 md:grid-cols-2">
             {SCHEMES.map((s) => {

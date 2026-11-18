@@ -34,7 +34,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.calculator)} subtitle={t("subtitle")} ctas={false} />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.calculator)} subtitle={t("subtitle")} ctas={false} align="center" />
 
       <section className="relative -mt-8 pb-16 md:-mt-12 md:pb-24">
         <div className="container-page">

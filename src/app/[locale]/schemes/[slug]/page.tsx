@@ -52,7 +52,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
         </dl>
       </PageHero>
 
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-7">
             <BlurReveal className="bg-premium-sun relative overflow-hidden rounded-[1.75rem] p-7 ring-1 ring-gold/25 md:p-10">
@@ -113,7 +113,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       </section>
 
       {/* Other schemes */}
-      <section className="py-16 md:py-24">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={L(D.otherTitle)} />
           <Stagger className="grid gap-5 md:grid-cols-3">

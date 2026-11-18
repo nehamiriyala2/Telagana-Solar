@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
+import { SolarBackdrop } from "@/components/page/solar-backdrop";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { SchemesSection } from "@/components/home/schemes-section";
@@ -41,10 +42,10 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
       <JsonLd data={faqJsonLd(cfg.faq.map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
       <PageHero eyebrow={t(`personas.${p}.name`)} title={t(`personas.${p}.title`)} subtitle={t(`personas.${p}.intro`)} Icon={Icon} calcType={cfg.type} />
 
-      <section className="section pt-10 md:pt-14">
+      <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <div className="h-full rounded-card bg-navy-glow p-7 text-white shadow-lift md:p-9">
+            <div className="relative isolate h-full overflow-hidden rounded-[1.75rem] p-7 text-white shadow-lift md:p-9"><SolarBackdrop tone="dark" sun={{ x: "92%", y: "8%" }} particles={false} />
               <p className="text-caption font-bold uppercase tracking-wide text-yellow">{t("personaPage.recommendTitle")}</p>
               <p className="mt-3 font-heading text-h3 font-extrabold">{t(`personas.${p}.solution`)}</p>
               <p className="mt-4 text-caption text-silver">“{t(`personas.${p}.question`)}”</p>
@@ -54,10 +55,10 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
           <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             {(["p1", "p2", "p3", "p4"] as const).map((k, i) => (
               <Reveal key={k} delay={i * 0.06}>
-                <li className="flex h-full list-none gap-3 rounded-card border border-line bg-white p-5 shadow-soft">
+                <li className="card-glass-light flex h-full list-none gap-3 p-5">
                   <CircleCheck className="mt-0.5 size-5 shrink-0 text-leaf" aria-hidden />
                   <div>
-                    <h2 className="font-heading font-bold">{t(`personas.${p}.${k}.title`)}</h2>
+                    <h2 className="font-heading font-bold text-navy">{t(`personas.${p}.${k}.title`)}</h2>
                     <p className="mt-1 text-caption text-muted">{t(`personas.${p}.${k}.desc`)}</p>
                   </div>
                 </li>
@@ -67,9 +68,9 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      <SchemesSection only={cfg.schemes} title={t("personaPage.schemesTitle")} />
-      <HowItWorks />
-      <FaqSection keys={cfg.faq} />
+      <SchemesSection only={cfg.schemes} title={t("personaPage.schemesTitle")} premium />
+      <HowItWorks premium />
+      <FaqSection keys={cfg.faq} premium />
       <FinalCta title={t("personaPage.ctaTitle")} defaultType={cfg.type} />
     </>
   );

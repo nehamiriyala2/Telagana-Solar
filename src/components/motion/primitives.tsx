@@ -98,7 +98,7 @@ export function MaskHeading({ text, emphasis, as: Tag = "h2", className }: { tex
     <M className={className} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }} transition={{ staggerChildren: 0.06 }} aria-label={text}>
       {words.map((w, i) => (
         <span key={i} aria-hidden className="inline-block overflow-hidden pb-[0.3em] align-top -mb-[0.3em]">
-          <motion.span className={cn("inline-block", em.has(w.toLowerCase().replace(/[.,!?:]/g, "")) && "text-gold-gradient")}
+          <motion.span className={cn("inline-block", em.has(w.toLowerCase().replace(/[.,!?:]/g, "")) && "text-gold-shine")}
             variants={reduce ? { hidden: { opacity: 0 }, show: { opacity: 1 } } : { hidden: { y: "110%" }, show: { y: "0%", transition: { duration: 0.8, ease: EASE } } }}>
             {w}
           </motion.span>
