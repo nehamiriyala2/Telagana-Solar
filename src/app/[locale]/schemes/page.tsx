@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, CircleCheck, Landmark } from "lucide-react";
+import { ArrowRight, CircleCheck, Landmark, MapPin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
@@ -13,6 +13,7 @@ import { districts } from "@/data/districts";
 import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
+import { site } from "@/config/site";
 import { pick } from "@/lib/utils";
 import { SchemeCollage } from "@/components/page/scheme-collage";
 import { Wave } from "@/components/page/tone-section";
@@ -37,11 +38,25 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" reveal="slide" art={<SchemeCollage />} />
 
       {/* Districts + schemes marquee */}
-      <section aria-label={L(D.marqueeLabel)} className="border-y border-line bg-white py-6">
-        <p className="sr-only">{L(D.marqueeLabel)}</p>
-        <Marquee speed={60} items={[
-          ...SCHEMES.map((s) => <span key={s.slug} className="flex items-center gap-2 rounded-full bg-[#FFF3D1] px-4 py-2 text-caption font-bold text-navy"><span aria-hidden className="size-2 rounded-full bg-gold" />{t(`items.${s.slug}.name`)}</span>),
-          ...districts.map((d) => <span key={d.slug} className="block rounded-full border border-line bg-[#F7FBFF] px-4 py-2 text-caption font-semibold text-muted">{pick(d.name, locale)}</span>),
+      <section aria-labelledby="districts-strip" className="relative overflow-hidden border-y border-[#1265D8]/10 bg-[radial-gradient(ellipse_50%_120%_at_50%_0%,rgb(255_215_106/0.18),transparent_60%),linear-gradient(180deg,#F4F9FF_0%,#E8F3FF_100%)] py-8 shadow-[inset_0_1px_0_#fff,0_18px_40px_-34px_rgb(7_27_73/0.45)] md:py-10">
+        <p id="districts-strip" className="container-page mb-2 flex items-center justify-center gap-2 text-center text-caption font-bold uppercase tracking-[0.08em] text-[#1265D8] md:text-[0.9375rem]">
+          <MapPin className="size-4" aria-hidden />{L(D.marqueeLabel)}
+        </p>
+        <Marquee speed={90} gap="pr-3 md:pr-4" items={[
+          ...SCHEMES.map((s) => (
+            <Link key={s.slug} href={`/schemes/${s.slug}`} className="city-chip city-chip--scheme">
+              <Landmark className="size-4 md:size-5" aria-hidden />{t(`items.${s.slug}.name`)}
+            </Link>
+          )),
+          ...districts.map((d) => {
+            const main = (site.serviceAreas as readonly string[]).includes(d.slug);
+            return (
+              <Link key={d.slug} href={`/solar-installation/${d.slug}`} className={main ? "city-chip city-chip--main" : "city-chip"}>
+                <MapPin className="size-4 md:size-[1.125rem]" aria-hidden />{pick(d.name, locale)}
+                {main && <span aria-hidden className="size-2 rounded-full bg-[#FFB800] shadow-[0_0_8px_#FFB800]" />}
+              </Link>
+            );
+          }),
         ]} />
       </section>
 

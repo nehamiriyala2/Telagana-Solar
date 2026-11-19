@@ -63,15 +63,19 @@ export function DrawLine({ className, axis = "y" }: { className?: string; axis?:
   );
 }
 
-/** Infinite marquee. Reduced motion: a static, wrapping row. */
-export function Marquee({ items, className, speed = 40 }: { items: React.ReactNode[]; className?: string; speed?: number }) {
+/**
+ * Infinite marquee (CSS animation, pauses on hover/focus so items can be clicked). The duplicate copy that
+ * makes the loop seamless is inert (hidden from screen readers and not focusable). Reduced motion: a static,
+ * wrapping row.
+ */
+export function Marquee({ items, className, speed = 40, gap = "pr-3" }: { items: React.ReactNode[]; className?: string; speed?: number; gap?: string }) {
   const reduce = useReducedMotion();
-  if (reduce) return <ul className={cn("flex flex-wrap justify-center gap-3", className)}>{items.map((it, i) => <li key={i}>{it}</li>)}</ul>;
+  if (reduce) return <ul className={cn("flex flex-wrap justify-center gap-y-3", className)}>{items.map((it, i) => <li key={i} className={gap}>{it}</li>)}</ul>;
   return (
-    <div className={cn("relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]", className)}>
-      <motion.ul className="flex w-max gap-3" animate={{ x: ["0%", "-50%"] }} transition={{ duration: speed, ease: "linear", repeat: Infinity }}>
-        {[...items, ...items].map((it, i) => <li key={i} aria-hidden={i >= items.length || undefined} className="shrink-0">{it}</li>)}
-      </motion.ul>
+    <div className={cn("marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]", className)}>
+      <ul className="marquee__track flex w-max py-3" style={{ animationDuration: `${speed}s` }}>
+        {[...items, ...items].map((it, i) => <li key={i} aria-hidden={i >= items.length || undefined} inert={i >= items.length || undefined} className={cn("shrink-0", gap)}>{it}</li>)}
+      </ul>
     </div>
   );
 }

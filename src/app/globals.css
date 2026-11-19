@@ -580,3 +580,35 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 .kinetic-row { font: 800 clamp(3rem, 9vw, 7.5rem)/1 var(--font-jakarta), var(--font-telugu), sans-serif; letter-spacing: -0.04em; white-space: nowrap; }
 html[lang="te"] .kinetic-row { font-family: var(--font-telugu), var(--font-jakarta), sans-serif; letter-spacing: 0; line-height: 1.25; font-size: clamp(2.25rem, 7vw, 5.5rem); }
 .kinetic-outline { color: transparent; -webkit-text-stroke: 1.5px var(--stroke, #1265d8); }
+
+/* Marquee (CSS): seamless loop, pauses on hover / keyboard focus */
+.marquee__track { animation: marqueeX linear infinite; }
+.marquee:hover .marquee__track, .marquee:focus-within .marquee__track { animation-play-state: paused; }
+@keyframes marqueeX { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none !important; } }
+
+/* District / scheme chips in the Schemes page strip */
+.city-chip {
+  display: inline-flex; align-items: center; gap: .5rem; white-space: nowrap;
+  padding: .7rem 1.25rem; border-radius: 999px;
+  font: 600 .9375rem/1.2 var(--font-jakarta), var(--font-telugu), sans-serif; color: #071b49;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
+  border: 1px solid rgb(18 101 216 / 0.16);
+  box-shadow: 0 1px 0 #fff inset, 0 10px 24px -16px rgb(7 27 73 / 0.45);
+  transition: transform .35s var(--ease-out-soft), box-shadow .35s, border-color .35s, background .35s, color .35s;
+}
+.city-chip svg { color: #1265d8; transition: color .35s; }
+@media (min-width: 768px) { .city-chip { padding: .8rem 1.5rem; font-size: 1.0625rem; } }
+.city-chip:hover, .city-chip:focus-visible {
+  transform: translateY(-3px); color: #071b49; border-color: #ffb800;
+  background: linear-gradient(135deg, #fff3d1 0%, #ffd76a 100%);
+  box-shadow: 0 16px 30px -14px rgb(255 184 0 / 0.75);
+}
+.city-chip:hover svg, .city-chip:focus-visible svg { color: #071b49; }
+/* Main service areas: highlighted */
+.city-chip--main { border-color: rgb(18 101 216 / 0.45); background: linear-gradient(180deg, #ffffff 0%, #e8f3ff 100%); font-weight: 700; }
+/* Scheme chips: solid gold */
+.city-chip--scheme { font-weight: 700; border-color: rgb(255 184 0 / 0.6); background: linear-gradient(135deg, #ffe9a8 0%, #ffc72c 100%); box-shadow: 0 12px 26px -16px rgb(255 184 0 / 0.8); }
+.city-chip--scheme svg { color: #071b49; }
+.city-chip--scheme:hover, .city-chip--scheme:focus-visible { background: linear-gradient(135deg, #ffc72c 0%, #f5a800 100%); }
+@media (prefers-reduced-motion: reduce) { .city-chip:hover, .city-chip:focus-visible { transform: none; } }
