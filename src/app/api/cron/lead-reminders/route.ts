@@ -8,8 +8,9 @@ export const dynamic = "force-dynamic";
 
 /**
  * Reminds the team about leads not marked "called" within 1 hour.
- * Schedule every 15 minutes: vercel.json cron, or any external cron (cron-job.org)
- * calling GET /api/cron/lead-reminders with header "Authorization: Bearer <CRON_SECRET>".
+ * vercel.json runs it once a day (03:30 UTC = 09:00 IST): the Vercel Hobby plan only allows daily crons.
+ * For more frequent reminders (e.g. every 15 minutes) use a free external cron (cron-job.org) calling
+ * GET /api/cron/lead-reminders with header "Authorization: Bearer <CRON_SECRET>", or move to Vercel Pro.
  */
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;

@@ -74,7 +74,7 @@ POST /api/leads ── honeypot + timing spam check, +91 mobile validation, rate
         ├─► Owner alert: WhatsApp + email, with a one-tap "Mark as called" link
         └─► Customer auto-reply on WhatsApp: "Thanks… we will call you within X hours"
 
-Every 15 min: /api/cron/lead-reminders ─► reminds the owner about leads not marked "called" after 1 hour
+Daily (Vercel Hobby) or every 15 min (external cron): /api/cron/lead-reminders ─► reminds the owner about leads not marked "called" after 1 hour
 ```
 
 What is saved with each lead: name, phone (+91), location, property type, monthly bill, calculator result or solar plan, package, tags, Hot/Warm, source page, language and time.
@@ -92,7 +92,7 @@ What is saved with each lead: name, phone (+91), location, property type, monthl
    - WhatsApp only delivers business-initiated messages through approved templates.
 5. **Follow-up reminders:**
    - Set `LEAD_ACTION_SECRET` (signs the "Mark as called" links) and `CRON_SECRET`.
-   - On Vercel, `vercel.json` schedules the job every 15 minutes. The Hobby plan only allows daily crons; on that plan, use a free external cron such as cron-job.org to call `GET /api/cron/lead-reminders` with the header `Authorization: Bearer <CRON_SECRET>`.
+   - On Vercel, `vercel.json` runs the job once a day at 03:30 UTC (09:00 IST), which the Hobby plan allows. For reminders every 15 minutes, add a free external cron such as cron-job.org that calls `GET /api/cron/lead-reminders` with the header `Authorization: Bearer <CRON_SECRET>` (or use the Pro plan and set the schedule back to `*/15 * * * *`).
 6. **Tracking:** set `NEXT_PUBLIC_GA4_ID`, `NEXT_PUBLIC_META_PIXEL_ID` and `NEXT_PUBLIC_GOOGLE_ADS_ID`, plus the conversion labels. These events fire automatically:
    - `generate_lead` / Meta `Lead` / Ads conversion: every successful form submit
    - `whatsapp_click` / Meta `Contact` / Ads conversion: every WhatsApp button
