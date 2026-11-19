@@ -52,7 +52,7 @@ export function SolutionShowcase() {
                   <Link href={`/solutions/${key}`} tabIndex={-1} aria-hidden className={cn("zoom-frame relative block overflow-hidden rounded-[2rem]",
                     cut ? "bg-[radial-gradient(circle_at_60%_40%,rgb(255_215_106/0.45),transparent_65%)] p-4" : cn("p-2 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.6)]", dark ? "bg-white/10 ring-1 ring-white/15" : "bg-white"))}>
                     <div className={cn("relative overflow-hidden", !cut && "rounded-[1.6rem]")}>
-                      <Image src={img.src} alt={alt} width={img.w} height={img.h} sizes="(min-width: 1024px) 44rem, 100vw" className="zoom-img block h-auto w-full" />
+                      <Image src={img.src} alt={alt} width={img.w} height={img.h} unoptimized sizes="(min-width: 1024px) 44rem, 100vw" className="zoom-img block h-auto w-full" />
                       {!cut && <Sunlight sun={img.sun} />}
                     </div>
                   </Link>

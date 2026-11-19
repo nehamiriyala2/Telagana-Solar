@@ -21,6 +21,7 @@ export function BannerArt({ kind, locale }: { kind: keyof typeof solutionBanners
       width={b.width}
       height={b.height}
       priority
+      unoptimized
       sizes={b.variant === "bleed" ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 34rem, 100vw"}
       className="banner-art__img banner-kenburns block h-auto w-full"
       style={{ objectPosition: b.focus }}
