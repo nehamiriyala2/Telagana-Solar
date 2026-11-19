@@ -6,13 +6,21 @@ type Img = { src: string; width: number; height: number };
 /**
  * Pictures for the "Which solar suits you?" visitor types: `card` on the homepage card,
  * `page` as the hero picture on /for/<persona> (a different picture where two were supplied).
- * Apartment has no picture yet: the supplied one carries a third-party watermark. Add one here when available.
+ * `focus` = object-position on the card crop; `orbit: false` keeps a picture out of the rotating orbit.
  */
-export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { sun: { x: string; y: string } }; alt: L10n }>> = {
+export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { sun: { x: string; y: string } }; alt: L10n; focus?: string; orbit?: boolean }>> = {
   urban: {
     card: { src: "/personas/urban-card.webp", width: 960, height: 540 },
     page: { src: "/personas/urban.webp", width: 1280, height: 720, sun: { x: "62%", y: "6%" } },
     alt: { en: "Modern home with rooftop solar panels and a terrace garden", te: "పైకప్పు సోలార్ ప్యానెల్స్, టెర్రస్ గార్డెన్‌తో ఆధునిక ఇల్లు" },
+  },
+  // [EDIT] Third-party image (propertywala.com watermark, kept intact). Confirm usage rights or replace before going live.
+  apartment: {
+    card: { src: "/personas/apartment.webp", width: 1024, height: 575 },
+    page: { src: "/personas/apartment.webp", width: 1024, height: 575, sun: { x: "50%", y: "0%" } },
+    alt: { en: "Apartment tower at dusk with solar panels and a pool on the rooftop", te: "సాయంత్రం పైకప్పుపై సోలార్ ప్యానెల్స్, ఈత కొలను ఉన్న అపార్ట్‌మెంట్ భవనం" },
+    focus: "100% 50%",
+    orbit: false,
   },
   farmer: {
     card: { src: "/personas/farmer-card.webp", width: 960, height: 540 },

@@ -20,7 +20,7 @@ import { pick } from "@/lib/utils";
 export function WhoAreYou() {
   const t = useTranslations();
   const locale = useLocale();
-  const orbit = PERSONAS.filter((p) => personaMedia[p]);
+  const orbit = PERSONAS.filter((p) => personaMedia[p] && personaMedia[p]!.orbit !== false);
   return (
     <section className="dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" aria-labelledby="who-title">
       <div aria-hidden className="orb -right-24 top-10 size-96 bg-yellow/25" />
@@ -77,7 +77,7 @@ export function WhoAreYou() {
                     <Link href={`/for/${p}`} className="card-premium zoom-frame group flex h-full flex-col overflow-hidden">
                       <span className="relative block aspect-[16/10] overflow-hidden">
                         {m ? (
-                          <Image src={m.card.src} alt={pick(m.alt, locale)} width={m.card.width} height={m.card.height} sizes="(min-width: 1024px) 18rem, (min-width: 640px) 50vw, 100vw" className="zoom-img size-full object-cover" />
+                          <Image src={m.card.src} alt={pick(m.alt, locale)} width={m.card.width} height={m.card.height} sizes="(min-width: 1024px) 18rem, (min-width: 640px) 50vw, 100vw" className="zoom-img size-full object-cover" style={{ objectPosition: m.focus ?? "50% 50%" }} />
                         ) : (
                           <span className="grid size-full place-items-center bg-[radial-gradient(circle_at_70%_20%,rgb(255_215_106/0.5),transparent_60%),linear-gradient(135deg,#E8F3FF,#CFE3FF)]">
                             <Icon className="size-14 text-royal/70" strokeWidth={1.3} aria-hidden />
