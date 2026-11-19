@@ -14,6 +14,7 @@ import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { SchemeCollage } from "@/components/page/scheme-collage";
 import { Wave } from "@/components/page/tone-section";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -33,7 +34,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" reveal="slide" />
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" reveal="slide" art={<SchemeCollage />} />
 
       {/* Districts + schemes marquee */}
       <section aria-label={L(D.marqueeLabel)} className="border-y border-line bg-white py-6">
