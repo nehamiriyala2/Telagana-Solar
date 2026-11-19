@@ -27,27 +27,7 @@ export function BannerArt({ kind, locale }: { kind: keyof typeof solutionBanners
     />
   );
 
-  if (b.variant === "card") {
-    return (
-      <Parallax offset={40} className="relative mx-auto w-full max-w-[34rem] lg:mr-0">
-        <div className="banner-reveal relative">
-        <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_68%)]" />
-        <div className="float-soft" style={{ animationDuration: "9s" }}>
-          <TiltCard max={4} className="rounded-[2rem]">
-            <div className="rounded-[2rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(7_23_63/0.55),0_0_0_1px_rgb(23_105_232/0.06)] backdrop-blur-md">
-              <div className="relative overflow-hidden rounded-[1.6rem]">
-                {img}
-                <Sunlight sun={b.sun} />
-                {/* glass highlight on the top edge for depth */}
-                <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-[linear-gradient(180deg,rgb(255_255_255/0.18),transparent)]" />
-              </div>
-            </div>
-          </TiltCard>
-        </div>
-        </div>
-      </Parallax>
-    );
-  }
+  if (b.variant === "card") return <PhotoCard sun={b.sun}>{img}</PhotoCard>;
 
   return (
     <div className="banner-art banner-reveal relative">
@@ -92,5 +72,28 @@ export function Sunlight({ sun }: { sun: { x: string; y: string } }) {
         <span key={i} className="sunlight__p" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s` }} />
       ))}
     </div>
+  );
+}
+
+/** Framed glass photo card with depth: glow, gentle float, 3D tilt on hover, parallax, sunlight, entrance. */
+export function PhotoCard({ children, sun }: { children: React.ReactNode; sun: { x: string; y: string } }) {
+  return (
+    <Parallax offset={40} className="relative mx-auto w-full max-w-[34rem] lg:mr-0">
+      <div className="banner-reveal relative">
+        <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_68%)]" />
+        <div className="float-soft" style={{ animationDuration: "9s" }}>
+          <TiltCard max={4} className="rounded-[2rem]">
+            <div className="rounded-[2rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(7_23_63/0.55),0_0_0_1px_rgb(23_105_232/0.06)] backdrop-blur-md">
+              <div className="relative overflow-hidden rounded-[1.6rem]">
+                {children}
+                <Sunlight sun={sun} />
+                {/* glass highlight on the top edge for depth */}
+                <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-[linear-gradient(180deg,rgb(255_255_255/0.18),transparent)]" />
+              </div>
+            </div>
+          </TiltCard>
+        </div>
+      </div>
+    </Parallax>
   );
 }

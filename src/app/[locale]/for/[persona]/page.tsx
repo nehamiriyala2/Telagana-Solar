@@ -5,6 +5,10 @@ import { ArrowRight, CircleCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
 import { SolarBackdrop } from "@/components/page/solar-backdrop";
+import Image from "next/image";
+import { PhotoCard } from "@/components/page/banner-art";
+import { personaMedia } from "@/data/personas-media";
+import { pick } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { SchemesSection } from "@/components/home/schemes-section";
@@ -40,7 +44,13 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
   return (
     <>
       <JsonLd data={faqJsonLd(cfg.faq.map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
-      <PageHero eyebrow={t(`personas.${p}.name`)} title={t(`personas.${p}.title`)} subtitle={t(`personas.${p}.intro`)} Icon={Icon} calcType={cfg.type} />
+      <PageHero eyebrow={t(`personas.${p}.name`)} title={t(`personas.${p}.title`)} subtitle={t(`personas.${p}.intro`)} Icon={Icon} calcType={cfg.type}
+        art={personaMedia[p] ? (
+          <PhotoCard sun={personaMedia[p]!.page.sun}>
+            <Image src={personaMedia[p]!.page.src} alt={pick(personaMedia[p]!.alt, locale)} width={personaMedia[p]!.page.width} height={personaMedia[p]!.page.height}
+              priority sizes="(min-width: 1024px) 34rem, 100vw" className="banner-kenburns block h-auto w-full" />
+          </PhotoCard>
+        ) : undefined} />
 
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
