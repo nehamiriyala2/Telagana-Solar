@@ -8,4 +8,4 @@ next-env.d.ts
 .data
 
 # local verification builds
-.next-verify
+.next-*
