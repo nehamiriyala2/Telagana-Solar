@@ -6,9 +6,9 @@ type Img = { src: string; width: number; height: number };
 /**
  * Pictures for the "Which solar suits you?" visitor types: `card` on the homepage card,
  * `page` as the hero picture on /for/<persona> (a different picture where two were supplied).
- * `focus` = object-position on the card crop; `orbit: false` keeps a picture out of the rotating orbit.
+ * `focus` = object-position for crops (cards and orbit thumbnails).
  */
-export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { sun: { x: string; y: string } }; alt: L10n; focus?: string; orbit?: boolean }>> = {
+export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { sun: { x: string; y: string } }; alt: L10n; focus?: string }>> = {
   urban: {
     card: { src: "/personas/urban-card.webp", width: 960, height: 540 },
     page: { src: "/personas/urban.webp", width: 1280, height: 720, sun: { x: "62%", y: "6%" } },
@@ -20,7 +20,6 @@ export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { su
     page: { src: "/personas/apartment.webp", width: 1024, height: 575, sun: { x: "50%", y: "0%" } },
     alt: { en: "Apartment tower at dusk with solar panels and a pool on the rooftop", te: "సాయంత్రం పైకప్పుపై సోలార్ ప్యానెల్స్, ఈత కొలను ఉన్న అపార్ట్‌మెంట్ భవనం" },
     focus: "100% 50%",
-    orbit: false,
   },
   farmer: {
     card: { src: "/personas/farmer-card.webp", width: 960, height: 540 },
