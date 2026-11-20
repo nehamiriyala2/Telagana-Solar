@@ -20,9 +20,10 @@ const TYPE_TO_PERSONA: Record<string, GuidePersona> = { home: "urban", farm: "fa
  * - align="center": centred copy for pages without art.
  * Text uses CSS entrances so it paints before JS. `children` renders under the hero copy.
  */
-export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType, guidePersona, emphasis, children, art, tone = "light", align = "left", motif = "rays", reveal = "mask", underline = false }: {
+export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType, guidePersona, emphasis, children, art, tone = "light", align = "left", motif = "rays", reveal = "mask", underline = false, containerClassName, artSpan = "equal", gapClassName, contentClassName, artClassName, containerStyle }: {
   eyebrow: string; title: string; subtitle: string; Icon?: LucideIcon; ctas?: boolean; calcType?: string; guidePersona?: GuidePersona;
   emphasis?: string; children?: React.ReactNode; art?: React.ReactNode; tone?: "light" | "dark"; align?: "left" | "center"; motif?: Motif; reveal?: TitleReveal; underline?: boolean;
+  containerClassName?: string; artSpan?: "equal" | "wide"; gapClassName?: string; contentClassName?: string; artClassName?: string; containerStyle?: React.CSSProperties;
 }) {
   const t = useTranslations("common");
   const dark = tone === "dark";
@@ -31,8 +32,29 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
   return (
     <section className={cn("relative isolate overflow-hidden", dark && "text-white")}>
       <SolarBackdrop tone={tone} sun={sun} motif={motif} />
-      <div className={cn("container-page grid items-center gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:pt-20", dark ? "pb-24 md:pb-28 lg:pb-32" : "pb-16 md:pb-20 lg:pb-24")}>
-        <div className={cn(art ? "lg:col-span-6" : Icon ? "lg:col-span-7" : center ? "text-center lg:col-span-10 lg:col-start-2" : "lg:col-span-10")}>
+      <div
+        className={cn(
+          "container-page grid items-center pt-12 md:pt-16 lg:grid-cols-12 lg:pt-20",
+          gapClassName ?? "gap-10",
+          containerClassName,
+          dark ? "pb-24 md:pb-28 lg:pb-32" : "pb-16 md:pb-20 lg:pb-24"
+        )}
+        style={containerStyle}
+      >
+        <div
+          className={cn(
+            art
+              ? artSpan === "wide"
+                ? "lg:col-span-6 xl:col-span-5"
+                : "lg:col-span-6"
+              : Icon
+                ? "lg:col-span-7"
+                : center
+                  ? "text-center lg:col-span-10 lg:col-start-2"
+                  : "lg:col-span-10",
+            contentClassName
+          )}
+        >
           <Eyebrow className={cn("animate-rise", dark && "eyebrow-pill--dark")}>{eyebrow}</Eyebrow>
           <DisplayTitle text={title} emphasis={emphasis} reveal={reveal} underline={underline} className={cn("mt-6", dark && "text-white", center && "mx-auto max-w-4xl", art && "display-art")} />
           <p className={cn("mt-6 max-w-2xl animate-rise md:text-body-lg", dark ? "text-silver/85" : "text-[var(--ts-text)]", center && "mx-auto")} style={{ animationDelay: "0.3s" }}>{subtitle}</p>
@@ -49,7 +71,17 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
           )}
           {children && <div className="mt-10 animate-rise" style={{ animationDelay: "0.5s" }}>{children}</div>}
         </div>
-        {art && <div className="relative lg:col-span-6">{art}</div>}
+        {art && (
+          <div
+            className={cn(
+              "relative flex items-center justify-center lg:justify-end",
+              artSpan === "wide" ? "lg:col-span-6 xl:col-span-7" : "lg:col-span-6",
+              artClassName
+            )}
+          >
+            {art}
+          </div>
+        )}
         {Icon && !art && (
           <div className="relative hidden lg:col-span-5 lg:block" aria-hidden>
             <Parallax offset={70}>

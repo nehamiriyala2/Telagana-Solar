@@ -2,7 +2,7 @@ import Image from "next/image";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { Parallax } from "@/components/motion/primitives";
 import { solutionBanners } from "@/data/solution-hero";
-import { pick } from "@/lib/utils";
+import { cn, pick } from "@/lib/utils";
 
 /**
  * Hero picture for a page (from the supplied blueprints), with realistic sunlight:
@@ -12,8 +12,19 @@ import { pick } from "@/lib/utils";
  * - variant "card" (scheme pages, Subsidy & Loans): framed glass card with depth, 3D tilt on hover, float, parallax.
  * Phones/tablets: the whole picture at natural proportions, under the text. All motion stops for reduced motion.
  */
-export function BannerArt({ kind, locale }: { kind: keyof typeof solutionBanners; locale: string }) {
+export function BannerArt({
+  kind,
+  locale,
+  className,
+  cardClassName,
+}: {
+  kind: keyof typeof solutionBanners;
+  locale: string;
+  className?: string;
+  cardClassName?: string;
+}) {
   const b = solutionBanners[kind];
+  const hasCustomSize = Boolean(className || cardClassName);
   const img = (
     <Image
       src={b.src}
@@ -22,13 +33,19 @@ export function BannerArt({ kind, locale }: { kind: keyof typeof solutionBanners
       height={b.height}
       priority
       unoptimized
-      sizes={b.variant === "bleed" ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 34rem, 100vw"}
+      sizes={
+        hasCustomSize
+          ? "(min-width: 1536px) 50vw, (min-width: 1024px) 55vw, 100vw"
+          : b.variant === "bleed"
+            ? "(min-width: 1024px) 60vw, 100vw"
+            : "(min-width: 1024px) 34rem, 100vw"
+      }
       className="banner-art__img banner-kenburns block h-auto w-full"
       style={{ objectPosition: b.focus }}
     />
   );
 
-  if (b.variant === "card") return <PhotoCard sun={b.sun}>{img}</PhotoCard>;
+  if (b.variant === "card") return <PhotoCard sun={b.sun} className={className} cardClassName={cardClassName}>{img}</PhotoCard>;
 
   return (
     <div className="banner-art banner-reveal relative">
@@ -77,14 +94,24 @@ export function Sunlight({ sun }: { sun: { x: string; y: string } }) {
 }
 
 /** Framed glass photo card with depth: glow, gentle float, 3D tilt on hover, parallax, sunlight, entrance. */
-export function PhotoCard({ children, sun }: { children: React.ReactNode; sun: { x: string; y: string } }) {
+export function PhotoCard({
+  children,
+  sun,
+  className,
+  cardClassName,
+}: {
+  children: React.ReactNode;
+  sun: { x: string; y: string };
+  className?: string;
+  cardClassName?: string;
+}) {
   return (
-    <Parallax offset={40} className="relative mx-auto w-full max-w-[34rem] lg:mr-0">
+    <Parallax offset={40} className={cn("relative mx-auto w-full max-w-[34rem] lg:mr-0", className)}>
       <div className="banner-reveal relative">
         <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_68%)]" />
         <div className="float-soft" style={{ animationDuration: "9s" }}>
           <TiltCard max={4} className="rounded-[2rem]">
-            <div className="rounded-[2rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(7_23_63/0.55),0_0_0_1px_rgb(23_105_232/0.06)] backdrop-blur-md">
+            <div className={cn("rounded-[2rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(7_23_63/0.55),0_0_0_1px_rgb(23_105_232/0.06)] backdrop-blur-md", cardClassName)}>
               <div className="relative overflow-hidden rounded-[1.6rem]">
                 {children}
                 <Sunlight sun={sun} />

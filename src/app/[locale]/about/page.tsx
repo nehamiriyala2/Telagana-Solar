@@ -44,22 +44,50 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.about)} subtitle={t("subtitle")} Icon={Sun} art={<BannerArt kind="about" locale={locale} />} motif="waves" reveal="slide" underline />
+      <PageHero
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        emphasis={L(titleEmphasis.about)}
+        subtitle={t("subtitle")}
+        Icon={Sun}
+        art={
+          <BannerArt
+            kind="about"
+            locale={locale}
+            className="max-w-xl lg:max-w-none lg:w-[110%] xl:w-[118%] 2xl:w-[124%] lg:origin-right xl:-mr-6 2xl:-mr-10"
+            cardClassName="p-2.5 sm:p-3 rounded-[2rem] sm:rounded-[2.25rem] border-white/80 bg-white/45 shadow-[0_40px_90px_-30px_rgb(7_23_63/0.38),0_0_0_1px_rgb(255_255_255/0.8)]"
+          />
+        }
+        motif="waves"
+        reveal="slide"
+        underline
+        artSpan="wide"
+        gapClassName="gap-8 lg:gap-10 xl:gap-14"
+      />
 
       {/* Story + mission */}
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
-          <BlurReveal className="rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-10 lg:col-span-5">
+          <BlurReveal className="flex flex-col justify-center rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-10 lg:col-span-5">
             <p className="eyebrow-pill">{L(D.storyEyebrow)}</p>
             <h2 className="mt-5 font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("storyTitle")}</h2>
             <p className="mt-4 text-muted md:text-body-lg"><WithEdit text={t("story")} /></p>
           </BlurReveal>
-          <BlurReveal delay={0.08} className="bg-premium-sun relative overflow-hidden rounded-[1.75rem] p-7 ring-1 ring-gold/25 md:p-12 lg:col-span-7">
-            <div aria-hidden className="absolute -right-20 -top-20 size-64 rounded-full border-2 border-yellow/50 shadow-[0_0_60px_-10px_rgb(255_199_44/0.6)]" />
-            <h2 className="relative text-caption font-bold uppercase tracking-[0.08em] text-gold-ink">{t("missionTitle")}</h2>
-            <blockquote className="relative mt-5 font-heading text-[1.625rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-navy md:text-[2.25rem]">
-              <span aria-hidden className="mr-1 text-gold">“</span>{t("mission")}<span aria-hidden className="text-gold">”</span>
-            </blockquote>
+          <BlurReveal
+            delay={0.08}
+            className="relative flex flex-col justify-center overflow-hidden rounded-[1.75rem] border border-[#E8B946]/45 bg-[radial-gradient(ellipse_80%_80%_at_0%_0%,rgb(255_215_106/0.38),transparent_70%),radial-gradient(ellipse_60%_60%_at_100%_100%,rgb(245_168_0/0.18),transparent_65%),linear-gradient(145deg,#FFFDF7_0%,#FFF7E2_45%,#FEEDBC_100%)] p-7 shadow-[0_24px_50px_-24px_rgb(245_168_0/0.32),0_1px_2px_rgb(245_168_0/0.15)] ring-1 ring-gold/30 md:p-12 lg:col-span-7"
+          >
+            <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full border-2 border-yellow/50 shadow-[0_0_60px_-10px_rgb(255_199_44/0.6)]" />
+            <div aria-hidden className="pointer-events-none absolute -bottom-16 -left-16 size-48 rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.25),transparent_70%)]" />
+            <div className="relative">
+              <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/80 px-3.5 py-1 text-caption font-bold uppercase tracking-[0.08em] text-gold-ink shadow-[0_2px_8px_-2px_rgb(245_168_0/0.3)] backdrop-blur-sm">
+                <Sun className="size-3.5 text-gold-ink" aria-hidden />
+                {t("missionTitle")}
+              </span>
+              <blockquote className="mt-6 font-heading text-[1.625rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-navy md:text-[2.25rem]">
+                <span aria-hidden className="mr-1 text-gold">“</span>{t("mission")}<span aria-hidden className="text-gold">”</span>
+              </blockquote>
+            </div>
           </BlurReveal>
         </div>
       </section>

@@ -16,7 +16,7 @@ import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
 import { routing } from "@/i18n/routing";
 import { pageMeta } from "@/lib/seo";
-import { pick } from "@/lib/utils";
+import { cn, pick } from "@/lib/utils";
 import { Wave } from "@/components/page/tone-section";
 import Image from "next/image";
 import { BannerArt, Sunlight } from "@/components/page/banner-art";
@@ -45,15 +45,16 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
   const Icon = SCHEME_ICONS[slug as SchemeSlug];
   const others = SCHEMES.filter((s) => s.slug !== slug);
   const timeline = L(D.timelineValue);
+  const hasTimeline = Boolean(timeline && !timeline.includes("[EDIT"));
 
   return (
     <div data-accent={slug}>
       <PageHero eyebrow={t("eyebrow")} title={k("name")} emphasis={L(titleEmphasis[slug as SchemeSlug])} subtitle={k("short")} Icon={Icon} calcType={scheme.audience === "farm" ? "farm" : "home"} underline
         art={slug in solutionBanners ? <BannerArt kind={slug as "pm-surya-ghar" | "pm-kusum" | "net-metering" | "state-schemes"} locale={locale} /> : undefined}>
-        <dl className="grid gap-3 sm:grid-cols-3">
+        <dl className={cn("grid gap-3", hasTimeline ? "sm:grid-cols-3" : "sm:grid-cols-2")}>
           <Glance label={t("cardWho")} value={k("cardWho")} />
           <Glance label={t("cardBenefit")} value={k("cardBenefit")} />
-          <Glance label={L(D.timeline)} value={timeline.includes("[EDIT") ? <EditMark label={timeline} /> : timeline} />
+          {hasTimeline && <Glance label={L(D.timeline)} value={timeline} />}
         </dl>
       </PageHero>
 

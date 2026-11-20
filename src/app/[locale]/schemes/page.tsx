@@ -15,8 +15,8 @@ import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { site } from "@/config/site";
 import { pick } from "@/lib/utils";
-import { SchemeCollage } from "@/components/page/scheme-collage";
 import { Wave } from "@/components/page/tone-section";
+import { SchemeHeroArt } from "@/components/page/scheme-hero-art";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -35,20 +35,27 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={L(titleEmphasis.schemes)} subtitle={t("subtitle")} Icon={Landmark} tone="dark" motif="orbits" reveal="slide" art={<SchemeCollage />} />
+      <PageHero
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        emphasis={L(titleEmphasis.schemes)}
+        subtitle={t("subtitle")}
+        Icon={Landmark}
+        tone="dark"
+        motif="orbits"
+        reveal="slide"
+        art={<SchemeHeroArt />}
+        artSpan="wide"
+        gapClassName="gap-8 lg:gap-8 xl:gap-12"
+      />
 
-      {/* Districts + schemes marquee */}
+      {/* Districts marquee */}
       <section aria-labelledby="districts-strip" className="relative overflow-hidden border-y border-[#1265D8]/10 bg-[radial-gradient(ellipse_50%_120%_at_50%_0%,rgb(255_215_106/0.18),transparent_60%),linear-gradient(180deg,#F4F9FF_0%,#E8F3FF_100%)] py-8 shadow-[inset_0_1px_0_#fff,0_18px_40px_-34px_rgb(7_27_73/0.45)] md:py-10">
         <p id="districts-strip" className="container-page mb-2 flex items-center justify-center gap-2 text-center text-caption font-bold uppercase tracking-[0.08em] text-[#1265D8] md:text-[0.9375rem]">
           <MapPin className="size-4" aria-hidden />{L(D.marqueeLabel)}
         </p>
-        <Marquee speed={90} gap="pr-3 md:pr-4" items={[
-          ...SCHEMES.map((s) => (
-            <Link key={s.slug} href={`/schemes/${s.slug}`} className="city-chip city-chip--scheme">
-              <Landmark className="size-4 md:size-5" aria-hidden />{t(`items.${s.slug}.name`)}
-            </Link>
-          )),
-          ...districts.map((d) => {
+        <Marquee speed={80} gap="pr-3 md:pr-4" items={
+          districts.map((d) => {
             const main = (site.serviceAreas as readonly string[]).includes(d.slug);
             return (
               <Link key={d.slug} href={`/solar-installation/${d.slug}`} className={main ? "city-chip city-chip--main" : "city-chip"}>
@@ -56,8 +63,8 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
                 {main && <span aria-hidden className="size-2 rounded-full bg-[#FFB800] shadow-[0_0_8px_#FFB800]" />}
               </Link>
             );
-          }),
-        ]} />
+          })
+        } />
       </section>
 
       {/* Scheme cards */}

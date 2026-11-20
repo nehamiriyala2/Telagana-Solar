@@ -10,11 +10,9 @@ import { PERSONA_ICONS } from "@/components/tools/persona-icons";
 import { PERSONAS } from "@/config/personas";
 import { personaMedia } from "@/data/personas-media";
 import { pick } from "@/lib/utils";
-import { SolarOrbit } from "./solar-orbit";
 
 /**
- * "Which solar suits you?" (homepage): heading + a 3D solar-system orbit of the visitor pictures around a
- * glowing sun (<SolarOrbit>), then 7 image cards → /for/<persona> plus Find My Solar Plan.
+ * "Which solar suits you?" (homepage): heading + 7 image cards → /for/<persona> plus Find My Solar Plan.
  * Cards: picture header with slow zoom on hover, 3D tilt, lift. Visitors without a picture keep the icon header.
  */
 export function WhoAreYou() {
@@ -24,8 +22,7 @@ export function WhoAreYou() {
     <section className="dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" aria-labelledby="who-title">
       <div aria-hidden className="orb -right-24 top-10 size-96 bg-yellow/25" />
       <div className="container-page">
-        <SectionHeading premium eyebrow={t("who.eyebrow")} title={t("who.title")} subtitle={t("who.subtitle")} className="mb-2 md:mb-4" />
-        <SolarOrbit />
+        <SectionHeading premium eyebrow={t("who.eyebrow")} title={t("who.title")} subtitle={t("who.subtitle")} className="mb-8 md:mb-12" />
 
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PERSONAS.map((p, i) => {
