@@ -4,7 +4,6 @@ import { Lightbulb } from "lucide-react";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
 import { FullCalculator } from "@/components/calculator/full-calculator";
-import { FinalCta } from "@/components/home/home-sections";
 import { StatCounter } from "@/components/page/stat-counter";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { calculatorConfig as C } from "@/config/calculator";
@@ -70,8 +69,6 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
           </BlurReveal>
         </div>
       </section>
-
-      <FinalCta />
     </>
   );
 }

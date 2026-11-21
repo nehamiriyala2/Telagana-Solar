@@ -9,10 +9,7 @@ import { pick } from "@/lib/utils";
 import { Wave } from "@/components/page/tone-section";
 import { BannerArt } from "@/components/page/banner-art";
 import { EmiCalculator } from "@/components/calculator/emi-calculator";
-import { FaqSection, FinalCta } from "@/components/home/home-sections";
-import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
-
-const FAQ = ["q2", "q3", "q6", "q7", "q1", "q8"];
+import { pageMeta } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -25,11 +22,9 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
   const t = await getTranslations("subsidyPage");
   const tc = await getTranslations("common");
-  const tf = await getTranslations("faq");
 
   return (
     <>
-      <JsonLd data={faqJsonLd(FAQ.map((k) => ({ q: tf(`${k}.q`), a: tf(`${k}.a`) })))} />
       <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.subsidy, locale)} subtitle={t("subtitle")} Icon={BadgeIndianRupee} calcType="home" tone="dark" motif="grid" underline art={<BannerArt kind="subsidy-loans" locale={locale} />} />
 
       {/* Step-by-step subsidy guide */}
@@ -92,9 +87,6 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
           </div>
         </div>
       </section>
-
-      <FaqSection keys={FAQ} title={t("faqTitle")} premium />
-      <FinalCta />
     </>
   );
 }

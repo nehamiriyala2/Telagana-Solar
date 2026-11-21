@@ -15,7 +15,7 @@ import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
 import { PackageCard } from "@/components/cards/package-card";
 import { HowItWorks } from "@/components/home/how-it-works";
-import { FaqSection, FinalCta } from "@/components/home/home-sections";
+import { FaqSection } from "@/components/home/home-sections";
 import { businessPackages, homePackages, pumpSizesHp } from "@/config/packages";
 import { routing } from "@/i18n/routing";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
@@ -166,7 +166,6 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
 
       <HowItWorks premium />
       <FaqSection keys={FAQ_KEYS[s]} title={t("solutionPages.faqTitle")} premium />
-      <FinalCta title={t("solutionPages.ctaTitle", { type: t(`types.${TYPE[s]}.long`) })} defaultType={TYPE[s]} />
     </>
   );
 }

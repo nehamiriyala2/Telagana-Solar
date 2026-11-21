@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/page/page-hero";
 import { SolutionShowcase } from "@/components/page/solution-showcase";
-import { FinalCta } from "@/components/home/home-sections";
 import { pageMeta } from "@/lib/seo";
 import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
@@ -21,7 +20,6 @@ export default async function SolutionsIndex({ params }: { params: Promise<{ loc
     <>
       <PageHero eyebrow={t("eyebrow")} title={t("title")} emphasis={pick(titleEmphasis.solutions, locale)} subtitle={t("subtitle")} motif="waves" reveal="chars" />
       <SolutionShowcase />
-      <FinalCta />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { BadgeIndianRupee, HandHeart, Headset, ShieldCheck, Sun, UserRound } from "lucide-react";
 import { PageHero } from "@/components/page/page-hero";
@@ -7,7 +8,6 @@ import { StatCounter } from "@/components/page/stat-counter";
 import { EditMark } from "@/components/ui/badge";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BlurReveal, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
-import { FinalCta } from "@/components/home/home-sections";
 import { team } from "@/config/content";
 import { site } from "@/config/site";
 import { districts } from "@/data/districts";
@@ -71,7 +71,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <BlurReveal className="flex flex-col justify-center rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-10 lg:col-span-5">
             <p className="eyebrow-pill">{L(D.storyEyebrow)}</p>
             <h2 className="mt-5 font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("storyTitle")}</h2>
-            <p className="mt-4 text-muted md:text-body-lg"><WithEdit text={t("story")} /></p>
+            <div className="mt-5 space-y-3.5 text-muted leading-relaxed text-[0.9375rem] md:text-body">
+              {t("story")
+                .split("\n\n")
+                .map((paragraph, idx) => (
+                  <p key={idx} className={idx === 2 ? "font-semibold text-navy/90 pt-0.5" : ""}>
+                    {paragraph}
+                  </p>
+                ))}
+            </div>
           </BlurReveal>
           <BlurReveal
             delay={0.08}
@@ -134,21 +142,36 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <Marquee speed={70} items={districts.map((d) => <span key={d.slug} className="block rounded-full border border-gold/30 bg-white/80 px-5 py-2.5 font-semibold text-navy shadow-soft">{pick(d.name, locale)}</span>)} />
       </section>
 
-      {/* Team */}
+      {/* Team / Founders */}
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={t("teamTitle")} />
-          <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((m, i) => (
               <StaggerItem key={i} className="list-none">
-                <TiltCard max={6} className="h-full rounded-[1.75rem]">
-                  <div className="h-full rounded-[1.75rem] border border-line bg-white p-7 text-center shadow-soft">
-                    <span className="mx-auto grid size-28 place-items-center overflow-hidden rounded-full bg-[linear-gradient(135deg,#EAF4FF,#FFF3D1)] text-royal ring-4 ring-white shadow-soft">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      {m.photo ? <img src={m.photo} alt={m.name ?? ""} loading="lazy" className="size-full object-cover" /> : <UserRound className="size-12" aria-hidden />}
-                    </span>
-                    <p className="mt-5 font-heading text-[1.125rem] font-bold text-navy">{m.name ?? <EditMark label="[EDIT] name" />}</p>
-                    <p className="mt-1 text-caption text-muted">{m.role ? pick(m.role, loc) : <EditMark label="[EDIT] role" />}</p>
+                <TiltCard max={5} className="h-full rounded-[1.75rem]">
+                  <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-soft transition-all duration-300 hover:border-gold/50 hover:shadow-card hover:-translate-y-1">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                      {m.photo ? (
+                        <Image
+                          src={m.photo}
+                          alt={m.name ?? ""}
+                          width={600}
+                          height={750}
+                          className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="grid size-full place-items-center text-royal/60">
+                          <UserRound className="size-20" aria-hidden />
+                        </div>
+                      )}
+                      <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/50 via-navy/15 to-transparent" />
+                    </div>
+                    <div className="flex flex-1 flex-col items-center justify-center p-6 text-center">
+                      <h3 className="font-heading text-[1.25rem] font-bold text-navy">{m.name}</h3>
+                      <p className="mt-1 text-caption font-semibold text-royal uppercase tracking-wider">{m.role ? pick(m.role, loc) : ""}</p>
+                      <span aria-hidden className="mt-3 h-0.5 w-8 rounded-full bg-gold" />
+                    </div>
                   </div>
                 </TiltCard>
               </StaggerItem>
@@ -156,8 +179,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </Stagger>
         </div>
       </section>
-
-      <FinalCta />
     </>
   );
 }

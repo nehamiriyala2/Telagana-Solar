@@ -6,7 +6,7 @@ import { WhoAreYou } from "@/components/home/who-are-you";
 import { SchemesSection } from "@/components/home/schemes-section";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { KnowBefore } from "@/components/home/know-before";
-import { FaqSection, FinalCta, Packages } from "@/components/home/home-sections";
+import { FaqSection, FinalCta } from "@/components/home/home-sections";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { KineticBand } from "@/components/motion/kinetic-band";
 import { site } from "@/config/site";
@@ -38,7 +38,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <HowItWorks premium dark />
       <KineticBand phrases={pick(site.tagline, locale).split(/\.\s*/).filter(Boolean)} />
       <KnowBefore />
-      <Packages premium blue />
       <FaqSection keys={faqKeys} premium />
       <FinalCta />
     </div>

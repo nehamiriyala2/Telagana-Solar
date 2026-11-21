@@ -8,7 +8,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { Solutions } from "@/components/home/solutions";
 import { HowItWorks } from "@/components/home/how-it-works";
-import { FinalCta, Packages } from "@/components/home/home-sections";
 import { districts } from "@/data/districts";
 import { routing } from "@/i18n/routing";
 import { JsonLd, localBusinessJsonLd, pageMeta } from "@/lib/seo";
@@ -67,7 +66,6 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
       </section>
 
       <Solutions />
-      <Packages premium />
       <HowItWorks premium />
 
       <section className="container-page pb-8 pt-4">
@@ -82,8 +80,6 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
           ))}
         </ul>
       </section>
-
-      <FinalCta />
     </>
   );
 }

@@ -153,7 +153,7 @@
   .section { padding-block: var(--space-section); }
   .bg-sun { background: var(--gradient-sun); }
   .text-gold-gradient { background: linear-gradient(100deg, #f5a800 0%, #ffc72c 45%, #e88a00 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .bg-navy-glow { background: radial-gradient(ellipse at 20% 0%, rgb(255 199 44 / 0.16), transparent 50%), radial-gradient(ellipse at 90% 100%, rgb(77 163 255 / 0.14), transparent 55%), #07173f; }
+  .bg-navy-glow { background: radial-gradient(ellipse at 90% 100%, rgb(77 163 255 / 0.14), transparent 55%), #07173f; }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 0.5rem;
     font-size: var(--text-caption); line-height: var(--text-caption--line-height);
@@ -202,7 +202,6 @@ html[lang="te"] .home-premium h1, html[lang="te"] .home-premium h2, html[lang="t
 /* Section backgrounds */
 .bg-premium-navy {
   background:
-    radial-gradient(ellipse 60% 50% at 15% 0%, rgb(255 199 44 / 0.16), transparent 60%),
     radial-gradient(ellipse 55% 55% at 95% 100%, rgb(77 163 255 / 0.20), transparent 60%),
     linear-gradient(180deg, #07173f 0%, #0b1f4f 100%);
   color: #e6eaf0;
@@ -357,7 +356,6 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 }
 .solar-bg--dark .solar-bg__gradient {
   background:
-    radial-gradient(36% 46% at 14% 16%, rgb(255 184 0 / 0.22), transparent 70%),
     radial-gradient(44% 56% at 90% 30%, rgb(23 105 232 / 0.45), transparent 70%),
     radial-gradient(55% 60% at 40% 110%, rgb(77 163 255 / 0.30), transparent 70%),
     linear-gradient(160deg, var(--ts-navy) 0%, #0b2463 58%, #123a8c 100%);
@@ -375,14 +373,14 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
   mask-image: radial-gradient(circle, black 6%, transparent 58%);
   animation: tsRays 90s linear infinite;
 }
-.solar-bg--dark .solar-bg__rays { background: repeating-conic-gradient(from 0deg, rgb(255 199 44 / 0.12) 0deg 3deg, transparent 3deg 15deg); }
+.solar-bg--dark .solar-bg__rays { display: none; }
 @keyframes tsRays { to { rotate: 360deg; } }
 .solar-bg__glow {
   position: absolute; width: 34rem; height: 34rem; translate: -50% -50%; border-radius: 999px;
   background: radial-gradient(circle, rgb(255 210 110 / 0.45), rgb(255 184 0 / 0.12) 45%, transparent 70%);
   animation: tsGlow 7s ease-in-out infinite;
 }
-.solar-bg--dark .solar-bg__glow { background: radial-gradient(circle, rgb(255 199 44 / 0.35), rgb(255 184 0 / 0.08) 45%, transparent 70%); }
+.solar-bg--dark .solar-bg__glow { display: none; }
 @keyframes tsGlow { 0%, 100% { opacity: .75; scale: 1; } 50% { opacity: 1; scale: 1.08; } }
 .solar-bg__p {
   position: absolute; border-radius: 999px; background: rgb(255 184 0 / 0.55); box-shadow: 0 0 10px rgb(255 199 44 / 0.7);
@@ -463,15 +461,13 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 .tone-navy {
   color: #fff;
   background:
-    radial-gradient(ellipse 50% 55% at 8% 0%, rgb(255 184 0 / 0.16), transparent 62%),
     radial-gradient(ellipse 55% 60% at 96% 100%, rgb(18 101 216 / 0.38), transparent 62%),
     linear-gradient(180deg, #071b49 0%, #0a2462 100%);
 }
 .tone-blue {
   color: #fff;
   background:
-    radial-gradient(ellipse 45% 55% at 92% 0%, rgb(255 215 106 / 0.24), transparent 62%),
-    radial-gradient(ellipse 55% 60% at 0% 100%, rgb(36 166 106 / 0.22), transparent 62%),
+    radial-gradient(ellipse 55% 60% at 90% 100%, rgb(77 163 255 / 0.35), transparent 62%),
     linear-gradient(135deg, #0b4ab0 0%, #1265d8 55%, #2b7fea 100%);
 }
 .tone-sky { background: radial-gradient(ellipse 45% 50% at 0% 0%, rgb(255 184 0 / 0.10), transparent 60%), linear-gradient(180deg, #e8f3ff 0%, #f4f9ff 100%); }
@@ -483,7 +479,7 @@ html[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.8vw, 3rem); }
 .tone-navy::before, .tone-blue::before { background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px); background-size: 48px 48px; }
 /* A slow beam of light drifting across dark sections */
 .tone-beam { position: absolute; top: -20%; left: -30%; z-index: -1; width: 40%; height: 140%; rotate: 20deg; pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgb(255 215 106 / 0.10), transparent); filter: blur(30px); animation: toneBeam 18s ease-in-out infinite alternate; }
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.10), transparent); filter: blur(30px); animation: toneBeam 18s ease-in-out infinite alternate; }
 @keyframes toneBeam { from { transform: translateX(0); } to { transform: translateX(260%); } }
 /* Wave edges between sections */
 .tone-wave { position: absolute; left: 0; width: 100%; height: 3rem; pointer-events: none; z-index: 0; }

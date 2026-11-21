@@ -8,7 +8,6 @@ import { SectionTitle } from "@/components/page/section-title";
 import { Button } from "@/components/ui/button";
 import { EditMark } from "@/components/ui/badge";
 import { SCHEME_ICONS } from "@/components/home/schemes-section";
-import { FinalCta } from "@/components/home/home-sections";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BlurReveal, DrawLine, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { SCHEMES, type SchemeSlug } from "@/config/schemes";
@@ -154,8 +153,6 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
           </Stagger>
         </div>
       </section>
-
-      <FinalCta defaultType={scheme.audience === "farm" ? "farm" : "home"} />
     </div>
   );
 }

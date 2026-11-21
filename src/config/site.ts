@@ -14,32 +14,32 @@ export const site = {
   url: env(process.env.NEXT_PUBLIC_SITE_URL) ?? "http://localhost:3000",
 
   /** Phone shown on the site and used for "Call" buttons. Format: +91XXXXXXXXXX */
-  phone: env(process.env.NEXT_PUBLIC_PHONE), // [EDIT]
+  phone: env(process.env.NEXT_PUBLIC_PHONE) ?? "+91 75699 54054",
   /** WhatsApp number in international format without "+", e.g. 919XXXXXXXXX */
-  whatsapp: env(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER), // [EDIT]
-  email: env(process.env.NEXT_PUBLIC_CONTACT_EMAIL), // [EDIT]
+  whatsapp: env(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) ?? "917569954054",
+  email: env(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "elevaitelabs@gmail.com",
 
   address: {
-    street: null as string | null, // [EDIT]
+    street: "HITEC City",
     city: "Hyderabad",
     region: "Telangana",
-    postalCode: null as string | null, // [EDIT]
-    country: "IN",
+    postalCode: "500081",
+    country: "India",
   },
   /** Used for LocalBusiness schema and the map pin */
-  geo: { lat: 17.385, lng: 78.4867 }, // [EDIT] exact office location
+  geo: { lat: 17.4435, lng: 78.3772 },
   /** Google Maps embed URL (Share → Embed a map → copy the src). null = map by city name. */
-  mapEmbedUrl: null as string | null, // [EDIT]
-  hours: "Mo-Sa 09:00-19:00", // [EDIT] opening hours (schema.org format)
+  mapEmbedUrl: null as string | null,
+  hours: "Mo-Sa 09:00-19:00",
 
   /** Promise in the auto-reply: "Our team will call you within X hours" */
-  callbackHours: 2, // [EDIT]
+  callbackHours: 2,
 
   social: {
-    facebook: null as string | null, // [EDIT]
-    instagram: null as string | null, // [EDIT]
-    youtube: null as string | null, // [EDIT]
-    linkedin: null as string | null, // [EDIT]
+    facebook: null as string | null,
+    instagram: null as string | null,
+    youtube: null as string | null,
+    linkedin: "https://www.linkedin.com/company/elevaitelabs/",
   },
 
   /** Trust-strip counters. null = shows [EDIT]. Use real numbers only. */

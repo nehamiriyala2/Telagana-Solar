@@ -57,9 +57,21 @@ export const testimonials: Testimonial[] = [
 
 export interface TeamMember { name: string | null; role: { en: string; te: string } | null; photo: string | null }
 export const team: TeamMember[] = [
-  { name: null, role: null, photo: null }, // [EDIT]
-  { name: null, role: null, photo: null },
-  { name: null, role: null, photo: null },
+  {
+    name: "Shanmukh R",
+    role: { en: "Founder & CEO", te: "ఫౌండర్ & సీఈఓ" },
+    photo: "/team/shanmukh-r.webp",
+  },
+  {
+    name: "Premsai Kilaru",
+    role: { en: "Founder & CMO", te: "ఫౌండర్ & సీఎంఓ" },
+    photo: "/team/premsai-kilaru.webp",
+  },
+  {
+    name: "Vishnu Saai Gudise",
+    role: { en: "Founder & CTO", te: "ఫౌండర్ & సీటీఓ" },
+    photo: "/team/vishnu-saai-gudise.webp",
+  },
 ];
 
 /** Certifications / registrations, e.g. MNRE empanelment, DISCOM vendor registration. Real ones only. */

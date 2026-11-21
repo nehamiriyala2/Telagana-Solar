@@ -34,7 +34,7 @@ export function SchemesSection({ only, title, premium = false }: { only?: string
                       <span className={cn("grid size-12 place-items-center rounded-2xl", premium ? "icon-sun transition-transform duration-500 group-hover:scale-110" : "bg-gold-soft text-gold-ink")}><Icon className="size-6" strokeWidth={1.7} aria-hidden /></span>
                       <span className="rounded-full bg-leaf-tint px-2.5 py-1 text-[0.75rem] font-semibold text-leaf-ink">{t(`items.${s.slug}.tag`)}</span>
                     </div>
-                    <h3 className={cn("mt-5 font-bold", premium ? "text-[1.1875rem] text-navy" : "font-heading text-[1.125rem]")}>{t(`items.${s.slug}.name`)}{s.slug === "state-schemes" && <EditMark className="ml-2 align-middle" label="[EDIT after checking]" />}</h3>
+                    <h3 className={cn("mt-5 font-bold", premium ? "text-[1.1875rem] text-navy" : "font-heading text-[1.125rem]")}>{t(`items.${s.slug}.name`)}</h3>
                     <dl className="mt-3 flex-1 space-y-2 text-caption">
                       <div><dt className="font-semibold text-navy">{t("cardWho")}</dt><dd className="text-muted">{t(`items.${s.slug}.cardWho`)}</dd></div>
                       <div><dt className="font-semibold text-navy">{t("cardBenefit")}</dt><dd className="text-muted">{t(`items.${s.slug}.cardBenefit`)}</dd></div>

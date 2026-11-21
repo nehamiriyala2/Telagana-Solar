@@ -121,11 +121,9 @@ export function FinalCta({ title, defaultType }: { title?: string; defaultType?:
   return (
     <section id="book" className="container-page scroll-mt-24 pb-16 pt-6 md:pb-24" aria-labelledby="cta-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_60%_80%_at_0%_0%,rgb(255_184_0/0.30),transparent_60%),radial-gradient(ellipse_55%_70%_at_100%_100%,rgb(255_215_106/0.22),transparent_60%),linear-gradient(135deg,#071B49_0%,#0B2A6E_55%,#123A8C_100%)] p-6 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.7)] ring-1 ring-[#FFD76A]/30 md:p-12">
-          <span aria-hidden className="tone-beam" />
-          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[repeating-conic-gradient(from_0deg_at_15%_0%,rgb(255_215_106/0.07)_0deg_3deg,transparent_3deg_14deg)]" />
-          <div aria-hidden className="absolute -left-24 -top-24 -z-10 size-96 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.35),transparent_65%)]" />
-          <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 -z-10 size-[30rem] rounded-full border-2 border-yellow/40 shadow-[0_0_60px_-10px_rgb(255_199_44/0.6)]" />
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#071B49] via-[#0B2A6E] to-[#123A8C] p-6 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.7)] ring-1 ring-white/15 md:p-12">
+          <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 -z-10 size-96 rounded-full bg-[radial-gradient(circle,rgb(77_163_255/0.14),transparent_65%)]" />
+          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-20 -z-10 size-80 rounded-full bg-[radial-gradient(circle,rgb(18_101_216/0.18),transparent_65%)]" />
           <div className="mx-auto max-w-3xl py-4 text-center md:py-8">
             <h2 id="cta-title" className="text-h2 text-white md:text-h2-lg">{title ?? t("cta.title")}</h2>
             <p className="on-dark-muted mx-auto mt-4 max-w-xl md:text-body-lg">{t("cta.subtitle")}</p>

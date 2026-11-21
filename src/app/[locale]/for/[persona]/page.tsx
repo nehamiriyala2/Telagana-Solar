@@ -13,7 +13,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { SchemesSection } from "@/components/home/schemes-section";
 import { HowItWorks } from "@/components/home/how-it-works";
-import { FaqSection, FinalCta } from "@/components/home/home-sections";
+import { FaqSection } from "@/components/home/home-sections";
 import { PERSONA_ICONS } from "@/components/tools/persona-icons";
 import { PERSONAS, personaConfig, type Persona } from "@/config/personas";
 import { routing } from "@/i18n/routing";
@@ -81,7 +81,6 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
       <SchemesSection only={cfg.schemes} title={t("personaPage.schemesTitle")} premium />
       <HowItWorks premium />
       <FaqSection keys={cfg.faq} premium />
-      <FinalCta title={t("personaPage.ctaTitle")} defaultType={cfg.type} />
     </>
   );
 }

@@ -4,7 +4,6 @@ import { ArrowRight, CircleCheck, Landmark, MapPin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
-import { FinalCta } from "@/components/home/home-sections";
 import { SCHEME_ICONS } from "@/components/home/schemes-section";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BlurReveal, DrawLine, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
@@ -167,8 +166,6 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
           </BlurReveal>
         </div>
       </section>
-
-      <FinalCta />
     </>
   );
 }

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -8,36 +7,19 @@ import { pick } from "@/lib/utils";
 import { Logo } from "./logo";
 import { NAV, SOLUTIONS } from "./nav";
 
-const SOCIAL_LABELS: Record<keyof typeof site.social, string> = { facebook: "Facebook", instagram: "Instagram", youtube: "YouTube", linkedin: "LinkedIn" };
-
-/** Placeholder marker styled for the navy footer. */
-function EditDark({ label = "[EDIT]" }: { label?: string }) {
-  return <span className="rounded-md border border-dashed border-yellow/60 px-1.5 text-[0.75rem] font-semibold text-yellow">{label}</span>;
-}
-
-/** Deep-navy footer with the full logo, tagline and a faint Telangana map + Charminar watermark. */
+/** Deep-navy footer with the full logo, tagline and contact details. */
 export function Footer() {
   const t = useTranslations();
   const locale = useLocale();
-  const socials = (Object.keys(site.social) as (keyof typeof site.social)[]).filter((k) => site.social[k]);
   const head = "mb-4 font-heading text-caption font-bold uppercase tracking-wide text-yellow";
 
   return (
-    <footer className="relative isolate overflow-hidden bg-navy-glow pb-24 text-silver md:pb-0">
-      <Image src="/brand/outline-gold.webp" alt="" width={800} height={528} aria-hidden
-        className="pointer-events-none absolute -right-24 top-6 -z-10 w-[640px] max-w-none opacity-[0.07] md:w-[760px]" />
-
+    <footer className="relative isolate overflow-hidden bg-[#07173f] pb-24 text-silver md:pb-0">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Logo variant="footer" />
           <p className="mt-5 font-heading text-[1.0625rem] font-bold text-white">{t("footer.tagline")}</p>
           <p className="mt-3 max-w-sm text-caption text-silver/85">{t("footer.about")}</p>
-          <p className="mt-6 text-caption font-semibold text-white">{t("footer.follow")}</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {socials.length ? socials.map((k) => (
-              <li key={k}><a href={site.social[k]!} target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 px-3 py-1.5 text-caption text-white transition-colors hover:border-yellow hover:text-yellow">{SOCIAL_LABELS[k]}</a></li>
-            )) : <li><EditDark label="[EDIT] social links" /></li>}
-          </ul>
         </div>
 
         <nav aria-label={t("footer.quickLinks")} className="lg:col-span-2">
@@ -68,18 +50,42 @@ export function Footer() {
         <div className="lg:col-span-4">
           <h2 className={head}>{t("footer.contact")}</h2>
           <ul className="space-y-3 text-caption">
-            <li className="flex items-center gap-2"><Phone className="size-4 text-yellow" aria-hidden />{site.phone ? <a href={`tel:${site.phone}`} className="text-white hover:underline">{site.phone}</a> : <EditDark label="[EDIT] phone" />}</li>
-            <li className="flex items-center gap-2"><Mail className="size-4 text-yellow" aria-hidden />{site.email ? <a href={`mailto:${site.email}`} className="text-white hover:underline">{site.email}</a> : <EditDark label="[EDIT] email" />}</li>
-            <li className="flex items-start gap-2"><MapPin className="mt-0.5 size-4 text-yellow" aria-hidden />
-              <span>{site.address.street ? <span className="text-white">{site.address.street}, {site.address.city}, {site.address.region} {site.address.postalCode}</span> : <EditDark label="[EDIT] address" />}</span>
+            <li className="flex items-center gap-2">
+              <Phone className="size-4 shrink-0 text-yellow" aria-hidden />
+              <div className="flex flex-wrap items-center gap-2 text-white">
+                <a href={`tel:${(site.phone ?? "+91 75699 54054").replace(/\s+/g, "")}`} className="font-medium hover:text-yellow hover:underline transition-colors" title="Call us">
+                  {site.phone ?? "+91 75699 54054"}
+                </a>
+                <span className="text-silver/40">|</span>
+                <a href="https://wa.me/917569954054" target="_blank" rel="noopener noreferrer" className="font-medium text-[#25D366] hover:underline transition-colors" title="Chat on WhatsApp">
+                  WhatsApp
+                </a>
+              </div>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail className="size-4 shrink-0 text-yellow" aria-hidden />
+              <a href={`mailto:${site.email ?? "elevaitelabs@gmail.com"}`} className="text-white hover:text-yellow hover:underline transition-colors">
+                {site.email ?? "elevaitelabs@gmail.com"}
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-yellow" aria-hidden />
+              <span className="text-white">HITEC City, Hyderabad, Telangana, India</span>
             </li>
           </ul>
-          <h2 className={`${head} mt-8`}>{t("footer.districtsTitle")}</h2>
-          <p className="text-caption leading-relaxed text-silver/70">
-            {districts.map((d, i) => (
-              <span key={d.slug}>{i > 0 && " · "}<Link href={`/solar-installation/${d.slug}`} className="hover:text-yellow">{pick(d.name, locale)}</Link></span>
-            ))}
-          </p>
+
+          <div className="mt-6 pt-5 border-t border-white/10">
+            <p className="text-caption font-semibold text-white mb-2">{t("footer.follow")}</p>
+            <a
+              href="https://www.linkedin.com/company/elevaitelabs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-caption font-medium text-white transition-all hover:border-yellow hover:bg-white/10 hover:text-yellow"
+            >
+              <span>LinkedIn</span>
+              <span aria-hidden className="text-[0.7rem] text-yellow">↗</span>
+            </a>
+          </div>
         </div>
       </div>
 
