@@ -1,6 +1,3 @@
--- Telangana Solar: lead store.
--- Run in Supabase → SQL editor. The site writes with the SERVICE ROLE key from the
--- server only (never exposed to the browser), so RLS blocks all public access.
 
 create table if not exists public.leads (
   id uuid primary key,
