@@ -12,9 +12,9 @@ export const SCHEME_ICONS = { "pm-surya-ghar": Home, "pm-kusum": Droplets, "net-
 
 /** Per-scheme audience chip colour and benefit icon. */
 const STYLE: Record<string, { chip: string; Benefit: typeof Coins; benefitTone: string }> = {
-  "pm-surya-ghar": { chip: "text-primary", Benefit: Coins, benefitTone: "text-[#D9B978]" },
+  "pm-surya-ghar": { chip: "text-primary", Benefit: Coins, benefitTone: "text-[#F2994A]" },
   "pm-kusum": { chip: "text-green-ink", Benefit: Sprout, benefitTone: "text-green" },
-  "net-metering": { chip: "text-ink", Benefit: Zap, benefitTone: "text-[#D9B978]" },
+  "net-metering": { chip: "text-ink", Benefit: Zap, benefitTone: "text-[#F2994A]" },
   "state-schemes": { chip: "text-body", Benefit: FileText, benefitTone: "text-body" },
 };
 
@@ -27,7 +27,7 @@ export function SchemesSection({ only, title, premium = false }: { only?: string
   const t = useTranslations("schemes");
   const list = SCHEMES.filter((s) => !only || only.includes(s.slug));
   return (
-    <section className={cn("relative isolate overflow-hidden bg-[linear-gradient(180deg,#EEF0F8_0%,#EEF0F8_55%,#F1F4F8_100%)]", premium ? "py-16 md:py-24" : "section")} aria-labelledby="schemes-title">
+    <section className={cn("relative isolate overflow-hidden bg-[linear-gradient(180deg,#FDEBD6_0%,#FDEBD6_55%,#DCEAF7_100%)]", premium ? "py-16 md:py-24" : "section")} aria-labelledby="schemes-title">
       <span aria-hidden className="deco-blob deco-blob--blue -left-40 top-10 size-[24rem]" />
       <div className="container-page">
         <SectionHeading premium={premium} align="left" eyebrow={t("eyebrow")} title={title ?? t("title")} subtitle={t("subtitle")} />
@@ -48,14 +48,14 @@ export function SchemesSection({ only, title, premium = false }: { only?: string
                     </span>
                     <h3 className="mt-4 px-2 font-heading text-[1.1875rem] font-bold leading-snug text-ink">{t(`items.${s.slug}.name`)}</h3>
                     <dl className="mt-4 flex-1 space-y-2.5 px-1 text-[0.875rem]">
-                      <div className="flex gap-3 rounded-xl bg-[#FCFBF9] px-3.5 py-3">
+                      <div className="flex gap-3 rounded-xl bg-[#F1F6FC] px-3.5 py-3">
                         <UsersRound className="mt-0.5 size-5 shrink-0 text-ink" aria-hidden />
                         <span>
                           <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.1em] text-muted">{t("cardWho")}</dt>
                           <dd className="mt-1 text-ink">{t(`items.${s.slug}.cardWho`)}</dd>
                         </span>
                       </div>
-                      <div className="flex gap-3 rounded-xl bg-[#FCFBF9] px-3.5 py-3">
+                      <div className="flex gap-3 rounded-xl bg-[#F1F6FC] px-3.5 py-3">
                         <st.Benefit className={cn("mt-0.5 size-5 shrink-0", st.benefitTone)} aria-hidden />
                         <span>
                           <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.1em] text-muted">{t("cardBenefit")}</dt>

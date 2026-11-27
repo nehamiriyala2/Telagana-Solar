@@ -39,7 +39,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
               <Reveal key={s} delay={i * 0.06}>
                 <li className="relative flex items-center gap-5 pb-5 last:pb-0">
                   <span className="relative z-10 grid size-7 shrink-0 place-items-center rounded-full bg-primary font-heading text-[0.8125rem] font-bold text-white ring-4 ring-cloud">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="flex flex-1 items-center gap-4 rounded-[1.25rem] border border-card-line bg-white p-2.5 pr-5 shadow-[0_10px_30px_rgb(41_52_64/0.10)] transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-primary/40">
+                  <div className="flex flex-1 items-center gap-4 rounded-[1.25rem] border border-card-line bg-white p-2.5 pr-5 shadow-[0_10px_30px_rgb(28_47_71/0.10)] transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-primary/40">
                     <PhotoTile src={UI_IMAGES.subsidySteps[s]} alt="" className="size-[72px] shrink-0 rounded-xl bg-tint-ice" />
                     <div className="min-w-0">
                       <h3 className="font-heading text-[1.125rem] font-bold text-ink">{t(`${s}.title`)}</h3>
@@ -56,7 +56,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
       {/* EMI */}
       <section className="tone tone-blue pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
-        <Wave color="#FCFBF9" position="top" />
+        <Wave color="#F1F6FC" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={t("emiTitle")} subtitle={t("emiSubtitle")} />
           <Reveal className="rounded-[1.25rem] bg-white p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.55)] ring-1 ring-white/40 md:p-6"><EmiCalculator /></Reveal>
@@ -80,7 +80,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
               ))}
             </ul>
           </div>
-          <div className="rounded-[1.25rem] bg-[#FCFBF9] p-6 text-ink shadow-[0_40px_80px_-40px_rgb(0_0_0/0.6)] md:p-9">
+          <div className="rounded-[1.25rem] bg-[#F1F6FC] p-6 text-ink shadow-[0_40px_80px_-40px_rgb(0_0_0/0.6)] md:p-9">
             <SectionTitle title={t("docsTitle")} className="mb-6 md:mb-6" />
             <ul className="grid gap-3">
               {(["d1", "d2", "d3", "d4", "d5"] as const).map((k, i) => (

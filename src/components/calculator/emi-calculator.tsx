@@ -42,7 +42,7 @@ export function EmiCalculator() {
 
         <p className="mb-3 mt-8 text-base font-semibold text-ink md:text-[1.0625rem]">{t("tenure")}</p>
         <ChoiceChips label={t("tenure")} layoutId="emi-tenure" value={years} onChange={setYears}
-          className="grid w-full grid-cols-2 gap-1.5 rounded-xl border-[#536376]/15 bg-[#F1F4F8] p-1.5 sm:grid-cols-4 [&_button]:min-h-12 [&_button]:px-4 [&_button]:text-base [&_button]:font-semibold md:[&_button]:min-h-14 md:[&_button]:text-[1.0625rem]"
+          className="grid w-full grid-cols-2 gap-1.5 rounded-xl border-[#245A96]/15 bg-[#DCEAF7] p-1.5 sm:grid-cols-4 [&_button]:min-h-12 [&_button]:px-4 [&_button]:text-base [&_button]:font-semibold md:[&_button]:min-h-14 md:[&_button]:text-[1.0625rem]"
           options={L.tenuresYears.map((y) => ({ value: String(y), label: tc("years", { count: y }) }))} />
 
         <dl className="mt-8 overflow-hidden rounded-xl border border-line bg-white">
@@ -54,21 +54,21 @@ export function EmiCalculator() {
       </div>
 
       {/* Result */}
-      <div className="relative flex flex-col justify-center overflow-hidden rounded-[1.25rem] bg-[#FCFBF9] p-6 ring-1 ring-[#64758A]/30 sm:p-8 lg:col-span-5 lg:p-10">
+      <div className="relative flex flex-col justify-center overflow-hidden rounded-[1.25rem] bg-[#F1F6FC] p-6 ring-1 ring-[#2B6CB0]/30 sm:p-8 lg:col-span-5 lg:p-10">
         <span aria-hidden className="absolute inset-x-0 top-0 h-1.5 bg-gold" />
         <p className="text-base font-semibold text-ink md:text-[1.0625rem]">{t("emi")}</p>
         <p className="mt-2 font-heading text-[3rem] font-extrabold leading-none tracking-[-0.03em] text-ink tabular-nums md:text-[4rem]">
-          <CountUp value={monthly} format={formatINR} duration={0.4} /><span className="ml-1 text-base font-bold text-[#293440] md:text-lg">{tc("perMonth")}</span>
+          <CountUp value={monthly} format={formatINR} duration={0.4} /><span className="ml-1 text-base font-bold text-[#1C2F47] md:text-lg">{tc("perMonth")}</span>
         </p>
 
-        <div className="mt-8 rounded-2xl bg-white/80 p-5 shadow-[0_10px_30px_-20px_rgb(41_52_64/0.35)]">
+        <div className="mt-8 rounded-2xl bg-white/80 p-5 shadow-[0_10px_30px_-20px_rgb(28_47_71/0.35)]">
           <p className="text-base font-semibold text-ink">{t("saving")}</p>
           <p className="mt-1 font-heading text-[2rem] font-extrabold leading-tight text-leaf-ink tabular-nums md:text-[2.5rem]"><CountUp value={r.monthlySaving} format={formatINR} duration={0.4} /></p>
           <Progress value={covered / 100} className="mt-4 h-4" label={t("emiCovered", { percent: covered })} />
           <p className="mt-3 text-base font-bold text-ink">{t("emiCovered", { percent: covered })}</p>
         </div>
 
-        <p className="mt-6 text-caption leading-relaxed text-[#293440]">{t("emiNote")} {tc("estimatesNote")}</p>
+        <p className="mt-6 text-caption leading-relaxed text-[#1C2F47]">{t("emiNote")} {tc("estimatesNote")}</p>
       </div>
     </Card>
   );
@@ -76,8 +76,8 @@ export function EmiCalculator() {
 
 function Row({ k, v, strong }: { k: string; v: string; strong?: boolean }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-line px-5 py-4 last:border-0 odd:bg-[#F1F4F8]">
-      <dt className="text-base text-[#293440]">{k}</dt>
+    <div className="flex items-baseline justify-between gap-4 border-b border-line px-5 py-4 last:border-0 odd:bg-[#DCEAF7]">
+      <dt className="text-base text-[#1C2F47]">{k}</dt>
       <dd className={strong ? "text-lg font-extrabold text-ink tabular-nums md:text-xl" : "text-base font-bold text-ink tabular-nums md:text-lg"}>{v}</dd>
     </div>
   );

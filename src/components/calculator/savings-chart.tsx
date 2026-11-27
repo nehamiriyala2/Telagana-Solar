@@ -29,12 +29,12 @@ export function SavingsChart({ data }: { data: YearPoint[] }) {
               </linearGradient>
             </defs>
             <CartesianGrid vertical={false} stroke="var(--chart-grid)" />
-            <XAxis dataKey="year" tickLine={false} axisLine={false} tick={{ fill: "#293440", fontSize: 12 }} interval={4} />
-            <YAxis tickLine={false} axisLine={false} width={58} tick={{ fill: "#293440", fontSize: 12 }} tickFormatter={(v: number) => formatLakh(v)} />
-            <ReferenceLine y={0} stroke="#293440" strokeOpacity={0.4} />
+            <XAxis dataKey="year" tickLine={false} axisLine={false} tick={{ fill: "#1C2F47", fontSize: 12 }} interval={4} />
+            <YAxis tickLine={false} axisLine={false} width={58} tick={{ fill: "#1C2F47", fontSize: 12 }} tickFormatter={(v: number) => formatLakh(v)} />
+            <ReferenceLine y={0} stroke="#1C2F47" strokeOpacity={0.4} />
             <Tooltip
-              cursor={{ stroke: "#293440", strokeDasharray: "3 3" }}
-              contentStyle={{ background: "#FFFFFF", border: "1px solid #E8E8E6", borderRadius: 14, boxShadow: "0 12px 30px -12px rgb(41 52 64 / .25)", color: "#64758A" }}
+              cursor={{ stroke: "#1C2F47", strokeDasharray: "3 3" }}
+              contentStyle={{ background: "#FFFFFF", border: "1px solid #D5E2F0", borderRadius: 14, boxShadow: "0 12px 30px -12px rgb(28 47 71 / .25)", color: "#2B6CB0" }}
               labelFormatter={(y) => t("chartYear", { year: Number(y) })}
               formatter={(v, name) => [formatINR(Number(v)), name === "cumulative" ? t("chartSaved") : t("chartNet")]}
             />

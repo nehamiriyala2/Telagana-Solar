@@ -83,27 +83,27 @@ export function SolarOrbit() {
         .orbit3d__upright { transform: rotateX(calc(-1 * var(--tilt))); }
         .orbit3d__item { position: absolute; left: 0; bottom: 0; translate: -50% 0; display: flex; flex-direction: column; align-items: center; gap: .4rem; }
         .orbit3d__thumb { display: block; width: clamp(5.5rem, 10.5vw, 9.5rem); aspect-ratio: 16 / 10; overflow: hidden; border-radius: 1rem;
-          border: 3px solid rgb(255 255 255 / 0.95); box-shadow: 0 18px 34px -16px rgb(41 52 64 / 0.55), 0 0 0 1px rgb(100 117 138 / 0.35);
+          border: 3px solid rgb(255 255 255 / 0.95); box-shadow: 0 18px 34px -16px rgb(28 47 71 / 0.55), 0 0 0 1px rgb(43 108 176 / 0.35);
           transition: scale .5s var(--ease-out-soft), box-shadow .5s; }
-        .orbit3d__item:hover .orbit3d__thumb { scale: 1.08; box-shadow: 0 24px 44px -16px rgb(41 52 64 / 0.6), 0 0 0 2px #64758A, 0 0 30px -6px rgb(100 117 138 / 0.7); }
+        .orbit3d__item:hover .orbit3d__thumb { scale: 1.08; box-shadow: 0 24px 44px -16px rgb(28 47 71 / 0.6), 0 0 0 2px #2B6CB0, 0 0 30px -6px rgb(43 108 176 / 0.7); }
         .orbit3d__label { width: max-content; max-width: 10.5rem; padding: .25rem .65rem; border-radius: .8rem; background: rgb(255 255 255 / 0.82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-          border: 1px solid rgb(255 255 255 / 0.9); box-shadow: 0 6px 16px -10px rgb(41 52 64 / 0.5);
-          font: 700 clamp(.625rem, 1vw, .75rem)/1.25 var(--font-jakarta), var(--font-telugu), sans-serif; color: #64758A; text-align: center; text-wrap: balance; }
+          border: 1px solid rgb(255 255 255 / 0.9); box-shadow: 0 6px 16px -10px rgb(28 47 71 / 0.5);
+          font: 700 clamp(.625rem, 1vw, .75rem)/1.25 var(--font-jakarta), var(--font-telugu), sans-serif; color: #2B6CB0; text-align: center; text-wrap: balance; }
         .orbit3d__path { fill: none; stroke: rgb(30 64 175 / 0.22); stroke-width: .25; stroke-dasharray: 1 1.2; vector-effect: non-scaling-stroke; }
-        .orbit3d__path--inner { stroke: rgb(100 117 138 / 0.30); stroke-dasharray: none; }
-        .orbit3d__ray { stroke: #64758A; stroke-width: 2.6; vector-effect: non-scaling-stroke; stroke-linecap: round; shape-rendering: geometricPrecision; }
-        .orbit3d__pulse { stroke: #EEF0F8; stroke-width: .9; stroke-linecap: round; stroke-dasharray: 6 94; animation: orbitPulse 2.4s linear infinite; }
-        .orbit3d__node { fill: #64758A; stroke: #fff; stroke-width: .5; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 2px rgb(100 117 138 / 0.9)); }
+        .orbit3d__path--inner { stroke: rgb(43 108 176 / 0.30); stroke-dasharray: none; }
+        .orbit3d__ray { stroke: #2B6CB0; stroke-width: 2.6; vector-effect: non-scaling-stroke; stroke-linecap: round; shape-rendering: geometricPrecision; }
+        .orbit3d__pulse { stroke: #FDEBD6; stroke-width: .9; stroke-linecap: round; stroke-dasharray: 6 94; animation: orbitPulse 2.4s linear infinite; }
+        .orbit3d__node { fill: #2B6CB0; stroke: #fff; stroke-width: .5; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 2px rgb(43 108 176 / 0.9)); }
         @keyframes orbitPulse { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -100; } }
         .orbit3d__sun { position: absolute; left: 50%; top: 54%; width: clamp(4.75rem, 9vw, 7.5rem); aspect-ratio: 1; translate: -50% -50%; border-radius: 999px;
-          background: radial-gradient(circle at 38% 34%, #FCFBF9 0%, #64758A 22%, #64758A 48%, #64758A 72%, #64758A 100%);
-          box-shadow: 0 0 0 10px rgb(100 117 138 / 0.12), 0 0 50px 14px rgb(100 117 138 / 0.45), 0 0 120px 40px rgb(100 117 138 / 0.28), inset -8px -10px 24px rgb(100 117 138 / 0.3);
+          background: radial-gradient(circle at 38% 34%, #F1F6FC 0%, #2B6CB0 22%, #2B6CB0 48%, #2B6CB0 72%, #2B6CB0 100%);
+          box-shadow: 0 0 0 10px rgb(43 108 176 / 0.12), 0 0 50px 14px rgb(43 108 176 / 0.45), 0 0 120px 40px rgb(43 108 176 / 0.28), inset -8px -10px 24px rgb(43 108 176 / 0.3);
           animation: sunBreath 6s ease-in-out infinite; }
         .orbit3d__core { position: absolute; inset: 18%; border-radius: 999px; background: radial-gradient(circle at 40% 35%, rgb(255 255 255 / 0.85), transparent 60%); mix-blend-mode: screen; }
         @keyframes sunBreath { 0%, 100% { scale: 1; } 50% { scale: 1.05; } }
         .orbit3d-wrap { --d: clamp(17rem, 60vw, 46rem); }
         .orbit3d__beams { position: absolute; z-index: 0; left: 50%; top: 54%; width: calc(var(--d) * 1.15); aspect-ratio: 1; translate: -50% -50%; border-radius: 999px; pointer-events: none;
-          background: repeating-conic-gradient(from 0deg, rgb(100 117 138 / 0.16) 0deg 2deg, transparent 2deg 12deg);
+          background: repeating-conic-gradient(from 0deg, rgb(43 108 176 / 0.16) 0deg 2deg, transparent 2deg 12deg);
           -webkit-mask-image: radial-gradient(circle, #000 6%, transparent 55%); mask-image: radial-gradient(circle, #000 6%, transparent 55%);
           animation: tsRays 120s linear infinite reverse; }
         .orbit3d:hover .orbit3d__spin, .orbit3d:hover .orbit3d__counter { animation-play-state: paused; }

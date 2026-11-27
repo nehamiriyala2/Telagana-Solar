@@ -33,7 +33,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <TrustStrip />
       <Solar60 />
       <WhoAreYou />
-      <HowItWorks premium />
+      <HowItWorks premium dark />
       <SchemesSection premium />
       <KnowBefore />
       <FaqSection keys={faqKeys} premium />

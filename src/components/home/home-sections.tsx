@@ -33,7 +33,7 @@ export function SubsidyBand() {
   return (
     <section className="container-page py-6" aria-labelledby="sub-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#EEF0F8] px-6 py-12 md:px-14 md:py-16">
+        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#FDEBD6] px-6 py-12 md:px-14 md:py-16">
           <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-80 animate-glow rounded-full bg-transparent" />
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div className="max-w-2xl">
@@ -89,7 +89,7 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
               <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={title ?? t("title")} className="mb-6" />
-              <div className="rounded-[1.25rem] border border-[#E8E8E6] bg-wash-green p-6">
+              <div className="rounded-[1.25rem] border border-[#F8D9B5] bg-wash-green p-6">
                 <p className="text-[0.9375rem] text-body">{tc("askWhatsapp")}</p>
                 <WhatsAppButton place="faq-card" className="mt-4 w-full" label={tc("askOnWhatsapp")} message={tc("askMessage")} />
               </div>

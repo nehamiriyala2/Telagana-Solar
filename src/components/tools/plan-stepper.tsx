@@ -65,7 +65,7 @@ export function PlanStepper() {
           return (
             <li key={i} className="relative flex flex-col items-center gap-2 text-center" aria-current={on ? "step" : undefined}>
               <span className={cn("relative z-10 grid size-11 place-items-center rounded-full font-heading font-extrabold ring-4 ring-white transition-colors duration-500",
-                done ? "bg-leaf text-white" : on ? "icon-sun" : "bg-[#F1F4F8] text-muted")}>
+                done ? "bg-leaf text-white" : on ? "icon-sun" : "bg-[#DCEAF7] text-muted")}>
                 {done ? <Check className="size-5" aria-hidden /> : i + 1}
               </span>
               <span className={cn("text-[0.75rem] font-semibold sm:text-caption", on ? "text-ink" : "text-muted")}>{L(label)}</span>
@@ -74,7 +74,7 @@ export function PlanStepper() {
         })}
       </ol>
 
-      <div className="overflow-hidden rounded-[1.25rem] border border-white bg-white/85 shadow-[0_40px_90px_-50px_rgb(41_52_64/0.45)] backdrop-blur-xl">
+      <div className="overflow-hidden rounded-[1.25rem] border border-white bg-white/85 shadow-[0_40px_90px_-50px_rgb(28_47_71/0.45)] backdrop-blur-xl">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div key={step} className="p-6 md:p-10"
             initial={reduce ? { opacity: 0 } : { opacity: 0, x: dir * 40 }} animate={{ opacity: 1, x: 0 }} exit={reduce ? { opacity: 0 } : { opacity: 0, x: dir * -40 }} transition={{ duration: 0.4, ease: EASE }}>
@@ -101,7 +101,7 @@ export function PlanStepper() {
               <div>
                 <h2 className="mb-6 font-heading text-[1.5rem] font-extrabold tracking-[-0.02em] text-ink md:text-[2rem]">{t("guide.q2")}</h2>
                 <div className="grid gap-8 lg:grid-cols-2">
-                  <div className="rounded-[1.25rem] bg-[#FCFBF9] p-6 ring-1 ring-gold/20">
+                  <div className="rounded-[1.25rem] bg-[#F1F6FC] p-6 ring-1 ring-gold/20">
                     <label htmlFor="p-bill" className="text-caption font-semibold text-muted">{t("guide.billLabel")}</label>
                     <p className="font-heading text-[3rem] font-extrabold leading-tight tracking-[-0.03em] text-ink" aria-live="polite">{formatINR(bill)}</p>
                     <Slider id="p-bill" className="mt-3" value={[Math.min(bill, 50000)]} min={C.billRange.min} max={persona && ["shop", "factory", "institution"].includes(persona) ? 50000 : 20000} step={100} onValueChange={([v]) => setBill(v)} aria-label={t("guide.billLabel")} />
@@ -176,7 +176,7 @@ export function PlanStepper() {
                 </div>
                 <p className="text-[0.75rem] text-muted">{t("guide.note")} {t("common.subsidyNote")}</p>
 
-                <div className="rounded-[1.25rem] border border-line bg-[#F1F4F8] p-5 md:p-7">
+                <div className="rounded-[1.25rem] border border-line bg-[#DCEAF7] p-5 md:p-7">
                   <h3 className="mb-4 font-heading text-[1.25rem] font-bold text-ink">{t("guide.callbackTitle")}</h3>
                   <LeadForm kind="plan_request" fields={{ location: !district, propertyType: false }} defaultPropertyType={plan.calc.type} calc={planSummary(plan)}
                     presetLocation={district || undefined} note={`persona=${persona}; area=${area ?? "-"}; type=${plan.type}; source=plan-page`} wide />

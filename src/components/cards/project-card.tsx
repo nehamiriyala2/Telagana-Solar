@@ -14,7 +14,7 @@ export function ProjectCard({ p }: { p: Project }) {
   const place = [p.locality, d ? pick(d.name, locale) : null].filter(Boolean).join(", ");
   return (
     <article className="group h-full overflow-hidden rounded-card border border-line bg-white shadow-soft transition-[transform,box-shadow] duration-500 ease-out-soft hover:-translate-y-1 hover:shadow-lift">
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#F1F4F8]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#DCEAF7]">
         {p.photo ? (
           <Image src={p.photo} alt={`${t(`types.${p.type}.name`)} solar project${place ? `, ${place}` : ""}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
         ) : (

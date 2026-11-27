@@ -18,7 +18,7 @@ export default function NotFound() {
   return (
     <section className="relative isolate grid min-h-[78svh] place-items-center overflow-hidden bg-cloud py-16">
       <div className="container-page text-center">
-        <span aria-hidden className="mx-auto mb-8 block size-20 rounded-full border border-gold/60 bg-gold-soft shadow-[0_0_0_10px_rgb(100_117_138/0.08)]" />
+        <span aria-hidden className="mx-auto mb-8 block size-20 rounded-full border border-gold/60 bg-gold-soft shadow-[0_0_0_10px_rgb(43_108_176/0.08)]" />
         <p className="font-heading text-[clamp(4rem,14vw,9rem)] font-semibold leading-none tracking-[-0.02em] text-ink/10">404</p>
         <DisplayTitle text={t("notFound.title")} emphasis={pick(titleEmphasis.notFound, locale)} size="lg" className="-mt-6 md:-mt-10" />
         <p className="mx-auto mt-5 max-w-md animate-rise text-muted md:text-body-lg" style={{ animationDelay: "0.3s" }}>{t("notFound.body")}</p>

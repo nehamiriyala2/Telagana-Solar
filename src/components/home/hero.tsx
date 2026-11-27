@@ -30,7 +30,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="site-dots relative isolate overflow-hidden bg-[linear-gradient(180deg,#EEF0F8_0%,#EEF0F8_55%,#F1F4F8_100%)]" aria-labelledby="hero-title">
+    <section className="site-dots relative isolate overflow-hidden bg-[linear-gradient(180deg,#FDEBD6_0%,#FDEBD6_55%,#DCEAF7_100%)]" aria-labelledby="hero-title">
       <span aria-hidden className="deco-blob deco-blob--blue -left-40 top-10 size-[28rem]" />
       <span aria-hidden className="deco-blob deco-blob--green -right-32 bottom-0 size-[26rem]" />
       <div className="container-page grid items-center gap-14 pb-20 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-28 lg:pt-20">
@@ -60,7 +60,7 @@ export function Hero() {
           <HeroMedia alt={t("hero.imageAlt")} />
           {/* Floating plan card over the photo's bottom-left corner */}
           <aside aria-labelledby="hero-card-title"
-            className="relative mt-4 rounded-[1.25rem] border border-card-line bg-white p-5 shadow-[0_20px_50px_-20px_rgb(41_52_64/0.35)] lg:mt-5">
+            className="relative mx-4 -mt-16 rounded-[1.25rem] border border-card-line bg-white p-5 shadow-[0_20px_50px_-20px_rgb(28_47_71/0.35)] sm:mx-auto sm:max-w-md lg:absolute lg:-bottom-16 lg:-left-14 lg:mx-0 lg:mt-0 lg:w-[24rem]">
             <h2 id="hero-card-title" className="font-heading text-[1.0625rem] font-bold text-ink">{t("hero.cardTitle")}</h2>
             <p className="mt-0.5 text-[0.75rem] font-medium text-muted">{t("hero.cardExample", { bill: formatINR(EXAMPLE_BILL) })}</p>
             <dl className="mt-4 grid grid-cols-2 gap-3">
