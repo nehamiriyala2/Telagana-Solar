@@ -1,44 +1,37 @@
 import type { LucideIcon } from "lucide-react";
 import { Stagger, StaggerItem } from "@/components/motion/primitives";
-import { cn } from "@/lib/utils";
 import { PhotoTile } from "@/components/ui/photo-tile";
+import { cn } from "@/lib/utils";
 
 export type BentoTone = "navy" | "blue" | "gold" | "green" | "cream" | "mint" | "white";
-const DARK: BentoTone[] = ["navy", "blue", "green"];
 
 /**
- * Bento grid of mixed-colour cards with a big faded number in each, so a list of benefits/values reads as
- * a composition rather than identical boxes. The first card is wide (spans two columns) on large screens.
- * `tones` sets the colour sequence; text colours follow each card's tone.
+ * Benefit cards (solution pages): white card, large rounded photo on top, a big faded number in the corner,
+ * then title and description. Without a photo the card shows the icon in a blue-tint tile instead.
+ * `tones` is kept for compatibility (all cards now share the clean white style).
  */
-export function Bento({ items, tones = ["navy", "gold", "mint", "blue"], className }: {
+export function Bento({ items, className }: {
   items: { title: string; desc: string; Icon: LucideIcon; photo?: string }[]; tones?: BentoTone[]; className?: string;
 }) {
   return (
-    <Stagger className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-4", className)}>
-      {items.map(({ title, desc, Icon, photo }, i) => {
-        const tone = tones[i % tones.length];
-        const dark = DARK.includes(tone);
-        return (
-          <StaggerItem key={i} className={cn("list-none", i === 0 && items.length % 2 === 1 ? "lg:col-span-2" : "", i === 0 && items.length === 4 && "lg:row-span-1")}>
-            <div className={cn("bento-card flex h-full min-h-[13rem] flex-col justify-between", `bento-${tone}`)}>
-              <span aria-hidden className="bento-num">{String(i + 1).padStart(2, "0")}</span>
-              {photo ? (
-                <PhotoTile src={photo} alt="" className={cn("float-soft size-20 rounded-2xl shadow-[0_14px_28px_-14px_rgb(15_47_107/0.6)] ring-[3px]", dark ? "bg-white/15 text-white ring-white/40" : tone === "gold" ? "bg-white/60 text-[#1D4ED8] ring-white/80" : "icon-primary-hover ring-white")}
-                  style={{ animationDelay: `${i * -1.3}s` }} fallback={<Icon className="size-8" strokeWidth={1.7} aria-hidden />} />
-              ) : (
-                <span className={cn("float-soft grid size-12 place-items-center rounded-2xl", dark ? "bg-white/15 text-white ring-1 ring-white/25" : tone === "gold" ? "bg-white/60 text-[#1D4ED8]" : "icon-primary-hover")} style={{ animationDelay: `${i * -1.3}s` }}>
-                  <Icon className="size-6" strokeWidth={1.7} aria-hidden />
-                </span>
-              )}
-              <div className="mt-6">
-                <h3 className="font-heading text-[1.25rem] font-extrabold leading-tight tracking-[-0.02em]">{title}</h3>
-                <p className={cn("mt-2 text-caption", dark ? "text-white/80" : "text-[#475569]")}>{desc}</p>
-              </div>
+    <Stagger className={cn("grid gap-5 sm:grid-cols-2 lg:grid-cols-4", className)}>
+      {items.map(({ title, desc, Icon, photo }, i) => (
+        <StaggerItem key={i} className="list-none">
+          <div className="card-premium relative flex h-full flex-col overflow-hidden p-4">
+            <span aria-hidden className="pointer-events-none absolute right-4 top-2 z-0 font-heading text-[3.5rem] font-extrabold leading-none text-tint-mist">{String(i + 1).padStart(2, "0")}</span>
+            {photo ? (
+              <PhotoTile src={photo} alt="" className="relative z-10 mt-6 aspect-[5/4] w-full rounded-2xl bg-tint-ice text-primary"
+                fallback={<Icon className="size-10" strokeWidth={1.5} aria-hidden />} />
+            ) : (
+              <span className="relative z-10 mt-6 grid size-14 place-items-center rounded-2xl bg-tint-ice text-primary"><Icon className="size-7" strokeWidth={1.6} aria-hidden /></span>
+            )}
+            <div className="relative z-10 mt-5 px-1 pb-1">
+              <h3 className="font-heading text-[1.1875rem] font-bold leading-snug text-ink">{title}</h3>
+              <p className="mt-2 text-[0.9375rem] text-body">{desc}</p>
             </div>
-          </StaggerItem>
-        );
-      })}
+          </div>
+        </StaggerItem>
+      ))}
     </Stagger>
   );
 }

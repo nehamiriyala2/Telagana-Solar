@@ -4,6 +4,8 @@ import { ArrowRight, CircleCheck, Landmark, MapPin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
+import { PhotoTile } from "@/components/ui/photo-tile";
+import { UI_IMAGES } from "@/data/section-photos";
 import { SCHEME_ICONS } from "@/components/home/schemes-section";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BlurReveal, DrawLine, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
@@ -75,19 +77,21 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
               return (
                 <StaggerItem key={s.slug} className="list-none">
                   <TiltCard max={5} className="h-full rounded-[1.25rem]">
-                    <Link href={`/schemes/${s.slug}`} className="group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-7 shadow-[0_24px_50px_-34px_rgb(15_47_107/0.35)] transition-[border-color,box-shadow] duration-500 hover:border-gold/50 hover:shadow-[0_34px_70px_-34px_rgb(15_47_107/0.45)] md:p-9">
-                      <span aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full bg-transparent transition-transform duration-700 group-hover:scale-125" />
-                      <span className="relative flex items-center justify-between gap-3">
-                        <span className="icon-sun grid size-14 place-items-center rounded-2xl"><Icon className="size-7" aria-hidden /></span>
-                        <span className="rounded-full bg-[#EEF3FA] px-3 py-1 text-caption font-bold text-primary-hover">{t(`items.${s.slug}.tag`)}</span>
+                    <Link href={`/schemes/${s.slug}`} className="zoom-frame group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-3 shadow-[0_10px_30px_rgb(15_47_107/0.10)] transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_22px_46px_rgb(15_47_107/0.16)]">
+                      <span className="relative block overflow-hidden rounded-2xl">
+                        <PhotoTile src={UI_IMAGES.schemesPage[s.slug as keyof typeof UI_IMAGES.schemesPage]} alt="" className="zoom-img aspect-[21/9] w-full bg-tint-ice text-primary" fallback={<Icon className="size-10" aria-hidden />} />
+                        <span className="absolute left-3 top-3 grid size-14 place-items-center rounded-2xl bg-white/95 text-green-text shadow-sm"><Icon className="size-7" aria-hidden /></span>
+                        <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1.5 text-caption font-bold text-primary shadow-sm">{t(`items.${s.slug}.tag`)}</span>
                       </span>
-                      <h2 className="relative mt-6 font-heading text-[1.625rem] font-extrabold leading-tight tracking-[-0.02em] text-ink md:text-[2rem]">{t(`items.${s.slug}.name`)}</h2>
+                      <div className="flex flex-1 flex-col px-4 pb-4 md:px-6 md:pb-6">
+                      <h2 className="relative mt-5 font-heading text-[1.625rem] font-extrabold leading-tight tracking-[-0.02em] text-ink md:text-[2rem]">{t(`items.${s.slug}.name`)}</h2>
                       <p className="relative mt-2 text-muted">{t(`items.${s.slug}.short`)}</p>
                       <dl className="relative mt-6 grid gap-3 sm:grid-cols-2">
                         <div className="rounded-2xl bg-[#EEF3FA] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary-hover">{t("cardWho")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardWho`)}</dd></div>
-                        <div className="rounded-2xl bg-[#F5F8FC] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-gold-ink">{t("cardBenefit")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardBenefit`)}</dd></div>
+                        <div className="rounded-2xl bg-[#EEF3FA] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary">{t("cardBenefit")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardBenefit`)}</dd></div>
                       </dl>
-                      <span className="relative mt-auto flex items-center gap-2 pt-6 font-semibold text-primary-hover">{t("learnMore")}<ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></span>
+                      <span className="relative mt-auto flex items-center gap-2 pt-6 font-semibold text-primary">{t("learnMore")}<ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></span>
+                      </div>
                     </Link>
                   </TiltCard>
                 </StaggerItem>

@@ -3,6 +3,8 @@ import { ArrowRight, BadgeCheck, Gauge, Headset, Ruler, ShieldCheck, Sun, Zap } 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { GuideTrigger } from "@/components/tools/triggers";
+import { PhotoTile } from "@/components/ui/photo-tile";
+import { UI_IMAGES } from "@/data/section-photos";
 
 const ITEMS = [
   { key: "k1", Icon: Ruler },
@@ -26,13 +28,13 @@ export function KnowBefore() {
         <ol className="grid gap-4 md:grid-cols-2">
           {ITEMS.map(({ key, Icon }, i) => (
             <Reveal key={key} delay={(i % 2) * 0.06} className="h-full">
-              <li className="card-premium flex h-full list-none items-start gap-4 p-5">
-                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary font-heading text-[1rem] font-bold text-white tabular-nums">{i + 1}</span>
+              <li className="card-premium flex h-full list-none items-center gap-4 p-4 pl-5">
+                <span className="grid size-10 shrink-0 self-start place-items-center rounded-full bg-primary font-heading text-[1rem] font-bold text-white tabular-nums">{i + 1}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`${key}.title`)}</span>
                   <span className="mt-1 block text-[0.9375rem] text-body">{t(`${key}.desc`)}</span>
                 </span>
-                <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-xl bg-tint-ice text-primary"><Icon className="size-[1.125rem]" /></span>
+                <PhotoTile src={UI_IMAGES.checklist[key]} alt="" className="h-20 w-24 shrink-0 rounded-xl bg-tint-ice text-primary sm:h-24 sm:w-32" fallback={<Icon className="size-6" aria-hidden />} />
               </li>
             </Reveal>
           ))}

@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BadgeIndianRupee, Banknote, CalendarClock, FileText, Landmark } from "lucide-react";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
+import { PhotoTile } from "@/components/ui/photo-tile";
+import { UI_IMAGES } from "@/data/section-photos";
 import { BlurReveal as Reveal, DrawLine } from "@/components/motion/primitives";
 import { titleEmphasis } from "@/data/pages";
 import { pick } from "@/lib/utils";
@@ -32,14 +34,17 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5"><SectionTitle index="01" title={t("stepsTitle")} subtitle={tc("subsidyNote")} className="lg:sticky lg:top-28" /></div>
           <ol className="relative lg:col-span-7">
-            <DrawLine className="absolute bottom-6 left-[26px] top-6 w-1 rounded-full bg-gold/70" />
+            <DrawLine className="absolute bottom-6 left-[26px] top-6 w-1 rounded-full bg-primary/60" />
             {(["s1", "s2", "s3", "s4", "s5", "s6"] as const).map((s, i) => (
               <Reveal key={s} delay={i * 0.06}>
-                <li className="relative flex gap-5 pb-8 last:pb-0">
-                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl bg-primary font-heading text-h4 font-extrabold text-[#1D4ED8] ring-8 ring-[#F5F8FC]">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="flex-1 rounded-[1.25rem] border border-[#1D4ED8]/25 bg-white p-5 shadow-[0_18px_40px_-30px_rgb(15_47_107/0.35)] transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-[#1D4ED8]/60">
-                    <h3 className="font-heading text-[1.125rem] font-bold text-ink">{t(`${s}.title`)}</h3>
-                    <p className="mt-1 text-caption text-muted">{t(`${s}.desc`)}</p>
+                <li className="relative flex items-center gap-5 pb-5 last:pb-0">
+                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-full bg-primary font-heading text-[1.125rem] font-extrabold text-white ring-8 ring-cloud">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="flex flex-1 items-center gap-4 rounded-[1.25rem] border border-card-line bg-white p-2.5 pr-5 shadow-[0_10px_30px_rgb(15_47_107/0.10)] transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-primary/40">
+                    <PhotoTile src={UI_IMAGES.subsidySteps[s]} alt="" className="aspect-[16/9] w-28 shrink-0 rounded-xl bg-tint-ice sm:w-44" />
+                    <div className="min-w-0">
+                      <h3 className="font-heading text-[1.125rem] font-bold text-ink">{t(`${s}.title`)}</h3>
+                      <p className="mt-1 text-[0.9375rem] text-body">{t(`${s}.desc`)}</p>
+                    </div>
                   </div>
                 </li>
               </Reveal>
@@ -67,8 +72,8 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
             <ul className="space-y-4">
               {([["l1", Banknote], ["l2", Landmark], ["l3", CalendarClock]] as const).map(([k, Icon], i) => (
                 <Reveal key={k} delay={i * 0.06}>
-                  <li className="card-dark-glass flex gap-4 p-5">
-                    <span className="float-soft grid size-12 shrink-0 place-items-center rounded-2xl bg-gold text-ink"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
+                  <li className="card-dark-glass flex items-center gap-5 p-4">
+                    <PhotoTile src={UI_IMAGES.pay[k]} alt="" className="size-20 shrink-0 rounded-xl bg-white/10 text-white" fallback={<Icon className="size-7" strokeWidth={1.6} aria-hidden />} />
                     <div><h3 className="font-heading font-bold text-white">{t(`${k}.title`)}</h3><p className="on-dark-muted mt-1 text-caption">{t(`${k}.desc`)}</p></div>
                   </li>
                 </Reveal>
@@ -80,7 +85,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
             <ul className="grid gap-3">
               {(["d1", "d2", "d3", "d4", "d5"] as const).map((k, i) => (
                 <Reveal key={k} delay={i * 0.04}>
-                  <li className="flex items-center gap-3 rounded-2xl border border-[#1D4ED8]/25 bg-white px-4 py-3.5 text-ink transition-colors hover:border-gold/60"><span className="icon-sun grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>{t(k)}</li>
+                  <li className="flex items-center gap-4 rounded-2xl border border-card-line bg-white p-2 pr-4 text-ink transition-colors hover:border-primary/40"><PhotoTile src={UI_IMAGES.docs[k]} alt="" className="h-12 w-20 shrink-0 rounded-lg bg-tint-ice text-primary" fallback={<FileText className="size-4" aria-hidden />} /><span className="font-medium">{t(k)}</span></li>
                 </Reveal>
               ))}
             </ul>

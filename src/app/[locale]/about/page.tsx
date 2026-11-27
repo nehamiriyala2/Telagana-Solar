@@ -4,6 +4,7 @@ import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { BadgeIndianRupee, HandHeart, Headset, ShieldCheck, Sun, UserRound } from "lucide-react";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionTitle } from "@/components/page/section-title";
+import { UI_IMAGES } from "@/data/section-photos";
 import { StatCounter } from "@/components/page/stat-counter";
 import { EditMark } from "@/components/ui/badge";
 import { TiltCard } from "@/components/motion/tilt-card";
@@ -102,7 +103,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="tone tone-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle index="01" title={t("valuesTitle")} emphasis={L(D.valuesEmphasis)} />
-          <Bento tones={["gold", "navy", "mint", "blue"]} items={VALUES.map(([k, Icon]) => ({ title: t(`${k}.title`), desc: t(`${k}.desc`), Icon }))} />
+          <Bento tones={["gold", "navy", "mint", "blue"]} items={VALUES.map(([k, Icon], i) => ({ title: t(`${k}.title`), desc: t(`${k}.desc`), Icon, photo: UI_IMAGES.values[i] }))} />
         </div>
       </section>
 
@@ -112,12 +113,18 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
-          <Stagger as="ol" className="grid gap-px overflow-hidden rounded-[1.25rem] bg-white/10 md:grid-cols-4">
+          <Stagger as="ol" className="grid gap-px overflow-hidden rounded-[1.25rem] bg-card-line p-px shadow-[0_24px_60px_-24px_rgb(0_0_0/0.45)] sm:grid-cols-2 md:grid-cols-4">
             {D.promise.map((p, i) => (
-              <StaggerItem key={i} className="group relative bg-[#1D4ED8] p-7 transition-colors duration-500 hover:bg-[#1E40AF]">
-                <span className="block font-heading text-[3.5rem] font-extrabold leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1.5px_#1D4ED8] transition-colors duration-500 group-hover:text-[#1D4ED8]">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-6 font-heading text-[1.25rem] font-bold text-white">{L(p.title)}</h3>
-                <p className="on-dark-muted mt-2 text-caption">{L(p.desc)}</p>
+              <StaggerItem key={i} className="zoom-frame group relative flex flex-col bg-white">
+                <span className="relative block aspect-[8/5] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={UI_IMAGES.working[i]} alt="" loading="lazy" className="zoom-img size-full object-cover" />
+                  <span aria-hidden className="absolute bottom-3 left-4 grid size-11 place-items-center rounded-xl bg-primary font-heading text-[1rem] font-extrabold text-white ring-2 ring-white tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                </span>
+                <div className="flex-1 p-6">
+                  <h3 className="font-heading text-[1.25rem] font-bold text-ink">{L(p.title)}</h3>
+                  <p className="mt-2 text-[0.9375rem] text-body">{L(p.desc)}</p>
+                </div>
               </StaggerItem>
             ))}
           </Stagger>

@@ -3,6 +3,8 @@ import { ArrowRight, Check, Gauge, IndianRupee, PiggyBank, Timer } from "lucide-
 import { GuideTrigger, SubsidyTrigger } from "@/components/tools/triggers";
 import { calculate } from "@/lib/calculator";
 import { formatINR, formatLakh } from "@/lib/utils";
+import Image from "next/image";
+import { UI_IMAGES } from "@/data/section-photos";
 import { HeroMedia } from "./hero-media";
 
 const EXAMPLE_BILL = 3000;
@@ -23,8 +25,8 @@ export function Hero() {
   const stats = [
     { Icon: Gauge, label: t("hero.cardSize"), value: `${r.kw} kW`, tile: "bg-tint-ice text-primary", val: "text-ink" },
     { Icon: IndianRupee, label: t("calculator.subsidy"), value: formatLakh(r.subsidy), tile: "bg-tint-mist text-primary", val: "text-ink" },
-    { Icon: PiggyBank, label: t("calculator.monthly"), value: formatINR(r.monthlySaving), tile: "bg-tint-mint text-green-text", val: "text-green-text" },
-    { Icon: Timer, label: t("calculator.payback"), value: r.paybackYears !== null ? t("common.years", { count: r.paybackYears }) : "—", tile: "bg-mist text-body", val: "text-ink" },
+    { Icon: PiggyBank, label: t("calculator.monthly"), value: formatINR(r.monthlySaving), tile: "bg-tint-mint text-green-text", val: "text-green-text", img: UI_IMAGES.plan.savings },
+    { Icon: Timer, label: t("calculator.payback"), value: r.paybackYears !== null ? t("common.years", { count: r.paybackYears }) : "—", tile: "bg-mist text-body", val: "text-ink", img: UI_IMAGES.plan.payback },
   ];
 
   return (
@@ -62,9 +64,11 @@ export function Hero() {
             <h2 id="hero-card-title" className="font-heading text-[1.0625rem] font-bold text-ink">{t("hero.cardTitle")}</h2>
             <p className="mt-0.5 text-[0.75rem] font-medium text-muted">{t("hero.cardExample", { bill: formatINR(EXAMPLE_BILL) })}</p>
             <dl className="mt-4 grid grid-cols-2 gap-3">
-              {stats.map(({ Icon, label, value, tile, val }) => (
+              {stats.map(({ Icon, label, value, tile, val, ...rest }) => (
                 <div key={label} className="flex items-center gap-2.5">
-                  <span aria-hidden className={`grid size-9 shrink-0 place-items-center rounded-full ${tile}`}><Icon className="size-4" /></span>
+                  {"img" in rest && rest.img
+                    ? <span aria-hidden className="relative size-10 shrink-0 overflow-hidden rounded-xl bg-white ring-1 ring-card-line"><Image src={rest.img} alt="" fill sizes="40px" className="object-cover" /></span>
+                    : <span aria-hidden className={`grid size-10 shrink-0 place-items-center rounded-xl ${tile}`}><Icon className="size-5" /></span>}
                   <span className="min-w-0">
                     <dt className="text-[0.75rem] leading-tight text-muted">{label}</dt>
                     <dd className={`font-heading text-[1.0625rem] font-bold leading-tight tabular-nums ${val}`}>{value}</dd>
