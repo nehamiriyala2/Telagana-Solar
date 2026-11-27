@@ -6,7 +6,7 @@ import { WhoAreYou } from "@/components/home/who-are-you";
 import { SchemesSection } from "@/components/home/schemes-section";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { KnowBefore } from "@/components/home/know-before";
-import { FaqSection, FinalCta } from "@/components/home/home-sections";
+import { FaqSection } from "@/components/home/home-sections";
 import { TrustStrip } from "@/components/home/trust-strip";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 
@@ -24,7 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("faq");
-  const faqKeys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"];
+  const faqKeys = ["q1", "q2", "q3", "q4"];
 
   return (
     <div className="home-premium">
@@ -37,7 +37,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <SchemesSection premium />
       <KnowBefore />
       <FaqSection keys={faqKeys} premium />
-      <FinalCta />
     </div>
   );
 }

@@ -36,7 +36,7 @@ export function MiniCalculator() {
               <Slider id="mini-bill" className="mt-4" value={[bill]} min={C.billRange.min} max={20000} step={C.billRange.step} onValueChange={([v]) => setBill(v)} aria-label={t("mini.billLabel")} />
               <div className="mt-1 flex justify-between text-[0.75rem] text-muted"><span>{formatINR(C.billRange.min)}</span><span>{formatINR(20000)}</span></div>
             </div>
-            <div className="rounded-2xl bg-[#F5F8FC] p-5 ring-1 ring-gold/20">
+            <div className="rounded-2xl bg-[#F1F6FC] p-5 ring-1 ring-gold/20">
               <p className="text-caption font-semibold text-primary-hover">{t("mini.resultTitle")}</p>
               <dl className="mt-3 space-y-3">
                 <Row label={t("mini.size")} value={<><CountUp value={r.kw} duration={0.4} /> kW</>} />

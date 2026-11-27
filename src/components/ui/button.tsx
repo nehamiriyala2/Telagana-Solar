@@ -3,26 +3,27 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-/** Buttons (pill): solid royal blue = primary action, outline blue = secondary, white = on deep-blue bands, green = WhatsApp / savings. */
+/** Buttons (pill, 44px): primary blue, secondary white with 1.5px blue border, accent = saffron highlight CTA (dark text, AA), white = on dark bands. */
 export const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold tracking-[0.01em] transition-[box-shadow,background-color,color,border-color] duration-300 ease-out-soft active:scale-[0.99] disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,color,border-color] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-primary text-white shadow-[0_8px_20px_-10px_rgb(29_78_216/0.6)] hover:bg-primary-hover",
+        primary: "bg-primary text-white hover:bg-primary-hover",
         sky: "bg-primary text-white hover:bg-primary-hover",
         white: "bg-white text-primary hover:bg-tint-ice",
-        green: "bg-green-text text-white hover:bg-green-ink",
+        green: "bg-accent text-ink hover:bg-accent-hover",
+        accent: "bg-accent text-ink hover:bg-accent-hover",
         whatsapp: "bg-whatsapp text-white hover:bg-whatsapp-hover",
-        outline: "border border-primary/40 bg-white text-primary hover:border-primary hover:bg-tint-ice",
+        outline: "border-[1.5px] border-primary bg-white text-primary hover:bg-tint-ice",
         ghost: "text-primary hover:bg-primary/5",
         solid: "bg-primary text-white hover:bg-primary-hover",
       },
       size: {
         sm: "h-10 px-4 text-caption",
-        md: "h-12 px-6 text-base",
-        lg: "h-14 px-7 text-[1.0625rem]",
-        icon: "size-11",
+        md: "h-11 px-6 text-base",
+        lg: "h-12 px-7 text-[1.0625rem]",
+        icon: "size-11 hover:translate-y-0",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },

@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/reveal";
 
 const ITEMS = [
   { key: "homes", href: "/solutions/homes", Icon: Home, tint: "from-gold-soft to-white" },
-  { key: "farms", href: "/solutions/farms", Icon: Wheat, tint: "from-[#EEF3FA] to-white" },
+  { key: "farms", href: "/solutions/farms", Icon: Wheat, tint: "from-[#DCEAF7] to-white" },
   { key: "business", href: "/solutions/business", Icon: Store, tint: "from-mist to-white" },
 ] as const;
 

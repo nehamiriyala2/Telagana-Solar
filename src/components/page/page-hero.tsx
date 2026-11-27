@@ -71,8 +71,7 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
               <Magnetic className="inline-block">
                 <GuideTrigger size="lg" className="btn-shine w-full sm:w-auto" persona={guidePersona ?? (calcType ? TYPE_TO_PERSONA[calcType] : undefined)}>{t("bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
               </Magnetic>
-              <Button asChild size="lg" variant="outline"
-                className={dark ? "border-white/40 bg-transparent text-white hover:border-white hover:bg-white/5" : ""}>
+              <Button asChild size="lg" variant="accent">
                 <Link href={{ pathname: "/savings-calculator", query: calcType ? { type: calcType } : {} }}><Calculator aria-hidden />{t("calculate")}</Link>
               </Button>
             </div>
@@ -97,7 +96,7 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
                 <div className={cn("absolute size-[78%] rounded-full border", dark ? "border-white/15" : "border-white/80")} />
                 <div className={cn("absolute size-[56%] rounded-full border border-dashed", dark ? "border-yellow/25" : "border-gold/30")} />
                 <span className={cn("float-soft relative grid size-44 place-items-center rounded-2xl border",
-                  dark ? "border-white/15 bg-white/10 text-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]" : "border-white bg-white/80 text-[var(--ts-royal)] shadow-[0_40px_80px_-30px_rgb(15_47_107/0.45)]")}>
+                  dark ? "border-white/15 bg-white/10 text-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]" : "border-white bg-white/80 text-[var(--ts-royal)] shadow-[0_40px_80px_-30px_rgb(28_47_71/0.45)]")}>
                   <Icon className="size-20" strokeWidth={1.3} />
                   
                 </span>

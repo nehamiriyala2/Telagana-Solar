@@ -114,7 +114,7 @@ function CaseStudy({ p }: { p: Project }) {
 
   return (
     <motion.div key={p.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="space-y-5 px-5 py-5 md:px-7">
-      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-[#EEF3FA]">
+      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-[#DCEAF7]">
         {p.photo
           ? <Image src={p.photo} alt={`${t(`types.${p.type}.name`)}${place ? `, ${place}` : ""}`} fill sizes="(min-width:768px) 640px, 100vw" className="object-cover" />
           : <div className="grid size-full place-items-center text-muted"><span className="flex flex-col items-center gap-2"><ImageIcon className="size-8" aria-hidden /><EditMark label="[EDIT] photo" /></span></div>}
