@@ -1,0 +1,231 @@
+/* ==========================================================================
+   PUBLIC SITE THEME: light, sunny blue (matches the blue panels in the photos)
+   Fresh, clean and trustworthy. Blue in small to medium doses, gold = the sun.
+   The footer is the ONLY dark surface. No dark overlays anywhere.
+   Imported only by the public layout (src/app/[locale]/layout.tsx) and scoped to
+   <html class="site">, so the admin dashboard (which shares globals.css) keeps its look.
+   Change the values below (and the matching tokens in globals.css) to re-skin the site.
+
+     Cloud     #F7FAFD  page background (never pure white)
+     Mist      #EAF1F8  alternate sections
+     Card      #FCFDFF  surface · border #DCE6F0 · shadow rgba(27,69,112,.08)
+     Sky blue  #2B6CB0  primary: buttons, active nav, icons, accent words (hover #235A93)
+     Deep blue #1B4570  footer only
+     Sun gold  #F0BE4A → #F7D274 gradient accent; text on gold #3A2A06
+               gold-family TEXT on light surfaces uses #8A6514 (AA)
+     Tints     ice #E3EEF9 · warm cream #FFF4D9 · mist blue #E8F0F6 · soft mint #E6F3EA
+     Text      heading #14263A · body #44576B · muted #5B6C7E (AA on cloud and mist)
+     Success   #3A8F5C fills · #2D7349 text (AA) · WhatsApp #188246 (white text, AA) · Error #C0473A
+   Legacy token names (navy, royal, sky, silver…) are remapped here so every older
+   component lands on this palette.
+   ========================================================================== */
+html.site {
+  --color-white: #fcfdff;           /* "white" utilities = card colour, never #FFF */
+  --color-navy: #2b6cb0;
+  --color-navy-800: #235a93;
+  --color-navy-700: #235a93;
+  --color-silver: #f7fafd;          /* light text: only used on the deep blue footer */
+  --color-gold: #f0be4a;
+  --color-yellow: #f0be4a;
+  --color-amber: #e2ab35;
+  --color-gold-soft: #fff4d9;
+  --color-gold-ink: #8a6514;
+  --color-royal: #2b6cb0;
+  --color-sky: #2b6cb0;
+  --color-sky-ink: #2b6cb0;
+  --color-sky-tint: #eaf1f8;
+  --color-leaf: #3a8f5c;
+  --color-leaf-ink: #2d7349;
+  --color-leaf-tint: #e6f3ea;
+  --color-cream: #f7fafd;
+  --color-muted: #5b6c7e;
+  --color-line: #dce6f0;
+  --color-whatsapp: #188246;
+  --color-whatsapp-hover: #136c3a;
+  --color-success: #2d7349;
+  --color-danger: #c0473a;
+
+  --font-heading: var(--font-display), var(--font-telugu), Georgia, "Times New Roman", serif;
+  /* Older rules reference --font-jakarta, which the public layout no longer loads; an undefined var would void
+     the whole font-family, so alias it to the display serif. */
+  --font-jakarta: var(--font-display);
+  --font-body: var(--font-inter), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-xl: 1.25rem;
+  --shadow-soft: 0 1px 2px rgb(27 69 112 / 0.04), 0 12px 30px -18px rgb(27 69 112 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(27 69 112 / 0.05), 0 24px 46px -24px rgb(27 69 112 / 0.24);
+  --shadow-glow: 0 12px 26px -14px rgb(226 171 53 / 0.65);
+  --shadow-ring: 0 0 0 1px rgb(240 190 74 / 0.5);
+  --shadow-header: 0 1px 0 #dce6f0, 0 10px 30px -24px rgb(27 69 112 / 0.25);
+
+  --gradient-sun: linear-gradient(135deg, #f0be4a, #f7d274);
+  --chart-1: #2b6cb0;   /* savings */
+  --chart-2: #e2ab35;   /* gain after cost (sun gold) */
+  --chart-grid: #dce6f0;
+  --ts-navy: #2b6cb0;
+  --ts-royal: #2b6cb0;
+  --ts-light-blue: #eaf1f8;
+  --ts-soft-blue: #f7fafd;
+  --ts-yellow: #f0be4a;
+  --ts-text: #44576b;
+  --header-h: 4.75rem;
+  accent-color: #2b6cb0;
+  scrollbar-color: #c9d7e5 #eaf1f8;
+}
+
+/* ---------- Base ---------- */
+html.site body { background: #f7fafd; color: #44576b; }
+/* Heading defaults live in Tailwind's base layer so utility classes on a heading still win */
+@layer base {
+  html.site h1, html.site h2, html.site h3, html.site h4 { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.01em; }
+  html.site h3, html.site h4 { letter-spacing: 0; }
+  html.site[lang="te"] h1, html.site[lang="te"] h2, html.site[lang="te"] h3, html.site[lang="te"] h4 { font-family: var(--font-telugu), var(--font-display), serif; letter-spacing: 0; line-height: 1.45; }
+}
+html.site[lang="te"] body { font-family: var(--font-telugu), var(--font-inter), sans-serif; line-height: 1.7; }
+html.site :focus-visible { outline: 2px solid #2b6cb0; outline-offset: 3px; }
+html.site ::selection { background: #e3eef9; color: #14263a; }
+html.site .field { background: #fcfdff; border-color: #cfdbe8; border-radius: 0.75rem; color: #14263a; }
+html.site .field::placeholder { color: #7f8fa0; }
+html.site .field:focus { border-color: #2b6cb0; box-shadow: 0 0 0 4px rgb(43 108 176 / 0.15); }
+html.site .field[aria-invalid="true"] { border-color: #c0473a; box-shadow: 0 0 0 3px rgb(192 71 58 / 0.14); }
+html.site .edit-mark { background: #fff4d9; color: #8a6514; border-color: #f0be4a; }
+
+/* ---------- Surfaces: alternate cloud and mist ---------- */
+html.site .bg-premium-light, html.site .bg-section-white, html.site .bg-premium-sky { background: #f7fafd; }
+html.site .bg-premium-sun { background: #eaf1f8; }
+html.site .bg-premium-navy, html.site .bg-navy-glow { background: #e3eef9; color: #14263a; }
+html.site .bg-sun { background: linear-gradient(135deg, #f0be4a, #f7d274); }
+html.site .dot-grid::before { display: none; }
+html.site .orb { display: none !important; }
+html.site .btn-shine::after { display: none; }
+
+html.site .tone-navy { background: #eaf1f8; color: #14263a; }
+html.site .tone-blue { background: #e3eef9; color: #14263a; }
+html.site .tone-sky, html.site .tone-mint { background: #eaf1f8; }
+html.site .tone-cream, html.site .tone-white { background: #f7fafd; }
+html.site .tone::before, html.site .tone-beam, html.site .tone-wave { display: none; }
+
+/* Sections that were designed as dark bands are now light tints: flip their light text to dark */
+html.site :is(.tone-navy, .tone-blue, .bg-premium-navy, .bento-navy, .bento-blue, .bento-green) :is(.text-white, .text-silver) { color: #14263a; }
+html.site :is(.tone-navy, .tone-blue, .bg-premium-navy, .bento-navy, .bento-blue, .bento-green) :is([class*="text-white/"], [class*="text-silver/"], .on-dark-muted) { color: #44576b; }
+html.site :is(.tone-navy, .tone-blue, .bg-premium-navy, .bento-navy, .bento-blue, .bento-green) [class*="border-white"] { border-color: #dce6f0; }
+html.site :is(.tone-navy, .tone-blue, .bg-premium-navy, .bento-navy, .bento-blue, .bento-green) [class*="bg-white/"] { background-color: #fcfdff; }
+html.site :is(.tone-navy, .tone-blue, .bg-premium-navy, .bento-navy, .bento-blue, .bento-green) :is(.text-gold, .text-yellow, .text-gold-light) { color: #8a6514; }
+html.site :is(.tone-navy, .tone-blue, .bg-premium-navy, .bento-navy, .bento-blue, .bento-green) [class*="ring-white"] { --tw-ring-color: #dce6f0; }
+html.site .on-dark-muted { color: #44576b; }
+html.site footer .on-dark-muted { color: rgb(247 250 253 / 0.78); }
+
+/* ---------- Cards: card surface, soft blue shadow, gentle lift ---------- */
+html.site .card-premium, html.site .card-glass-light, html.site .card-glass-dark, html.site .card-dark-glass {
+  background: #fcfdff; border: 1px solid #dce6f0; border-radius: 1.25rem; color: #14263a;
+  box-shadow: 0 1px 2px rgb(27 69 112 / 0.04), 0 12px 30px -20px rgb(27 69 112 / 0.18);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  transition: transform .45s var(--ease-out-soft), box-shadow .45s var(--ease-out-soft), border-color .45s;
+}
+html.site .card-premium::after { display: none; }
+html.site :is(.card-premium, .card-glass-light, .card-glass-dark, .card-dark-glass):hover {
+  transform: translateY(-4px); border-color: #c4d5e6; background: #fcfdff;
+  box-shadow: 0 2px 4px rgb(27 69 112 / 0.05), 0 26px 48px -26px rgb(27 69 112 / 0.28);
+}
+
+html.site .icon-sun { background: #fff4d9; color: #8a6514; box-shadow: inset 0 0 0 1px rgb(240 190 74 / 0.4); }
+html.site .icon-royal { background: #e3eef9; color: #2b6cb0; box-shadow: inset 0 0 0 1px rgb(43 108 176 / 0.15); }
+
+/* Eyebrow: small caps in sky blue with a short gold rule */
+html.site .eyebrow, html.site .eyebrow-pill {
+  display: inline-flex; align-items: center; gap: .75rem; padding: 0; border: 0; background: none; border-radius: 0;
+  font-family: var(--font-body); font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #2b6cb0;
+}
+html.site .eyebrow::before, html.site .eyebrow-pill::before { content: ""; width: 1.75rem; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #f0be4a, #f7d274); box-shadow: none; }
+html.site .eyebrow-pill--dark, html.site .hero-pill { color: #2b6cb0; background: none; border: 0; }
+html.site footer .eyebrow-pill--dark { color: #f7d274; }
+html.site[lang="te"] .eyebrow, html.site[lang="te"] .eyebrow-pill { letter-spacing: 0; text-transform: none; font-size: .875rem; }
+
+/* Display type */
+html.site .display-xl, html.site .display-lg { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.015em; line-height: 1.08; }
+html.site .display-xl { font-size: clamp(2.5rem, 5.4vw, 4.5rem); }
+html.site .display-lg { font-size: clamp(2rem, 3.8vw, 3.125rem); line-height: 1.12; }
+html.site[lang="te"] .display-xl, html.site[lang="te"] .display-lg { font-family: var(--font-telugu), var(--font-display), serif; letter-spacing: 0; line-height: 1.32; }
+html.site[lang="te"] .display-xl { font-size: clamp(2rem, 4.6vw, 3.75rem); }
+html.site[lang="te"] .display-lg { font-size: clamp(1.75rem, 3.4vw, 2.75rem); }
+html.site .display-xl.display-art { font-size: clamp(2.4rem, 4.8vw, 4.25rem); }
+
+/* Accent words: sky-blue italic (gold only on the dark footer) */
+html.site .text-gold-shine, html.site .text-gold-gradient {
+  background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #2b6cb0; font-style: italic; animation: none;
+}
+html.site footer .text-gold-shine { color: #f7d274; }
+html.site .word-mask > .text-gold-shine, html.site .char-up.text-gold-shine, html.site .word-slide > .text-gold-shine { animation: wordUp .6s var(--ease-out-soft) both; }
+html.site[lang="te"] .text-gold-shine { font-style: normal; }
+
+/* Gentle entrances */
+html.site .word-mask > span { animation-duration: .6s; }
+html.site .char-up { animation-name: rise; }
+html.site .word-slide > span { animation-name: rise; animation-duration: .6s; }
+html.site .float-soft { animation: none; }
+html.site .zoom-frame:hover .zoom-img { transform: scale(1.03); }
+html.site .title-underline__svg path { stroke: #f0be4a; stroke-width: 3; filter: none; }
+
+/* ---------- Inner-page header: light mist band, faint gold rays, gold hairline ---------- */
+html.site .solar-bg { background: linear-gradient(180deg, #eaf1f8 0%, #f1f6fb 100%); }
+html.site .solar-bg__gradient, html.site .solar-bg__dots, html.site .solar-bg__rays, html.site .solar-bg__glow, html.site .solar-bg__p, html.site .solar-bg__fade,
+html.site .motif-orbits, html.site .motif-waves, html.site .motif-grid { display: none; }
+html.site .solar-bg::before { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, transparent, #f0be4a 20%, #f7d274 80%, transparent); opacity: .7; }
+html.site .solar-bg::after, html.site .sun-rays::after {
+  content: ""; position: absolute; right: -18rem; top: -18rem; width: 44rem; height: 44rem; border-radius: 999px; pointer-events: none;
+  background: repeating-conic-gradient(from 0deg, rgb(240 190 74 / 0.10) 0deg 2deg, transparent 2deg 10deg);
+  -webkit-mask-image: radial-gradient(circle, #000 10%, transparent 68%); mask-image: radial-gradient(circle, #000 10%, transparent 68%);
+}
+html.site .sun-rays { position: relative; isolation: isolate; overflow: hidden; }
+html.site .sun-rays::after { z-index: -1; right: auto; left: 50%; top: auto; bottom: -30rem; translate: -50% 0; width: 64rem; height: 64rem; }
+
+/* ---------- Photos ---------- */
+html.site .sunlight { display: none; }
+/* Soft mist placeholder behind every photo, so a missing or loading image never breaks the layout (photos are not tinted) */
+html.site main img { background: linear-gradient(135deg, #eaf1f8, #e3eef9); }
+html.site .banner-kenburns { animation: siteKenBurns 24s ease-in-out infinite alternate; }
+@keyframes siteKenBurns { from { transform: scale(1); } to { transform: scale(1.05); } }
+
+/* ---------- Bento: soft tint tiles ---------- */
+html.site .bento-card { border-radius: 1.25rem; color: #14263a; box-shadow: inset 0 0 0 1px #dce6f0; }
+html.site .bento-card:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px #c4d5e6, 0 26px 48px -28px rgb(27 69 112 / 0.28); }
+html.site .bento-num { font-family: var(--font-heading); font-weight: 500; opacity: .18; color: #2b6cb0; }
+html.site .bento-navy { background: #e3eef9; }
+html.site .bento-blue { background: #e8f0f6; }
+html.site .bento-gold { background: #fff4d9; }
+html.site .bento-green { background: #e6f3ea; }
+html.site .bento-cream, html.site .bento-white { background: #fcfdff; }
+html.site .bento-mint { background: #eaf1f8; }
+
+html.site [data-accent] { --accent: #f0be4a; --accent-soft: #fff4d9; }
+html.site [data-accent="pm-kusum"] { --accent: #3a8f5c; --accent-soft: #e6f3ea; }
+html.site [data-accent="net-metering"] { --accent: #2b6cb0; --accent-soft: #e3eef9; }
+html.site [data-accent="state-schemes"] { --accent: #2b6cb0; --accent-soft: #e8f0f6; }
+
+html.site .section-index { display: none; }
+
+/* ---------- Chips ---------- */
+html.site .kinetic-row { font-family: var(--font-heading); font-weight: 500; letter-spacing: -0.01em; }
+html.site .city-chip { font-family: var(--font-body); font-weight: 500; color: #14263a; background: #fcfdff; border: 1px solid #dce6f0; box-shadow: none; }
+html.site .city-chip svg { color: #2b6cb0; }
+html.site .city-chip:hover, html.site .city-chip:focus-visible { transform: translateY(-2px); border-color: #f0be4a; background: #fff4d9; color: #14263a; box-shadow: none; }
+html.site .city-chip:hover svg, html.site .city-chip:focus-visible svg { color: #2b6cb0; }
+html.site .city-chip--main { border-color: rgb(43 108 176 / 0.3); font-weight: 600; background: #fcfdff; }
+html.site .city-chip--scheme { background: #2b6cb0; color: #fcfdff; border-color: #2b6cb0; box-shadow: none; }
+html.site .city-chip--scheme svg { color: #f7d274; }
+html.site .city-chip--scheme:hover, html.site .city-chip--scheme:focus-visible { background: #235a93; color: #fcfdff; }
+
+/* ---------- Marquee strip: mist band, sky-blue text, gold stars ---------- */
+html.site .site-marquee { background: #eaf1f8; color: #2b6cb0; overflow: hidden; border-block: 1px solid #dce6f0; }
+html.site .site-marquee__track { display: flex; width: max-content; animation: marqueeX 70s linear infinite; }
+html.site .site-marquee:hover .site-marquee__track { animation-play-state: paused; }
+
+/* Gold breadcrumb accent on the light page band */
+html.site .breadcrumb { font-family: var(--font-body); font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+html.site[lang="te"] .breadcrumb { letter-spacing: 0; text-transform: none; font-size: .875rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.site :is(.card-premium, .card-glass-light, .card-glass-dark, .card-dark-glass, .bento-card, .city-chip):hover { transform: none; }
+  html.site .banner-kenburns, html.site .site-marquee__track { animation: none !important; }
+}

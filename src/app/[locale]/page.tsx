@@ -7,10 +7,10 @@ import { SchemesSection } from "@/components/home/schemes-section";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { KnowBefore } from "@/components/home/know-before";
 import { FaqSection, FinalCta } from "@/components/home/home-sections";
-import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
-import { KineticBand } from "@/components/motion/kinetic-band";
+import { SiteMarquee } from "@/components/motion/site-marquee";
 import { site } from "@/config/site";
 import { pick } from "@/lib/utils";
+import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 /**
  * Home (informational): Hero → Solar in 60 seconds → Which solar suits you → Schemes →
- * How it works → Calculator → Know before you buy → Packages → FAQ → Final banner.
+ * Five simple steps → Marquee strip → Solar checklist → FAQ → Final banner.
  */
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -35,8 +35,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Solar60 />
       <WhoAreYou />
       <SchemesSection premium />
-      <HowItWorks premium dark />
-      <KineticBand phrases={pick(site.tagline, locale).split(/\.\s*/).filter(Boolean)} />
+      <HowItWorks premium />
+      <SiteMarquee phrases={pick(site.tagline, locale).split(/\.\s*/).filter(Boolean)} />
       <KnowBefore />
       <FaqSection keys={faqKeys} premium />
       <FinalCta />

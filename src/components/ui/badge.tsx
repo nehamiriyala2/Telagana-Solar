@@ -6,9 +6,9 @@ const badgeVariants = cva("inline-flex items-center gap-1 rounded-full px-3 py-1
   variants: {
     variant: {
       gold: "bg-gold-soft text-gold-ink",
-      sky: "bg-sky-tint text-sky-ink",
+      sky: "bg-mist text-primary-hover",
       outline: "border border-line text-muted",
-      neutral: "bg-navy/[0.06] text-navy",
+      neutral: "bg-primary/[0.06] text-ink",
     },
   },
   defaultVariants: { variant: "sky" },

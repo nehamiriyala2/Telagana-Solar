@@ -18,7 +18,7 @@ import { cn, formatINR, pick } from "@/lib/utils";
 const STATUS_STYLE: Record<SubsidyStatus, string> = {
   likely: "bg-leaf-tint text-leaf-ink",
   check: "bg-gold-soft text-gold-ink",
-  owner: "bg-sky-tint text-royal",
+  owner: "bg-mist text-primary-hover",
 };
 
 /**
@@ -79,7 +79,7 @@ export function SubsidyDialog({ open, onClose }: { open: boolean; onClose: () =>
           <>
             <div className="flex items-center justify-between gap-3">
               <h3 className="font-heading text-h4 font-bold">{t("checker.resultTitle")}</h3>
-              <button type="button" onClick={() => setDone(false)} className="text-caption font-semibold text-royal underline underline-offset-4">{t("checker.back")}</button>
+              <button type="button" onClick={() => setDone(false)} className="text-caption font-semibold text-primary-hover underline underline-offset-4">{t("checker.back")}</button>
             </div>
             <ul className="space-y-3">
               {res.results.map((r) => {
@@ -91,21 +91,21 @@ export function SubsidyDialog({ open, onClose }: { open: boolean; onClose: () =>
                       <p className="font-heading font-bold">{k("name")}</p>
                       <span className={cn("rounded-full px-2.5 py-1 text-[0.75rem] font-semibold", STATUS_STYLE[r.status])}>{t(`checker.status.${r.status}`)}</span>
                     </div>
-                    <p className="mt-2 text-caption text-navy-700">{t(`checker.explain.${r.explain}`)}</p>
+                    <p className="mt-2 text-caption text-body">{t(`checker.explain.${r.explain}`)}</p>
                     <p className="mt-2 text-caption">
                       {r.amount
                         ? <span className="font-semibold text-leaf-ink">{t("checker.estimated", { amount: formatINR(r.amount) })}</span>
                         : <><span className="font-semibold">{t("checker.benefitLabel")}: </span>{k("cardBenefit")}</>}
                     </p>
                     <details className="mt-2 text-caption">
-                      <summary className="cursor-pointer font-semibold text-royal">{t("checker.docsLabel")} · {t("checker.stepsLabel")}</summary>
+                      <summary className="cursor-pointer font-semibold text-primary-hover">{t("checker.docsLabel")} · {t("checker.stepsLabel")}</summary>
                       <div className="mt-2 grid gap-3 sm:grid-cols-2">
                         <ul className="list-disc space-y-1 pl-5">{["d1", "d2", "d3", "d4"].map((d) => <li key={d}>{k(d)}</li>)}</ul>
                         <ol className="list-decimal space-y-1 pl-5">{["s1", "s2", "s3", "s4", "s5"].map((s) => <li key={s}>{k(s)}</li>)}</ol>
                       </div>
                       <div className="mt-3 flex flex-wrap gap-3">
-                        <Link href={`/schemes/${r.slug}`} onClick={onClose} className="font-semibold text-royal underline underline-offset-4">{t("schemes.learnMore")}</Link>
-                        <a href={scheme.officialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-royal underline underline-offset-4">{t("schemes.official")}<ExternalLink className="size-3.5" aria-hidden /></a>
+                        <Link href={`/schemes/${r.slug}`} onClick={onClose} className="font-semibold text-primary-hover underline underline-offset-4">{t("schemes.learnMore")}</Link>
+                        <a href={scheme.officialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary-hover underline underline-offset-4">{t("schemes.official")}<ExternalLink className="size-3.5" aria-hidden /></a>
                       </div>
                     </details>
                   </li>

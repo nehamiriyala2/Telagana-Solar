@@ -33,15 +33,15 @@ export function SubsidyBand() {
   return (
     <section className="container-page py-6" aria-labelledby="sub-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[linear-gradient(120deg,#FFF1D6_0%,#FFE2A8_55%,#FFD95C_100%)] px-6 py-12 md:px-14 md:py-16">
-          <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-80 animate-glow rounded-full bg-[radial-gradient(circle,#FFF7E6,transparent_65%)]" />
+        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#FFF4D9] px-6 py-12 md:px-14 md:py-16">
+          <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-80 animate-glow rounded-full bg-transparent" />
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div className="max-w-2xl">
               <h2 id="sub-title" className="text-h2 md:text-h2-lg">{t("subsidyBand.title")}</h2>
-              <p className="mt-4 text-navy-700 md:text-body-lg">{t("subsidyBand.body")}</p>
+              <p className="mt-4 text-body md:text-body-lg">{t("subsidyBand.body")}</p>
               <p className="mt-4 inline-block rounded-xl bg-white/70 px-4 py-2 text-caption font-semibold">{t("common.subsidyNote")}</p>
             </div>
-            <Button asChild size="lg" variant="navy"><Link href="/subsidy-loans">{t("subsidyBand.cta")}<ArrowRight aria-hidden /></Link></Button>
+            <Button asChild size="lg" variant="solid"><Link href="/subsidy-loans">{t("subsidyBand.cta")}<ArrowRight aria-hidden /></Link></Button>
           </div>
         </div>
       </Reveal>
@@ -84,16 +84,14 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
   const tc = useTranslations("common");
   if (premium) {
     return (
-      <section className="dot-grid relative isolate overflow-hidden bg-white py-16 md:py-24" aria-labelledby="faq-title">
-        <div aria-hidden className="orb -left-24 top-10 size-80 bg-sky/15" />
+      <section className="bg-mist py-16 md:py-24" aria-labelledby="faq-title">
         <div className="container-page grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
               <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={title ?? t("title")} className="mb-6" />
-              <div className="bg-premium-sun relative overflow-hidden rounded-[1.5rem] p-6 text-navy shadow-[0_22px_48px_-30px_rgb(7_23_63/0.3)] ring-1 ring-gold/25">
-                <div aria-hidden className="absolute -right-12 -top-12 size-36 rounded-full border-2 border-yellow/50 shadow-[0_0_40px_-8px_rgb(255_199_44/0.5)]" />
-                <p className="relative text-[1.0625rem] font-bold" style={{ fontFamily: "var(--font-display), var(--font-jakarta), var(--font-telugu), sans-serif" }}>{tc("askWhatsapp")}</p>
-                <WhatsAppButton place="faq-card" className="relative mt-4 w-full" label={tc("askOnWhatsapp")} message={tc("askMessage")} />
+              <div className="rounded-3xl border border-line bg-card p-6 shadow-soft">
+                <p className="font-heading text-[1.1875rem] font-semibold text-ink">{tc("askWhatsapp")}</p>
+                <WhatsAppButton place="faq-card" className="mt-4 w-full" label={tc("askOnWhatsapp")} message={tc("askMessage")} />
               </div>
             </div>
           </div>
@@ -112,28 +110,24 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
   );
 }
 
-/** Bright gold banner with the site-visit form. */
 const TYPE_TO_PERSONA: Record<"home" | "farm" | "business", GuidePersona> = { home: "urban", farm: "farmer", business: "shop" };
 
-/** Deep navy + golden banner: "Not sure which solar is right for you?" + guide + WhatsApp. */
+/** Full-width soft ice → warm-cream section with a faint sun-ray pattern: heading in the heading colour, gold plan button + green WhatsApp button. */
 export function FinalCta({ title, defaultType }: { title?: string; defaultType?: "home" | "farm" | "business" }) {
   const t = useTranslations();
   return (
-    <section id="book" className="container-page scroll-mt-24 pb-16 pt-6 md:pb-24" aria-labelledby="cta-title">
-      <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#071B49] via-[#0B2A6E] to-[#123A8C] p-6 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.7)] ring-1 ring-white/15 md:p-12">
-          <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 -z-10 size-96 rounded-full bg-[radial-gradient(circle,rgb(77_163_255/0.14),transparent_65%)]" />
-          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-20 -z-10 size-80 rounded-full bg-[radial-gradient(circle,rgb(18_101_216/0.18),transparent_65%)]" />
-          <div className="mx-auto max-w-3xl py-4 text-center md:py-8">
-            <h2 id="cta-title" className="text-h2 text-white md:text-h2-lg">{title ?? t("cta.title")}</h2>
-            <p className="on-dark-muted mx-auto mt-4 max-w-xl md:text-body-lg">{t("cta.subtitle")}</p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <GuideTrigger size="lg" className="btn-shine shadow-[0_14px_34px_-12px_rgb(255_184_0/0.9)]" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
-              <WhatsAppButton place="final-banner" size="lg" label={t("common.askOnWhatsapp")} message={t("common.askMessage")} />
-            </div>
+    <section id="book" className="sun-rays scroll-mt-24 bg-[linear-gradient(135deg,var(--color-tint-ice),var(--color-tint-cream))] py-20 md:py-28" aria-labelledby="cta-title">
+      <div className="container-page">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <span aria-hidden className="mx-auto mb-6 block h-px w-14 bg-gold" />
+          <h2 id="cta-title" className="font-heading text-h2 font-semibold text-ink md:text-h2-lg">{title ?? t("cta.title")}</h2>
+          <p className="mx-auto mt-4 max-w-xl text-body md:text-body-lg">{t("cta.subtitle")}</p>
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <GuideTrigger size="lg" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
+            <WhatsAppButton place="final-banner" size="lg" label={t("common.askOnWhatsapp")} message={t("common.askMessage")} />
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }

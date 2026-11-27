@@ -27,7 +27,7 @@ export function SectionHeading({
       <Tag className={cn(
         Tag === "h1" ? "text-hero md:text-hero-lg" : "text-h2 md:text-h2-lg",
         premium && Tag === "h2" && "md:text-[3.25rem] md:leading-[3.75rem]",
-        dark && "text-white",
+        dark ? "text-white" : "text-ink",
       )}>{title}</Tag>
       {subtitle && <p className={cn("mt-4 md:text-body-lg", dark ? "text-silver/85" : "text-muted")}>{subtitle}</p>}
     </>

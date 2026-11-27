@@ -1,42 +1,34 @@
 import { useTranslations } from "next-intl";
-import { BadgeCheck, Gauge, Headset, Ruler, ShieldCheck, Sun, Zap } from "lucide-react";
+import { Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 
-const ITEMS = [
-  { key: "k1", Icon: Ruler },
-  { key: "k2", Icon: Sun },
-  { key: "k3", Icon: Zap },
-  { key: "k4", Icon: Gauge },
-  { key: "k5", Icon: BadgeCheck },
-  { key: "k6", Icon: ShieldCheck },
-  { key: "k7", Icon: Headset },
-] as const;
+const ITEMS = ["k1", "k2", "k3", "k4", "k5", "k6", "k7"] as const;
 
-/** "Know before you buy": a simple pre-purchase checklist. */
+/** "Know before you buy": the 7-point pre-purchase checklist as a two-column list inside one framed card. */
 export function KnowBefore() {
   const t = useTranslations("knowBefore");
   return (
-    <section className="tone tone-mint py-16 md:py-24" aria-labelledby="kb-title">
-      <div aria-hidden className="orb -right-24 top-1/3 size-96 bg-[#24A66A]/15" />
+    <section className="bg-cloud py-16 md:py-24" aria-labelledby="kb-title">
       <div className="container-page">
         <SectionHeading premium eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
-        <ol className="mx-auto grid max-w-5xl gap-3 md:grid-cols-2">
-          {ITEMS.map(({ key, Icon }, i) => (
-            <Reveal key={key} delay={(i % 2) * 0.06}>
-              <li className="card-premium group flex h-full list-none items-start gap-4 p-5">
-                <span className="relative grid size-12 shrink-0 place-items-center rounded-2xl bg-leaf-tint text-leaf-ink transition-colors duration-500 group-hover:bg-leaf group-hover:text-white">
-                  <Icon className="size-5" aria-hidden />
-                  <span className="icon-sun absolute -right-2 -top-2 grid size-6 place-items-center rounded-full text-[0.6875rem] font-extrabold">{i + 1}</span>
-                </span>
-                <span>
-                  <span className="block font-bold text-navy" style={{ fontFamily: "var(--font-display), var(--font-jakarta), var(--font-telugu), sans-serif" }}>{t(`${key}.title`)}</span>
-                  <span className="mt-1 block text-caption text-muted">{t(`${key}.desc`)}</span>
-                </span>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
+        <Reveal>
+          <div className="mx-auto max-w-5xl rounded-3xl border border-line bg-card p-6 shadow-soft md:p-10">
+            <ol className="grid gap-x-10 md:grid-cols-2">
+              {ITEMS.map((key, i) => (
+                <li key={key} className="flex gap-4 border-b border-line py-5 last:border-b-0">
+                  <span aria-hidden className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full border border-primary/30 bg-tint-ice text-primary">
+                    <Check className="size-4" strokeWidth={2.5} />
+                  </span>
+                  <span>
+                    <span className="block font-heading text-[1.125rem] font-semibold text-ink"><span className="sr-only">{i + 1}. </span>{t(`${key}.title`)}</span>
+                    <span className="mt-1 block text-caption text-muted">{t(`${key}.desc`)}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

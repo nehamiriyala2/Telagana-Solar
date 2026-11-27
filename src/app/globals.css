@@ -32,6 +32,27 @@
   --color-whatsapp-hover: #23661c;
   --color-success: #2b7a23;
   --color-danger: #b42318;
+  /* Public-site palette tokens (additive; only used by the public site, see src/app/site-theme.css).
+     Neutral names (primary, cloud, mist, tint-*) so a palette swap only changes these values. */
+  --color-cloud: #f7fafd;        /* page background */
+  --color-mist: #eaf1f8;         /* alternate sections */
+  --color-card: #fcfdff;
+  --color-card-line: #dce6f0;
+  --color-primary: #2b6cb0;      /* sky blue: buttons, active nav, icons, accent words */
+  --color-primary-hover: #235a93;
+  --color-primary-deep: #1b4570; /* footer only */
+  --color-ink: #14263a;          /* heading text */
+  --color-body: #44576b;
+  --color-gold-dark: #e2ab35;
+  --color-gold-text: #8a6514;    /* gold-family text on light surfaces (AA) */
+  --color-gold-light: #f7d274;   /* gold text on the deep blue footer */
+  --color-on-gold: #3a2a06;      /* text on gold */
+  --color-success-text: #2d7349; /* savings text (AA); fills use --color-leaf #3a8f5c */
+  --color-tint-ice: #e3eef9;
+  --color-tint-cream: #fff4d9;
+  --color-tint-mist: #e8f0f6;
+  --color-tint-mint: #e6f3ea;
+  --color-grey: #eaf1f8;
 
   /* Typography */
   --font-heading: var(--font-jakarta), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;

@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Cog, Gauge, House, IndianRupee } from "lucide-react";
 import { homesHeroChips, homesHeroImageAlt } from "@/data/solution-hero";
 import { pick } from "@/lib/utils";
+import { PhotoTile } from "@/components/ui/photo-tile";
+import { HOMES_HERO_PHOTOS } from "@/data/section-photos";
 
 const ICONS = { size: House, subsidy: IndianRupee, install: Cog, net: Gauge } as const;
 
@@ -17,7 +19,7 @@ export function HomeHeroArt({ locale }: { locale: string }) {
       <div className="relative">
         <div className="hha-house relative">
           {/* Golden glow behind the house */}
-          <div aria-hidden className="absolute left-1/2 top-[45%] -z-10 aspect-square w-[85%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.5),rgb(255_199_44/0.16)_45%,transparent_70%)]" />
+          <div aria-hidden className="absolute left-1/2 top-[45%] -z-10 aspect-square w-[85%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-transparent" />
           <div className="float-soft" style={{ animationDuration: "7s" }}>
             <Image
               src="/solutions/home-solar-house.webp"
@@ -26,14 +28,14 @@ export function HomeHeroArt({ locale }: { locale: string }) {
               height={679}
               priority
               sizes="(min-width: 1400px) 560px, (min-width: 1024px) 40vw, (min-width: 768px) 72vw, 100vw"
-              className="h-auto w-full object-contain drop-shadow-[0_30px_40px_rgb(7_23_63/0.16)]"
+              className="h-auto w-full object-contain drop-shadow-[0_30px_40px_rgb(27_69_112/0.16)]"
             />
           </div>
         </div>
 
         {/* Labels on the left of the house (md+) */}
         <ul className="absolute left-0 top-[12%] hidden h-[66%] flex-col justify-between md:flex">
-          <span aria-hidden className="absolute bottom-6 left-[1.3rem] top-6 w-0.5 rounded-full bg-[linear-gradient(180deg,#FFC72C,#F5A800)] opacity-60 lg:left-[1.4rem]" />
+          <span aria-hidden className="absolute bottom-6 left-[1.3rem] top-6 w-0.5 rounded-full bg-gold opacity-60 lg:left-[1.4rem]" />
           {homesHeroChips.map((c, i) => <Chip key={c.key} k={c.key} label={pick(c.label, locale)} delay={i * -1.2} />)}
         </ul>
       </div>
@@ -58,12 +60,11 @@ function Chip({ k, label, delay = 0, compact = false }: { k: keyof typeof ICONS;
   const Icon = ICONS[k];
   return (
     <li className="relative list-none">
-      <div className={`${compact ? "" : "float-soft"} flex items-center gap-2.5 rounded-full border border-white bg-white/90 py-1.5 pl-1.5 pr-4 shadow-[0_14px_30px_-16px_rgb(7_23_63/0.4)] backdrop-blur`}
+      <div className={`${compact ? "" : "float-soft"} flex items-center gap-3 rounded-full border border-white bg-white/90 py-1.5 pl-1.5 pr-5 shadow-[0_14px_30px_-16px_rgb(27_69_112/0.4)] backdrop-blur`}
         style={compact ? undefined : { animationDelay: `${delay}s` }}>
-        <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-gold-ink ring-2 ring-gold/70">
-          <Icon className="size-5" strokeWidth={2} aria-hidden />
-        </span>
-        <span className={`font-heading text-[0.8125rem] font-bold leading-tight text-navy ${compact ? "" : "max-w-[7.5rem] xl:max-w-[8.5rem] xl:text-[0.875rem]"}`}>{label}</span>
+        <PhotoTile src={HOMES_HERO_PHOTOS[k]} alt="" className={`${compact ? "size-11" : "size-14 xl:size-16"} shrink-0 rounded-full bg-white text-gold-ink shadow-[0_6px_14px_-6px_rgb(27_69_112/0.45)] ring-[3px] ring-gold`}
+          fallback={<Icon className="size-5" strokeWidth={2} aria-hidden />} />
+        <span className={`font-heading text-[0.8125rem] font-bold leading-tight text-ink ${compact ? "" : "max-w-[7.5rem] xl:max-w-[8.5rem] xl:text-[0.875rem]"}`}>{label}</span>
       </div>
     </li>
   );

@@ -19,6 +19,7 @@ import { FaqSection } from "@/components/home/home-sections";
 import { businessPackages, homePackages, pumpSizesHp } from "@/config/packages";
 import { routing } from "@/i18n/routing";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
+import { SOLUTION_BENEFIT_PHOTOS } from "@/data/section-photos";
 
 const SLUGS = ["homes", "farms", "business"] as const;
 type Slug = (typeof SLUGS)[number];
@@ -65,7 +66,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
       {/* Benefits */}
       <section className="tone tone-white py-16 md:py-24">
         <div className="container-page">
-          <Bento tones={BENTO_TONES[s]} items={(["b1", "b2", "b3", "b4"] as const).map((b, i) => ({ title: p(`${b}.title`), desc: p(`${b}.desc`), Icon: BENEFIT_ICONS[s][i] }))} />
+          <Bento tones={BENTO_TONES[s]} items={(["b1", "b2", "b3", "b4"] as const).map((b, i) => ({ title: p(`${b}.title`), desc: p(`${b}.desc`), Icon: BENEFIT_ICONS[s][i], photo: SOLUTION_BENEFIT_PHOTOS[s]?.[i] }))} />
         </div>
       </section>
 
@@ -90,7 +91,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
                 {pumpSizesHp.map((hp, i) => (
                   <Reveal key={hp} delay={i * 0.06}>
                     <li className="card-glass-light h-full list-none p-6">
-                      <span className="float-soft icon-royal grid size-12 place-items-center rounded-2xl"><Droplets className="size-6" aria-hidden /></span>
+                      <span className="float-soft icon-primary-hover grid size-12 place-items-center rounded-2xl"><Droplets className="size-6" aria-hidden /></span>
                       <h3 className="mt-4 text-h4">{t("solutionPages.farms.hp", { value: hp })}</h3>
                       <p className="mt-2 text-caption text-muted">{p("pumpDesc")}</p>
                     </li>
@@ -127,7 +128,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
                 {([["shops", Store], ["schools", GraduationCap], ["hospitals", Hospital], ["factories", Factory], ["offices", Building], ["hotels", Hotel]] as const).map(([k, Icon], i) => (
                   <Reveal key={k} delay={(i % 3) * 0.06}>
                     <li className="card-glass-light flex h-full list-none items-center gap-4 p-5">
-                      <span className="icon-royal grid size-12 shrink-0 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
+                      <span className="icon-primary-hover grid size-12 shrink-0 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
                       <span className="font-heading font-bold">{p(k)}</span>
                     </li>
                   </Reveal>
@@ -156,7 +157,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
             {(["i1", "i2", "i3", "i4", "i5", "i6"] as const).map((k, i) => (
               <Reveal key={k} delay={i * 0.04}>
                 <li className="card-dark-glass flex h-full list-none items-start gap-3 p-4 text-white">
-                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#FFD76A]" aria-hidden />{p(k)}
+                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#F0BE4A]" aria-hidden />{p(k)}
                 </li>
               </Reveal>
             ))}

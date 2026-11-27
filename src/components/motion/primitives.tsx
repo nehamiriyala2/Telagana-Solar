@@ -5,17 +5,17 @@ import { cn } from "@/lib/utils";
 
 /**
  * Motion building blocks for the inner pages (Framer Motion only; transform/opacity,
- * plus a light blur on scroll reveals). All respect prefers-reduced-motion.
+ * no blur, kept quiet). All respect prefers-reduced-motion.
  */
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
-/** Scroll reveal: fade + 24px rise + soft blur, once. */
+/** Scroll reveal: fade + 16px rise, once. */
 export function BlurReveal({ delay = 0, children, className, ...props }: HTMLMotionProps<"div"> & { delay?: number }) {
   const reduce = useReducedMotion();
   return (
     <motion.div
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, filter: "blur(8px)" }}
-      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
+      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, ease: EASE, delay }}
       className={className}
@@ -28,8 +28,8 @@ export function BlurReveal({ delay = 0, children, className, ...props }: HTMLMot
 
 const staggerParent: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 const staggerChild: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.65, ease: EASE } },
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
 };
 const staggerChildReduced: Variants = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.3 } } };
 

@@ -60,16 +60,16 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-7">
-            <BlurReveal className="relative overflow-hidden rounded-[1.75rem] p-7 md:p-10" style={{ background: "radial-gradient(ellipse 70% 80% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%), linear-gradient(135deg, var(--accent-soft), #ffffff)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent)" }}>
+            <BlurReveal className="relative overflow-hidden rounded-[1.25rem] p-7 md:p-10" style={{ background: "radial-gradient(ellipse 70% 80% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%), linear-gradient(135deg, var(--accent-soft), #FCFDFF)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent)" }}>
               <div aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full border-2" style={{ borderColor: "color-mix(in srgb, var(--accent) 45%, transparent)" }} />
               <span aria-hidden className="absolute inset-x-0 top-0 h-1.5" style={{ background: "var(--accent)" }} />
               <p className="eyebrow-pill relative">{t("benefit")}</p>
-              <p className="relative mt-5 font-heading text-[1.25rem] font-bold leading-snug text-navy md:text-[1.5rem]">{k("benefit")}</p>
+              <p className="relative mt-5 font-heading text-[1.25rem] font-bold leading-snug text-ink md:text-[1.5rem]">{k("benefit")}</p>
               <p className="relative mt-5 flex gap-2 text-caption font-semibold text-gold-ink"><Info className="mt-0.5 size-4 shrink-0" aria-hidden />{t("note")}</p>
             </BlurReveal>
 
             {slug === "pm-surya-ghar" && (
-              <BlurReveal className="zoom-frame relative overflow-hidden rounded-[1.75rem] border border-white bg-white p-2 shadow-[0_30px_60px_-34px_rgb(7_23_63/0.5)]">
+              <BlurReveal className="zoom-frame relative overflow-hidden rounded-[1.25rem] border border-white bg-white p-2 shadow-[0_30px_60px_-34px_rgb(27_69_112/0.5)]">
                 <div className="relative overflow-hidden rounded-[1.4rem]">
                   <Image src={pmSuryaGharSign.src} alt={pick(pmSuryaGharSign.alt, locale)} width={pmSuryaGharSign.width} height={pmSuryaGharSign.height}
                     sizes="(min-width: 1024px) 40rem, 100vw" className="zoom-img block h-auto w-full" />
@@ -78,29 +78,29 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
               </BlurReveal>
             )}
 
-            <BlurReveal className="rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-9">
-              <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("who")}</h2>
+            <BlurReveal className="rounded-[1.25rem] border border-line bg-white p-7 shadow-soft md:p-9">
+              <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink">{t("who")}</h2>
               <Stagger className="mt-5 space-y-3">
                 {["w1", "w2", "w3"].map((w) => (
-                  <StaggerItem key={w} className="flex gap-3 rounded-2xl p-4 text-navy" style={{ background: "var(--accent-soft)" }}><CircleCheck className="mt-0.5 size-5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden />{k(w)}</StaggerItem>
+                  <StaggerItem key={w} className="flex gap-3 rounded-2xl p-4 text-ink" style={{ background: "var(--accent-soft)" }}><CircleCheck className="mt-0.5 size-5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden />{k(w)}</StaggerItem>
                 ))}
               </Stagger>
             </BlurReveal>
           </div>
 
           <div className="space-y-6 lg:col-span-5">
-            <BlurReveal delay={0.08} className="rounded-[1.75rem] border border-line bg-white p-7 shadow-soft md:p-9">
-              <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("documents")}</h2>
+            <BlurReveal delay={0.08} className="rounded-[1.25rem] border border-line bg-white p-7 shadow-soft md:p-9">
+              <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink">{t("documents")}</h2>
               <Stagger className="mt-5 grid gap-2">
                 {["d1", "d2", "d3", "d4"].map((d) => (
-                  <StaggerItem key={d} className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 text-navy"><span className="icon-royal grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>{k(d)}</StaggerItem>
+                  <StaggerItem key={d} className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 text-ink"><span className="icon-primary-hover grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>{k(d)}</StaggerItem>
                 ))}
               </Stagger>
             </BlurReveal>
-            <BlurReveal delay={0.12} className="tone tone-navy rounded-[1.75rem] p-7 md:p-9">
-              <h2 className="flex items-center gap-3 font-heading text-h3 font-extrabold tracking-[-0.02em] text-white"><span className="grid size-10 place-items-center rounded-xl text-navy" style={{ background: "var(--accent)" }}><HandHelping className="size-5" aria-hidden /></span>{t("help")}</h2>
+            <BlurReveal delay={0.12} className="tone tone-navy rounded-[1.25rem] p-7 md:p-9">
+              <h2 className="flex items-center gap-3 font-heading text-h3 font-extrabold tracking-[-0.02em] text-white"><span className="grid size-10 place-items-center rounded-xl text-ink" style={{ background: "var(--accent)" }}><HandHelping className="size-5" aria-hidden /></span>{t("help")}</h2>
               <ul className="mt-5 space-y-3">
-                {["h1", "h2", "h3", "h4"].map((h) => <li key={h} className="flex gap-2.5 text-white/90"><CircleCheck className="mt-0.5 size-5 shrink-0 text-[#FFD76A]" aria-hidden />{k(h)}</li>)}
+                {["h1", "h2", "h3", "h4"].map((h) => <li key={h} className="flex gap-2.5 text-white/90"><CircleCheck className="mt-0.5 size-5 shrink-0 text-[#F0BE4A]" aria-hidden />{k(h)}</li>)}
               </ul>
             </BlurReveal>
             <Button asChild variant="outline" size="lg" className="w-full">
@@ -113,15 +113,15 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       {/* Steps with a self-drawing line */}
       <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
-        <Wave color="#FFFFFF" position="top" />
+        <Wave color="#FCFDFF" position="top" />
         <div className="container-page max-w-4xl">
           <SectionTitle tone="dark" title={t("steps")} />
           <div className="relative">
-            <DrawLine className="absolute bottom-8 left-[27px] top-8 w-1 rounded-full bg-[linear-gradient(180deg,var(--accent),#FFD76A)]" />
+            <DrawLine className="absolute bottom-8 left-[27px] top-8 w-1 rounded-full bg-[linear-gradient(180deg,var(--accent),#F0BE4A)]" />
             <Stagger as="ol" className="relative space-y-5">
               {["s1", "s2", "s3", "s4", "s5"].map((s, i) => (
                 <StaggerItem key={s} className="flex items-center gap-5">
-                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold text-navy ring-8 ring-[#0A2462]" style={{ background: "linear-gradient(135deg, #FFD76A, var(--accent))" }}>{i + 1}</span>
+                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold text-ink ring-8 ring-[#235A93]" style={{ background: "linear-gradient(135deg, #F0BE4A, var(--accent))" }}>{i + 1}</span>
                   <p className="card-dark-glass flex-1 p-5 font-semibold text-white">{k(s)}</p>
                 </StaggerItem>
               ))}
@@ -139,12 +139,12 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
               const OIcon = SCHEME_ICONS[s.slug];
               return (
                 <StaggerItem key={s.slug} className="list-none">
-                  <TiltCard max={6} className="h-full rounded-[1.75rem]">
-                    <Link href={`/schemes/${s.slug}`} className="group flex h-full flex-col rounded-[1.75rem] border border-line bg-white p-6 shadow-soft transition-colors hover:border-gold/50">
-                      <span className="icon-royal grid size-12 place-items-center rounded-2xl"><OIcon className="size-6" aria-hidden /></span>
-                      <span className="mt-5 font-heading text-[1.125rem] font-bold text-navy">{t(`items.${s.slug}.name`)}</span>
+                  <TiltCard max={6} className="h-full rounded-[1.25rem]">
+                    <Link href={`/schemes/${s.slug}`} className="group flex h-full flex-col rounded-[1.25rem] border border-line bg-white p-6 shadow-soft transition-colors hover:border-gold/50">
+                      <span className="icon-primary-hover grid size-12 place-items-center rounded-2xl"><OIcon className="size-6" aria-hidden /></span>
+                      <span className="mt-5 font-heading text-[1.125rem] font-bold text-ink">{t(`items.${s.slug}.name`)}</span>
                       <span className="mt-1 text-caption text-muted">{t(`items.${s.slug}.short`)}</span>
-                      <span className="mt-auto flex items-center gap-1.5 pt-5 text-caption font-semibold text-royal">{t("learnMore")}<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
+                      <span className="mt-auto flex items-center gap-1.5 pt-5 text-caption font-semibold text-primary-hover">{t("learnMore")}<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
                     </Link>
                   </TiltCard>
                 </StaggerItem>
@@ -160,8 +160,8 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
 function Glance({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="card-glass-light p-4 hover:transform-none">
-      <dt className="text-[0.75rem] font-bold uppercase tracking-wide text-royal">{label}</dt>
-      <dd className="mt-1 text-caption font-semibold text-navy">{value}</dd>
+      <dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary-hover">{label}</dt>
+      <dd className="mt-1 text-caption font-semibold text-ink">{value}</dd>
     </div>
   );
 }

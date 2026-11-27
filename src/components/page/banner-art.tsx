@@ -49,7 +49,7 @@ export function BannerArt({
 
   return (
     <div className="banner-art banner-reveal relative">
-      <div aria-hidden className="absolute left-[60%] top-1/2 -z-10 aspect-square w-[70%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_70%)] max-lg:hidden" />
+      <div aria-hidden className="absolute left-[60%] top-1/2 -z-10 aspect-square w-[70%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-transparent max-lg:hidden" />
       <div className="banner-art__frame relative overflow-hidden">
         {img}
         <Sunlight sun={b.sun} />
@@ -108,10 +108,10 @@ export function PhotoCard({
   return (
     <Parallax offset={40} className={cn("relative mx-auto w-full max-w-[34rem] lg:mr-0", className)}>
       <div className="banner-reveal relative">
-        <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_210_110/0.35),transparent_68%)]" />
+        <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-transparent" />
         <div className="float-soft" style={{ animationDuration: "9s" }}>
-          <TiltCard max={4} className="rounded-[2rem]">
-            <div className={cn("rounded-[2rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(7_23_63/0.55),0_0_0_1px_rgb(23_105_232/0.06)] backdrop-blur-md", cardClassName)}>
+          <TiltCard max={4} className="rounded-[1.25rem]">
+            <div className={cn("rounded-[1.25rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(27_69_112/0.55),0_0_0_1px_rgb(35_90_147/0.06)] backdrop-blur-md", cardClassName)}>
               <div className="relative overflow-hidden rounded-[1.6rem]">
                 {children}
                 <Sunlight sun={sun} />

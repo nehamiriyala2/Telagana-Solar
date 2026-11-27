@@ -100,8 +100,8 @@ export function FullCalculator() {
       {/* Results */}
       <div className="space-y-6 lg:col-span-7">
         <Card className="overflow-hidden">
-          <div className="relative bg-[linear-gradient(135deg,#FFFBF2,#FFF1D6)] p-6 md:p-8">
-            <div aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full bg-[radial-gradient(circle,rgb(245_168_0/0.35),transparent_65%)]" />
+          <div className="relative bg-[#F7FAFD] p-6 md:p-8">
+            <div aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full bg-transparent" />
             <p className="text-caption font-semibold text-muted">{t("calculator.size")}</p>
             <p className="mt-1 font-heading text-[3.5rem] font-extrabold leading-none tracking-tightish md:text-[4.5rem]" aria-live="polite">
               <CountUp value={r.kw} duration={0.5} /><span className="ml-2 text-h3">kW</span>

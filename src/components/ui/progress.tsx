@@ -12,7 +12,7 @@ export function Progress({ value, className, label }: { value: number; className
       aria-valuemax={100}
       aria-valuenow={Math.round(v * 100)}
       aria-label={label}
-      className={cn("h-2 w-full overflow-hidden rounded-full bg-navy/10", className)}
+      className={cn("h-2 w-full overflow-hidden rounded-full bg-primary/10", className)}
     >
       <motion.div
         className="h-full rounded-full bg-sun"

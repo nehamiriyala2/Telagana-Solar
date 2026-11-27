@@ -16,7 +16,7 @@ export function SectionTitle({ eyebrow, title, emphasis, subtitle, align = "left
     <div className={cn("relative isolate mb-10 md:mb-14", align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl", className)}>
       {index && <span aria-hidden className={cn("section-index", align === "center" && "left-1/2 right-auto -translate-x-1/2")}>{index}</span>}
       {eyebrow && <BlurReveal><p className={cn("eyebrow-pill mb-5", dark && "eyebrow-pill--dark")}>{eyebrow}</p></BlurReveal>}
-      <div id={id}><MaskHeading text={title} emphasis={emphasis} className={cn("display-lg", dark ? "text-white" : "text-navy")} /></div>
+      <div id={id}><MaskHeading text={title} emphasis={emphasis} className={cn("display-lg", dark ? "text-white" : "text-ink")} /></div>
       {subtitle && <BlurReveal delay={0.15}><p className={cn("mt-5 md:text-body-lg", dark ? "on-dark-muted" : "text-[var(--ts-text)]")}>{subtitle}</p></BlurReveal>}
     </div>
   );

@@ -17,7 +17,7 @@ export function ChoiceChips<T extends string>({
     <div
       role="radiogroup"
       aria-label={label}
-      className={cn("inline-flex flex-wrap gap-1 rounded-3xl border border-line bg-white p-1", className)}
+      className={cn("inline-flex flex-wrap gap-1 rounded-full border border-line bg-white p-1", className)}
     >
       {options.map((o) => {
         const active = o.value === value;
@@ -30,13 +30,13 @@ export function ChoiceChips<T extends string>({
             onClick={() => onChange(o.value)}
             className={cn(
               "relative min-h-10 rounded-full px-4 py-2 text-caption font-medium transition-colors duration-300",
-              active ? "text-navy" : "text-muted hover:text-navy",
+              active ? "text-white" : "text-muted hover:text-ink",
             )}
           >
             {active && (
               <motion.span
                 layoutId={layoutId}
-                className="absolute inset-0 rounded-full bg-sun"
+                className="absolute inset-0 rounded-full bg-primary"
                 transition={{ type: "spring", stiffness: 420, damping: 34 }}
               />
             )}

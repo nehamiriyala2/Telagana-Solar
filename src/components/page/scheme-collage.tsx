@@ -17,11 +17,11 @@ export function SchemeCollage() {
       {/* Ambient solar golden glow */}
       <span
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 size-[95%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.38),transparent_65%)]"
+        className="pointer-events-none absolute left-1/2 top-1/2 size-[95%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-transparent"
       />
 
       {/* Floating framed white card */}
-      <div className="schemes-banner__card relative aspect-[1671/941] w-full max-w-full overflow-hidden rounded-[1.75rem] border-[5px] border-white bg-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.7),0_0_0_1px_rgb(255_255_255/0.25)] sm:rounded-[2rem] sm:border-[6px] lg:max-w-[924px] lg:rounded-[2.25rem] lg:border-[7px]">
+      <div className="schemes-banner__card relative aspect-[1671/941] w-full max-w-full overflow-hidden rounded-[1.25rem] border-[5px] border-white bg-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.7),0_0_0_1px_rgb(255_255_255/0.25)] sm:rounded-[1.25rem] sm:border-[6px] lg:max-w-[924px] lg:rounded-[1.25rem] lg:border-[7px]">
         <Image
           src="/schemes/schemes-hero.webp"
           alt={locale === "te" ? ALT.te : ALT.en}
