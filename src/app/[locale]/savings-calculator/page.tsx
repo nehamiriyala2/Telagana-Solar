@@ -7,6 +7,7 @@ import { FullCalculator } from "@/components/calculator/full-calculator";
 import { StatCounter } from "@/components/page/stat-counter";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { calculatorConfig as C } from "@/config/calculator";
+import { calcSettings, tariff } from "@/lib/calculator";
 import { calculatorPage as D } from "@/data/calculator-page";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
@@ -26,9 +27,9 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
   const t = await getTranslations("calculator");
   const L = (v: { en: string; te: string }) => pick(v, locale);
   const stats = [
-    { key: "generation", value: C.generationPerKwMonth, prefix: "" },
+    { key: "generation", value: calcSettings().unitsPerKwDay * 30, prefix: "" },
     { key: "roof", value: C.sqftPerKw, prefix: "" },
-    { key: "tariff", value: C.tariffPerUnit.home, prefix: "₹", decimals: 1 },
+    { key: "tariff", value: Math.round(tariff("home") * 10) / 10, prefix: "₹", decimals: 1 },
     { key: "life", value: C.lifetimeYears, prefix: "" },
   ];
 
@@ -38,7 +39,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
 
       <section className="relative -mt-8 pb-16 md:-mt-12 md:pb-24">
         <div className="container-page">
-          <BlurReveal className="rounded-[1.25rem] border border-white bg-white/70 p-3 shadow-[0_40px_90px_-50px_rgb(28_47_71/0.45)] backdrop-blur-xl md:p-6">
+          <BlurReveal className="rounded-[1.25rem] border border-white bg-white/70 p-3 shadow-[0_40px_90px_-50px_rgb(11_31_58/0.45)] backdrop-blur-xl md:p-6">
             <FullCalculator />
           </BlurReveal>
         </div>
@@ -54,7 +55,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
               <StaggerItem key={s.key} className="card-dark-glass list-none p-6">
                 <p className="font-heading text-[2.5rem] font-extrabold leading-none tracking-[-0.03em] text-white">
                   <StatCounter value={s.value} prefix={s.prefix} decimals={s.decimals} />
-                  <span className="ml-1 text-[1rem] font-bold text-[#2B6CB0]">{L(D.stats[s.key].suffix).trim()}</span>
+                  <span className="ml-1 text-[1rem] font-bold text-[#0B1F3A]">{L(D.stats[s.key].suffix).trim()}</span>
                 </p>
                 <p className="on-dark-muted mt-3 text-caption">{L(D.stats[s.key].label)}</p>
               </StaggerItem>

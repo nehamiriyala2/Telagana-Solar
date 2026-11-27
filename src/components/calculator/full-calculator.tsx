@@ -11,7 +11,7 @@ import { CountUp } from "@/components/motion/count-up";
 import { LeadForm } from "@/components/forms/lead-form";
 import { calculatorConfig as C, type PropertyType } from "@/config/calculator";
 import { districts } from "@/data/districts";
-import { calculate, summarize, type InputMode } from "@/lib/calculator";
+import { calcSettings, calculate, summarize, type InputMode } from "@/lib/calculator";
 import { track } from "@/lib/analytics";
 import { formatINR, formatLakh, formatNum, pick } from "@/lib/utils";
 
@@ -100,7 +100,7 @@ export function FullCalculator() {
       {/* Results */}
       <div className="space-y-6 lg:col-span-7">
         <Card className="overflow-hidden">
-          <div className="relative bg-[#F1F6FC] p-6 md:p-8">
+          <div className="relative bg-[#F5F0E6] p-6 md:p-8">
             <div aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full bg-transparent" />
             <p className="text-caption font-semibold text-muted">{t("calculator.size")}</p>
             <p className="mt-1 font-heading text-[3.5rem] font-extrabold leading-none tracking-tightish md:text-[4.5rem]" aria-live="polite">
@@ -120,7 +120,7 @@ export function FullCalculator() {
             <Stat label={t("calculator.co2")} value={t("calculator.co2Value", { value: r.co2TonnesYear })} />
             <Stat label="" value="" className="hidden sm:block" />
           </dl>
-          <p className="border-t border-line px-6 py-4 text-caption text-muted md:px-8">{t("common.estimatesNote")} {r.subsidy > 0 && t("common.subsidyNote")}</p>
+          <p className="border-t border-line px-6 py-4 text-caption text-muted md:px-8">{(locale === "te" && calcSettings().disclaimer.te) || calcSettings().disclaimer.en} {r.subsidy > 0 && t("common.subsidyNote")}</p>
         </Card>
 
         <Card className="p-6 md:p-8"><SavingsChart data={r.projection} /></Card>

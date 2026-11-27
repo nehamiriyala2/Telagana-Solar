@@ -5,7 +5,7 @@
 import { calculatorConfig as C, schemeRules } from "@/config/calculator";
 import { personaConfig, type Persona } from "@/config/personas";
 import type { SchemeSlug } from "@/config/schemes";
-import { calculate, subsidyFor, summarize, type CalcResult } from "./calculator";
+import { calcSettings, calculate, subsidyFor, summarize, type CalcResult } from "./calculator";
 import type { SubsidyRule } from "@/config/calculator";
 
 /** The subsidy rule that applies to this scheme for this visitor (apartments use the RWA rule). */
@@ -59,7 +59,7 @@ export interface SubsidyResult { slug: SchemeSlug; status: SubsidyStatus; explai
 export function checkSubsidy({ persona, mode, value, own }: { persona: Persona; mode: "kw" | "bill"; value: number; own: boolean }): { kw: number; results: SubsidyResult[] } {
   const cfg = personaConfig[persona];
   const kw = mode === "kw" ? Math.max(0, value) : calculate({ type: cfg.type, mode: "bill", value }).kw;
-  const cost = Math.round(kw * C.costPerKw[cfg.type]);
+  const cost = Math.round(kw * calcSettings().costPerKw[cfg.type]);
   const est = (slug: SchemeSlug) => {
     const rule = schemeRuleFor(slug, persona);
     const a = rule.kind === "none" ? 0 : subsidyFor(rule, kw, cost);

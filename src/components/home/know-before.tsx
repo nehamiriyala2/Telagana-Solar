@@ -3,8 +3,6 @@ import { ArrowRight, BadgeCheck, Gauge, Headset, Ruler, ShieldCheck, Sun, Zap } 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { GuideTrigger } from "@/components/tools/triggers";
-import { PhotoTile } from "@/components/ui/photo-tile";
-import { UI_IMAGES } from "@/data/section-photos";
 
 const ITEMS = [
   { key: "k1", Icon: Ruler },
@@ -34,12 +32,12 @@ export function KnowBefore() {
                   <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`${key}.title`)}</span>
                   <span className="mt-1 block text-[0.9375rem] text-body">{t(`${key}.desc`)}</span>
                 </span>
-                <PhotoTile src={UI_IMAGES.checklist[key]} alt="" className="size-[72px] shrink-0 rounded-xl bg-tint-ice text-primary" fallback={<Icon className="size-6" aria-hidden />} />
+                <span aria-hidden className={i % 2 === 0 ? "grid size-12 shrink-0 place-items-center rounded-xl bg-[#EBE3D3] text-[#0B1F3A]" : "grid size-12 shrink-0 place-items-center rounded-xl bg-[#F1E7D2] text-[#0B1F3A]"}><Icon className="size-6" strokeWidth={1.75} /></span>
               </li>
             </Reveal>
           ))}
           <Reveal delay={0.06} className="h-full">
-            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(28_47_71/0.18)] sm:flex-row sm:items-center">
+            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(11_31_58/0.18)] sm:flex-row sm:items-center">
               <p className="font-heading text-[1.0625rem] font-bold leading-snug text-white">{t("helpTitle")}</p>
               <GuideTrigger size="sm" variant="white" className="shrink-0">{tc("bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
             </li>

@@ -33,36 +33,36 @@
   --color-success: #2b7a23;
   --color-danger: #b42318;
   /* Public-site palette tokens (additive; only used by the public site, see src/app/site-theme.css). */
-  --color-cloud: #f1f6fc;        /* --bg */
-  --color-mist: #dceaf7;         /* --band */
-  --color-wash-green: #fdebd6;   /* legacy name: now --accent-tint */
-  --color-wash-sand: #fdebd6;    /* --accent-tint */
+  --color-cloud: #f5f0e6;        /* --bg */
+  --color-mist: #ebe3d3;         /* --band */
+  --color-wash-green: #f1e7d2;   /* legacy name: now --accent-tint */
+  --color-wash-sand: #f1e7d2;    /* --accent-tint */
   --color-card: #ffffff;         /* --surface */
-  --color-card-line: #d5e2f0;    /* --border */
-  --color-primary: #2b6cb0;      /* --primary */
-  --color-primary-hover: #245a96;
-  --color-primary-deep: #1f4e85; /* primary gradient end (dark bands) */
-  --color-primary-darkest: #1c2f47; /* footer */
-  --color-ink: #1c2f47;          /* --text */
-  --color-body: #1c2f47;
-  --color-accent: #f2994a;       /* --accent (saffron) */
-  --color-accent-hover: #e0873a;
-  --color-accent-tint: #fdebd6;
-  --color-green: #f2994a;        /* legacy name: green accents now saffron */
-  --color-green-hover: #e0873a;
-  --color-green-text: #245a96;   /* legacy name: text that was green is now deep primary (AA) */
-  --color-green-ink: #1c2f47;
-  --color-sun: #f2994a;
-  --color-gold-dark: #245a96;
-  --color-gold-text: #2b6cb0;
-  --color-gold-light: #fdebd6;
-  --color-on-gold: #1c2f47;
-  --color-success-text: #245a96;
-  --color-tint-ice: #dceaf7;
-  --color-tint-mist: #dceaf7;
-  --color-tint-mint: #fdebd6;
-  --color-tint-cream: #fdebd6;
-  --color-grey: #dceaf7;
+  --color-card-line: #e2d8c3;    /* --border */
+  --color-primary: #0b1f3a;      /* --primary */
+  --color-primary-hover: #13305a;
+  --color-primary-deep: #0b1f3a; /* primary gradient end (dark bands) */
+  --color-primary-darkest: #0b1f3a; /* footer */
+  --color-ink: #0b1f3a;          /* --text */
+  --color-body: #0b1f3a;
+  --color-accent: #b8913f;       /* --accent (saffron) */
+  --color-accent-hover: #a07c31;
+  --color-accent-tint: #f1e7d2;
+  --color-green: #b8913f;        /* legacy name: green accents now saffron */
+  --color-green-hover: #a07c31;
+  --color-green-text: #13305a;   /* legacy name: text that was green is now deep primary (AA) */
+  --color-green-ink: #0b1f3a;
+  --color-sun: #b8913f;
+  --color-gold-dark: #13305a;
+  --color-gold-text: #0b1f3a;
+  --color-gold-light: #f1e7d2;
+  --color-on-gold: #0b1f3a;
+  --color-success-text: #13305a;
+  --color-tint-ice: #ebe3d3;
+  --color-tint-mist: #ebe3d3;
+  --color-tint-mint: #f1e7d2;
+  --color-tint-cream: #f1e7d2;
+  --color-grey: #ebe3d3;
 
   /* Typography */
   --font-heading: var(--font-jakarta), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;

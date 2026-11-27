@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: process.cwd(),
   images: { formats: ["image/avif", "image/webp"] },
   experimental: { optimizePackageImports: ["lucide-react", "recharts"] },
+  // Dev-only "N" badge: keep it bottom-right so it never covers the admin sidebar's Sign out button.
+  devIndicators: { position: "bottom-right" },
 };
 
 export default withNextIntl(nextConfig);

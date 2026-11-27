@@ -9,3 +9,7 @@ next-env.d.ts
 
 # local verification builds
 .next-*
+
+# admin uploads (project photos), backed up separately
+public/uploads/
+storage/

@@ -5,9 +5,9 @@ import { heroMedia as M } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Hero photograph in a large rounded 4:3 frame (no overlay, no dark gradient).
- * Very slow zoom (off for reduced motion). When heroMedia.videoMp4/videoWebm are set, a muted looping video
- * replaces the photo for visitors without reduced-motion / data-saver.
+ * Full-bleed hero photograph with a slow, subtle Ken Burns zoom (20s; off for reduced motion), a light warm grade
+ * and a deep navy overlay left → right (~65% → 20%) so the ivory headline reads clearly. Optional muted looping
+ * video when heroMedia.videoMp4/videoWebm are set (never for reduced-motion / data-saver visitors).
  */
 export function HeroMedia({ alt, className }: { alt: string; className?: string }) {
   const [video, setVideo] = useState(false);
@@ -21,9 +21,9 @@ export function HeroMedia({ alt, className }: { alt: string; className?: string 
   }, []);
 
   return (
-    <div className={cn("relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-tint-ice shadow-[0_24px_60px_-24px_rgb(28_47_71/0.35)] ring-1 ring-card-line", className)}>
-      <div className="banner-kenburns absolute inset-x-0 -top-[30%] bottom-0 origin-[70%_80%]">
-        <Image src={M.image} alt={alt} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-[70%_70%]" />
+    <div className={cn("absolute inset-0 -z-10 overflow-hidden bg-[#0B1F3A]", className)}>
+      <div className="banner-kenburns absolute inset-0 origin-[65%_55%]">
+        <Image src={M.image} alt={alt} fill priority sizes="100vw" className="object-cover object-[68%_50%]" />
         {video && (
           <video className="absolute inset-0 size-full object-cover" autoPlay muted loop playsInline poster={M.poster} preload="auto" aria-hidden>
             {M.videoWebm && <source src={M.videoWebm} type="video/webm" />}
@@ -31,6 +31,12 @@ export function HeroMedia({ alt, className }: { alt: string; className?: string 
           </video>
         )}
       </div>
+      {/* warm grade */}
+      <div className="absolute inset-0 bg-[rgb(184_145_63/0.10)] mix-blend-multiply" />
+      {/* navy overlay: left → right */}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(11_31_58/0.82)_0%,rgb(11_31_58/0.65)_40%,rgb(11_31_58/0.3)_70%,rgb(11_31_58/0.2)_100%)]" />
+      {/* phones: extra depth so the stacked copy stays readable */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_31_58/0.3)_0%,rgb(11_31_58/0.55)_60%,rgb(11_31_58/0.75)_100%)] lg:bg-[linear-gradient(0deg,rgb(11_31_58/0.4),transparent_35%)]" />
     </div>
   );
 }

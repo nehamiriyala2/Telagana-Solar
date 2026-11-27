@@ -18,6 +18,7 @@ import { PERSONA_ICONS } from "@/components/tools/persona-icons";
 import { PERSONAS, personaConfig, type Persona } from "@/config/personas";
 import { routing } from "@/i18n/routing";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
+import { schemeCards } from "@/lib/public-schemes";
 
 /** One page per visitor type: /for/urban, /for/farmer, /te/for/landlord … */
 export function generateStaticParams() {
@@ -78,7 +79,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      <SchemesSection only={cfg.schemes} title={t("personaPage.schemesTitle")} premium />
+      <SchemesSection only={cfg.schemes} title={t("personaPage.schemesTitle")} premium cards={await schemeCards(locale)} />
       <HowItWorks premium />
       <FaqSection keys={cfg.faq} premium />
     </>

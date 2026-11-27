@@ -64,8 +64,8 @@ export function Header() {
   }, [open]);
 
   return (
-    <header ref={headerRef} className={cn("fixed inset-x-0 top-0 z-50 border-b border-line transition-[background-color,box-shadow] duration-300",
-      scrolled || open ? "bg-white/85 shadow-header backdrop-blur-md" : "bg-white/85 backdrop-blur-md")}>
+    <header ref={headerRef} className={cn("fixed inset-x-0 top-0 z-50 border-b border-[#E2D8C3] bg-[#F5F0E6]/90 backdrop-blur-[12px] transition-shadow duration-300",
+      scrolled || open ? "shadow-[0_10px_30px_rgba(11,31,58,0.12)]" : "shadow-none")}>
       <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-4 xl:max-w-[85rem] xl:gap-5">
         <Link href="/" className="shrink-0 rounded-xl" aria-label="Telangana Solar home"><Logo priority /></Link>
 
@@ -73,7 +73,7 @@ export function Header() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageToggle />
-          <GuideTrigger size="sm" variant="accent" className="hidden h-10 shrink-0 px-4 sm:inline-flex"><span className="xl:hidden">{t("planShort")}</span><span className="hidden xl:inline">{t("siteVisit")}</span></GuideTrigger>
+          <GuideTrigger size="sm" className="hidden h-10 shrink-0 px-5 sm:inline-flex"><span className="xl:hidden">{t("planShort")}</span><span className="hidden xl:inline">{t("siteVisit")}</span></GuideTrigger>
           <button ref={btnRef} type="button" onClick={() => setOpen((o) => !o)}
             aria-expanded={open} aria-controls="site-menu" aria-label={open ? t("close") : t("menu")}
             className={cn("grid size-10 shrink-0 place-items-center rounded-full border transition-colors duration-300", te ? "min-[1440px]:hidden" : "lg:hidden", open ? "border-primary bg-primary text-card" : "border-line bg-card text-ink hover:border-gold")}>
@@ -138,7 +138,7 @@ function DesktopNav({ pathname, te }: { pathname: string; te: boolean }) {
                 <Link href={n.href} aria-current={on ? "page" : undefined}
                   className={cn("relative whitespace-nowrap px-2 py-2 text-[0.875rem] font-medium transition-colors duration-300 xl:px-3 xl:text-[0.9375rem]", on || (sub && drop === sub) ? "text-primary" : "text-ink hover:text-primary")}>
                   {t(`nav.${n.label}`)}
-                  <span aria-hidden className={cn("absolute inset-x-2 -bottom-0.5 h-0.5 origin-left rounded-full bg-primary xl:inset-x-3 transition-transform duration-300", on ? "scale-x-100" : "scale-x-0")} />
+                  <span aria-hidden className={cn("absolute inset-x-3 -bottom-1 h-0.5 origin-left rounded-full bg-[#B8913F] xl:inset-x-4 transition-transform duration-300", on ? "scale-x-100" : "scale-x-0")} />
                 </Link>
                 {sub && (
                   <button id={`drop-btn-${sub}`} type="button" aria-expanded={drop === sub} aria-controls={`drop-${sub}`} aria-label={t(`nav.${n.label}`)}
@@ -152,8 +152,8 @@ function DesktopNav({ pathname, te }: { pathname: string; te: boolean }) {
                 <AnimatePresence>
                   {drop === sub && (
                     <motion.div id={`drop-${sub}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} transition={{ duration: 0.2, ease: EASE }}
-                      className="absolute left-1/2 top-full z-10 w-[22rem] -translate-x-1/2 pt-3">
-                      <ul className="rounded-[1.25rem] border border-line bg-white p-2 shadow-[0_24px_50px_-24px_rgb(28_47_71/0.35)]">
+                      className="absolute left-1/2 top-full z-10 w-[22rem] -translate-x-1/2 pt-2">
+                      <ul className="rounded-2xl border border-[#E2D8C3] bg-white p-2 shadow-[0_10px_30px_rgba(11,31,58,0.14)]">
                         {subItems(sub).map(({ href, label, desc, chip, Icon }) => {
                           const here = pathname === href || pathname.startsWith(`${href}/`);
                           return (
@@ -221,7 +221,7 @@ function MenuPanel({ open, pathname, te, onClose }: { open: boolean; pathname: s
           <motion.nav id="site-menu" aria-label="Mobile"
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.28, ease: EASE }}
-            className={cn("absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-line bg-cloud shadow-[0_30px_60px_-30px_rgb(28_47_71/0.45)]", te ? "min-[1440px]:hidden" : "lg:hidden")} data-lenis-prevent>
+            className={cn("absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-line bg-cloud shadow-[0_30px_60px_-30px_rgb(11_31_58/0.45)]", te ? "min-[1440px]:hidden" : "lg:hidden")} data-lenis-prevent>
             <div className="container-page grid gap-8 py-8 md:grid-cols-12">
               <ul className="grid content-start md:col-span-4">
                 {HEADER_NAV.map((n) => (

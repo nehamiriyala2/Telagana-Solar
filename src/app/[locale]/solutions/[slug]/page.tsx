@@ -21,6 +21,7 @@ import { routing } from "@/i18n/routing";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { SOLUTION_BENEFIT_PHOTOS, UI_IMAGES } from "@/data/section-photos";
 import { PhotoTile } from "@/components/ui/photo-tile";
+import { CheckPill } from "@/components/ui/check-pill";
 
 const SLUGS = ["homes", "farms", "business"] as const;
 type Slug = (typeof SLUGS)[number];
@@ -109,8 +110,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
                   <Reveal key={u} delay={i * 0.06}>
                     <li className="card-glass-light h-full list-none p-3">
                       <PhotoTile src={UI_IMAGES.farmUses[u]} alt="" className="aspect-[16/9] w-full rounded-2xl bg-tint-mint text-green-text" fallback={<Icon className="size-8" aria-hidden />} />
-                      <div className="flex items-center gap-3 px-2 pt-4">
-                        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-green text-white"><Icon className="size-5" aria-hidden /></span>
+                      <div className="px-2 pt-4">
                         <h3 className="font-heading text-h4 font-bold text-ink">{p(`${u}.title`)}</h3>
                       </div>
                       <p className="mt-2 px-2 pb-2 text-[0.9375rem] text-body">{p(`${u}.desc`)}</p>
@@ -155,14 +155,15 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
       {/* What's included */}
       <section className="tone tone-navy py-16 md:py-24">
         <span aria-hidden className="tone-beam" />
-        <div className="container-page grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4"><SectionTitle tone="dark" title={t("solutionPages.includedTitle")} className="lg:sticky lg:top-28" /></div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
+        <div className="container-page grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-4">
+            <SectionTitle tone="dark" title={t("solutionPages.includedTitle")} className="mb-0 md:mb-0" />
+            <span aria-hidden className="check-heading-bar" />
+          </div>
+          <ul className="grid gap-4 lg:col-span-8 lg:grid-cols-2">
             {(["i1", "i2", "i3", "i4", "i5", "i6"] as const).map((k, i) => (
-              <Reveal key={k} delay={i * 0.04}>
-                <li className="card-dark-glass flex h-full list-none items-start gap-3 p-4 text-white">
-                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#2B6CB0]" aria-hidden />{p(k)}
-                </li>
+              <Reveal key={k} delay={i * 0.04} className="h-full">
+                <CheckPill className="h-full">{p(k)}</CheckPill>
               </Reveal>
             ))}
           </ul>
