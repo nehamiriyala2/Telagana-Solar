@@ -12,16 +12,16 @@ export function Footer() {
   const t = useTranslations();
   const locale = useLocale();
   const head = "mb-5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-gold-light";
-  const link = "text-silver/75 transition-colors hover:text-white";
+  const link = "text-[#C7D7FF] transition-colors hover:text-white";
   const phone = site.phone ?? "+91 75699 54054";
   const email = site.email ?? "elevaitelabs@gmail.com";
 
   return (
-    <footer className="border-t border-gold/30 bg-primary-deep pb-24 text-silver md:pb-0">
+    <footer className="border-t border-white/20 bg-primary-darkest pb-24 text-silver md:pb-0">
       <div className="container-page grid gap-12 py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Logo variant="footer" />
-          <p className="mt-6 font-heading text-[1.125rem] italic text-white">{t("footer.tagline")}</p>
+          <p className="mt-6 font-heading text-[1.125rem] font-semibold text-white">{t("footer.tagline")}</p>
           <p className="mt-3 max-w-sm text-caption leading-relaxed text-silver/70">{t("footer.about")}</p>
         </div>
 

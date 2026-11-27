@@ -29,17 +29,17 @@ export function SavingsChart({ data }: { data: YearPoint[] }) {
               </linearGradient>
             </defs>
             <CartesianGrid vertical={false} stroke="var(--chart-grid)" />
-            <XAxis dataKey="year" tickLine={false} axisLine={false} tick={{ fill: "#44576B", fontSize: 12 }} interval={4} />
-            <YAxis tickLine={false} axisLine={false} width={58} tick={{ fill: "#44576B", fontSize: 12 }} tickFormatter={(v: number) => formatLakh(v)} />
-            <ReferenceLine y={0} stroke="#44576B" strokeOpacity={0.4} />
+            <XAxis dataKey="year" tickLine={false} axisLine={false} tick={{ fill: "#475569", fontSize: 12 }} interval={4} />
+            <YAxis tickLine={false} axisLine={false} width={58} tick={{ fill: "#475569", fontSize: 12 }} tickFormatter={(v: number) => formatLakh(v)} />
+            <ReferenceLine y={0} stroke="#475569" strokeOpacity={0.4} />
             <Tooltip
-              cursor={{ stroke: "#44576B", strokeDasharray: "3 3" }}
-              contentStyle={{ background: "#FCFDFF", border: "1px solid #DCE6F0", borderRadius: 14, boxShadow: "0 12px 30px -12px rgb(27 69 112 / .25)", color: "#2B6CB0" }}
+              cursor={{ stroke: "#475569", strokeDasharray: "3 3" }}
+              contentStyle={{ background: "#FFFFFF", border: "1px solid #E2E8F2", borderRadius: 14, boxShadow: "0 12px 30px -12px rgb(15 47 107 / .25)", color: "#1D4ED8" }}
               labelFormatter={(y) => t("chartYear", { year: Number(y) })}
               formatter={(v, name) => [formatINR(Number(v)), name === "cumulative" ? t("chartSaved") : t("chartNet")]}
             />
-            <Area type="monotone" dataKey="cumulative" stroke="var(--chart-1)" strokeWidth={2} fill="url(#cumFill)" activeDot={{ r: 5, stroke: "#FCFDFF", strokeWidth: 2 }} animationDuration={800} />
-            <Line type="monotone" dataKey="net" stroke="var(--chart-2)" strokeWidth={2} strokeDasharray="6 4" dot={false} activeDot={{ r: 5, stroke: "#FCFDFF", strokeWidth: 2 }} animationDuration={800} />
+            <Area type="monotone" dataKey="cumulative" stroke="var(--chart-1)" strokeWidth={2} fill="url(#cumFill)" activeDot={{ r: 5, stroke: "#FFFFFF", strokeWidth: 2 }} animationDuration={800} />
+            <Line type="monotone" dataKey="net" stroke="var(--chart-2)" strokeWidth={2} strokeDasharray="6 4" dot={false} activeDot={{ r: 5, stroke: "#FFFFFF", strokeWidth: 2 }} animationDuration={800} />
           </AreaChart>
         </ResponsiveContainer>
       </div>

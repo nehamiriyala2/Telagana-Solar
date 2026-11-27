@@ -54,7 +54,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             kind="about"
             locale={locale}
             className="max-w-xl lg:max-w-none lg:w-[110%] xl:w-[118%] 2xl:w-[124%] lg:origin-right xl:-mr-6 2xl:-mr-10"
-            cardClassName="p-2.5 sm:p-3 rounded-[1.25rem] sm:rounded-[1.25rem] border-white/80 bg-white/45 shadow-[0_40px_90px_-30px_rgb(27_69_112/0.38),0_0_0_1px_rgb(255_255_255/0.8)]"
+            cardClassName="p-2.5 sm:p-3 rounded-[1.25rem] sm:rounded-[1.25rem] border-white/80 bg-white/45 shadow-[0_40px_90px_-30px_rgb(15_47_107/0.38),0_0_0_1px_rgb(255_255_255/0.8)]"
           />
         }
         motif="waves"
@@ -82,7 +82,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </BlurReveal>
           <BlurReveal
             delay={0.08}
-            className="relative flex flex-col justify-center overflow-hidden rounded-[1.25rem] border border-[#F0BE4A]/45 bg-transparent p-7 ring-1 ring-gold/30 md:p-12 lg:col-span-7"
+            className="relative flex flex-col justify-center overflow-hidden rounded-[1.25rem] border border-[#1D4ED8]/45 bg-transparent p-7 ring-1 ring-gold/30 md:p-12 lg:col-span-7"
           >
             <div aria-hidden className="pointer-events-none absolute -bottom-16 -left-16 size-48 rounded-full bg-transparent" />
             <div className="relative">
@@ -109,13 +109,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* How we work */}
       <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
-        <Wave color="#FCFDFF" position="top" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
           <Stagger as="ol" className="grid gap-px overflow-hidden rounded-[1.25rem] bg-white/10 md:grid-cols-4">
             {D.promise.map((p, i) => (
-              <StaggerItem key={i} className="group relative bg-[#2B6CB0] p-7 transition-colors duration-500 hover:bg-[#235A93]">
-                <span className="block font-heading text-[3.5rem] font-extrabold leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1.5px_#F0BE4A] transition-colors duration-500 group-hover:text-[#F0BE4A]">{String(i + 1).padStart(2, "0")}</span>
+              <StaggerItem key={i} className="group relative bg-[#1D4ED8] p-7 transition-colors duration-500 hover:bg-[#1E40AF]">
+                <span className="block font-heading text-[3.5rem] font-extrabold leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1.5px_#1D4ED8] transition-colors duration-500 group-hover:text-[#1D4ED8]">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-6 font-heading text-[1.25rem] font-bold text-white">{L(p.title)}</h3>
                 <p className="on-dark-muted mt-2 text-caption">{L(p.desc)}</p>
               </StaggerItem>

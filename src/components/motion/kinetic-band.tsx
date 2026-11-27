@@ -29,7 +29,7 @@ export function KineticBand({ phrases, tone = "light", className }: { phrases: s
           <span key={i}>{i % 2 ? <span className="text-gold-shine">{p}</span> : p}<Sun /></span>
         ))}
       </motion.div>
-      <motion.div aria-hidden style={{ x: x2, ["--stroke" as string]: dark ? "rgb(240 190 74 / 0.6)" : "rgb(35 90 147 / 0.35)" }} className="kinetic-row kinetic-outline mt-2">
+      <motion.div aria-hidden style={{ x: x2, ["--stroke" as string]: dark ? "rgb(29 78 216 / 0.6)" : "rgb(30 64 175 / 0.35)" }} className="kinetic-row kinetic-outline mt-2">
         {row.map((p, i) => <span key={i}>{p}<span className="mx-[0.35em]">✦</span></span>)}
       </motion.div>
     </div>

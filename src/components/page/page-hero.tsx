@@ -16,7 +16,7 @@ const TYPE_TO_PERSONA: Record<string, GuidePersona> = { home: "urban", farm: "fa
  * Inner-page hero (typography-first) on the animated <SolarBackdrop>:
  * eyebrow pill, display title with a word mask reveal and shining golden `emphasis` words, subtitle,
  * magnetic CTAs, and parallax sun-lit icon art, or a custom `art` illustration (shown on every screen size).
- * Always a light mist band with a sky-blue breadcrumb and gold separators (Home / page), serif title in the heading colour, sky-blue accent words.
+ * Always a light mist band with a sky-blue breadcrumb and gold separators (Home / page), bold display title in the heading colour, blue accent words.
  * - align="center": centred copy for pages without art.
  * Text uses CSS entrances so it paints before JS. `children` renders under the hero copy.
  */
@@ -97,7 +97,7 @@ export function PageHero({ eyebrow, title, subtitle, Icon, ctas = true, calcType
                 <div className={cn("absolute size-[78%] rounded-full border", dark ? "border-white/15" : "border-white/80")} />
                 <div className={cn("absolute size-[56%] rounded-full border border-dashed", dark ? "border-yellow/25" : "border-gold/30")} />
                 <span className={cn("float-soft relative grid size-44 place-items-center rounded-2xl border",
-                  dark ? "border-white/15 bg-white/10 text-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]" : "border-white bg-white/80 text-[var(--ts-royal)] shadow-[0_40px_80px_-30px_rgb(27_69_112/0.45)]")}>
+                  dark ? "border-white/15 bg-white/10 text-white shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)]" : "border-white bg-white/80 text-[var(--ts-royal)] shadow-[0_40px_80px_-30px_rgb(15_47_107/0.45)]")}>
                   <Icon className="size-20" strokeWidth={1.3} />
                   
                 </span>

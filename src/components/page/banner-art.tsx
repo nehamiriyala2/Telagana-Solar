@@ -111,7 +111,7 @@ export function PhotoCard({
         <div aria-hidden className="absolute -inset-8 -z-10 animate-glow rounded-full bg-transparent" />
         <div className="float-soft" style={{ animationDuration: "9s" }}>
           <TiltCard max={4} className="rounded-[1.25rem]">
-            <div className={cn("rounded-[1.25rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(27_69_112/0.55),0_0_0_1px_rgb(35_90_147/0.06)] backdrop-blur-md", cardClassName)}>
+            <div className={cn("rounded-[1.25rem] border border-white/70 bg-white/35 p-2 shadow-[0_40px_80px_-34px_rgb(15_47_107/0.55),0_0_0_1px_rgb(30_64_175/0.06)] backdrop-blur-md", cardClassName)}>
               <div className="relative overflow-hidden rounded-[1.6rem]">
                 {children}
                 <Sunlight sun={sun} />

@@ -36,8 +36,8 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
             {(["s1", "s2", "s3", "s4", "s5", "s6"] as const).map((s, i) => (
               <Reveal key={s} delay={i * 0.06}>
                 <li className="relative flex gap-5 pb-8 last:pb-0">
-                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl bg-primary font-heading text-h4 font-extrabold text-[#F0BE4A] ring-8 ring-[#F7FAFD]">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="flex-1 rounded-[1.25rem] border border-[#F0BE4A]/25 bg-white p-5 shadow-[0_18px_40px_-30px_rgb(27_69_112/0.35)] transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-[#F0BE4A]/60">
+                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl bg-primary font-heading text-h4 font-extrabold text-[#1D4ED8] ring-8 ring-[#F5F8FC]">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="flex-1 rounded-[1.25rem] border border-[#1D4ED8]/25 bg-white p-5 shadow-[0_18px_40px_-30px_rgb(15_47_107/0.35)] transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-[#1D4ED8]/60">
                     <h3 className="font-heading text-[1.125rem] font-bold text-ink">{t(`${s}.title`)}</h3>
                     <p className="mt-1 text-caption text-muted">{t(`${s}.desc`)}</p>
                   </div>
@@ -51,7 +51,7 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
       {/* EMI */}
       <section className="tone tone-blue pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
-        <Wave color="#F7FAFD" position="top" />
+        <Wave color="#F5F8FC" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={t("emiTitle")} subtitle={t("emiSubtitle")} />
           <Reveal className="rounded-[1.25rem] bg-white p-3 shadow-[0_50px_100px_-40px_rgb(0_0_0/0.55)] ring-1 ring-white/40 md:p-6"><EmiCalculator /></Reveal>
@@ -75,12 +75,12 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
               ))}
             </ul>
           </div>
-          <div className="rounded-[1.25rem] bg-[#F7FAFD] p-6 text-ink shadow-[0_40px_80px_-40px_rgb(0_0_0/0.6)] md:p-9">
+          <div className="rounded-[1.25rem] bg-[#F5F8FC] p-6 text-ink shadow-[0_40px_80px_-40px_rgb(0_0_0/0.6)] md:p-9">
             <SectionTitle title={t("docsTitle")} className="mb-6 md:mb-6" />
             <ul className="grid gap-3">
               {(["d1", "d2", "d3", "d4", "d5"] as const).map((k, i) => (
                 <Reveal key={k} delay={i * 0.04}>
-                  <li className="flex items-center gap-3 rounded-2xl border border-[#F0BE4A]/25 bg-white px-4 py-3.5 text-ink transition-colors hover:border-gold/60"><span className="icon-sun grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>{t(k)}</li>
+                  <li className="flex items-center gap-3 rounded-2xl border border-[#1D4ED8]/25 bg-white px-4 py-3.5 text-ink transition-colors hover:border-gold/60"><span className="icon-sun grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>{t(k)}</li>
                 </Reveal>
               ))}
             </ul>

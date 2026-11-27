@@ -5,7 +5,7 @@ export const isDarkTone = (t: Tone) => t === "navy" || t === "blue";
 
 /**
  * Section with a colour theme from the brand palette (see .tone-* in globals.css).
- * Optional wave edges: pass the colour of the neighbouring section (e.g. waveTop="#FCFDFF") and the
+ * Optional wave edges: pass the colour of the neighbouring section (e.g. waveTop="#FFFFFF") and the
  * boundary becomes a soft wave instead of a hard line. Dark tones get a slow drifting light beam.
  */
 export function ToneSection({ tone, children, className, waveTop, waveBottom, id, label, beam = true }: {

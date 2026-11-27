@@ -5,11 +5,9 @@ import { heroMedia as M } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Full-bleed, bright hero photograph (or optional muted looping video when heroMedia.videoMp4/videoWebm are set;
- * reduced-motion and data-saver visitors always get the still photo).
- * - very slow zoom (off for reduced motion)
- * - NO dark overlay: only a soft cloud-white fade on the text side (~88% → transparent at ~55% width) so the
- *   headline reads clearly; phones get a cream fade from the top instead, because the copy sits over the photo.
+ * Hero photograph in a large rounded 4:3 frame (no overlay, no dark gradient).
+ * Very slow zoom (off for reduced motion). When heroMedia.videoMp4/videoWebm are set, a muted looping video
+ * replaces the photo for visitors without reduced-motion / data-saver.
  */
 export function HeroMedia({ alt, className }: { alt: string; className?: string }) {
   const [video, setVideo] = useState(false);
@@ -23,9 +21,9 @@ export function HeroMedia({ alt, className }: { alt: string; className?: string 
   }, []);
 
   return (
-    <div className={cn("absolute inset-0 -z-10 overflow-hidden bg-mist", className)}>
-      <div className="banner-kenburns absolute inset-0 origin-[65%_55%]">
-        <Image src={M.image} alt={alt} fill priority sizes="100vw" className="object-cover object-[68%_50%]" />
+    <div className={cn("relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-tint-ice shadow-[0_24px_60px_-24px_rgb(15_47_107/0.35)] ring-1 ring-card-line", className)}>
+      <div className="banner-kenburns absolute inset-x-0 -top-[30%] bottom-0 origin-[70%_80%]">
+        <Image src={M.image} alt={alt} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-[70%_70%]" />
         {video && (
           <video className="absolute inset-0 size-full object-cover" autoPlay muted loop playsInline poster={M.poster} preload="auto" aria-hidden>
             {M.videoWebm && <source src={M.videoWebm} type="video/webm" />}
@@ -33,10 +31,6 @@ export function HeroMedia({ alt, className }: { alt: string; className?: string 
           </video>
         )}
       </div>
-      {/* desktop: soft cloud-white fade on the left only (#F7FAFD ~88% → transparent at ~55%) */}
-      <div className="absolute inset-0 max-lg:hidden bg-[linear-gradient(90deg,rgb(247_250_253/0.88)_0%,rgb(247_250_253/0.8)_34%,rgb(247_250_253/0)_55%)]" />
-      {/* phones / tablets: cloud-white fade from the top, photo stays visible below */}
-      <div className="absolute inset-0 lg:hidden bg-[linear-gradient(180deg,rgb(247_250_253/0.94)_0%,rgb(247_250_253/0.88)_55%,rgb(247_250_253/0.55)_100%)]" />
     </div>
   );
 }

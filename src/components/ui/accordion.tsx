@@ -8,16 +8,16 @@ import { cn } from "@/lib/utils";
 export function Accordion({ items, defaultOpen = 0, premium = false }: { items: { q: string; a: string }[]; defaultOpen?: number | null; premium?: boolean }) {
   const [open, setOpen] = useState<number | null>(defaultOpen);
   return (
-    <div className={premium ? "space-y-3" : "divide-y divide-line rounded-card border border-line bg-cloud shadow-soft"}>
+    <div className={premium ? "space-y-3" : "divide-y divide-line rounded-card border border-line bg-white shadow-soft"}>
       {items.map((it, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} className={premium ? cn("overflow-hidden rounded-2xl border bg-cloud transition-[border-color,box-shadow] duration-500", isOpen ? "border-gold/60 shadow-soft" : "border-line hover:border-gold/50") : undefined}>
+          <div key={i} className={premium ? cn("overflow-hidden rounded-[1.25rem] border bg-white transition-[border-color,box-shadow] duration-500", isOpen ? "border-primary/40 shadow-soft" : "border-line hover:border-gold/50") : undefined}>
             <h3>
               <button type="button" aria-expanded={isOpen} aria-controls={`acc-${i}`} onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left font-heading text-[1.125rem] font-semibold text-ink md:px-7">
+                className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left font-heading text-[1.0625rem] font-bold text-ink md:px-7">
                 {it.q}
-                <span className={cn("grid size-8 shrink-0 place-items-center rounded-full border transition-colors duration-300", isOpen ? "border-primary bg-primary text-card" : "border-primary/40 text-primary")}>
+                <span className={cn("grid size-8 shrink-0 place-items-center rounded-full border transition-colors duration-300", isOpen ? "border-primary bg-primary text-white" : "border-primary/40 text-primary")}>
                   {isOpen ? <Minus className="size-4" aria-hidden /> : <Plus className="size-4" aria-hidden />}
                 </span>
               </button>

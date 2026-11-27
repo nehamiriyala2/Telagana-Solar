@@ -60,7 +60,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-7">
-            <BlurReveal className="relative overflow-hidden rounded-[1.25rem] p-7 md:p-10" style={{ background: "radial-gradient(ellipse 70% 80% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%), linear-gradient(135deg, var(--accent-soft), #FCFDFF)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent)" }}>
+            <BlurReveal className="relative overflow-hidden rounded-[1.25rem] p-7 md:p-10" style={{ background: "radial-gradient(ellipse 70% 80% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%), linear-gradient(135deg, var(--accent-soft), #FFFFFF)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent)" }}>
               <div aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full border-2" style={{ borderColor: "color-mix(in srgb, var(--accent) 45%, transparent)" }} />
               <span aria-hidden className="absolute inset-x-0 top-0 h-1.5" style={{ background: "var(--accent)" }} />
               <p className="eyebrow-pill relative">{t("benefit")}</p>
@@ -69,7 +69,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
             </BlurReveal>
 
             {slug === "pm-surya-ghar" && (
-              <BlurReveal className="zoom-frame relative overflow-hidden rounded-[1.25rem] border border-white bg-white p-2 shadow-[0_30px_60px_-34px_rgb(27_69_112/0.5)]">
+              <BlurReveal className="zoom-frame relative overflow-hidden rounded-[1.25rem] border border-white bg-white p-2 shadow-[0_30px_60px_-34px_rgb(15_47_107/0.5)]">
                 <div className="relative overflow-hidden rounded-[1.4rem]">
                   <Image src={pmSuryaGharSign.src} alt={pick(pmSuryaGharSign.alt, locale)} width={pmSuryaGharSign.width} height={pmSuryaGharSign.height}
                     sizes="(min-width: 1024px) 40rem, 100vw" className="zoom-img block h-auto w-full" />
@@ -100,7 +100,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
             <BlurReveal delay={0.12} className="tone tone-navy rounded-[1.25rem] p-7 md:p-9">
               <h2 className="flex items-center gap-3 font-heading text-h3 font-extrabold tracking-[-0.02em] text-white"><span className="grid size-10 place-items-center rounded-xl text-ink" style={{ background: "var(--accent)" }}><HandHelping className="size-5" aria-hidden /></span>{t("help")}</h2>
               <ul className="mt-5 space-y-3">
-                {["h1", "h2", "h3", "h4"].map((h) => <li key={h} className="flex gap-2.5 text-white/90"><CircleCheck className="mt-0.5 size-5 shrink-0 text-[#F0BE4A]" aria-hidden />{k(h)}</li>)}
+                {["h1", "h2", "h3", "h4"].map((h) => <li key={h} className="flex gap-2.5 text-white/90"><CircleCheck className="mt-0.5 size-5 shrink-0 text-[#1D4ED8]" aria-hidden />{k(h)}</li>)}
               </ul>
             </BlurReveal>
             <Button asChild variant="outline" size="lg" className="w-full">
@@ -113,15 +113,15 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       {/* Steps with a self-drawing line */}
       <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
-        <Wave color="#FCFDFF" position="top" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page max-w-4xl">
           <SectionTitle tone="dark" title={t("steps")} />
           <div className="relative">
-            <DrawLine className="absolute bottom-8 left-[27px] top-8 w-1 rounded-full bg-[linear-gradient(180deg,var(--accent),#F0BE4A)]" />
+            <DrawLine className="absolute bottom-8 left-[27px] top-8 w-1 rounded-full bg-[linear-gradient(180deg,var(--accent),#1D4ED8)]" />
             <Stagger as="ol" className="relative space-y-5">
               {["s1", "s2", "s3", "s4", "s5"].map((s, i) => (
                 <StaggerItem key={s} className="flex items-center gap-5">
-                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold text-ink ring-8 ring-[#235A93]" style={{ background: "linear-gradient(135deg, #F0BE4A, var(--accent))" }}>{i + 1}</span>
+                  <span className="relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold text-ink ring-8 ring-[#1E40AF]" style={{ background: "linear-gradient(135deg, #1D4ED8, var(--accent))" }}>{i + 1}</span>
                   <p className="card-dark-glass flex-1 p-5 font-semibold text-white">{k(s)}</p>
                 </StaggerItem>
               ))}

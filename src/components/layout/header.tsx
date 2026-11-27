@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronDown, Phone } from "lucide-react";
+import { ArrowRight, ChevronDown, Home, Images, Phone, Store, Wheat, type LucideIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { GuideTrigger } from "@/components/tools/triggers";
 import { WhatsAppButton } from "@/components/ui/contact-buttons";
+import { SCHEME_ICONS } from "@/components/home/schemes-section";
 import { SCHEMES } from "@/config/schemes";
 import { site } from "@/config/site";
 import { Logo } from "./logo";
@@ -15,7 +16,7 @@ import { cn } from "@/lib/utils";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Global header: ivory with a subtle bottom border; sticky, with a light blur once the page scrolls.
+ * Global header: white 72px bar, thin border, sticky, light blur once the page scrolls.
  * Left: logo. Right (1200px+): Home, Solutions ▾, Schemes ▾, Subsidy & Loans, About Us, Contact Us,
  * the EN | తెలుగు pill and "Find My Solar Plan" (navy button, thin gold border; opens the plan finder).
  * Below 1024px (1440px in Telugu, whose labels are longer) a menu button opens a full-width panel with every link and each sub-page.
@@ -64,7 +65,7 @@ export function Header() {
 
   return (
     <header ref={headerRef} className={cn("fixed inset-x-0 top-0 z-50 border-b border-line transition-[background-color,box-shadow] duration-300",
-      scrolled || open ? "bg-cloud/85 shadow-header backdrop-blur-md" : "bg-cloud")}>
+      scrolled || open ? "bg-white/85 shadow-header backdrop-blur-md" : "bg-white")}>
       <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-4 xl:max-w-[85rem] xl:gap-5">
         <Link href="/" className="shrink-0 rounded-xl" aria-label="Telangana Solar home"><Logo priority /></Link>
 
@@ -92,15 +93,19 @@ export function Header() {
 
 type DropKey = "solutions" | "schemes";
 
-/** Sub-links for the two dropdowns (Solutions → homes / farms / business / projects, Schemes → each scheme). */
+const SOL_ICONS: Record<string, LucideIcon> = { homes: Home, farms: Wheat, business: Store };
+type SubItem = { href: string; label: string; desc: string; chip?: string; Icon: LucideIcon };
+
+/** Sub-links for the two dropdowns: Solutions → homes / farms / business / projects (with a short description),
+ *  Schemes → each scheme (audience shown as a small green chip). */
 function useSubItems() {
   const t = useTranslations();
-  return (key: DropKey) => key === "solutions"
+  return (key: DropKey): SubItem[] => key === "solutions"
     ? [
-        ...SOLUTIONS.map((s) => ({ href: s.href, label: t(`nav.${s.key}`), desc: t(`nav.${s.key}Desc`) })),
-        { href: "/projects", label: t("nav.projects"), desc: "" },
+        ...SOLUTIONS.map((s) => ({ href: s.href, label: t(`nav.${s.key}`), desc: t(`nav.${s.key}Desc`), Icon: SOL_ICONS[s.key] })),
+        { href: "/projects", label: t("nav.projects"), desc: "", Icon: Images },
       ]
-    : SCHEMES.map((s) => ({ href: `/schemes/${s.slug}`, label: t(`schemes.items.${s.slug}.name`), desc: t(`schemes.items.${s.slug}.tag`) }));
+    : SCHEMES.map((s) => ({ href: `/schemes/${s.slug}`, label: t(`schemes.items.${s.slug}.name`), desc: "", chip: t(`schemes.items.${s.slug}.tag`), Icon: SCHEME_ICONS[s.slug as keyof typeof SCHEME_ICONS] }));
 }
 
 /** Desktop (1200px+): the six links in a row, two with dropdowns (hover or click; Esc / outside click closes). */
@@ -150,22 +155,26 @@ function DesktopNav({ pathname, te }: { pathname: string; te: boolean }) {
                 <AnimatePresence>
                   {drop === sub && (
                     <motion.div id={`drop-${sub}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} transition={{ duration: 0.2, ease: EASE }}
-                      className="absolute left-1/2 top-full z-10 w-[21rem] -translate-x-1/2 pt-3">
-                      <ul className="rounded-2xl border border-line bg-card p-2 shadow-[0_24px_50px_-28px_rgb(27_69_112/0.45)]">
-                        {subItems(sub).map(({ href, label, desc }) => {
+                      className="absolute left-1/2 top-full z-10 w-[22rem] -translate-x-1/2 pt-3">
+                      <ul className="rounded-[1.25rem] border border-line bg-white p-2 shadow-[0_24px_50px_-24px_rgb(15_47_107/0.35)]">
+                        {subItems(sub).map(({ href, label, desc, chip, Icon }) => {
                           const here = pathname === href || pathname.startsWith(`${href}/`);
                           return (
                             <li key={href}>
                               <Link href={href} onClick={() => setDrop(null)} aria-current={here ? "page" : undefined}
-                                className={cn("block rounded-xl px-3 py-2.5 transition-colors", here ? "bg-mist" : "hover:bg-cloud")}>
-                                <span className="block font-heading text-[1rem] font-semibold text-ink">{label}</span>
-                                {desc && <span className="block text-[0.8125rem] text-muted">{desc}</span>}
+                                className={cn("flex items-start gap-3 rounded-xl px-3 py-2.5 transition-colors", here ? "bg-tint-ice" : "hover:bg-cloud")}>
+                                <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-xl bg-tint-ice text-primary"><Icon className="size-[1.125rem]" /></span>
+                                <span className="min-w-0">
+                                  <span className="block font-heading text-[0.9375rem] font-bold leading-snug text-ink">{label}</span>
+                                  {desc && <span className="block text-[0.8125rem] text-muted">{desc}</span>}
+                                  {chip && <span className="mt-1 inline-block rounded-full bg-tint-mint px-2 py-0.5 text-[0.6875rem] font-semibold text-green-ink">{chip}</span>}
+                                </span>
                               </Link>
                             </li>
                           );
                         })}
                         <li className="mt-1 border-t border-line pt-1">
-                          <Link href={n.href} onClick={() => setDrop(null)} className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-[0.8125rem] font-semibold text-gold-text hover:bg-cloud">
+                          <Link href={n.href} onClick={() => setDrop(null)} className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-[0.8125rem] font-semibold text-primary hover:bg-cloud">
                             {sub === "solutions" ? `${t("nav.explore")}: ${t("nav.solutions")}` : t("schemes.viewAll")}<ArrowRight className="size-3.5" aria-hidden />
                           </Link>
                         </li>
@@ -215,7 +224,7 @@ function MenuPanel({ open, pathname, te, onClose }: { open: boolean; pathname: s
           <motion.nav id="site-menu" aria-label="Mobile"
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.28, ease: EASE }}
-            className={cn("absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-line bg-cloud shadow-[0_30px_60px_-30px_rgb(27_69_112/0.45)]", te ? "min-[1440px]:hidden" : "lg:hidden")} data-lenis-prevent>
+            className={cn("absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-line bg-cloud shadow-[0_30px_60px_-30px_rgb(15_47_107/0.45)]", te ? "min-[1440px]:hidden" : "lg:hidden")} data-lenis-prevent>
             <div className="container-page grid gap-8 py-8 md:grid-cols-12">
               <ul className="grid content-start md:col-span-4">
                 {HEADER_NAV.map((n) => (
@@ -255,10 +264,10 @@ function LanguageToggle() {
   const pathname = usePathname();
   const opts = [{ code: "en", label: "EN" }, { code: "te", label: "తెలుగు" }] as const;
   return (
-    <div role="group" aria-label={t("languageLabel")} className="flex shrink-0 items-center rounded-full border border-line bg-mist p-0.5 text-[0.75rem] font-semibold">
+    <div role="group" aria-label={t("languageLabel")} className="flex shrink-0 items-center rounded-full border border-line bg-cloud p-0.5 text-[0.75rem] font-semibold">
       {opts.map((o) => (
         <Link key={o.code} href={pathname} locale={o.code} lang={o.code} aria-current={locale === o.code ? "true" : undefined}
-          className={cn("relative rounded-full px-2.5 py-1 transition-colors duration-300", locale === o.code ? "text-card" : "text-body hover:text-primary")}>
+          className={cn("relative rounded-full px-2.5 py-1 transition-colors duration-300", locale === o.code ? "text-white" : "text-body hover:text-primary")}>
           {locale === o.code && <motion.span layoutId="lang-pill" className="absolute inset-0 rounded-full bg-primary" transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
           <span className="relative">{o.label}</span>
         </Link>

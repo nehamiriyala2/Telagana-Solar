@@ -33,26 +33,34 @@
   --color-success: #2b7a23;
   --color-danger: #b42318;
   /* Public-site palette tokens (additive; only used by the public site, see src/app/site-theme.css).
-     Neutral names (primary, cloud, mist, tint-*) so a palette swap only changes these values. */
-  --color-cloud: #f7fafd;        /* page background */
-  --color-mist: #eaf1f8;         /* alternate sections */
-  --color-card: #fcfdff;
-  --color-card-line: #dce6f0;
-  --color-primary: #2b6cb0;      /* sky blue: buttons, active nav, icons, accent words */
-  --color-primary-hover: #235a93;
-  --color-primary-deep: #1b4570; /* footer only */
-  --color-ink: #14263a;          /* heading text */
-  --color-body: #44576b;
-  --color-gold-dark: #e2ab35;
-  --color-gold-text: #8a6514;    /* gold-family text on light surfaces (AA) */
-  --color-gold-light: #f7d274;   /* gold text on the deep blue footer */
-  --color-on-gold: #3a2a06;      /* text on gold */
-  --color-success-text: #2d7349; /* savings text (AA); fills use --color-leaf #3a8f5c */
-  --color-tint-ice: #e3eef9;
-  --color-tint-cream: #fff4d9;
-  --color-tint-mist: #e8f0f6;
-  --color-tint-mint: #e6f3ea;
-  --color-grey: #eaf1f8;
+     Neutral names so a palette swap only changes these values. */
+  --color-cloud: #eaf0f9;        /* page base (soft blue-grey) */
+  --color-mist: #dfe9f7;         /* section tint A */
+  --color-wash-green: #e6f4ec;   /* section tint B (savings / schemes) */
+  --color-wash-sand: #f3eedc;    /* section tint C (warm contrast, use sparingly) */
+  --color-card: #ffffff;
+  --color-card-line: #d5e0f0;
+  --color-primary: #1d4ed8;      /* royal blue: buttons, links, active nav, key icons */
+  --color-primary-hover: #1e40af;
+  --color-primary-deep: #0f2f6b; /* dark bands only: process, stats, final CTA */
+  --color-primary-darkest: #0a2150; /* footer */
+  --color-ink: #0e1b33;          /* heading text */
+  --color-body: #475569;
+  --color-green: #16a34a;        /* fresh green: savings, success, eco (icons, ticks, fills) */
+  --color-green-hover: #15803d;
+  --color-green-text: #166534;   /* green text on white AND tinted surfaces / green buttons (AA) */
+  --color-green-ink: #166534;    /* text on the green tint (AA) */
+  --color-sun: #f5b82e;          /* tiny details only: sun icon, sparks */
+  --color-gold-dark: #1e40af;    /* legacy name, now blue */
+  --color-gold-text: #1d4ed8;    /* legacy name, now blue */
+  --color-gold-light: #bfd3ff;   /* legacy name: light text on deep blue */
+  --color-on-gold: #ffffff;      /* legacy name: text on the primary button */
+  --color-success-text: #166534;
+  --color-tint-ice: #eaf1ff;     /* blue tint */
+  --color-tint-mist: #dbe8fe;    /* stronger blue tint */
+  --color-tint-mint: #e6f6ec;    /* green tint */
+  --color-tint-cream: #fff6db;   /* sun tint */
+  --color-grey: #dfe9f7;
 
   /* Typography */
   --font-heading: var(--font-jakarta), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;

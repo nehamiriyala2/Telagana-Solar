@@ -92,7 +92,8 @@
     "cardTitle": "Your solar plan, at a glance",
     "cardExample": "Example: a home with a {bill} monthly bill",
     "cardCta": "Get my plan",
-    "cardNote": "Estimates only, based on current rules."
+    "cardNote": "Estimates only, based on current rules.",
+    "cardSize": "Suggested size"
   },
   "trust": {
     "projects": "Projects installed",
@@ -1034,7 +1035,8 @@
     "k7": {
       "title": "After-sales service",
       "desc": "Check who cleans, maintains and repairs the system later."
-    }
+    },
+    "helpTitle": "Not sure about any of these? We check all of it for you"
   },
   "guide": {
     "title": "Find My Solar Plan",
@@ -1136,5 +1138,12 @@
     "stepsLabel": "Steps to apply",
     "note": "As per current government rules. Please confirm on the official website.",
     "callbackTitle": "Want help applying? Leave your number"
+  },
+  "trustStrip": {
+    "subsidy": "Home subsidy up to ₹78,000, as per current scheme",
+    "years": "25+ years of power",
+    "local": "Local team",
+    "districts": "All 33 districts we serve",
+    "label": "Why people choose us"
   }
 }

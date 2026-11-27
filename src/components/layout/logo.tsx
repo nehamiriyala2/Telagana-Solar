@@ -3,23 +3,23 @@ import { cn } from "@/lib/utils";
 /**
  * Brand lockup rebuilt as SVG + live text (sharp on every screen, no background box):
  * icon mark (Charminar, sun, gold ring, solar panel, leaf) + "TELANGANA" + "SOLAR" + tagline.
- * - header (default): "TELANGANA" sky blue, "SOLAR" sun gold on the cloud header. Below 1280px the name stacks on two
+ * - header (default): "TELANGANA" deep blue, "SOLAR" green on the white header. Below 1280px the name stacks on two
  *   lines; the tagline shows from 1440px only, so the header row never overlaps.
- * - footer: light version for the deep blue footer ("TELANGANA" in cloud, "SOLAR" in gold)
- * Colours: sky #2B6CB0, deep blue #1B4570 (Charminar), gold #D9A02E, leaf #3A8F5C, cloud #F7FAFD, muted #5B6C7E.
+ * - footer: white version for the deep-blue footer ("TELANGANA" white, "SOLAR" light green)
+ * Colours: deep blue #0F2F6B (Charminar), blue #1D4ED8 (panel), sun #F5B82E, green #16A34A (SOLAR, leaf), muted #556377.
  * The same mark is used for the favicon (public/brand/ts-mark.svg).
  */
 export function Logo({ variant = "header", className }: { variant?: "header" | "footer"; className?: string; priority?: boolean }) {
   const light = variant === "footer";
   return (
     <span className={cn("inline-flex shrink-0 items-center gap-2.5", className)}>
-      <LogoMark light={light} className={light ? "size-16" : "size-10 xl:size-12"} />
+      <LogoMark light={light} className={light ? "size-16" : "size-12 xl:size-14"} />
       <span className="flex flex-col leading-none">
-        <span className={cn("font-heading font-semibold tracking-[0.08em]", light ? "text-[1.375rem]" : "text-[0.9375rem] xl:text-[1.125rem]")}>
-          <span className={light ? "text-cloud max-sm:block" : "block text-primary xl:inline"}>TELANGANA</span>
-          <span className={cn("text-[#D9A02E]", light ? "max-sm:block sm:ml-[0.3em]" : "block xl:ml-[0.3em] xl:inline")}>SOLAR</span>
+        <span className={cn("font-heading font-semibold tracking-[0.08em]", light ? "text-[1.375rem]" : "text-[1rem] xl:text-[1.1875rem]")}>
+          <span className={light ? "text-white max-sm:block" : "block text-primary-deep xl:inline"}>TELANGANA</span>
+          <span className={cn(light ? "text-[#4ADE80]" : "text-green-text", light ? "max-sm:block sm:ml-[0.3em]" : "block xl:ml-[0.3em] xl:inline")}>SOLAR</span>
         </span>
-        <span className={cn("mt-1.5 text-[0.5625rem] font-medium uppercase tracking-[0.16em]", light ? "text-cloud/70 max-sm:hidden" : "hidden text-muted min-[1440px]:block")}>
+        <span className={cn("mt-1.5 text-[0.5625rem] font-medium uppercase tracking-[0.16em]", light ? "text-white/70 max-sm:hidden" : "hidden text-muted min-[1440px]:block")}>
           Clean energy for a brighter Telangana
         </span>
       </span>
@@ -29,17 +29,17 @@ export function Logo({ variant = "header", className }: { variant?: "header" | "
 
 /** Icon mark only (decorative; the lockup text carries the name). */
 export function LogoMark({ light = false, className }: { light?: boolean; className?: string }) {
-  const ink = light ? "#F7FAFD" : "#1B4570";
-  const panel = light ? "#F7FAFD" : "#2B6CB0";
-  const grid = light ? "#1B4570" : "#F7FAFD";
-  const gold = "#D9A02E";
+  const ink = light ? "#FFFFFF" : "#0F2F6B";
+  const panel = light ? "#FFFFFF" : "#1D4ED8";
+  const grid = light ? "#0F2F6B" : "#FFFFFF";
+  const sun = "#F5B82E";
   return (
     <svg viewBox="0 0 64 64" aria-hidden className={className}>
       {/* gold ring */}
-      <path d="M49 10.5A27 27 0 1 1 12.5 51" fill="none" stroke={gold} strokeWidth="2" strokeLinecap="round" />
+      <path d="M49 10.5A27 27 0 1 1 12.5 51" fill="none" stroke={sun} strokeWidth="2" strokeLinecap="round" />
       {/* sun + rays */}
-      <circle cx="40" cy="26" r="7" fill={gold} />
-      <g stroke={gold} strokeWidth="1.6" strokeLinecap="round">
+      <circle cx="40" cy="26" r="7" fill={sun} />
+      <g stroke={sun} strokeWidth="1.6" strokeLinecap="round">
         <path d="M40 14.5v3M31.6 18l2 2.2M48.4 18l-2 2.2M28 26h3M49 26h3" />
       </g>
       {/* Charminar */}
@@ -60,8 +60,8 @@ export function LogoMark({ light = false, className }: { light?: boolean; classN
         <path d="M23 44l8 9M30 42l8 9M37 40l8 9M20 50.5l28-8" />
       </g>
       {/* leaf */}
-      <path d="M47.5 46.5C49 37.5 55 32.5 62 30.5c-.8 8.6-6 15-14.5 16z" fill="#3A8F5C" />
-      <path d="M48.5 45.5c3.5-4.5 7-8 11.5-12.5" fill="none" stroke={light ? "#1B4570" : "#F7FAFD"} strokeWidth="0.9" strokeLinecap="round" />
+      <path d="M47.5 46.5C49 37.5 55 32.5 62 30.5c-.8 8.6-6 15-14.5 16z" fill="#16A34A" />
+      <path d="M48.5 45.5c3.5-4.5 7-8 11.5-12.5" fill="none" stroke={light ? "#0F2F6B" : "#FFFFFF"} strokeWidth="0.9" strokeLinecap="round" />
     </svg>
   );
 }

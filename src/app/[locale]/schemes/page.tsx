@@ -49,8 +49,8 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       />
 
       {/* Districts marquee */}
-      <section aria-labelledby="districts-strip" className="relative overflow-hidden border-y border-[#235A93]/10 bg-[#EAF1F8] py-8 shadow-[inset_0_1px_0_#FCFDFF,0_18px_40px_-34px_rgb(27_69_112/0.45)] md:py-10">
-        <p id="districts-strip" className="container-page mb-2 flex items-center justify-center gap-2 text-center text-caption font-bold uppercase tracking-[0.08em] text-[#235A93] md:text-[0.9375rem]">
+      <section aria-labelledby="districts-strip" className="relative overflow-hidden border-y border-[#1E40AF]/10 bg-[#EEF3FA] py-8 shadow-[inset_0_1px_0_#FFFFFF,0_18px_40px_-34px_rgb(15_47_107/0.45)] md:py-10">
+        <p id="districts-strip" className="container-page mb-2 flex items-center justify-center gap-2 text-center text-caption font-bold uppercase tracking-[0.08em] text-[#1E40AF] md:text-[0.9375rem]">
           <MapPin className="size-4" aria-hidden />{L(D.marqueeLabel)}
         </p>
         <Marquee speed={80} gap="pr-3 md:pr-4" items={
@@ -59,7 +59,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
             return (
               <Link key={d.slug} href={`/solar-installation/${d.slug}`} className={main ? "city-chip city-chip--main" : "city-chip"}>
                 <MapPin className="size-4 md:size-[1.125rem]" aria-hidden />{pick(d.name, locale)}
-                {main && <span aria-hidden className="size-2 rounded-full bg-[#F0BE4A] shadow-[0_0_8px_#F0BE4A]" />}
+                {main && <span aria-hidden className="size-2 rounded-full bg-[#1D4ED8] shadow-[0_0_8px_#1D4ED8]" />}
               </Link>
             );
           })
@@ -75,17 +75,17 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
               return (
                 <StaggerItem key={s.slug} className="list-none">
                   <TiltCard max={5} className="h-full rounded-[1.25rem]">
-                    <Link href={`/schemes/${s.slug}`} className="group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-7 shadow-[0_24px_50px_-34px_rgb(27_69_112/0.35)] transition-[border-color,box-shadow] duration-500 hover:border-gold/50 hover:shadow-[0_34px_70px_-34px_rgb(27_69_112/0.45)] md:p-9">
+                    <Link href={`/schemes/${s.slug}`} className="group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-7 shadow-[0_24px_50px_-34px_rgb(15_47_107/0.35)] transition-[border-color,box-shadow] duration-500 hover:border-gold/50 hover:shadow-[0_34px_70px_-34px_rgb(15_47_107/0.45)] md:p-9">
                       <span aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full bg-transparent transition-transform duration-700 group-hover:scale-125" />
                       <span className="relative flex items-center justify-between gap-3">
                         <span className="icon-sun grid size-14 place-items-center rounded-2xl"><Icon className="size-7" aria-hidden /></span>
-                        <span className="rounded-full bg-[#EAF1F8] px-3 py-1 text-caption font-bold text-primary-hover">{t(`items.${s.slug}.tag`)}</span>
+                        <span className="rounded-full bg-[#EEF3FA] px-3 py-1 text-caption font-bold text-primary-hover">{t(`items.${s.slug}.tag`)}</span>
                       </span>
                       <h2 className="relative mt-6 font-heading text-[1.625rem] font-extrabold leading-tight tracking-[-0.02em] text-ink md:text-[2rem]">{t(`items.${s.slug}.name`)}</h2>
                       <p className="relative mt-2 text-muted">{t(`items.${s.slug}.short`)}</p>
                       <dl className="relative mt-6 grid gap-3 sm:grid-cols-2">
-                        <div className="rounded-2xl bg-[#EAF1F8] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary-hover">{t("cardWho")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardWho`)}</dd></div>
-                        <div className="rounded-2xl bg-[#F7FAFD] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-gold-ink">{t("cardBenefit")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardBenefit`)}</dd></div>
+                        <div className="rounded-2xl bg-[#EEF3FA] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary-hover">{t("cardWho")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardWho`)}</dd></div>
+                        <div className="rounded-2xl bg-[#F5F8FC] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-gold-ink">{t("cardBenefit")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardBenefit`)}</dd></div>
                       </dl>
                       <span className="relative mt-auto flex items-center gap-2 pt-6 font-semibold text-primary-hover">{t("learnMore")}<ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></span>
                     </Link>
@@ -101,19 +101,19 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       {/* Comparison */}
       <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32" aria-label={L(D.compareTitle)}>
         <span aria-hidden className="tone-beam" />
-        <Wave color="#FCFDFF" position="top" />
+        <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.compareTitle)} emphasis={L(D.compareEmphasis)} />
-          <BlurReveal className="hidden overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-[0_24px_50px_-34px_rgb(27_69_112/0.35)] md:block">
+          <BlurReveal className="hidden overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-[0_24px_50px_-34px_rgb(15_47_107/0.35)] md:block">
             <table className="w-full text-left text-caption">
-              <thead className="bg-[#EAF1F8] text-[0.75rem] uppercase tracking-wide text-primary-hover">
+              <thead className="bg-[#EEF3FA] text-[0.75rem] uppercase tracking-wide text-primary-hover">
                 <tr>{(["scheme", "for", "who", "benefit", "via"] as const).map((c) => <th key={c} scope="col" className="px-5 py-4 font-bold">{L(D.compareCols[c])}</th>)}</tr>
               </thead>
               <tbody>
                 {SCHEMES.map((s) => (
-                  <tr key={s.slug} className="border-t border-line align-top transition-colors hover:bg-[#F7FAFD]">
+                  <tr key={s.slug} className="border-t border-line align-top transition-colors hover:bg-[#F5F8FC]">
                     <th scope="row" className="px-5 py-5"><Link href={`/schemes/${s.slug}`} className="font-heading text-[1rem] font-bold text-ink hover:text-primary-hover">{t(`items.${s.slug}.name`)}</Link></th>
-                    <td className="px-5 py-5"><span className="rounded-full bg-[#EAF1F8] px-2.5 py-1 font-bold text-primary-hover">{t(`items.${s.slug}.tag`)}</span></td>
+                    <td className="px-5 py-5"><span className="rounded-full bg-[#EEF3FA] px-2.5 py-1 font-bold text-primary-hover">{t(`items.${s.slug}.tag`)}</span></td>
                     <td className="px-5 py-5 text-ink">{t(`items.${s.slug}.cardWho`)}</td>
                     <td className="px-5 py-5 text-ink">{t(`items.${s.slug}.cardBenefit`)}</td>
                     <td className="px-5 py-5"><a href={s.officialUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-primary-hover hover:underline">{host(s.officialUrl)}</a></td>
@@ -148,7 +148,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
             <Stagger as="ol" className="relative grid gap-8 md:grid-cols-4 md:gap-6">
               {D.process.map((p, i) => (
                 <StaggerItem key={i} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
-                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-[#F7FAFD]">{i + 1}</span>
+                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-[#F5F8FC]">{i + 1}</span>
                   <div>
                     <h3 className="font-heading text-[1.125rem] font-bold text-ink">{L(p.title)}</h3>
                     <p className="mt-1 text-caption text-muted">{L(p.desc)}</p>
