@@ -100,7 +100,7 @@ export function FullCalculator() {
       {/* Results */}
       <div className="space-y-6 lg:col-span-7">
         <Card className="overflow-hidden">
-          <div className="relative bg-[#F1F6FC] p-6 md:p-8">
+          <div className="relative bg-[#FCFBF9] p-6 md:p-8">
             <div aria-hidden className="absolute -right-16 -top-16 size-48 rounded-full bg-transparent" />
             <p className="text-caption font-semibold text-muted">{t("calculator.size")}</p>
             <p className="mt-1 font-heading text-[3.5rem] font-extrabold leading-none tracking-tightish md:text-[4.5rem]" aria-live="polite">

@@ -16,7 +16,7 @@ export function FloatingContact() {
 
   return (
     <>
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-cloud/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-12px_rgb(28_47_71/0.2)] backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-cloud/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-12px_rgb(41_52_64/0.2)] backdrop-blur md:hidden">
         <CallButton place="mobile-bar" className="w-full" />
         <WhatsAppButton place="mobile-bar" className="w-full" />
       </div>

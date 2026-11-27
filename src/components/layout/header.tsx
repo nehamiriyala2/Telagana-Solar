@@ -153,7 +153,7 @@ function DesktopNav({ pathname, te }: { pathname: string; te: boolean }) {
                   {drop === sub && (
                     <motion.div id={`drop-${sub}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} transition={{ duration: 0.2, ease: EASE }}
                       className="absolute left-1/2 top-full z-10 w-[22rem] -translate-x-1/2 pt-3">
-                      <ul className="rounded-[1.25rem] border border-line bg-white p-2 shadow-[0_24px_50px_-24px_rgb(28_47_71/0.35)]">
+                      <ul className="rounded-[1.25rem] border border-line bg-white p-2 shadow-[0_24px_50px_-24px_rgb(41_52_64/0.35)]">
                         {subItems(sub).map(({ href, label, desc, chip, Icon }) => {
                           const here = pathname === href || pathname.startsWith(`${href}/`);
                           return (
@@ -221,7 +221,7 @@ function MenuPanel({ open, pathname, te, onClose }: { open: boolean; pathname: s
           <motion.nav id="site-menu" aria-label="Mobile"
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
             transition={{ duration: 0.28, ease: EASE }}
-            className={cn("absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-line bg-cloud shadow-[0_30px_60px_-30px_rgb(28_47_71/0.45)]", te ? "min-[1440px]:hidden" : "lg:hidden")} data-lenis-prevent>
+            className={cn("absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-t border-line bg-cloud shadow-[0_30px_60px_-30px_rgb(41_52_64/0.45)]", te ? "min-[1440px]:hidden" : "lg:hidden")} data-lenis-prevent>
             <div className="container-page grid gap-8 py-8 md:grid-cols-12">
               <ul className="grid content-start md:col-span-4">
                 {HEADER_NAV.map((n) => (

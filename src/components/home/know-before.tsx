@@ -39,7 +39,7 @@ export function KnowBefore() {
             </Reveal>
           ))}
           <Reveal delay={0.06} className="h-full">
-            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(28_47_71/0.18)] sm:flex-row sm:items-center">
+            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(41_52_64/0.18)] sm:flex-row sm:items-center">
               <p className="font-heading text-[1.0625rem] font-bold leading-snug text-white">{t("helpTitle")}</p>
               <GuideTrigger size="sm" variant="white" className="shrink-0">{tc("bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
             </li>

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Sora, Inter, Noto_Sans_Telugu } from "next/font/google";
+import { Manrope, Inter, Noto_Sans_Telugu } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -14,8 +14,8 @@ import { JsonLd, localBusinessJsonLd } from "@/lib/seo";
 import "../globals.css";
 import "../site-theme.css";
 
-// Headings: Sora (700–800, tight tracking). Body/UI: Inter. Telugu: Noto Sans Telugu.
-const display = Sora({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
+// Headings: Manrope (600–800). Body/UI: Inter. Telugu: Noto Sans Telugu.
+const display = Manrope({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display", display: "swap" });
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-inter", display: "swap" });
 const telugu = Noto_Sans_Telugu({ subsets: ["telugu"], weight: ["400", "500", "600", "700"], variable: "--font-telugu", display: "swap", preload: false });
 
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export const viewport: Viewport = { themeColor: "#F1F6FC" };
+export const viewport: Viewport = { themeColor: "#FCFBF9" };
 
 export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;

@@ -161,7 +161,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
             {(["i1", "i2", "i3", "i4", "i5", "i6"] as const).map((k, i) => (
               <Reveal key={k} delay={i * 0.04}>
                 <li className="card-dark-glass flex h-full list-none items-start gap-3 p-4 text-white">
-                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#2B6CB0]" aria-hidden />{p(k)}
+                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#64758A]" aria-hidden />{p(k)}
                 </li>
               </Reveal>
             ))}

@@ -12,7 +12,7 @@ const FLOW = ["sun", "panels", "inverter", "home", "meter", "grid"] as const;
 
 const TYPES = [
   { key: "ongrid", accent: "bg-primary", head: "bg-tint-ice" },
-  { key: "offgrid", accent: "bg-[#5A6E86]", head: "bg-[#DCEAF7]" },
+  { key: "offgrid", accent: "bg-[#5F6A76]", head: "bg-[#F1F4F8]" },
   { key: "hybrid", accent: "bg-green", head: "bg-tint-mint" },
 ] as const;
 
@@ -41,7 +41,7 @@ export function Solar60() {
 
         <div className="grid gap-6 lg:grid-cols-12 lg:items-stretch">
           <Reveal className="lg:col-span-7">
-            <div className="h-full rounded-[1.25rem] border border-card-line bg-white p-3 shadow-[0_10px_30px_rgb(28_47_71/0.10)]">
+            <div className="h-full rounded-[1.25rem] border border-card-line bg-white p-3 shadow-[0_10px_30px_rgb(41_52_64/0.10)]">
               {/* Natural photo of a solar home (no illustrated flow lines or pins) */}
               <div className="relative h-full min-h-[18rem] overflow-hidden rounded-[0.875rem]">
                 <Image src="/personas/urban.webp" alt={personaMedia.urban ? pick(personaMedia.urban.alt, locale) : ""} fill sizes="(min-width: 1024px) 40rem, 100vw" className="object-cover object-[50%_40%]" />
@@ -66,12 +66,12 @@ export function Solar60() {
         </div>
 
         {/* 6-step energy flow: illustrated circles joined by arrows */}
-        <Reveal className="mt-6 rounded-[1.25rem] border border-card-line bg-white p-6 shadow-[0_10px_30px_rgb(28_47_71/0.10)] md:p-8">
+        <Reveal className="mt-6 rounded-[1.25rem] border border-card-line bg-white p-6 shadow-[0_10px_30px_rgb(41_52_64/0.10)] md:p-8">
           <ol className="grid gap-5 md:grid-cols-6 md:gap-2">
             {FLOW.map((key, i) => (
               <li key={key} className="relative flex items-center gap-4 md:flex-col md:items-center md:gap-3 md:text-center">
                 <span className="relative shrink-0">
-                  <span aria-hidden className="relative block size-16 overflow-hidden rounded-full bg-[#F1F6FC] md:size-20">
+                  <span aria-hidden className="relative block size-16 overflow-hidden rounded-full bg-[#FCFBF9] md:size-20">
                     <Image src={UI_IMAGES.flow[key]} alt="" fill sizes="80px" className="object-cover" />
                   </span>
                   <span className="absolute -right-1 -top-1 grid size-6 place-items-center rounded-full bg-primary text-[0.75rem] font-bold text-white ring-2 ring-white tabular-nums">{i + 1}</span>
@@ -90,7 +90,7 @@ export function Solar60() {
 
         {/* On-grid / off-grid / hybrid */}
         <h3 className="mt-16 font-heading text-h3 font-bold text-ink md:text-[1.75rem]">{t("typesTitle")}</h3>
-        <span aria-hidden className="mb-6 mt-3 block h-1 w-14 rounded-full bg-[linear-gradient(90deg,#2B6CB0,#F2994A)]" />
+        <span aria-hidden className="mb-6 mt-3 block h-1 w-14 rounded-full bg-[linear-gradient(90deg,#64758A,#D9B978)]" />
         <ul className="grid gap-5 md:grid-cols-3">
           {TYPES.map(({ key, accent, head }, i) => (
             <Reveal key={key} delay={i * 0.08} className="h-full">

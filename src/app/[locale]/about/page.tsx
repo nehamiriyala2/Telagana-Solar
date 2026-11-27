@@ -55,7 +55,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             kind="about"
             locale={locale}
             className="max-w-xl lg:max-w-none lg:w-[110%] xl:w-[118%] 2xl:w-[124%] lg:origin-right xl:-mr-6 2xl:-mr-10"
-            cardClassName="p-2.5 sm:p-3 rounded-[1.25rem] sm:rounded-[1.25rem] border-white/80 bg-white/45 shadow-[0_40px_90px_-30px_rgb(28_47_71/0.38),0_0_0_1px_rgb(255_255_255/0.8)]"
+            cardClassName="p-2.5 sm:p-3 rounded-[1.25rem] sm:rounded-[1.25rem] border-white/80 bg-white/45 shadow-[0_40px_90px_-30px_rgb(41_52_64/0.38),0_0_0_1px_rgb(255_255_255/0.8)]"
           />
         }
         motif="waves"
@@ -83,7 +83,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </BlurReveal>
           <BlurReveal
             delay={0.08}
-            className="relative flex flex-col justify-center overflow-hidden rounded-[1.25rem] border border-[#2B6CB0]/45 bg-transparent p-7 ring-1 ring-gold/30 md:p-12 lg:col-span-7"
+            className="relative flex flex-col justify-center overflow-hidden rounded-[1.25rem] border border-[#64758A]/45 bg-transparent p-7 ring-1 ring-gold/30 md:p-12 lg:col-span-7"
           >
             <div aria-hidden className="pointer-events-none absolute -bottom-16 -left-16 size-48 rounded-full bg-transparent" />
             <div className="relative">

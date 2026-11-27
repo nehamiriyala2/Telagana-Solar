@@ -21,9 +21,9 @@ export function HeroMedia({ alt, className }: { alt: string; className?: string 
   }, []);
 
   return (
-    <div className={cn("relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-tint-ice shadow-[0_24px_60px_-24px_rgb(28_47_71/0.35)] ring-1 ring-card-line", className)}>
-      <div className="banner-kenburns absolute inset-x-0 -top-[30%] bottom-0 origin-[70%_80%]">
-        <Image src={M.image} alt={alt} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-[70%_70%]" />
+    <div className={cn("relative aspect-[727/279] overflow-hidden rounded-[1.25rem] bg-tint-ice shadow-[0_24px_60px_-24px_rgb(41_52_64/0.35)] ring-1 ring-card-line", className)}>
+      <div className="banner-kenburns absolute inset-0 origin-center">
+        <Image src="/images/ui/hero-home.webp" alt={alt} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
         {video && (
           <video className="absolute inset-0 size-full object-cover" autoPlay muted loop playsInline poster={M.poster} preload="auto" aria-hidden>
             {M.videoWebm && <source src={M.videoWebm} type="video/webm" />}

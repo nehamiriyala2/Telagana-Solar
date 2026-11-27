@@ -33,7 +33,7 @@ export function SolarStoryMedia({ alt, labels }: { alt: string; labels: Labels }
   }, []);
 
   return (
-    <div className="story relative overflow-hidden rounded-[1.6rem] bg-[#DCEAF7]">
+    <div className="story relative overflow-hidden rounded-[1.6rem] bg-[#F1F4F8]">
       <div className="story__cam relative">
         <Image src={M.image} alt={alt} width={M.width} height={M.height} sizes="(min-width: 1024px) 44rem, 100vw" className="block h-auto w-full" />
         {video ? (
@@ -60,8 +60,8 @@ export function SolarStoryMedia({ alt, labels }: { alt: string; labels: Labels }
           <ol aria-label={`${labels.panels} → ${labels.inverter} → ${labels.home} → ${labels.grid}`}>
             {(Object.keys(SPOTS) as (keyof typeof SPOTS)[]).map((k, i) => (
               <li key={k} className={cn("story__step absolute", k === "grid" && "-translate-x-full")} style={{ left: `${SPOTS[k].x}%`, top: `${SPOTS[k].y}%`, animationDelay: `${0.6 + i * 0.5}s` }}>
-                <span className="flex items-center gap-1.5 rounded-full border border-white/70 bg-white/85 p-1 sm:pr-2.5 text-[0.6875rem] font-bold text-ink shadow-[0_8px_20px_-10px_rgb(28_47_71/0.5)] backdrop-blur sm:text-caption">
-                  <span className="grid size-5 place-items-center rounded-full bg-primary text-[0.625rem] text-[#2B6CB0] sm:size-6">{i + 1}</span>
+                <span className="flex items-center gap-1.5 rounded-full border border-white/70 bg-white/85 p-1 sm:pr-2.5 text-[0.6875rem] font-bold text-ink shadow-[0_8px_20px_-10px_rgb(41_52_64/0.5)] backdrop-blur sm:text-caption">
+                  <span className="grid size-5 place-items-center rounded-full bg-primary text-[0.625rem] text-[#64758A] sm:size-6">{i + 1}</span>
                   <span className="max-sm:sr-only">{labels[k]}</span>
                 </span>
               </li>
