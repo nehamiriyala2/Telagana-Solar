@@ -30,7 +30,12 @@
     "promoTitle": "Not sure where to start?",
     "promoBody": "Answer 3 quick questions and get a solar plan for your bill, roof and district.",
     "planShort": "My Plan",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "services": "Services",
+    "solarCalculator": "Solar Calculator",
+    "getQuote": "Get a Quote",
+    "aboutShort": "About",
+    "subsidyShort": "Subsidy"
   },
   "common": {
     "learnMore": "Learn more",
@@ -78,7 +83,17 @@
     "altLine": "మీ కరెంట్ మీరే తయారు చేసుకోండి. బిల్లు తగ్గించుకోండి.",
     "altLang": "te",
     "note": "Learn what solar suits your home and which government schemes you can use. No pressure.",
-    "imageAlt": "Modern white house with blue solar panels on the roof at golden-hour sunrise, surrounded by green trees"
+    "imageAlt": "Modern white house with blue solar panels on the roof at golden-hour sunrise, surrounded by green trees",
+    "headA": "Make Your Own Power.",
+    "headGold": "Pay Less For It.",
+    "trust1": "Subsidy paperwork handled",
+    "trust2": "Local team across Telangana",
+    "trust3": "One clear, written quote",
+    "cardTitle": "Your solar plan, at a glance",
+    "cardExample": "Example: a home with a {bill} monthly bill",
+    "cardCta": "Get my plan",
+    "cardNote": "Estimates only, based on current rules.",
+    "cardSize": "Suggested size"
   },
   "trust": {
     "projects": "Projects installed",
@@ -1020,7 +1035,8 @@
     "k7": {
       "title": "After-sales service",
       "desc": "Check who cleans, maintains and repairs the system later."
-    }
+    },
+    "helpTitle": "Not sure about any of these? We check all of it for you"
   },
   "guide": {
     "title": "Find My Solar Plan",
@@ -1122,5 +1138,12 @@
     "stepsLabel": "Steps to apply",
     "note": "As per current government rules. Please confirm on the official website.",
     "callbackTitle": "Want help applying? Leave your number"
+  },
+  "trustStrip": {
+    "subsidy": "Home subsidy up to ₹78,000, as per current scheme",
+    "years": "25+ years of power",
+    "local": "Local team",
+    "districts": "All 33 districts we serve",
+    "label": "Why people choose us"
   }
 }

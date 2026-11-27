@@ -55,8 +55,8 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
             {([["p1", ClipboardCheck], ["p2", FileCheck2], ["p3", Zap]] as const).map(([k, Icon], i) => (
               <Reveal key={k} delay={i * 0.06}>
                 <li className="card-glass-light h-full list-none p-6">
-                  <span className="float-soft icon-royal grid size-12 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
-                  <h3 className="mt-5 font-heading font-bold text-navy">{t(`${k}.title`)}</h3>
+                  <span className="float-soft icon-primary-hover grid size-12 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
+                  <h3 className="mt-5 font-heading font-bold text-ink">{t(`${k}.title`)}</h3>
                   <p className="mt-1 text-caption text-muted">{t(`${k}.desc`, { city: name })}</p>
                 </li>
               </Reveal>
@@ -69,12 +69,12 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
       <HowItWorks premium />
 
       <section className="container-page pb-8 pt-4">
-        <h2 className="mb-4 text-h4 text-navy">{t("areasTitle")}</h2>
+        <h2 className="mb-4 text-h4 text-ink">{t("areasTitle")}</h2>
         <ul className="flex flex-wrap gap-2">
           {nearby.map((n) => (
             <li key={n.slug}>
-              <Link href={`/solar-installation/${n.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-caption font-semibold text-navy shadow-soft transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-gold">
-                <MapPin className="size-4 text-sky-ink" aria-hidden />{pick(n.name, locale)}
+              <Link href={`/solar-installation/${n.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-caption font-semibold text-ink shadow-soft transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-gold">
+                <MapPin className="size-4 text-primary-hover" aria-hidden />{pick(n.name, locale)}
               </Link>
             </li>
           ))}

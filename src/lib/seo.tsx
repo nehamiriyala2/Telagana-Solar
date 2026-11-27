@@ -29,8 +29,8 @@ export function localBusinessJsonLd(locale: string, areaSlug?: string) {
     name: site.name,
     description: site.tagline[locale === "te" ? "te" : "en"],
     url: site.url,
-    image: `${site.url}/brand/logo-original.png`,
-    logo: `${site.url}/brand/logo.webp`,
+    image: `${site.url}/og-image.png`,
+    logo: `${site.url}/brand/ts-apple-icon.png`,
     priceRange: "₹₹",
     address: {
       "@type": "PostalAddress",

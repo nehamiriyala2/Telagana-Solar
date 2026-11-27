@@ -26,10 +26,10 @@ export function SectionHeading({
         : <p className="eyebrow mb-3">{eyebrow}</p>)}
       <Tag className={cn(
         Tag === "h1" ? "text-hero md:text-hero-lg" : "text-h2 md:text-h2-lg",
-        premium && Tag === "h2" && "md:text-[3.25rem] md:leading-[3.75rem]",
-        dark && "text-white",
+        premium && Tag === "h2" && "text-[clamp(2rem,3.4vw,2.75rem)] leading-[1.15]",
+        dark ? "text-white" : "text-ink",
       )}>{title}</Tag>
-      {subtitle && <p className={cn("mt-4 md:text-body-lg", dark ? "text-silver/85" : "text-muted")}>{subtitle}</p>}
+      {subtitle && <p className={cn("mt-3 md:text-body-lg", dark ? "text-silver/85" : "text-body")}>{subtitle}</p>}
     </>
   );
   // Page titles (h1) are LCP candidates: visible immediately. Section titles reveal on scroll.

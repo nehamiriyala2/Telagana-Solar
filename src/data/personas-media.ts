@@ -7,20 +7,17 @@ type Img = { src: string; width: number; height: number };
  * Pictures for the "Which solar suits you?" visitor types: `card` on the homepage card,
  * `page` as the hero picture on /for/<persona> (a different picture where two were supplied).
  * `focus` = object-position for crops (cards and orbit thumbnails).
+ * `grade` = optional CSS filter that lifts a darker photo to match the bright daylight look of the set.
  */
-export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { sun: { x: string; y: string } }; alt: L10n; focus?: string }>> = {
+export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { sun: { x: string; y: string } }; alt: L10n; focus?: string; grade?: string }>> = {
   urban: {
     card: { src: "/personas/urban-card.webp", width: 960, height: 540 },
     page: { src: "/personas/urban.webp", width: 1280, height: 720, sun: { x: "62%", y: "6%" } },
     alt: { en: "Modern home with rooftop solar panels and a terrace garden", te: "పైకప్పు సోలార్ ప్యానెల్స్, టెర్రస్ గార్డెన్‌తో ఆధునిక ఇల్లు" },
   },
-  // [EDIT] Third-party image (propertywala.com watermark, kept intact). Confirm usage rights or replace before going live.
-  apartment: {
-    card: { src: "/personas/apartment.webp", width: 1024, height: 575 },
-    page: { src: "/personas/apartment.webp", width: 1024, height: 575, sun: { x: "50%", y: "0%" } },
-    alt: { en: "Apartment tower at dusk with solar panels and a pool on the rooftop", te: "సాయంత్రం పైకప్పుపై సోలార్ ప్యానెల్స్, ఈత కొలను ఉన్న అపార్ట్‌మెంట్ భవనం" },
-    focus: "100% 50%",
-  },
+  // apartment: the previous photo carried a third-party watermark (propertywala.com) and was removed. The card and
+  // /for/apartment page fall back to the icon artwork until a licensed, watermark-free photo is added here
+  // (prompt in public/images/IMAGE-PROMPTS.md).
   farmer: {
     card: { src: "/personas/farmer-card.webp", width: 960, height: 540 },
     page: { src: "/personas/farmer-page.webp", width: 1024, height: 1024, sun: { x: "50%", y: "8%" } },
@@ -40,6 +37,7 @@ export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { su
     card: { src: "/personas/institution-card.webp", width: 960, height: 505 },
     page: { src: "/personas/institution.webp", width: 1200, height: 631, sun: { x: "88%", y: "4%" } },
     alt: { en: "School campus with solar panels on the building roofs", te: "భవనాల పైకప్పులపై సోలార్ ప్యానెల్స్ ఉన్న పాఠశాల ప్రాంగణం" },
+    grade: "brightness(1.22) saturate(1.05)",
   },
   landlord: {
     card: { src: "/personas/landlord-card.webp", width: 960, height: 960 },

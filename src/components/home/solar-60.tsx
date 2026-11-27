@@ -1,107 +1,111 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { BatteryCharging, Cable, Gauge, House, Lightbulb, PanelsTopLeft, PlugZap, Sun, TrendingDown, UtilityPole, Zap } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
+import { UI_IMAGES } from "@/data/section-photos";
 import { cn } from "@/lib/utils";
 import { SolarStoryMedia } from "./solar-story-media";
 
-const FLOW = [
-  { key: "sun", Icon: Sun, tone: "icon-sun" },
-  { key: "panels", Icon: PanelsTopLeft, tone: "icon-royal" },
-  { key: "inverter", Icon: Cable, tone: "bg-[#EAF3FF] text-royal" },
-  { key: "home", Icon: House, tone: "icon-sun" },
-  { key: "meter", Icon: Gauge, tone: "bg-leaf text-white shadow-[0_10px_24px_-12px_rgb(63_165_53/0.8)]" },
-  { key: "grid", Icon: UtilityPole, tone: "bg-navy text-white" },
-] as const;
+const FLOW = ["sun", "panels", "inverter", "home", "meter", "grid"] as const;
 
 const TYPES = [
-  { key: "ongrid", Icon: PlugZap, accent: "from-yellow to-gold" },
-  { key: "offgrid", Icon: BatteryCharging, accent: "from-sky to-royal" },
-  { key: "hybrid", Icon: Zap, accent: "from-leaf to-[#2B7A23]" },
+  { key: "ongrid", accent: "bg-primary", head: "bg-tint-ice" },
+  { key: "offgrid", accent: "bg-[#64748B]", head: "bg-[#E7ECF3]" },
+  { key: "hybrid", accent: "bg-green", head: "bg-tint-mint" },
 ] as const;
 
 /**
- * "Solar in 60 seconds" (homepage, bright white → light-blue): what solar is, how it cuts the bill,
- * a realistic solar-house visual (video-ready; see <SolarStoryMedia>), the step-by-step
- * energy flow and on-grid vs off-grid vs hybrid. Pure CSS/SVG animation, respects reduced motion.
+ * "How solar cuts your bill" (homepage).
+ * Two balanced columns: the house illustration with labelled pins (left) and three equal explainer cards with
+ * illustrated icons that fill the full height of the picture (right). Below: the 6-step energy flow as illustrated
+ * circles joined by arrows (horizontal on desktop, vertical on phones) and the on-grid / off-grid / hybrid cards
+ * with illustrated icons, tinted headers and green "Best for" chips.
  */
 export function Solar60() {
   const t = useTranslations("solar60");
-  return (
-    <section className="dot-grid bg-premium-light relative isolate overflow-hidden py-16 md:py-24" aria-labelledby="s60-title">
-      <div aria-hidden className="orb -left-24 top-20 size-80 bg-yellow/25" />
-      <div aria-hidden className="orb -right-24 bottom-10 size-96 bg-sky/20" style={{ animationDelay: "-5s" }} />
-      <div className="container-page">
-        <SectionHeading premium eyebrow={t("eyebrow")} title={t("title")} />
+  const tw = useTranslations("why");
+  const cards = [
+    { title: t("what.title"), desc: t("what.desc"), img: UI_IMAGES.explain.what },
+    { title: t("cut.title"), desc: t("cut.desc"), img: UI_IMAGES.explain.cut },
+    { title: tw("endToEnd.title"), desc: tw("endToEnd.desc"), img: UI_IMAGES.explain.service },
+  ];
 
-        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-8">
-          {/* Illustration */}
+  return (
+    <section className="relative isolate overflow-hidden bg-mist pb-16 pt-20 md:pb-24" aria-labelledby="s60-title">
+      <span aria-hidden className="deco-blob deco-blob--green -right-40 top-0 size-[26rem]" />
+      <div className="container-page">
+        <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={t("title")} />
+
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-stretch">
           <Reveal className="lg:col-span-7">
-            <div className="relative rounded-[2rem] border border-white/80 bg-white/60 p-2 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.45),0_0_60px_-30px_rgb(255_184_0/0.5)] backdrop-blur-md md:p-3">
+            <div className="h-full rounded-[1.25rem] border border-card-line bg-white p-3 shadow-[0_10px_30px_rgb(15_47_107/0.10)]">
               <SolarStoryMedia alt={t("scene.alt")} labels={{ panels: t("flow.panels.title"), inverter: t("flow.inverter.title"), home: t("flow.home.title"), grid: t("flow.grid.title") }} />
-              <ul className="flex flex-wrap gap-x-5 gap-y-2 px-2 pb-1 pt-3 text-caption font-semibold text-navy">
-                <li className="flex items-center gap-2"><span aria-hidden className="size-2.5 rounded-full bg-gold shadow-[0_0_10px_#FFC72C]" />{t("scene.toHome")}</li>
-                <li className="flex items-center gap-2"><span aria-hidden className="size-2.5 rounded-full bg-sky shadow-[0_0_10px_#4DA3FF]" />{t("scene.toGrid")}</li>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2 px-2 pb-1 pt-3 text-caption font-medium text-ink">
+                <li className="flex items-center gap-2"><span aria-hidden className="size-2.5 rounded-full bg-green" />{t("scene.toHome")}</li>
+                <li className="flex items-center gap-2"><span aria-hidden className="size-2.5 rounded-full bg-primary" />{t("scene.toGrid")}</li>
               </ul>
             </div>
           </Reveal>
-
-          {/* What / how it cuts the bill */}
-          <div className="grid gap-4 lg:col-span-5">
-            {([["what", Lightbulb], ["cut", TrendingDown]] as const).map(([k, Icon], i) => (
-              <Reveal key={k} delay={0.1 + i * 0.08} className="card-glass-light flex gap-4 p-6 md:p-7">
-                <span className={cn("float-soft grid size-12 shrink-0 place-items-center rounded-2xl", i ? "icon-royal" : "icon-sun")} style={{ animationDelay: `${i * -2}s` }}>
-                  <Icon className="size-6" aria-hidden />
-                </span>
-                <div>
-                  <h3 className="text-h4 text-navy">{t(`${k}.title`)}</h3>
-                  <p className="mt-2 text-muted">{t(`${k}.desc`)}</p>
+          <div className="grid gap-4 lg:col-span-5 lg:grid-rows-3">
+            {cards.map(({ title, desc, img }, i) => (
+              <Reveal key={title} delay={0.08 + i * 0.08} className="h-full">
+                <div className="card-premium flex h-full items-start gap-5 p-6">
+                  <span aria-hidden className="relative size-16 shrink-0 overflow-hidden rounded-2xl bg-tint-ice">
+                    <Image src={img} alt="" fill sizes="64px" className="object-cover" />
+                  </span>
+                  <div>
+                    <h3 className="font-heading text-h4 font-bold text-ink">{title}</h3>
+                    <p className="mt-1.5 text-[0.9375rem] text-body">{desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
 
-        {/* Energy-flow steps */}
-        <Reveal className="card-glass-light relative mt-8 overflow-hidden p-6 hover:transform-none md:p-10">
-          <ol className="relative grid gap-6 md:grid-cols-6 md:gap-3">
-            <span aria-hidden className="s60-line absolute bottom-7 left-7 top-7 w-1 rounded-full md:bottom-auto md:left-[8%] md:right-[8%] md:top-7 md:h-1 md:w-auto" />
-            {FLOW.map(({ key, Icon, tone }, i) => (
-              <li key={key} className="relative flex items-center gap-4 md:flex-col md:text-center">
-                <span className={cn("s60-node relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl ring-4 ring-white", tone)} style={{ animationDelay: `${i * 0.35}s` }}>
-                  <Icon className="size-6" strokeWidth={1.8} aria-hidden />
+        {/* 6-step energy flow: illustrated circles joined by arrows */}
+        <Reveal className="mt-6 rounded-[1.25rem] border border-card-line bg-white p-6 shadow-[0_10px_30px_rgb(15_47_107/0.10)] md:p-8">
+          <ol className="grid gap-5 md:grid-cols-6 md:gap-2">
+            {FLOW.map((key, i) => (
+              <li key={key} className="relative flex items-center gap-4 md:flex-col md:items-center md:gap-3 md:text-center">
+                <span className="relative shrink-0">
+                  <span aria-hidden className="relative block size-16 overflow-hidden rounded-full bg-[#F1F5FB] md:size-20">
+                    <Image src={UI_IMAGES.flow[key]} alt="" fill sizes="80px" className="object-cover" />
+                  </span>
+                  <span className="absolute -right-1 -top-1 grid size-6 place-items-center rounded-full bg-primary text-[0.75rem] font-bold text-white ring-2 ring-white tabular-nums">{i + 1}</span>
                 </span>
+                {i < FLOW.length - 1 && (
+                  <ArrowRight aria-hidden className="absolute -right-3 top-9 hidden size-5 text-primary/60 md:block lg:-right-2.5" />
+                )}
                 <span>
-                  <span className="block font-heading font-bold text-navy">{t(`flow.${key}.title`)}</span>
-                  <span className="block text-caption text-muted">{t(`flow.${key}.desc`)}</span>
+                  <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`flow.${key}.title`)}</span>
+                  <span className="mt-0.5 block text-[0.875rem] text-body">{t(`flow.${key}.desc`)}</span>
                 </span>
               </li>
             ))}
           </ol>
-          <style>{`
-            .s60-line { background-image: repeating-linear-gradient(180deg, #F5A800 0 10px, transparent 10px 20px); background-size: 100% 20px; animation: s60v 1.2s linear infinite; box-shadow: 0 0 12px rgb(255 199 44 / .45); }
-            @media (min-width: 768px) { .s60-line { background-image: repeating-linear-gradient(90deg, #F5A800 0 14px, transparent 14px 26px); background-size: 26px 100%; animation-name: s60h; } }
-            @keyframes s60v { to { background-position: 0 20px; } }
-            @keyframes s60h { to { background-position: 26px 0; } }
-            .s60-node { animation: s60pulse 2.1s ease-in-out infinite; }
-            @keyframes s60pulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(255 199 44 / 0); } 15% { box-shadow: 0 0 0 8px rgb(255 199 44 / .3), 0 0 26px rgb(255 199 44 / .45); } 35% { box-shadow: 0 0 0 0 rgb(255 199 44 / 0); } }
-            @media (prefers-reduced-motion: reduce) { .s60-line, .s60-node { animation: none; } }
-          `}</style>
         </Reveal>
 
-        {/* On-grid vs off-grid vs hybrid */}
-        <h3 className="mb-6 mt-14 text-center text-h3 text-navy md:text-[2rem]">{t("typesTitle")}</h3>
-        <ul className="grid gap-4 md:grid-cols-3">
-          {TYPES.map(({ key, Icon, accent }, i) => (
+        {/* On-grid / off-grid / hybrid */}
+        <h3 className="mt-16 font-heading text-h3 font-bold text-ink md:text-[1.75rem]">{t("typesTitle")}</h3>
+        <span aria-hidden className="mb-6 mt-3 block h-1 w-14 rounded-full bg-[linear-gradient(90deg,#1D4ED8,#16A34A)]" />
+        <ul className="grid gap-5 md:grid-cols-3">
+          {TYPES.map(({ key, accent, head }, i) => (
             <Reveal key={key} delay={i * 0.08} className="h-full">
-              <li className="card-glass-light flex h-full list-none flex-col overflow-hidden p-6">
-                <span aria-hidden className={cn("absolute inset-x-0 top-0 h-1 bg-gradient-to-r", accent)} />
-                <span className={cn("float-soft grid size-12 place-items-center rounded-2xl bg-gradient-to-br text-white shadow-[0_10px_24px_-12px_rgb(7_23_63/0.5)]", accent, key === "ongrid" && "text-navy")} style={{ animationDelay: `${i * -1.5}s` }}>
-                  <Icon className="size-6" strokeWidth={1.8} aria-hidden />
-                </span>
-                <h4 className="mt-4 font-heading text-h4 font-bold text-navy">{t(`${key}.name`)}</h4>
-                <p className="mt-2 flex-1 text-caption text-muted">{t(`${key}.desc`)}</p>
-                <p className="mt-4 rounded-xl bg-[#F1F7FF] px-3 py-2 text-caption text-navy ring-1 ring-royal/10"><span className="font-semibold text-[#9A6400]">{t("best")}: </span>{t(`${key}.best`)}</p>
+              <li className="card-premium relative flex h-full list-none flex-col overflow-hidden">
+                <span aria-hidden className={cn("absolute inset-x-0 top-0 h-1", accent)} />
+                <div className={cn("flex items-center gap-4 px-6 pb-4 pt-5", head)}>
+                  <span aria-hidden className="relative size-16 shrink-0 overflow-hidden rounded-2xl">
+                    <Image src={UI_IMAGES.types[key]} alt="" fill sizes="64px" className="object-contain mix-blend-multiply" />
+                  </span>
+                  <h4 className="font-heading text-h4 font-bold text-ink">{t(`${key}.name`)}</h4>
+                </div>
+                <p className="flex-1 px-6 pt-5 text-[0.9375rem] text-body">{t(`${key}.desc`)}</p>
+                <p className="mx-6 mb-6 mt-5 inline-flex items-start gap-1.5 self-start rounded-full bg-tint-mint px-3 py-1.5 text-caption text-green-ink">
+                  <Check className="mt-0.5 size-3.5 shrink-0" strokeWidth={3} aria-hidden />
+                  <span><span className="font-semibold">{t("best")}:</span> {t(`${key}.best`)}</span>
+                </p>
               </li>
             </Reveal>
           ))}

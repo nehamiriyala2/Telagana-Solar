@@ -56,7 +56,7 @@ export function GuideDialog({ open, onClose, initialPersona }: { open: boolean; 
     <div className="flex items-center justify-between gap-3">
       <Button variant="ghost" onClick={() => go(step - 1)} className={step === 0 ? "invisible" : ""}><ArrowLeft aria-hidden />{t("guide.back")}</Button>
       {step < total - 1
-        ? <Button variant="navy" onClick={() => go(step + 1)} disabled={step === 0 && !persona}>{t("guide.next")}<ArrowRight aria-hidden /></Button>
+        ? <Button variant="solid" onClick={() => go(step + 1)} disabled={step === 0 && !persona}>{t("guide.next")}<ArrowRight aria-hidden /></Button>
         : <Button onClick={() => { go(total); if (plan) track({ name: "calculator_used", propertyType: plan.calc.type, kw: plan.calc.kw }); }} disabled={!persona}>{t("guide.see")}<ArrowRight aria-hidden /></Button>}
     </div>
   ) : undefined;
@@ -80,8 +80,8 @@ export function GuideDialog({ open, onClose, initialPersona }: { open: boolean; 
                     const Icon = PERSONA_ICONS[p];
                     return (
                       <button key={p} type="button" role="radio" aria-checked={persona === p} onClick={() => { setPersona(p); setTimeout(() => go(1), 200); }}
-                        className={cn("flex min-h-16 items-center gap-3 rounded-2xl border p-3 text-left transition-colors duration-300", persona === p ? "border-gold bg-gold-soft" : "border-line hover:border-royal")}>
-                        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-sky-tint text-royal"><Icon className="size-5" aria-hidden /></span>
+                        className={cn("flex min-h-16 items-center gap-3 rounded-2xl border p-3 text-left transition-colors duration-300", persona === p ? "border-gold bg-gold-soft" : "border-line hover:border-primary-hover")}>
+                        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-mist text-primary-hover"><Icon className="size-5" aria-hidden /></span>
                         <span className="font-semibold">{t(`guide.who.${p}`)}</span>
                       </button>
                     );
@@ -100,7 +100,7 @@ export function GuideDialog({ open, onClose, initialPersona }: { open: boolean; 
                 <div role="radiogroup" aria-label={t("guide.areaLabel")} className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {AREA.map((a) => (
                     <button key={a.key} type="button" role="radio" aria-checked={area === a.key} onClick={() => setArea(a.key)}
-                      className={cn("min-h-12 rounded-2xl border px-3 py-2.5 text-caption font-semibold transition-colors duration-300", area === a.key ? "border-gold bg-gold-soft" : "border-line hover:border-royal")}>
+                      className={cn("min-h-12 rounded-2xl border px-3 py-2.5 text-caption font-semibold transition-colors duration-300", area === a.key ? "border-gold bg-gold-soft" : "border-line hover:border-primary-hover")}>
                       {t(`guide.area.${a.key}`)}
                     </button>
                   ))}
@@ -120,12 +120,12 @@ export function GuideDialog({ open, onClose, initialPersona }: { open: boolean; 
 
             {step === total && plan && persona && (
               <div className="space-y-5">
-                <div className="relative overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#FFF3D1,#FFFBF2)] p-5">
-                  <div aria-hidden className="absolute -right-10 -top-10 size-36 rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.45),transparent_65%)]" />
-                  <p className="text-caption font-semibold text-royal">{t("guide.resultTitle")}</p>
+                <div className="relative overflow-hidden rounded-2xl bg-[#F5F8FC] p-5">
+                  <div aria-hidden className="absolute -right-10 -top-10 size-36 rounded-full bg-transparent" />
+                  <p className="text-caption font-semibold text-primary-hover">{t("guide.resultTitle")}</p>
                   <p className="mt-1 font-heading text-h3 font-extrabold">{t(`guide.types.${plan.type}.name`)}</p>
                   <p className="mt-3 text-caption font-semibold">{t("guide.whyTitle")}</p>
-                  <p className="mt-1 text-caption text-navy-700">{t(`guide.types.${plan.type}.why`)}</p>
+                  <p className="mt-1 text-caption text-body">{t(`guide.types.${plan.type}.why`)}</p>
                 </div>
 
                 <dl className="grid grid-cols-2 gap-3">

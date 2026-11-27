@@ -18,18 +18,18 @@ export function KineticBand({ phrases, tone = "light", className }: { phrases: s
   const row = [...phrases, ...phrases, ...phrases];
 
   const Sun = () => (
-    <span aria-hidden className="mx-[0.35em] inline-block size-[0.42em] -translate-y-[0.08em] rounded-full bg-[radial-gradient(circle_at_35%_35%,#FFE58A,#FFB800_55%,#E88A00)] align-middle shadow-[0_0_30px_rgb(255_184_0/0.7)]" />
+    <span aria-hidden className="mx-[0.35em] inline-block size-[0.42em] -translate-y-[0.08em] rounded-full bg-gold align-middle" />
   );
 
   return (
     <div ref={ref} className={cn("relative overflow-hidden py-10 md:py-14", className)}>
       <p className="sr-only">{phrases.join(" ")}</p>
-      <motion.div aria-hidden style={{ x: x1 }} className={cn("kinetic-row", dark ? "text-white" : "text-navy")}>
+      <motion.div aria-hidden style={{ x: x1 }} className={cn("kinetic-row", dark ? "text-white" : "text-ink")}>
         {row.map((p, i) => (
           <span key={i}>{i % 2 ? <span className="text-gold-shine">{p}</span> : p}<Sun /></span>
         ))}
       </motion.div>
-      <motion.div aria-hidden style={{ x: x2, ["--stroke" as string]: dark ? "rgb(255 215 106 / 0.6)" : "rgb(18 101 216 / 0.35)" }} className="kinetic-row kinetic-outline mt-2">
+      <motion.div aria-hidden style={{ x: x2, ["--stroke" as string]: dark ? "rgb(29 78 216 / 0.6)" : "rgb(30 64 175 / 0.35)" }} className="kinetic-row kinetic-outline mt-2">
         {row.map((p, i) => <span key={i}>{p}<span className="mx-[0.35em]">✦</span></span>)}
       </motion.div>
     </div>

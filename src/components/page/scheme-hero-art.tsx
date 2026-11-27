@@ -16,7 +16,7 @@ export function SchemeHeroArt({ className }: { className?: string } = {}) {
   const locale = useLocale();
   return (
     <div className={cn("scheme-3d relative mx-auto w-full max-w-[34rem] sm:max-w-[40rem] md:max-w-[44rem] lg:max-w-none lg:w-[118%] xl:w-[128%] 2xl:w-[134%] lg:origin-right lg:-mr-4 xl:-mr-10 2xl:-mr-16", className)}>
-      <span aria-hidden className="pointer-events-none absolute left-1/2 top-[55%] size-[92%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-[radial-gradient(circle,rgb(255_199_44/0.38),transparent_62%)]" />
+      <span aria-hidden className="pointer-events-none absolute left-1/2 top-[55%] size-[92%] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-transparent" />
       <div className="scheme-3d__float relative">
         <Image
           src="/schemes/schemes-hero-3d.webp"

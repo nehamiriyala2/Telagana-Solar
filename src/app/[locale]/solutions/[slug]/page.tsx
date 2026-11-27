@@ -19,6 +19,8 @@ import { FaqSection } from "@/components/home/home-sections";
 import { businessPackages, homePackages, pumpSizesHp } from "@/config/packages";
 import { routing } from "@/i18n/routing";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
+import { SOLUTION_BENEFIT_PHOTOS, UI_IMAGES } from "@/data/section-photos";
+import { PhotoTile } from "@/components/ui/photo-tile";
 
 const SLUGS = ["homes", "farms", "business"] as const;
 type Slug = (typeof SLUGS)[number];
@@ -65,7 +67,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
       {/* Benefits */}
       <section className="tone tone-white py-16 md:py-24">
         <div className="container-page">
-          <Bento tones={BENTO_TONES[s]} items={(["b1", "b2", "b3", "b4"] as const).map((b, i) => ({ title: p(`${b}.title`), desc: p(`${b}.desc`), Icon: BENEFIT_ICONS[s][i] }))} />
+          <Bento tones={BENTO_TONES[s]} items={(["b1", "b2", "b3", "b4"] as const).map((b, i) => ({ title: p(`${b}.title`), desc: p(`${b}.desc`), Icon: BENEFIT_ICONS[s][i], photo: SOLUTION_BENEFIT_PHOTOS[s]?.[i] }))} />
         </div>
       </section>
 
@@ -89,10 +91,10 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
               <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {pumpSizesHp.map((hp, i) => (
                   <Reveal key={hp} delay={i * 0.06}>
-                    <li className="card-glass-light h-full list-none p-6">
-                      <span className="float-soft icon-royal grid size-12 place-items-center rounded-2xl"><Droplets className="size-6" aria-hidden /></span>
-                      <h3 className="mt-4 text-h4">{t("solutionPages.farms.hp", { value: hp })}</h3>
-                      <p className="mt-2 text-caption text-muted">{p("pumpDesc")}</p>
+                    <li className="card-glass-light h-full list-none p-4">
+                      <PhotoTile src={UI_IMAGES.pumps[i]} alt="" className="aspect-[3/2] w-full rounded-2xl bg-tint-ice text-primary" fallback={<Droplets className="size-8" aria-hidden />} />
+                      <h3 className="mt-4 px-1 font-heading text-h4 font-bold text-ink">{t("solutionPages.farms.hp", { value: hp })}</h3>
+                      <p className="mt-2 px-1 pb-1 text-[0.9375rem] text-body">{p("pumpDesc")}</p>
                     </li>
                   </Reveal>
                 ))}
@@ -105,10 +107,13 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
               <ul className="grid gap-4 md:grid-cols-3">
                 {([["u1", Droplets], ["u2", Warehouse], ["u3", BatteryCharging]] as const).map(([u, Icon], i) => (
                   <Reveal key={u} delay={i * 0.06}>
-                    <li className="card-glass-light h-full list-none p-6">
-                      <span className="float-soft grid size-12 place-items-center rounded-2xl bg-leaf text-white shadow-[0_10px_24px_-12px_rgb(63_165_53/0.8)]"><Icon className="size-6" aria-hidden /></span>
-                      <h3 className="mt-4 text-h4">{p(`${u}.title`)}</h3>
-                      <p className="mt-2 text-caption text-muted">{p(`${u}.desc`)}</p>
+                    <li className="card-glass-light h-full list-none p-3">
+                      <PhotoTile src={UI_IMAGES.farmUses[u]} alt="" className="aspect-[16/9] w-full rounded-2xl bg-tint-mint text-green-text" fallback={<Icon className="size-8" aria-hidden />} />
+                      <div className="flex items-center gap-3 px-2 pt-4">
+                        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-green text-white"><Icon className="size-5" aria-hidden /></span>
+                        <h3 className="font-heading text-h4 font-bold text-ink">{p(`${u}.title`)}</h3>
+                      </div>
+                      <p className="mt-2 px-2 pb-2 text-[0.9375rem] text-body">{p(`${u}.desc`)}</p>
                     </li>
                   </Reveal>
                 ))}
@@ -126,9 +131,9 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
               <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
                 {([["shops", Store], ["schools", GraduationCap], ["hospitals", Hospital], ["factories", Factory], ["offices", Building], ["hotels", Hotel]] as const).map(([k, Icon], i) => (
                   <Reveal key={k} delay={(i % 3) * 0.06}>
-                    <li className="card-glass-light flex h-full list-none items-center gap-4 p-5">
-                      <span className="icon-royal grid size-12 shrink-0 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
-                      <span className="font-heading font-bold">{p(k)}</span>
+                    <li className="card-glass-light flex h-full list-none flex-col gap-4 p-3 sm:flex-row sm:items-center">
+                      <PhotoTile src={UI_IMAGES.segments[k]} alt="" className="aspect-[16/10] w-full shrink-0 rounded-xl bg-tint-ice text-primary sm:w-1/2" fallback={<Icon className="size-8" strokeWidth={1.6} aria-hidden />} />
+                      <span className="px-1 pb-1 font-heading text-[1.125rem] font-bold leading-snug text-ink">{p(k)}</span>
                     </li>
                   </Reveal>
                 ))}
@@ -156,7 +161,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
             {(["i1", "i2", "i3", "i4", "i5", "i6"] as const).map((k, i) => (
               <Reveal key={k} delay={i * 0.04}>
                 <li className="card-dark-glass flex h-full list-none items-start gap-3 p-4 text-white">
-                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#FFD76A]" aria-hidden />{p(k)}
+                  <CircleCheck className="mt-0.5 size-5 shrink-0 text-[#1D4ED8]" aria-hidden />{p(k)}
                 </li>
               </Reveal>
             ))}

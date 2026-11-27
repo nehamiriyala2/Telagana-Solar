@@ -7,10 +7,8 @@ import { SchemesSection } from "@/components/home/schemes-section";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { KnowBefore } from "@/components/home/know-before";
 import { FaqSection, FinalCta } from "@/components/home/home-sections";
+import { TrustStrip } from "@/components/home/trust-strip";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
-import { KineticBand } from "@/components/motion/kinetic-band";
-import { site } from "@/config/site";
-import { pick } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -19,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 /**
- * Home (informational): Hero → Solar in 60 seconds → Which solar suits you → Schemes →
- * How it works → Calculator → Know before you buy → Packages → FAQ → Final banner.
+ * Home: Hero → Trust strip → How solar cuts your bill (+ on-grid/off-grid/hybrid) → Which solar suits you →
+ * How it works (deep-blue band) → Schemes → Solar checklist → FAQ → Final CTA (deep-blue band).
  */
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -32,11 +30,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <div className="home-premium">
       <JsonLd data={faqJsonLd(faqKeys.map((k) => ({ q: t(`${k}.q`), a: t(`${k}.a`) })))} />
       <Hero />
+      <TrustStrip />
       <Solar60 />
       <WhoAreYou />
-      <SchemesSection premium />
       <HowItWorks premium dark />
-      <KineticBand phrases={pick(site.tagline, locale).split(/\.\s*/).filter(Boolean)} />
+      <SchemesSection premium />
       <KnowBefore />
       <FaqSection keys={faqKeys} premium />
       <FinalCta />

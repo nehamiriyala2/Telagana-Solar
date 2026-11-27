@@ -31,13 +31,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
       <section className="tone tone-mint pb-16 pt-10 md:pb-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
-          <BlurReveal id="book" className="min-w-0 scroll-mt-24 rounded-[1.75rem] border border-line bg-white p-6 shadow-[0_40px_90px_-50px_rgb(7_23_63/0.45)] md:p-9 lg:col-span-7">
-            <h2 className="mb-6 font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy">{t("formTitle")}</h2>
+          <BlurReveal id="book" className="min-w-0 scroll-mt-24 rounded-[1.25rem] border border-line bg-white p-6 shadow-[0_40px_90px_-50px_rgb(15_47_107/0.45)] md:p-9 lg:col-span-7">
+            <h2 className="mb-6 font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink">{t("formTitle")}</h2>
             <ContactForm />
           </BlurReveal>
 
           <div className="min-w-0 space-y-5 lg:col-span-5">
-            <BlurReveal delay={0.08} className="tone tone-navy rounded-[1.75rem] p-6 shadow-[0_40px_80px_-40px_rgb(7_27_73/0.7)] md:p-8">
+            <BlurReveal delay={0.08} className="tone tone-navy rounded-[1.25rem] p-6 shadow-[0_40px_80px_-40px_rgb(15_47_107/0.7)] md:p-8">
               <Stagger className="space-y-5">
                 <Item Icon={Phone} label={t("callUs")} value={site.phone ? <a href={`tel:${site.phone}`} className="hover:underline">{site.phone}</a> : <EditMark label="[EDIT] phone" />} />
                 <Item Icon={MessageCircle} label={t("whatsappUs")} value={site.whatsapp ? `+${site.whatsapp}` : <EditMark label="[EDIT] WhatsApp" />} />
@@ -50,7 +50,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 <WhatsAppButton place="contact-card" className="w-full" />
               </div>
             </BlurReveal>
-            <BlurReveal delay={0.14} className="zoom-frame overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-soft">
+            <BlurReveal delay={0.14} className="zoom-frame overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-soft">
               <h2 className="sr-only">{t("mapTitle")}</h2>
               <iframe title={t("mapTitle")} src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-72 w-full border-0" />
             </BlurReveal>
@@ -64,7 +64,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 function Item({ Icon, label, value }: { Icon: typeof Phone; label: string; value: React.ReactNode }) {
   return (
     <StaggerItem className="flex gap-4">
-      <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#FFD76A,#FFB800)] text-navy"><Icon className="size-5" aria-hidden /></span>
+      <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-gold text-ink"><Icon className="size-5" aria-hidden /></span>
       <span className="min-w-0"><span className="on-dark-muted block text-caption">{label}</span><span className="block font-semibold text-white">{value}</span></span>
     </StaggerItem>
   );

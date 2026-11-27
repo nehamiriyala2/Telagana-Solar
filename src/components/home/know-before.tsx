@@ -1,7 +1,10 @@
 import { useTranslations } from "next-intl";
-import { BadgeCheck, Gauge, Headset, Ruler, ShieldCheck, Sun, Zap } from "lucide-react";
+import { ArrowRight, BadgeCheck, Gauge, Headset, Ruler, ShieldCheck, Sun, Zap } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
+import { GuideTrigger } from "@/components/tools/triggers";
+import { PhotoTile } from "@/components/ui/photo-tile";
+import { UI_IMAGES } from "@/data/section-photos";
 
 const ITEMS = [
   { key: "k1", Icon: Ruler },
@@ -13,29 +16,34 @@ const ITEMS = [
   { key: "k7", Icon: Headset },
 ] as const;
 
-/** "Know before you buy": a simple pre-purchase checklist. */
+/** "Your solar checklist" on tint A: 7 numbered white cards in a two-column grid (blue number circle, bold title, one line,
+ *  small icon) plus a deep-blue help card in the 8th slot so the grid is balanced. */
 export function KnowBefore() {
   const t = useTranslations("knowBefore");
+  const tc = useTranslations("common");
   return (
-    <section className="tone tone-mint py-16 md:py-24" aria-labelledby="kb-title">
-      <div aria-hidden className="orb -right-24 top-1/3 size-96 bg-[#24A66A]/15" />
+    <section className="bg-mist py-16 md:py-24" aria-labelledby="kb-title">
       <div className="container-page">
-        <SectionHeading premium eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
-        <ol className="mx-auto grid max-w-5xl gap-3 md:grid-cols-2">
+        <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+        <ol className="grid gap-4 md:grid-cols-2">
           {ITEMS.map(({ key, Icon }, i) => (
-            <Reveal key={key} delay={(i % 2) * 0.06}>
-              <li className="card-premium group flex h-full list-none items-start gap-4 p-5">
-                <span className="relative grid size-12 shrink-0 place-items-center rounded-2xl bg-leaf-tint text-leaf-ink transition-colors duration-500 group-hover:bg-leaf group-hover:text-white">
-                  <Icon className="size-5" aria-hidden />
-                  <span className="icon-sun absolute -right-2 -top-2 grid size-6 place-items-center rounded-full text-[0.6875rem] font-extrabold">{i + 1}</span>
+            <Reveal key={key} delay={(i % 2) * 0.06} className="h-full">
+              <li className="card-premium flex h-full list-none items-center gap-4 p-4 pl-5">
+                <span className="grid size-10 shrink-0 self-start place-items-center rounded-full bg-primary font-heading text-[1rem] font-bold text-white tabular-nums">{i + 1}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`${key}.title`)}</span>
+                  <span className="mt-1 block text-[0.9375rem] text-body">{t(`${key}.desc`)}</span>
                 </span>
-                <span>
-                  <span className="block font-bold text-navy" style={{ fontFamily: "var(--font-display), var(--font-jakarta), var(--font-telugu), sans-serif" }}>{t(`${key}.title`)}</span>
-                  <span className="mt-1 block text-caption text-muted">{t(`${key}.desc`)}</span>
-                </span>
+                <PhotoTile src={UI_IMAGES.checklist[key]} alt="" className="h-20 w-24 shrink-0 rounded-xl bg-tint-ice text-primary sm:h-24 sm:w-32" fallback={<Icon className="size-6" aria-hidden />} />
               </li>
             </Reveal>
           ))}
+          <Reveal delay={0.06} className="h-full">
+            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(15_47_107/0.18)] sm:flex-row sm:items-center">
+              <p className="font-heading text-[1.0625rem] font-bold leading-snug text-white">{t("helpTitle")}</p>
+              <GuideTrigger size="sm" variant="white" className="shrink-0">{tc("bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
+            </li>
+          </Reveal>
         </ol>
       </div>
     </section>

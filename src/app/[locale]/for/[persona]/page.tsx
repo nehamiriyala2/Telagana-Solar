@@ -55,7 +55,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page grid gap-6 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <div className="relative isolate h-full overflow-hidden rounded-[1.75rem] p-7 text-white shadow-lift md:p-9"><SolarBackdrop tone="dark" sun={{ x: "92%", y: "8%" }} particles={false} />
+            <div className="relative isolate h-full overflow-hidden rounded-[1.25rem] p-7 text-white shadow-lift md:p-9"><SolarBackdrop tone="dark" sun={{ x: "92%", y: "8%" }} particles={false} />
               <p className="text-caption font-bold uppercase tracking-wide text-yellow">{t("personaPage.recommendTitle")}</p>
               <p className="mt-3 font-heading text-h3 font-extrabold">{t(`personas.${p}.solution`)}</p>
               <p className="mt-4 text-caption text-silver">“{t(`personas.${p}.question`)}”</p>
@@ -68,7 +68,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
                 <li className="card-glass-light flex h-full list-none gap-3 p-5">
                   <CircleCheck className="mt-0.5 size-5 shrink-0 text-leaf" aria-hidden />
                   <div>
-                    <h2 className="font-heading font-bold text-navy">{t(`personas.${p}.${k}.title`)}</h2>
+                    <h2 className="font-heading font-bold text-ink">{t(`personas.${p}.${k}.title`)}</h2>
                     <p className="mt-1 text-caption text-muted">{t(`personas.${p}.${k}.desc`)}</p>
                   </div>
                 </li>

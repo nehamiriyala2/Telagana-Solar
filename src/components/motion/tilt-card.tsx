@@ -13,7 +13,7 @@ export function TiltCard({ children, className, max = 8 }: { children: React.Rea
   const ry = useSpring(useTransform(px, [0, 1], [-max, max]), { stiffness: 200, damping: 20 });
   const glareX = useTransform(px, (v) => `${v * 100}%`);
   const glareY = useTransform(py, (v) => `${v * 100}%`);
-  const glare = useTransform([glareX, glareY], ([gx, gy]) => `radial-gradient(400px circle at ${gx} ${gy}, rgb(255 184 0 / 0.16), transparent 45%)`);
+  const glare = useTransform([glareX, glareY], ([gx, gy]) => `radial-gradient(400px circle at ${gx} ${gy}, rgb(29 78 216 / 0.16), transparent 45%)`);
 
   const onMove = (e: React.PointerEvent) => {
     if (reduce || e.pointerType !== "mouse" || !ref.current) return;

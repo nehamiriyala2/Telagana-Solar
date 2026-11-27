@@ -166,7 +166,7 @@ export function LeadForm({ kind, fields = { location: true, propertyType: true }
           <div role="radiogroup" aria-labelledby={id("ptype-label")} className="grid grid-cols-3 gap-2" {...aria("propertyType")}>
             {PROPERTY_TYPES.map((p, i) => (
               <button key={p} id={i === 0 ? id("propertyType") : undefined} type="button" role="radio" aria-checked={propertyType === p} onClick={() => setPropertyType(p)}
-                className={cn("h-12 rounded-[0.875rem] border text-caption font-semibold transition-colors duration-300", propertyType === p ? "border-gold bg-gold-soft" : "border-line bg-white hover:border-sky", errors.propertyType && "border-danger")}>
+                className={cn("h-12 rounded-[1.25rem] border text-caption font-semibold transition-colors duration-300", propertyType === p ? "border-gold bg-gold-soft" : "border-line bg-white hover:border-primary-hover", errors.propertyType && "border-danger")}>
                 {t(`types.${p}.name`)}
               </button>
             ))}

@@ -38,7 +38,7 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
 
       <section className="relative -mt-8 pb-16 md:-mt-12 md:pb-24">
         <div className="container-page">
-          <BlurReveal className="rounded-[2rem] border border-white bg-white/70 p-3 shadow-[0_40px_90px_-50px_rgb(7_23_63/0.45)] backdrop-blur-xl md:p-6">
+          <BlurReveal className="rounded-[1.25rem] border border-white bg-white/70 p-3 shadow-[0_40px_90px_-50px_rgb(15_47_107/0.45)] backdrop-blur-xl md:p-6">
             <FullCalculator />
           </BlurReveal>
         </div>
@@ -54,17 +54,17 @@ export default async function CalculatorPage({ params }: { params: Promise<{ loc
               <StaggerItem key={s.key} className="card-dark-glass list-none p-6">
                 <p className="font-heading text-[2.5rem] font-extrabold leading-none tracking-[-0.03em] text-white">
                   <StatCounter value={s.value} prefix={s.prefix} decimals={s.decimals} />
-                  <span className="ml-1 text-[1rem] font-bold text-[#FFD76A]">{L(D.stats[s.key].suffix).trim()}</span>
+                  <span className="ml-1 text-[1rem] font-bold text-[#1D4ED8]">{L(D.stats[s.key].suffix).trim()}</span>
                 </p>
                 <p className="on-dark-muted mt-3 text-caption">{L(D.stats[s.key].label)}</p>
               </StaggerItem>
             ))}
           </Stagger>
 
-          <BlurReveal className="bg-premium-sun mt-10 rounded-[1.75rem] p-7 ring-1 ring-gold/25 md:p-9">
-            <h2 className="flex items-center gap-3 font-heading text-h3 font-extrabold tracking-[-0.02em] text-navy"><span className="icon-sun grid size-10 place-items-center rounded-xl"><Lightbulb className="size-5" aria-hidden /></span>{L(D.tipsTitle)}</h2>
+          <BlurReveal className="bg-premium-sun mt-10 rounded-[1.25rem] p-7 ring-1 ring-gold/25 md:p-9">
+            <h2 className="flex items-center gap-3 font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink"><span className="icon-sun grid size-10 place-items-center rounded-xl"><Lightbulb className="size-5" aria-hidden /></span>{L(D.tipsTitle)}</h2>
             <ul className="mt-5 grid gap-3 md:grid-cols-3">
-              {D.tips.map((tip, i) => <li key={i} className="rounded-2xl bg-white/80 p-4 text-navy shadow-soft">{L(tip)}</li>)}
+              {D.tips.map((tip, i) => <li key={i} className="rounded-2xl bg-white/80 p-4 text-ink shadow-soft">{L(tip)}</li>)}
             </ul>
           </BlurReveal>
         </div>

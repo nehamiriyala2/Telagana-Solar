@@ -1,84 +1,56 @@
 "use client";
-import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { BookOpen, FileText, ListChecks, Wrench, Zap } from "lucide-react";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Leaf } from "lucide-react";
+import { UI_IMAGES } from "@/data/section-photos";
 import { cn } from "@/lib/utils";
-import { Wave } from "@/components/page/tone-section";
 
-const STEPS = [
-  { key: "s1", Icon: BookOpen },
-  { key: "s2", Icon: ListChecks },
-  { key: "s3", Icon: FileText },
-  { key: "s4", Icon: Wrench },
-  { key: "s5", Icon: Zap },
-] as const;
+const STEPS = ["s1", "s2", "s3", "s4", "s5"] as const;
 
 /**
- * 5-step timeline. A gold line draws between the steps and a small sun travels along it
- * as the section scrolls into view (horizontal on desktop, vertical on mobile).
- * `premium` is the homepage look (step cards); `dark` puts it on a deep-navy section; other pages keep the default.
+ * "How it works": five numbered steps, each a white card with an illustration, joined by a thin line.
+ * Used on every page that shows the process (home, solutions, persona and district pages), so the same
+ * illustrations appear everywhere.
+ * - `dark` (homepage): a light sky-blue gradient band with a curved top (kept airy, not heavy navy).
+ * - light (inner pages): the same cards on tint A.
  */
-export function HowItWorks({ premium = false, dark = false }: { premium?: boolean; dark?: boolean }) {
+export function HowItWorks({ dark = false }: { premium?: boolean; dark?: boolean }) {
   const t = useTranslations("how");
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 80%", "end 55%"] });
-  const p = useSpring(scrollYProgress, { stiffness: 80, damping: 20 });
-  const pct = useTransform(p, (v) => `${Math.min(100, Math.max(0, v * 100))}%`);
-
   return (
-    <section className={dark ? "tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32" : premium ? "dot-grid bg-premium-sky relative isolate overflow-hidden py-16 md:py-24" : "section"} aria-labelledby="how-title">
-      {dark && <span aria-hidden className="tone-beam" />}
-      {dark && <Wave color="#FFFFFF" position="top" />}
-      {premium && <div aria-hidden className={cn("orb left-1/3 -top-24 size-96", dark ? "bg-yellow/15" : "bg-yellow/20")} />}
+    <section aria-labelledby="how-title"
+      className={cn("relative isolate overflow-hidden py-16 md:py-24",
+        dark ? "band-curve bg-[linear-gradient(180deg,#1E4FD8_0%,#2F6BEA_55%,#4B8AF4_100%)] text-white" : "bg-mist")}>
+      {dark && <span aria-hidden className="deco-blob -right-32 top-10 size-[28rem] bg-white/15" />}
       <div className="container-page">
-        <SectionHeading premium={premium} tone={dark ? "dark" : "light"} eyebrow={t("eyebrow")} title={t("title")} />
-        <div ref={ref} className="relative">
-          {/* Desktop: horizontal sun path */}
-          <div aria-hidden className={cn("absolute left-[10%] right-[10%] top-8 hidden h-1 rounded-full lg:block", dark ? "bg-white/15" : premium ? "bg-royal/15" : "bg-sky-tint")}>
-            <motion.div className="h-full rounded-full bg-sun" style={{ width: reduce ? "100%" : pct }} />
-            <motion.div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: reduce ? "100%" : pct }}>
-              <span className="block size-6 rounded-full bg-[radial-gradient(circle_at_35%_35%,#FFE58A,#F5A800_55%,#E88A00)] shadow-[0_0_24px_6px_rgb(245_168_0/0.5)]" />
-            </motion.div>
-          </div>
-          {/* Mobile: vertical line */}
-          <div aria-hidden className={cn("absolute bottom-8 left-8 top-8 w-1 rounded-full lg:hidden", dark ? "bg-white/15" : premium ? "bg-royal/15" : "bg-sky-tint")}>
-            <motion.div className="w-full rounded-full bg-sun" style={{ height: reduce ? "100%" : pct }} />
-          </div>
+        <div className="mx-auto mb-12 max-w-3xl text-center md:mb-14">
+          <p className={cn("inline-flex items-center gap-2 text-[0.8125rem] font-bold uppercase tracking-[0.18em]", dark ? "text-white" : "text-primary")}>
+            <Leaf className={cn("size-4", dark ? "text-[#86EFAC]" : "text-green")} aria-hidden />{t("eyebrow")}
+          </p>
+          <h2 id="how-title" className={cn("mt-3 font-heading text-[clamp(2rem,3.4vw,2.75rem)] font-extrabold leading-[1.15] tracking-[-0.02em]", dark ? "text-white" : "text-ink")}>{t("title")}</h2>
+          <span aria-hidden className="mx-auto mt-4 block h-1 w-16 rounded-full bg-[#F5B82E]" />
+        </div>
 
-          <ol className="relative grid gap-8 lg:grid-cols-5 lg:gap-6">
-            {STEPS.map(({ key, Icon }, i) => (
-              <Step key={key} i={i} progress={p} reduce={!!reduce} premium={premium} dark={dark} Icon={Icon} title={t(`${key}.title`)} desc={t(`${key}.desc`)} />
+        <div className="relative">
+          <span aria-hidden className={cn("absolute left-[10%] right-[10%] top-6 hidden h-0.5 lg:block", dark ? "bg-white/50" : "bg-primary/25")} />
+          <ol className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            {STEPS.map((k, i) => (
+              <motion.li key={k} className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}>
+                <span className="relative z-10 grid size-12 place-items-center rounded-full border-[3px] border-green bg-white font-heading text-[1.125rem] font-extrabold text-ink tabular-nums shadow-[0_6px_16px_-6px_rgb(15_47_107/0.4)]">{i + 1}</span>
+                <div className="mt-5 flex w-full flex-1 flex-col items-center rounded-[1.25rem] border border-white/70 bg-white/95 p-5 text-center shadow-[0_14px_34px_-14px_rgb(15_47_107/0.35)]">
+                  <span aria-hidden className="relative block h-24 w-full max-w-[9rem]">
+                    <Image src={UI_IMAGES.steps[k]} alt="" fill sizes="144px" className="object-contain mix-blend-multiply" />
+                  </span>
+                  <h3 className="mt-4 font-heading text-[1.0625rem] font-bold leading-snug text-ink">{t(`${k}.title`)}</h3>
+                  <p className="mt-2 text-[0.875rem] text-body">{t(`${k}.desc`)}</p>
+                </div>
+              </motion.li>
             ))}
           </ol>
         </div>
       </div>
     </section>
-  );
-}
-
-function Step({ i, progress, reduce, premium, dark = false, Icon, title, desc }: {
-  i: number; progress: MotionValue<number>; reduce: boolean; premium: boolean; dark?: boolean; Icon: typeof Zap; title: string; desc: string;
-}) {
-  const threshold = i / 4 - 0.05;
-  const bgMv = useTransform(progress, (v) => (v >= threshold ? "#F5A800" : "#EAF4FF"));
-  const colorMv = useTransform(progress, (v) => (v >= threshold ? "#07173F" : "#1E5BD8"));
-  const bg = reduce ? "#F5A800" : bgMv;
-  const color = reduce ? "#07173F" : colorMv;
-
-  return (
-    <motion.li className="flex gap-5 lg:flex-col lg:items-center lg:text-center"
-      initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}>
-      <motion.span style={{ backgroundColor: bg, color }} className={cn("relative z-10 grid size-16 shrink-0 place-items-center rounded-2xl shadow-soft ring-8 transition-colors", dark ? "ring-[#0A2462] shadow-[0_12px_30px_-12px_rgb(245_168_0/0.6)]" : premium ? "ring-[#F2F7FF] shadow-[0_12px_30px_-12px_rgb(245_168_0/0.6)]" : "ring-white")}>
-        <Icon className="size-7" strokeWidth={1.6} aria-hidden />
-        <span className="absolute -right-2 -top-2 grid size-6 place-items-center rounded-full bg-navy text-[0.75rem] font-bold text-white">{i + 1}</span>
-      </motion.span>
-      <div className={cn("pt-1 lg:pt-5", premium && (dark ? "card-dark-glass" : "card-premium"), premium && "flex-1 p-4 lg:mt-5 lg:w-full lg:pt-4")}>
-        <h3 className={cn("font-bold", premium ? cn("text-[1.0625rem]", dark ? "text-white" : "text-navy") : "font-heading text-[1.0625rem]")}>{title}</h3>
-        <p className={cn("mt-1.5 text-caption", dark ? "on-dark-muted" : "text-muted")}>{desc}</p>
-      </div>
-    </motion.li>
   );
 }

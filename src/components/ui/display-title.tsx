@@ -26,7 +26,7 @@ export function DisplayTitle({ text, emphasis, className, as: Tag = "h1", id, si
   let charIndex = 0;
 
   return (
-    <Tag id={id} aria-label={text} className={cn(size === "xl" ? "display-xl" : "display-lg", "text-navy", className)}>
+    <Tag id={id} aria-label={text} className={cn(size === "xl" ? "display-xl" : "display-lg", "text-ink", className)}>
       {words.map((w, i) => {
         const highlight = isEm(w);
         const space = i < words.length - 1 ? " " : "";

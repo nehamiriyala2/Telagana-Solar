@@ -1,0 +1,261 @@
+/* ==========================================================================
+   PUBLIC SITE THEME: "energy utility meets fintech clarity"
+   Confident royal blue, fresh green for savings, white cards on a soft blue-grey page,
+   deep-blue bands for rhythm (process, stats, final CTA, footer). Sun yellow = tiny details only.
+   Imported only by the public layout (src/app/[locale]/layout.tsx) and scoped to
+   <html class="site">, so the admin dashboard (which shares globals.css) keeps its look.
+   Change the values below (and the matching tokens in globals.css) to re-skin the site.
+
+     Page      #EAF0F9 base · tint A #DFE9F7 · tint B #E6F4EC (green wash) · tint C #F3EEDC (warm, sparingly)
+     Card      #FFFFFF · border #D5E0F0 · shadow 0 10px 30px rgba(15,47,107,.10)
+     White budget: pure white only for card interiors, inputs, the header bar and chips (never a section).
+     Primary   #1D4ED8   royal blue (hover #1E40AF): buttons, links, active nav, key icons
+     Green     #16A34A   savings, success, eco (icons, ticks); green TEXT/buttons use #166534 (AA on tints too)
+     Deep blue #0F2F6B bands (gradient #123A82 → #0F2F6B → #0A2150) · footer #0A2150
+     Sun       #F5B82E   sun icon / sparks only
+     Tints     blue #EAF1FF / #DBE8FE · green #E6F6EC · sun #FFF6DB (soft icon backgrounds)
+     Text      heading #0E1B33 · body #475569 · muted #556377 (AA) · error #C53030 (AA)
+     WhatsApp  #188246 (white text, AA)
+   Legacy token names (navy, royal, sky, gold, silver…) are remapped here so every older
+   component lands on this system. "gold" accents now render in blue.
+   ========================================================================== */
+html.site {
+  --color-white: #ffffff;
+  --color-navy: #0f2f6b;
+  --color-navy-800: #1e40af;
+  --color-navy-700: #1e40af;
+  --color-silver: #eaf1ff;          /* light text on deep blue */
+  --color-gold: #1d4ed8;            /* legacy accent name: now blue */
+  --color-yellow: #f5b82e;
+  --color-amber: #1e40af;
+  --color-gold-soft: #eaf1ff;
+  --color-gold-ink: #1d4ed8;
+  --color-royal: #1d4ed8;
+  --color-sky: #1d4ed8;
+  --color-sky-ink: #1d4ed8;
+  --color-sky-tint: #eaf1ff;
+  --color-leaf: #16a34a;
+  --color-leaf-ink: #166534;
+  --color-leaf-tint: #e6f6ec;
+  --color-cream: #eaf0f9;
+  --color-muted: #556377;
+  --color-line: #d5e0f0;
+  --color-whatsapp: #188246;
+  --color-whatsapp-hover: #136c3a;
+  --color-success: #166534;
+  --color-danger: #c53030;
+
+  --font-heading: var(--font-display), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), var(--font-telugu), ui-sans-serif, system-ui, sans-serif;
+  /* Older rules reference --font-jakarta, which the public layout no longer loads; an undefined var would void
+     the whole font-family, so alias it to the heading font. */
+  --font-jakarta: var(--font-display);
+
+  --radius-card: 1.25rem;
+  --radius-xl: 1.25rem;
+  --shadow-soft: 0 10px 30px rgb(15 47 107 / 0.10);
+  --shadow-lift: 0 2px 6px rgb(15 47 107 / 0.06), 0 18px 44px rgb(15 47 107 / 0.14);
+  --shadow-glow: 0 10px 24px -10px rgb(29 78 216 / 0.55);
+  --shadow-ring: 0 0 0 1px rgb(29 78 216 / 0.4);
+  --shadow-header: 0 1px 0 #d5e0f0, 0 8px 30px rgb(15 47 107 / 0.08);
+
+  --gradient-sun: #1d4ed8;
+  --chart-1: #16a34a;   /* savings */
+  --chart-2: #1d4ed8;   /* gain after cost */
+  --chart-grid: #d5e0f0;
+  --ts-navy: #0f2f6b;
+  --ts-royal: #1d4ed8;
+  --ts-light-blue: #dfe9f7;
+  --ts-soft-blue: #eaf0f9;
+  --ts-yellow: #f5b82e;
+  --ts-text: #475569;
+  --header-h: 4.5rem;              /* 72px */
+  accent-color: #1d4ed8;
+  scrollbar-color: #b9c8de #dfe9f7;
+  --hero-gradient: linear-gradient(135deg, #d6e6fb 0%, #eaf1fc 55%, #e3f3ea 100%);
+  --band-gradient: linear-gradient(160deg, #123a82 0%, #0f2f6b 55%, #0a2150 100%);
+}
+
+/* ---------- Base ---------- */
+html.site body { background: #eaf0f9; color: #475569; line-height: 1.65; }
+@layer base {
+  html.site h1, html.site h2, html.site h3, html.site h4 { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; }
+  html.site h1, html.site h2 { font-weight: 800; }
+  html.site[lang="te"] h1, html.site[lang="te"] h2, html.site[lang="te"] h3, html.site[lang="te"] h4 { font-family: var(--font-telugu), var(--font-display), sans-serif; font-weight: 700; letter-spacing: 0; line-height: 1.5; }
+}
+html.site[lang="te"] body { font-family: var(--font-telugu), var(--font-inter), sans-serif; line-height: 1.8; }
+html.site :focus-visible { outline: 3px solid rgb(29 78 216 / 0.55); outline-offset: 2px; }
+html.site ::selection { background: #dbe8fe; color: #0e1b33; }
+html.site .font-heading { font-variant-numeric: tabular-nums; }
+html.site .field { height: 3.25rem; background: #ffffff; border: 1px solid #cfd8e6; border-radius: 0.875rem; color: #0e1b33; font-size: 1rem; }
+html.site textarea.field { height: auto; }
+html.site .field::placeholder { color: #8392a8; }
+html.site .field:focus { border-color: #1d4ed8; box-shadow: 0 0 0 4px rgb(29 78 216 / 0.15); }
+html.site .field[aria-invalid="true"] { border-color: #c53030; box-shadow: 0 0 0 3px rgb(197 48 48 / 0.12); }
+html.site .edit-mark { background: #fff6db; color: #7a5300; border-color: #f5b82e; }
+
+/* ---------- Surfaces ---------- */
+html.site .bg-premium-light, html.site .bg-premium-sky { background: #eaf0f9; }
+html.site .bg-section-white, html.site .bg-premium-sun { background: #dfe9f7; }
+html.site .bg-premium-navy, html.site .bg-navy-glow { background: var(--band-gradient); color: #ffffff; }
+/* White budget safety net: a section is never pure white (white is for cards, inputs, header, chips) */
+html.site main section.bg-white, html.site main section.bg-card { background-color: #dfe9f7; }
+html.site .bg-sun { background: #1d4ed8; }
+html.site .dot-grid::before { display: none; }
+html.site .orb { display: none !important; }
+html.site .btn-shine::after { display: none; }
+
+/* Faint dotted grid (hero, ~6%) */
+html.site .site-dots { position: relative; isolation: isolate; }
+html.site .site-dots::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgb(15 47 107 / 0.10) 1px, transparent 1px); background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 90%); mask-image: linear-gradient(180deg, #000 0%, transparent 90%);
+}
+/* Soft blurred brand blobs (8–12%) for depth behind hero and section headers */
+html.site .deco-blob { position: absolute; z-index: -1; border-radius: 999px; filter: blur(70px); pointer-events: none; }
+html.site .deco-blob--blue { background: rgb(29 78 216 / 0.12); }
+html.site .deco-blob--green { background: rgb(22 163 74 / 0.10); }
+html.site .deco-sun { position: absolute; z-index: -1; border-radius: 999px; pointer-events: none; background: radial-gradient(circle, rgb(245 184 46 / 0.12) 0%, rgb(245 184 46 / 0.05) 40%, transparent 70%); }
+
+/* Section themes (no section is ever pure white):
+   navy = deep-blue gradient band (white text) · blue/sky/white = tint A · mint = tint B (green wash) · cream = page base */
+html.site .tone-navy { background: var(--band-gradient); color: #ffffff; }
+html.site .tone-blue, html.site .tone-sky, html.site .tone-white { background: #dfe9f7; color: #0e1b33; }
+html.site .tone-mint { background: #e6f4ec; }
+html.site .tone-cream { background: #eaf0f9; }
+html.site .tone::before, html.site .tone-beam, html.site .tone-wave { display: none; }
+/* Faint solar-panel grid on dark bands */
+html.site :is(.tone-navy, .band-dark)::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 64px 40px;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+}
+html.site .band-dark { position: relative; isolation: isolate; background: var(--band-gradient); color: #ffffff; }
+/* Curved top edge where a light section meets a dark band (overlaps the section above by 3rem) */
+html.site .band-curve { position: relative; z-index: 1; margin-top: -3rem; padding-top: calc(3rem + 4rem); border-top-left-radius: 50% 3rem; border-top-right-radius: 50% 3rem; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18); }
+@media (min-width: 768px) { html.site .band-curve { padding-top: calc(3rem + 6rem); } }
+
+/* Deep-blue contexts: light accents */
+html.site :is(.tone-navy, .bg-premium-navy, .bg-primary-deep, .on-dark, footer) :is(.text-gold, .text-yellow, .text-gold-light, .text-gold-shine) { color: #93b4ff; }
+html.site .on-dark-muted { color: rgb(234 241 255 / 0.8); }
+
+/* Light tints that were designed as dark bands (tone-blue, bento-*): flip their light text to dark */
+html.site :is(.tone-blue, .bento-navy, .bento-blue, .bento-green) :is(.text-white, .text-silver) { color: #0e1b33; }
+html.site :is(.tone-blue, .bento-navy, .bento-blue, .bento-green) :is([class*="text-white/"], [class*="text-silver/"], .on-dark-muted) { color: #475569; }
+html.site :is(.tone-blue, .bento-navy, .bento-blue, .bento-green) [class*="border-white"] { border-color: #e2e8f2; }
+html.site :is(.tone-blue, .bento-navy, .bento-blue, .bento-green) [class*="bg-white/"] { background-color: #ffffff; }
+html.site :is(.tone-blue, .bento-navy, .bento-blue, .bento-green) [class*="ring-white"] { --tw-ring-color: #e2e8f2; }
+
+/* ---------- Cards: white, 1px border, soft blue shadow, gentle lift ---------- */
+html.site .card-premium, html.site .card-glass-light {
+  background: #ffffff; border: 1px solid #d5e0f0; border-radius: 1.25rem; color: #0e1b33;
+  box-shadow: 0 10px 30px rgb(15 47 107 / 0.10);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  transition: transform .4s var(--ease-out-soft), box-shadow .4s var(--ease-out-soft), border-color .4s;
+}
+html.site .card-premium::after { display: none; }
+html.site :is(.card-premium, .card-glass-light):hover { transform: translateY(-4px); border-color: #b9cbe8; box-shadow: 0 2px 6px rgb(15 47 107 / 0.06), 0 22px 46px rgb(15 47 107 / 0.16); }
+html.site .card-glass-dark, html.site .card-dark-glass {
+  background: rgb(255 255 255 / 0.06); border: 1px solid rgb(255 255 255 / 0.14); border-radius: 1.25rem; color: #ffffff;
+  backdrop-filter: none; -webkit-backdrop-filter: none; transition: transform .4s var(--ease-out-soft), background .4s, border-color .4s;
+}
+html.site :is(.card-glass-dark, .card-dark-glass):hover { transform: translateY(-4px); background: rgb(255 255 255 / 0.1); border-color: rgb(255 255 255 / 0.26); box-shadow: none; }
+
+html.site .icon-sun { background: #e6f6ec; color: #15803d; box-shadow: none; }
+html.site .icon-royal { background: #eaf1ff; color: #1d4ed8; box-shadow: none; }
+
+/* Eyebrow labels: 12–13px uppercase, 0.12em tracking, blue */
+html.site .eyebrow, html.site .eyebrow-pill {
+  display: inline-flex; align-items: center; gap: .5rem; padding: 0; border: 0; background: none; border-radius: 0;
+  font-family: var(--font-body); font-size: .8125rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #1d4ed8;
+}
+html.site .eyebrow::before, html.site .eyebrow-pill::before { content: ""; width: .5rem; height: .5rem; border-radius: 999px; background: #16a34a; box-shadow: 0 0 0 3px rgb(22 163 74 / 0.18); }
+html.site .eyebrow-pill--dark { color: #93b4ff; }
+html.site .hero-pill { color: #1d4ed8; }
+html.site[lang="te"] .eyebrow, html.site[lang="te"] .eyebrow-pill { letter-spacing: 0; text-transform: none; font-size: .9375rem; }
+
+/* Display type: fluid, bold, tight */
+html.site .display-xl, html.site .display-lg { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+html.site .display-xl { font-size: clamp(2.75rem, 5vw, 4rem); }
+html.site .display-lg { font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.15; }
+html.site[lang="te"] .display-xl, html.site[lang="te"] .display-lg { font-family: var(--font-telugu), var(--font-display), sans-serif; font-weight: 700; letter-spacing: 0; line-height: 1.35; }
+html.site[lang="te"] .display-xl { font-size: clamp(2.1rem, 4.4vw, 3.4rem); }
+html.site[lang="te"] .display-lg { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+html.site .display-xl.display-art { font-size: clamp(2.5rem, 4.4vw, 3.75rem); }
+
+/* Accent words: blue, upright */
+html.site .text-gold-shine, html.site .text-gold-gradient {
+  background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #1d4ed8; font-style: normal; animation: none;
+}
+html.site .word-mask > .text-gold-shine, html.site .char-up.text-gold-shine, html.site .word-slide > .text-gold-shine { animation: wordUp .55s var(--ease-out-soft) both; }
+
+html.site .word-mask > span { animation-duration: .55s; }
+html.site .char-up { animation-name: rise; }
+html.site .word-slide > span { animation-name: rise; animation-duration: .55s; }
+html.site .float-soft { animation: none; }
+html.site .zoom-frame:hover .zoom-img { transform: scale(1.04); }
+html.site .title-underline__svg path { stroke: #16a34a; stroke-width: 3; filter: none; }
+
+/* ---------- Inner-page hero band: slim blue tint with a faint dotted grid ---------- */
+html.site .solar-bg { background: var(--hero-gradient); }
+html.site .solar-bg__gradient, html.site .solar-bg__rays, html.site .solar-bg__glow, html.site .solar-bg__p, html.site .solar-bg__fade,
+html.site .motif-orbits, html.site .motif-waves, html.site .motif-grid { display: none; }
+html.site .solar-bg__dots { display: block; background-image: radial-gradient(rgb(15 47 107 / 0.10) 1px, transparent 1px); background-size: 22px 22px; }
+html.site .solar-bg::after { content: ""; position: absolute; right: -8rem; top: -6rem; width: 30rem; height: 30rem; border-radius: 999px; filter: blur(70px); background: rgb(22 163 74 / 0.10); }
+
+/* Deep-blue band texture (final CTA): subtle rays */
+html.site .sun-rays { position: relative; isolation: isolate; overflow: hidden; }
+html.site .sun-rays::after {
+  content: ""; position: absolute; z-index: -1; left: 50%; bottom: -34rem; translate: -50% 0; width: 70rem; height: 70rem; border-radius: 999px; pointer-events: none;
+  background: repeating-conic-gradient(from 0deg, rgb(255 255 255 / 0.05) 0deg 2deg, transparent 2deg 10deg);
+  -webkit-mask-image: radial-gradient(circle, #000 10%, transparent 66%); mask-image: radial-gradient(circle, #000 10%, transparent 66%);
+}
+
+/* ---------- Photos: natural, no tint ---------- */
+html.site .sunlight { display: none; }
+html.site main img { background: linear-gradient(135deg, #dfe9f7, #e6f4ec); }
+html.site .banner-kenburns { animation: siteKenBurns 26s ease-in-out infinite alternate; }
+@keyframes siteKenBurns { from { transform: scale(1); } to { transform: scale(1.05); } }
+
+/* ---------- Bento: white cards with tinted icon tiles (no muddy full-card tints) ---------- */
+html.site .bento-card { border-radius: 1.25rem; color: #0e1b33; box-shadow: inset 0 0 0 1px #d5e0f0, 0 10px 30px rgb(15 47 107 / 0.10); }
+html.site .bento-card:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px #c8d6ee, 0 20px 44px rgb(15 47 107 / 0.12); }
+html.site .bento-num { font-family: var(--font-heading); font-weight: 800; opacity: .08; color: #1d4ed8; }
+html.site :is(.bento-navy, .bento-blue, .bento-gold, .bento-green, .bento-cream, .bento-white, .bento-mint) { background: #ffffff; }
+
+html.site [data-accent] { --accent: #1d4ed8; --accent-soft: #eaf1ff; }
+html.site [data-accent="pm-kusum"] { --accent: #16a34a; --accent-soft: #e6f6ec; }
+html.site [data-accent="net-metering"] { --accent: #1d4ed8; --accent-soft: #eaf1ff; }
+html.site [data-accent="state-schemes"] { --accent: #475569; --accent-soft: #eef3fa; }
+
+html.site .section-index { display: none; }
+
+/* ---------- Chips ---------- */
+html.site .kinetic-row { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em; }
+html.site .city-chip { font-family: var(--font-body); font-weight: 500; color: #0e1b33; background: #ffffff; border: 1px solid #d5e0f0; border-radius: 999px; box-shadow: none; }
+html.site .city-chip svg { color: #1d4ed8; }
+html.site .city-chip:hover, html.site .city-chip:focus-visible { transform: translateY(-2px); border-color: #1d4ed8; background: #eaf1ff; color: #0e1b33; box-shadow: none; }
+html.site .city-chip:hover svg, html.site .city-chip:focus-visible svg { color: #1d4ed8; }
+html.site .city-chip--main { border-color: rgb(29 78 216 / 0.35); font-weight: 600; background: #ffffff; }
+html.site .city-chip--scheme { background: #1d4ed8; color: #ffffff; border-color: #1d4ed8; box-shadow: none; }
+html.site .city-chip--scheme svg { color: #ffffff; }
+html.site .city-chip--scheme:hover, html.site .city-chip--scheme:focus-visible { background: #1e40af; color: #ffffff; }
+
+html.site .site-marquee { background: #dfe9f7; color: #1d4ed8; overflow: hidden; border-block: 1px solid #d5e0f0; }
+html.site .site-marquee__track { display: flex; width: max-content; animation: marqueeX 70s linear infinite; }
+html.site .site-marquee:hover .site-marquee__track { animation-play-state: paused; }
+
+/* Breadcrumb in the inner-page band */
+html.site .breadcrumb { font-family: var(--font-body); font-size: .8125rem; font-weight: 600; letter-spacing: .04em; }
+
+/* Tables: blue-tint header, zebra rows */
+html.site main table thead tr { background: #eaf1ff; }
+html.site main table thead th { color: #0e1b33; }
+html.site main table tbody tr:nth-child(even) { background: #eef3fa; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.site :is(.card-premium, .card-glass-light, .card-glass-dark, .card-dark-glass, .bento-card, .city-chip):hover { transform: none; }
+  html.site .banner-kenburns, html.site .site-marquee__track { animation: none !important; }
+}

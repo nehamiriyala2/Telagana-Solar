@@ -53,13 +53,13 @@ export function ProjectsGallery() {
     <div>
       <div className="card-glass-light mb-10 flex flex-col gap-5 p-5 hover:transform-none sm:flex-row sm:items-end sm:justify-between md:p-6">
         <div className="min-w-0">
-          <p className="mb-2 text-caption font-semibold text-navy">{t("projects.type")}</p>
+          <p className="mb-2 text-caption font-semibold text-ink">{t("projects.type")}</p>
           <ChoiceChips label={t("projects.type")} layoutId="proj-type" value={type} onChange={setType}
             options={[{ value: "all", label: t("projects.all") }, ...(["home", "farm", "business"] as const).map((v) => ({ value: v, label: t(`types.${v}.name`) }))]} />
         </div>
         <div className="flex items-end gap-4">
           <label className="flex flex-1 flex-col gap-2 sm:w-64">
-            <span className="text-caption font-semibold text-navy">{t("projects.district")}</span>
+            <span className="text-caption font-semibold text-ink">{t("projects.district")}</span>
             <select className="field" value={district} onChange={(e) => setDistrict(e.target.value)}>
               <option value="all">{t("projects.allDistricts")}</option>
               {districtOptions.map((d) => <option key={d.slug} value={d.slug}>{pick(d.name, locale)}</option>)}
@@ -78,7 +78,7 @@ export function ProjectsGallery() {
               <button type="button" onClick={() => setOpenId(p.id)} aria-haspopup="dialog"
                 aria-label={`${L(D.view)}: ${t(`types.${p.type}.name`)}, ${pick(districts.find((d) => d.slug === p.district)?.name ?? { en: "", te: "" }, locale)}`}
                 className="absolute inset-0 rounded-card focus-visible:outline-offset-4">
-                <span aria-hidden className="absolute bottom-5 right-5 flex translate-y-2 items-center gap-1 rounded-full bg-navy px-3 py-1.5 text-[0.75rem] font-semibold text-white opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <span aria-hidden className="absolute bottom-5 right-5 flex translate-y-2 items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-[0.75rem] font-semibold text-white opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   <FolderOpen className="size-3.5" />{L(D.view)}
                 </span>
               </button>
@@ -110,11 +110,11 @@ function CaseStudy({ p }: { p: Project }) {
   const place = [p.locality, d ? pick(d.name, locale) : null].filter(Boolean).join(", ");
   const cs = p.caseStudy;
   const scheme = cs?.scheme ? SCHEMES.find((s) => s.slug === cs.scheme) : null;
-  const text = (v: { en: string; te: string } | null | undefined) => (v ? <p className="text-navy">{L(v)}</p> : <EditMark />);
+  const text = (v: { en: string; te: string } | null | undefined) => (v ? <p className="text-ink">{L(v)}</p> : <EditMark />);
 
   return (
     <motion.div key={p.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="space-y-5 px-5 py-5 md:px-7">
-      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#EAF4FF,#FFFBF2)]">
+      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-[#EEF3FA]">
         {p.photo
           ? <Image src={p.photo} alt={`${t(`types.${p.type}.name`)}${place ? `, ${place}` : ""}`} fill sizes="(min-width:768px) 640px, 100vw" className="object-cover" />
           : <div className="grid size-full place-items-center text-muted"><span className="flex flex-col items-center gap-2"><ImageIcon className="size-8" aria-hidden /><EditMark label="[EDIT] photo" /></span></div>}
@@ -124,12 +124,12 @@ function CaseStudy({ p }: { p: Project }) {
       <dl className="grid grid-cols-2 gap-3">
         <Fact k={L(D.size)} v={p.kw !== null ? `${p.kw} kW` : <EditMark />} />
         <Fact k={L(D.saving)} v={p.monthlySaving !== null ? <span className="text-leaf-ink">{formatINR(p.monthlySaving)}{t("common.perMonth")}</span> : <EditMark />} />
-        <Fact k={L(D.scheme)} v={scheme ? <Link href={`/schemes/${scheme.slug}`} className="text-royal hover:underline">{t(`schemes.items.${scheme.slug}.name`)}</Link> : <EditMark />} />
+        <Fact k={L(D.scheme)} v={scheme ? <Link href={`/schemes/${scheme.slug}`} className="text-primary-hover hover:underline">{t(`schemes.items.${scheme.slug}.name`)}</Link> : <EditMark />} />
         <Fact k={L(D.completed)} v={cs?.completed ?? <EditMark />} />
       </dl>
       {([["challenge", cs?.challenge], ["solution", cs?.solution], ["result", cs?.result]] as const).map(([k, v]) => (
         <section key={k}>
-          <h3 className="mb-1.5 font-heading text-[1.0625rem] font-bold text-navy">{L(D[k])}</h3>
+          <h3 className="mb-1.5 font-heading text-[1.0625rem] font-bold text-ink">{L(D[k])}</h3>
           {text(v)}
         </section>
       ))}
@@ -141,7 +141,7 @@ function Fact({ k, v }: { k: string; v: React.ReactNode }) {
   return (
     <div className="rounded-xl bg-cream p-3">
       <dt className="text-caption text-muted">{k}</dt>
-      <dd className="mt-0.5 font-heading text-[1.0625rem] font-extrabold text-navy">{v}</dd>
+      <dd className="mt-0.5 font-heading text-[1.0625rem] font-extrabold text-ink">{v}</dd>
     </div>
   );
 }
