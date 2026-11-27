@@ -33,7 +33,7 @@ export function SubsidyBand() {
   return (
     <section className="container-page py-6" aria-labelledby="sub-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#FFF6DB] px-6 py-12 md:px-14 md:py-16">
+        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#FDEBD6] px-6 py-12 md:px-14 md:py-16">
           <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-80 animate-glow rounded-full bg-transparent" />
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div className="max-w-2xl">
@@ -89,7 +89,7 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
               <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={title ?? t("title")} className="mb-6" />
-              <div className="rounded-[1.25rem] border border-[#CBE7D6] bg-wash-green p-6">
+              <div className="rounded-[1.25rem] border border-[#F8D9B5] bg-wash-green p-6">
                 <p className="text-[0.9375rem] text-body">{tc("askWhatsapp")}</p>
                 <WhatsAppButton place="faq-card" className="mt-4 w-full" label={tc("askOnWhatsapp")} message={tc("askMessage")} />
               </div>
@@ -123,7 +123,7 @@ export function FinalCta({ title, defaultType }: { title?: string; defaultType?:
           <h2 id="cta-title" className="font-heading text-h2 font-extrabold text-white md:text-h2-lg">{title ?? t("cta.title")}</h2>
           <p className="on-dark-muted mx-auto mt-4 max-w-xl md:text-body-lg">{t("cta.subtitle")}</p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <GuideTrigger size="lg" variant="white" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
+            <GuideTrigger size="lg" variant="accent" persona={defaultType ? TYPE_TO_PERSONA[defaultType] : undefined}>{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
             <WhatsAppButton place="final-banner" size="lg" label={t("common.askOnWhatsapp")} message={t("common.askMessage")} />
           </div>
         </Reveal>

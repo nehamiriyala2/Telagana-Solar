@@ -120,7 +120,7 @@ export function GuideDialog({ open, onClose, initialPersona }: { open: boolean; 
 
             {step === total && plan && persona && (
               <div className="space-y-5">
-                <div className="relative overflow-hidden rounded-2xl bg-[#F5F8FC] p-5">
+                <div className="relative overflow-hidden rounded-2xl bg-[#F1F6FC] p-5">
                   <div aria-hidden className="absolute -right-10 -top-10 size-36 rounded-full bg-transparent" />
                   <p className="text-caption font-semibold text-primary-hover">{t("guide.resultTitle")}</p>
                   <p className="mt-1 font-heading text-h3 font-extrabold">{t(`guide.types.${plan.type}.name`)}</p>

@@ -12,7 +12,7 @@ export function Footer() {
   const t = useTranslations();
   const locale = useLocale();
   const head = "mb-5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-gold-light";
-  const link = "text-[#C7D7FF] transition-colors hover:text-white";
+  const link = "text-[#DCEAF7] transition-colors hover:text-white";
   const phone = site.phone ?? "+91 75699 54054";
   const email = site.email ?? "elevaitelabs@gmail.com";
 

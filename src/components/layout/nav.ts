@@ -31,7 +31,7 @@ export type HeaderNavItem = { href: string; key: string; label: string; match: s
 /** Header links (desktop row + mobile panel), in order. `match` decides which link is marked as current. */
 export const HEADER_NAV: HeaderNavItem[] = [
   { href: "/", key: "home", label: "home", match: ["/"] },
-  { href: "/solutions", key: "solutions", label: "solutions", match: ["/solutions", "/projects", "/for"], drop: "solutions" },
+  { href: "/solutions", key: "solutions", label: "solutions", match: ["/solutions", "/for"], drop: "solutions" },
   { href: "/schemes", key: "schemes", label: "schemes", match: ["/schemes"], drop: "schemes" },
   { href: "/subsidy-loans", key: "subsidy", label: "subsidy", match: ["/subsidy-loans"] },
   { href: "/about", key: "about", label: "about", match: ["/about"] },

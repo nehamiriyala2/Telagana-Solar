@@ -22,24 +22,24 @@ export function KnowBefore() {
   const t = useTranslations("knowBefore");
   const tc = useTranslations("common");
   return (
-    <section className="bg-mist py-16 md:py-24" aria-labelledby="kb-title">
+    <section className="bg-mist py-12 md:py-[4.5rem]" aria-labelledby="kb-title">
       <div className="container-page">
         <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
-        <ol className="grid gap-4 md:grid-cols-2">
+        <ol className="grid gap-5 md:grid-cols-2">
           {ITEMS.map(({ key, Icon }, i) => (
             <Reveal key={key} delay={(i % 2) * 0.06} className="h-full">
               <li className="card-premium flex h-full list-none items-center gap-4 p-4 pl-5">
-                <span className="grid size-10 shrink-0 self-start place-items-center rounded-full bg-primary font-heading text-[1rem] font-bold text-white tabular-nums">{i + 1}</span>
+                <span className="grid size-7 shrink-0 self-start place-items-center rounded-full bg-primary font-heading text-[0.8125rem] font-bold text-white tabular-nums">{i + 1}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`${key}.title`)}</span>
                   <span className="mt-1 block text-[0.9375rem] text-body">{t(`${key}.desc`)}</span>
                 </span>
-                <PhotoTile src={UI_IMAGES.checklist[key]} alt="" className="h-20 w-24 shrink-0 rounded-xl bg-tint-ice text-primary sm:h-24 sm:w-32" fallback={<Icon className="size-6" aria-hidden />} />
+                <PhotoTile src={UI_IMAGES.checklist[key]} alt="" className="size-[72px] shrink-0 rounded-xl bg-tint-ice text-primary" fallback={<Icon className="size-6" aria-hidden />} />
               </li>
             </Reveal>
           ))}
           <Reveal delay={0.06} className="h-full">
-            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(15_47_107/0.18)] sm:flex-row sm:items-center">
+            <li className="relative flex h-full list-none flex-col justify-between gap-4 overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-5 text-white shadow-[0_10px_30px_rgb(28_47_71/0.18)] sm:flex-row sm:items-center">
               <p className="font-heading text-[1.0625rem] font-bold leading-snug text-white">{t("helpTitle")}</p>
               <GuideTrigger size="sm" variant="white" className="shrink-0">{tc("bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
             </li>
