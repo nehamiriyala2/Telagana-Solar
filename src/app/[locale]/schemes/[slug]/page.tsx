@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CheckTick } from "@/components/ui/check-pill";
 import { SCHEME_ICONS } from "@/components/home/schemes-section";
 import { TiltCard } from "@/components/motion/tilt-card";
-import { BlurReveal, DrawLine, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { BlurReveal, Stagger, StaggerItem } from "@/components/motion/primitives";
 import { SCHEMES, type SchemeSlug } from "@/config/schemes";
 import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
@@ -20,6 +20,7 @@ import { Wave } from "@/components/page/tone-section";
 import Image from "next/image";
 import { BannerArt, Sunlight } from "@/components/page/banner-art";
 import { pmSuryaGharSign, solutionBanners } from "@/data/solution-hero";
+import { SchemeSteps } from "@/components/page/scheme-steps";
 import { schemeView } from "@/lib/public-schemes";
 
 /**
@@ -161,31 +162,13 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      {/* Steps with a self-drawing line */}
+      {/* Steps: scroll-driven path (Pattern 4) */}
       <section className="tone tone-navy pb-16 pt-24 md:pb-24 md:pt-32">
         <span aria-hidden className="tone-beam" />
         <Wave color="#FFFFFF" position="top" />
         <div className="container-page max-w-4xl">
           <SectionTitle tone="dark" title={t("steps")} />
-          <div className="relative">
-            <DrawLine className="absolute bottom-8 left-[30px] top-8 w-1 rounded-full bg-[#F5F0E6]/30" />
-            <Stagger as="ol" className="relative space-y-5">
-              {v.steps.map((s, i) => {
-                const pic = STEP_PICS[slug]?.[i];
-                return (
-                <StaggerItem key={`${i}-${s}`} className="flex items-center gap-5">
-                  <span className="relative z-10 grid size-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-[#FBF8F1] font-heading text-h4 font-extrabold text-[#0B1F3A] shadow-[0_6px_16px_rgb(0_0_0/0.25)]">
-                    {pic ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={pic} alt="" aria-hidden className="size-full object-contain p-1.5 !bg-none" loading="lazy" />
-                    ) : i + 1}
-                  </span>
-                  <p className="card-dark-glass flex-1 p-5 font-semibold text-white">{s}</p>
-                </StaggerItem>
-                );
-              })}
-            </Stagger>
-          </div>
+          <SchemeSteps steps={v.steps} pics={v.steps.map((_, i) => STEP_PICS[slug]?.[i] ?? null)} />
         </div>
       </section>
 

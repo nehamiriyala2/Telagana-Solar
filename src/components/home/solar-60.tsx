@@ -2,13 +2,14 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { personaMedia } from "@/data/personas-media";
 import { pick } from "@/lib/utils";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { UI_IMAGES } from "@/data/section-photos";
 import { cn } from "@/lib/utils";
-
-const FLOW = ["sun", "panels", "inverter", "home", "meter", "grid"] as const;
+import { EnergyFlow } from "./energy-flow";
+import { DrawLine } from "@/components/motion/primitives";
+import { COMMON } from "@/lib/motion";
 
 const TYPES = [
   { key: "ongrid", accent: "bg-primary", head: "bg-tint-ice" },
@@ -65,32 +66,12 @@ export function Solar60() {
           </div>
         </div>
 
-        {/* 6-step energy flow: illustrated circles joined by arrows */}
-        <Reveal className="mt-6 rounded-[1.25rem] border border-card-line bg-white p-6 shadow-[0_10px_30px_rgb(11_31_58/0.10)] md:p-8">
-          <ol className="grid gap-5 md:grid-cols-6 md:gap-2">
-            {FLOW.map((key, i) => (
-              <li key={key} className="relative flex items-center gap-4 md:flex-col md:items-center md:gap-3 md:text-center">
-                <span className="relative shrink-0">
-                  <span aria-hidden className="relative block size-16 overflow-hidden rounded-full bg-[#F5F0E6] md:size-20">
-                    <Image src={UI_IMAGES.flow[key]} alt="" fill sizes="80px" className="object-cover" />
-                  </span>
-                  <span className="absolute -right-1 -top-1 grid size-6 place-items-center rounded-full bg-primary text-[0.75rem] font-bold text-white ring-2 ring-white tabular-nums">{i + 1}</span>
-                </span>
-                {i < FLOW.length - 1 && (
-                  <ArrowRight aria-hidden className="absolute -right-3 top-9 hidden size-5 text-primary/60 md:block lg:-right-2.5" />
-                )}
-                <span>
-                  <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`flow.${key}.title`)}</span>
-                  <span className="mt-0.5 block text-[0.875rem] text-body">{t(`flow.${key}.desc`)}</span>
-                </span>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
+        {/* 6-step energy flow: illustrated circles joined by arrows, animated step by step */}
+        <EnergyFlow />
 
         {/* On-grid / off-grid / hybrid */}
         <h3 className="mt-16 font-heading text-h3 font-bold text-ink md:text-[1.75rem]">{t("typesTitle")}</h3>
-        <span aria-hidden className="mb-6 mt-3 block h-1 w-14 rounded-full bg-[linear-gradient(90deg,#0B1F3A,#B8913F)]" />
+        <DrawLine axis="x" duration={COMMON.underline} delay={0.2} className="mb-6 mt-3 block h-1 w-14 rounded-full bg-[linear-gradient(90deg,#0B1F3A,#B8913F)]" />
         <ul className="grid gap-5 md:grid-cols-3">
           {TYPES.map(({ key, accent, head }, i) => (
             <Reveal key={key} delay={i * 0.08} className="h-full">

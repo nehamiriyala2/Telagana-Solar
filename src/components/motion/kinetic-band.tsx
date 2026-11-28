@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useStill } from "./use-still";
 import { cn } from "@/lib/utils";
 
 /**
@@ -10,7 +11,7 @@ import { cn } from "@/lib/utils";
  */
 export function KineticBand({ phrases, tone = "light", className }: { phrases: string[]; tone?: "light" | "dark"; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const x1 = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["0%", "-22%"]);
   const x2 = useTransform(scrollYProgress, [0, 1], reduce ? ["-22%", "-22%"] : ["-22%", "0%"]);

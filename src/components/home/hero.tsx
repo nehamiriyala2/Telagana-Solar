@@ -4,6 +4,8 @@ import { GuideTrigger, SubsidyTrigger } from "@/components/tools/triggers";
 import { calculate } from "@/lib/calculator";
 import { formatINR, formatLakh } from "@/lib/utils";
 import { HeroMedia } from "./hero-media";
+import { CountUpText } from "@/components/motion/count-up";
+import { COMMON } from "@/lib/motion";
 
 const EXAMPLE_BILL = 3000;
 
@@ -59,7 +61,7 @@ export function Hero() {
               {stats.map(({ Icon, label, value }) => (
                 <div key={label} className="rounded-2xl border border-[#F5F0E6]/10 bg-[#F5F0E6]/[0.04] p-4">
                   <dt className="flex items-center gap-1.5 text-[0.75rem] text-[#F5F0E6]/75"><Icon className="size-3.5 text-[#B8913F]" aria-hidden />{label}</dt>
-                  <dd className="mt-1.5 font-heading text-[1.375rem] font-semibold text-[#F5F0E6]">{value}</dd>
+                  <dd className="mt-1.5 font-heading text-[1.375rem] font-semibold text-[#F5F0E6]"><CountUpText text={value} duration={COMMON.countUp} /></dd>
                 </div>
               ))}
             </dl>

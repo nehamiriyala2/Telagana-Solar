@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform, type HTMLMotionProps, type Variants } from "framer-motion";
+import { motion, useScroll, useTransform, type HTMLMotionProps, type Variants } from "framer-motion";
+import { useStill } from "./use-still";
 import { cn } from "@/lib/utils";
 
 /**
@@ -11,7 +12,7 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Scroll reveal: fade + 16px rise, once. */
 export function BlurReveal({ delay = 0, children, className, ...props }: HTMLMotionProps<"div"> & { delay?: number }) {
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   return (
     <motion.div
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
@@ -43,21 +44,21 @@ export function Stagger({ children, className, as = "ul" }: { children: React.Re
   );
 }
 export function StaggerItem({ children, className, as = "li", style }: { children: React.ReactNode; className?: string; as?: "li" | "div"; style?: React.CSSProperties }) {
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   const Tag = as === "div" ? motion.div : motion.li;
   return <Tag variants={reduce ? staggerChildReduced : staggerChild} className={className} style={style}>{children}</Tag>;
 }
 
 /** A line that draws itself (scaleY / scaleX from 0) when scrolled into view. */
-export function DrawLine({ className, axis = "y" }: { className?: string; axis?: "x" | "y" }) {
+export function DrawLine({ className, axis = "y", duration = 1.4, delay = 0, origin }: { className?: string; axis?: "x" | "y"; duration?: number; delay?: number; origin?: string }) {
   return (
     <motion.span
       aria-hidden
       initial={axis === "y" ? { scaleY: 0 } : { scaleX: 0 }}
       whileInView={axis === "y" ? { scaleY: 1 } : { scaleX: 1 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 1.4, ease: EASE }}
-      style={{ transformOrigin: axis === "y" ? "top" : "left" }}
+      transition={{ duration, delay, ease: EASE }}
+      style={{ transformOrigin: origin ?? (axis === "y" ? "top" : "left") }}
       className={className}
     />
   );
@@ -69,7 +70,7 @@ export function DrawLine({ className, axis = "y" }: { className?: string; axis?:
  * wrapping row.
  */
 export function Marquee({ items, className, speed = 40, gap = "pr-3" }: { items: React.ReactNode[]; className?: string; speed?: number; gap?: string }) {
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   if (reduce) return <ul className={cn("flex flex-wrap justify-center gap-y-3", className)}>{items.map((it, i) => <li key={i} className={gap}>{it}</li>)}</ul>;
   return (
     <div className={cn("marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]", className)}>
@@ -83,7 +84,7 @@ export function Marquee({ items, className, speed = 40, gap = "pr-3" }: { items:
 /** Moves its child slower than the page while scrolling (hero art). */
 export function Parallax({ children, className, offset = 60 }: { children: React.ReactNode; className?: string; offset?: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : offset]);
   return <motion.div ref={ref} style={{ y }} className={className}>{children}</motion.div>;
@@ -94,7 +95,7 @@ export function Parallax({ children, className, offset = 60 }: { children: React
  * are painted in the amber gradient. (Page titles use the CSS version in <DisplayTitle>.)
  */
 export function MaskHeading({ text, emphasis, as: Tag = "h2", className }: { text: string; emphasis?: string; as?: "h2" | "h3"; className?: string }) {
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   const em = new Set((emphasis ?? "").toLowerCase().split(/\s+/).filter(Boolean));
   const words = text.split(" ");
   const M = Tag === "h3" ? motion.h3 : motion.h2;

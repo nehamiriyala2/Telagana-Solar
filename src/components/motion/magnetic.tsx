@@ -1,11 +1,12 @@
 "use client";
 import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useStill } from "./use-still";
 
 /** Pulls its child gently toward the cursor (desktop pointers only). */
 export function Magnetic({ children, strength = 0.3, className }: { children: React.ReactNode; strength?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useStill();
   const x = useSpring(useMotionValue(0), { stiffness: 260, damping: 18, mass: 0.4 });
   const y = useSpring(useMotionValue(0), { stiffness: 260, damping: 18, mass: 0.4 });
 

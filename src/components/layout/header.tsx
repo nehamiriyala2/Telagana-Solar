@@ -113,6 +113,7 @@ function DesktopNav({ pathname, te }: { pathname: string; te: boolean }) {
   const ref = useRef<HTMLElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const isActive = (n: HeaderNavItem) => n.match.some((h) => (h === "/" ? pathname === "/" : pathname.startsWith(h)));
+  const still = useReducedMotion() ?? false;
 
   useEffect(() => setDrop(null), [pathname]);
   useEffect(() => {
@@ -138,7 +139,9 @@ function DesktopNav({ pathname, te }: { pathname: string; te: boolean }) {
                 <Link href={n.href} aria-current={on ? "page" : undefined}
                   className={cn("relative whitespace-nowrap px-2 py-2 text-[0.875rem] font-medium transition-colors duration-300 xl:px-3 xl:text-[0.9375rem]", on || (sub && drop === sub) ? "text-primary" : "text-ink hover:text-primary")}>
                   {t(`nav.${n.label}`)}
-                  <span aria-hidden className={cn("absolute inset-x-3 -bottom-1 h-0.5 origin-left rounded-full bg-[#B8913F] xl:inset-x-4 transition-transform duration-300", on ? "scale-x-100" : "scale-x-0")} />
+                  {/* active underline: one shared element that slides between items on navigation (200 ms) */}
+                  {on && <motion.span aria-hidden layoutId="nav-underline" transition={{ duration: still ? 0 : 0.2, ease: EASE }}
+                    className="absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#B8913F] xl:inset-x-4" />}
                 </Link>
                 {sub && (
                   <button id={`drop-btn-${sub}`} type="button" aria-expanded={drop === sub} aria-controls={`drop-${sub}`} aria-label={t(`nav.${n.label}`)}

@@ -22,7 +22,7 @@ export function KnowBefore() {
   const t = useTranslations("knowBefore");
   const tc = useTranslations("common");
   return (
-    <section className="bg-mist py-12 md:py-[4.5rem]" aria-labelledby="kb-title">
+    <section className="bg-mist pb-12 pt-2 md:pb-[4.5rem] md:pt-4" aria-labelledby="kb-title">
       <div className="container-page">
         <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <ol className="grid gap-5 md:grid-cols-2">

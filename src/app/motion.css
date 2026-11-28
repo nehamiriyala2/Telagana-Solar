@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Looping micro-animations (public site). Durations come from src/lib/motion.ts via CSS variables.
+   Loops only run while their section is on screen (.is-live is toggled by an IntersectionObserver)
+   and are switched off for prefers-reduced-motion. Only transform and opacity are animated.
+   ========================================================================== */
+.loop { animation-play-state: paused; }
+.is-live .loop { animation-play-state: running; }
+
+/* Sun: soft glow pulse + slow ray ring */
+@keyframes ef-glow { 0%, 100% { opacity: 0.35; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.12); } }
+@keyframes ef-spin { to { transform: rotate(360deg); } }
+.ef-glow { animation: ef-glow var(--ef-glow, 3.2s) ease-in-out infinite; }
+.ef-rays { animation: ef-spin var(--ef-rays, 20s) linear infinite; }
+
+/* Trust strip: items fade in left to right on first paint (CSS only: no wait for JavaScript) */
+@keyframes ts-in { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+.ts-in { animation: ts-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ef-glow, .ef-rays, .ts-in { animation: none !important; }
+}

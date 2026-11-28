@@ -18,6 +18,7 @@ import { PublicSettingsBridge } from "@/components/layout/public-settings-bridge
 import { AnnouncementBanner } from "@/components/layout/announcement-banner";
 import "../globals.css";
 import "../site-theme.css";
+import "../motion.css";
 
 // Headings: Playfair Display (classic serif, 600–700). Body/UI: Inter. Telugu: Noto Sans Telugu.
 const display = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-display", display: "swap" });

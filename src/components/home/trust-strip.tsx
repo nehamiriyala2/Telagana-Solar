@@ -9,6 +9,7 @@ import { PhotoTile } from "@/components/ui/photo-tile";
  * (icon fallback if the photo is missing), a bold short value and a one-line caption.
  * Uses ONLY claims already on the site (home subsidy up to ₹78,000 as per current scheme, 25+ years of power,
  * local team, all 33 districts).
+ * Motion: items fade in left to right (CSS only, so the photos never wait for JavaScript; see .ts-in in motion.css).
  */
 /** Dividers: stacked on mobile (top lines), 2×2 on tablet (top line on row 2), vertical lines on desktop. */
 const BORDERS = ["lg:pl-0 xl:pl-0", "border-t sm:border-t-0 lg:border-l", "border-t lg:border-t-0 lg:border-l", "border-t lg:border-t-0 lg:border-l"];
@@ -27,7 +28,7 @@ export function TrustStrip({ items: custom }: { items?: { value: string; caption
       <div className="container-page">
         <ul className="grid rounded-[20px] bg-[#EBE3D3] px-6 py-2 sm:grid-cols-2 md:px-8 lg:grid-cols-4 lg:py-6">
           {items.map(({ v, c, Icon, tile }, i) => (
-            <li key={v} className={cn("flex min-h-[5rem] min-w-0 items-center gap-4 border-[#E2D8C3] py-4 lg:gap-3 lg:px-4 lg:py-0 xl:gap-4 xl:px-5", BORDERS[i])}>
+            <li key={v} style={{ animationDelay: `${0.25 + i * 0.09}s` }} className={cn("ts-in flex min-h-[5rem] min-w-0 items-center gap-4 border-[#E2D8C3] py-4 lg:gap-3 lg:px-4 lg:py-0 xl:gap-4 xl:px-5", BORDERS[i])}>
               <PhotoTile src={`/images/ui/trust-strip/t${i + 1}.webp`} alt="" className={cn("h-16 w-20 shrink-0 overflow-hidden rounded-xl text-primary xl:h-20 xl:w-24", tile)} fallback={<Icon className="size-6" strokeWidth={1.75} aria-hidden />} />
               <span className="min-w-0">
                 <span className="block font-heading text-[1.25rem] font-bold leading-tight text-[#0B1F3A] xl:text-[1.5rem]">{custom?.[i]?.value || t(v)}</span>
