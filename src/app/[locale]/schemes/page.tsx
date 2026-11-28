@@ -85,7 +85,6 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
                     <Link href={`/schemes/${s.slug}`} className="zoom-frame group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-3 shadow-[0_10px_30px_rgb(11_31_58/0.10)] transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_22px_46px_rgb(11_31_58/0.16)]">
                       <span className="relative block overflow-hidden rounded-2xl">
                         <PhotoTile src={UI_IMAGES.schemesPage[s.slug as keyof typeof UI_IMAGES.schemesPage]} alt="" className="zoom-img aspect-[21/9] w-full bg-tint-ice text-primary" fallback={<Icon className="size-10" aria-hidden />} />
-                        <span className="absolute left-3 top-3 grid size-14 place-items-center rounded-2xl bg-white/95 text-green-text shadow-sm"><Icon className="size-7" aria-hidden /></span>
                         <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1.5 text-caption font-bold text-primary shadow-sm">{s.tag}</span>
                       </span>
                       <div className="flex flex-1 flex-col px-4 pb-4 md:px-6 md:pb-6">

@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { ArrowRight, Sun } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { EditMark } from "@/components/ui/badge";
@@ -19,10 +19,7 @@ export function PackageCard({ pkg, premium = false }: { pkg: SolarPackage; premi
       <div className={cn("relative flex h-full flex-col p-6 md:p-7",
         premium ? "card-premium"
           : "rounded-card border border-line bg-white shadow-soft transition-shadow duration-500 hover:shadow-lift")}>
-        <div className="flex items-center justify-between">
-          <p className="font-heading text-[2.75rem] font-extrabold leading-none tracking-tightish">{pkg.kw}<span className="ml-1 text-h4">kW</span></p>
-          <span className={cn("grid size-12 place-items-center rounded-2xl", premium ? "icon-sun" : "bg-gold-soft text-gold-ink")}><Sun className="size-6" aria-hidden /></span>
-        </div>
+        <p className="font-heading text-[2.75rem] font-extrabold leading-none tracking-tightish">{pkg.kw}<span className="ml-1 text-h4">kW</span></p>
         <ul className="mt-6 flex-1 space-y-2.5 text-caption text-muted">
           <li>{t("packages.billRange", { min: formatINR(f.billMin), max: formatINR(f.billMax) })}</li>
           <li>{t("packages.generation", { units: formatNum(f.generationMonthly) })}</li>

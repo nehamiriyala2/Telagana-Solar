@@ -65,7 +65,7 @@ export const UI_IMAGES = {
   flow: { sun: `${UI}/flow/sun.webp`, panels: `${UI}/flow/panels.webp`, inverter: `${UI}/flow/inverter.webp`, home: `${UI}/flow/home.webp`, meter: `${UI}/flow/meter.webp`, grid: `${UI}/flow/grid.webp` },
   types: { ongrid: `${UI}/types/ongrid.webp`, offgrid: `${UI}/types/offgrid.webp`, hybrid: `${UI}/types/hybrid.webp` },
   steps: { s1: `${UI}/steps/learn.webp`, s2: `${UI}/steps/pick.webp`, s3: `${UI}/steps/paperwork.webp`, s4: `${UI}/steps/install.webp`, s5: `${UI}/steps/netmeter.webp` },
-  checklist: { k1: `${UI}/checklist/roof.webp`, k2: `${UI}/checklist/shade.webp`, k3: `${UI}/checklist/load.webp`, k4: `${UI}/checklist/netmeter.webp`, k5: `${UI}/checklist/vendor.webp`, k6: `${UI}/checklist/warranty.webp`, k7: `${UI}/checklist/service.webp` },
+  checklist: { k1: `${UI}/checklist-photos/k1.webp`, k2: `${UI}/checklist-photos/k2.webp`, k3: `${UI}/checklist-photos/k3.webp`, k4: `${UI}/checklist-photos/k4.webp`, k5: `${UI}/checklist-photos/k5.webp`, k6: `${UI}/checklist-photos/k6.webp`, k7: `${UI}/checklist-photos/k7.webp` },
   schemes: { "pm-surya-ghar": `${UI}/schemes/pm-surya-ghar.webp`, "pm-kusum": `${UI}/schemes/pm-kusum.webp`, "net-metering": `${UI}/schemes/net-metering.webp`, "state-schemes": `${UI}/schemes/state-schemes.webp` },
   pumps: [`${UI}/farms/pump-3.webp`, `${UI}/farms/pump-5.webp`, `${UI}/farms/pump-7.webp`, `${UI}/farms/pump-10.webp`],
   farmUses: { u1: `${UI}/farms/install-pumps.webp`, u2: `${UI}/farms/install-agri.webp`, u3: `${UI}/farms/install-power.webp` },

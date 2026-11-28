@@ -15,9 +15,11 @@ export const personaMedia: Partial<Record<Persona, { card: Img; page: Img & { su
     page: { src: "/personas/urban.webp", width: 1280, height: 720, sun: { x: "62%", y: "6%" } },
     alt: { en: "Modern home with rooftop solar panels and a terrace garden", te: "పైకప్పు సోలార్ ప్యానెల్స్, టెర్రస్ గార్డెన్‌తో ఆధునిక ఇల్లు" },
   },
-  // apartment: the previous photo carried a third-party watermark (propertywala.com) and was removed. The card and
-  // /for/apartment page fall back to the icon artwork until a licensed, watermark-free photo is added here
-  // (prompt in public/images/IMAGE-PROMPTS.md).
+  apartment: {
+    card: { src: "/personas/apartment-card.webp", width: 1005, height: 618 },
+    page: { src: "/personas/apartment-card.webp", width: 1005, height: 618, sun: { x: "70%", y: "6%" } },
+    alt: { en: "Apartment building with solar panels on the rooftop", te: "పైకప్పుపై సోలార్ ప్యానెల్స్ ఉన్న అపార్ట్‌మెంట్ భవనం" },
+  },
   farmer: {
     card: { src: "/personas/farmer-card.webp", width: 960, height: 540 },
     page: { src: "/personas/farmer-page.webp", width: 1024, height: 1024, sun: { x: "50%", y: "8%" } },

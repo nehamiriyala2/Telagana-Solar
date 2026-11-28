@@ -3,6 +3,8 @@ import { ArrowRight, BadgeCheck, Gauge, Headset, Ruler, ShieldCheck, Sun, Zap } 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 import { GuideTrigger } from "@/components/tools/triggers";
+import { PhotoTile } from "@/components/ui/photo-tile";
+import { UI_IMAGES } from "@/data/section-photos";
 
 const ITEMS = [
   { key: "k1", Icon: Ruler },
@@ -15,7 +17,7 @@ const ITEMS = [
 ] as const;
 
 /** "Your solar checklist" on tint A: 7 numbered white cards in a two-column grid (blue number circle, bold title, one line,
- *  small icon) plus a deep-blue help card in the 8th slot so the grid is balanced. */
+ *  photo) plus a deep-blue help card in the 8th slot so the grid is balanced. */
 export function KnowBefore() {
   const t = useTranslations("knowBefore");
   const tc = useTranslations("common");
@@ -26,13 +28,13 @@ export function KnowBefore() {
         <ol className="grid gap-5 md:grid-cols-2">
           {ITEMS.map(({ key, Icon }, i) => (
             <Reveal key={key} delay={(i % 2) * 0.06} className="h-full">
-              <li className="card-premium flex h-full list-none items-center gap-4 p-4 pl-5">
+              <li className="card-premium flex h-full list-none items-center gap-4 p-3 pl-5">
                 <span className="grid size-7 shrink-0 self-start place-items-center rounded-full bg-primary font-heading text-[0.8125rem] font-bold text-white tabular-nums">{i + 1}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-heading text-[1.0625rem] font-bold text-ink">{t(`${key}.title`)}</span>
                   <span className="mt-1 block text-[0.9375rem] text-body">{t(`${key}.desc`)}</span>
                 </span>
-                <span aria-hidden className={i % 2 === 0 ? "grid size-12 shrink-0 place-items-center rounded-xl bg-[#EBE3D3] text-[#0B1F3A]" : "grid size-12 shrink-0 place-items-center rounded-xl bg-[#F1E7D2] text-[#0B1F3A]"}><Icon className="size-6" strokeWidth={1.75} /></span>
+                <PhotoTile src={UI_IMAGES.checklist[key]} alt="" className="h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-[#EBE3D3] text-[#0B1F3A] sm:h-[6.5rem] sm:w-36" fallback={<Icon className="size-6" strokeWidth={1.75} aria-hidden />} />
               </li>
             </Reveal>
           ))}

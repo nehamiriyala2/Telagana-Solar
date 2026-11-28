@@ -31,6 +31,18 @@ const SCHEME_LOGOS: Partial<Record<string, string>> = {
   "pm-surya-ghar": "/images/ui/scheme-logos/pm-surya-ghar.webp",
   "net-metering": "/images/ui/scheme-logos/net-metering.webp",
   "state-schemes": "/images/ui/scheme-logos/state-schemes.webp",
+  "pm-kusum": "/images/ui/scheme-logos/pm-kusum.webp",
+};
+/** Schemes whose "logo" is a photo (shown as a rounded thumbnail rather than a transparent mark). */
+const LOGO_IS_PHOTO = new Set(["pm-kusum"]);
+
+/** Document pictures, in document order per scheme (bill · aadhaar · bank · house). */
+const DI = "/images/ui/doc-icons";
+const DOC_PICS: Partial<Record<string, string[]>> = {
+  "pm-surya-ghar": ["bill", "aadhaar", "bank", "house"],
+  "pm-kusum": ["bill", "aadhaar", "bank", "bill"],
+  "net-metering": ["bill", "bill", "aadhaar", "bill"],
+  "state-schemes": ["bill", "bill", "aadhaar", "bank"],
 };
 
 /** Step pictures, in step order per scheme (a step without one shows its number). */
@@ -121,8 +133,16 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
             <BlurReveal delay={0.08} className="rounded-[1.25rem] border border-line bg-white p-7 shadow-soft md:p-9">
               <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink">{t("documents")}</h2>
               <Stagger className="mt-5 grid gap-2">
-                {v.documents.map((d) => (
-                  <StaggerItem key={d} className="flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 text-ink"><span className="icon-primary-hover grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>{d}</StaggerItem>
+                {v.documents.map((d, i) => (
+                  <StaggerItem key={d} className="flex items-center gap-4 rounded-2xl bg-cream px-4 py-3 text-ink">
+                    {DOC_PICS[slug]?.[i] ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={`${DI}/${DOC_PICS[slug]![i]}.webp`} alt="" aria-hidden className="h-10 w-12 shrink-0 object-contain !bg-none" loading="lazy" />
+                    ) : (
+                      <span className="icon-primary-hover grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>
+                    )}
+                    {d}
+                  </StaggerItem>
                 ))}
               </Stagger>
             </BlurReveal>
@@ -183,7 +203,7 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
                       {SCHEME_LOGOS[s.slug] ? (
                         <span className="flex h-20 items-center">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={SCHEME_LOGOS[s.slug]} alt="" aria-hidden className="max-h-16 w-auto max-w-full object-contain !bg-none" loading="lazy" />
+                          <img src={SCHEME_LOGOS[s.slug]} alt="" aria-hidden className={LOGO_IS_PHOTO.has(s.slug) ? "h-20 w-auto max-w-full rounded-xl object-cover" : "max-h-16 w-auto max-w-full object-contain !bg-none"} loading="lazy" />
                         </span>
                       ) : (
                         <span className="icon-primary-hover grid size-12 place-items-center rounded-2xl"><OIcon className="size-6" aria-hidden /></span>

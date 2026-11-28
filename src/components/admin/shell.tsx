@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { LogoMark } from "@/components/layout/logo";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -96,7 +96,7 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
 
   const active = (href: string) => (href === "/admin" ? pathname === "/admin" : pathname === href || pathname.startsWith(`${href}/`));
   const badge = (key: string) =>
-    key === "leads" && counts?.newLeads ? { n: counts.newLeads, label: "new leads", tone: "bg-gold text-navy", dot: "bg-gold" }
+    key === "leads" && counts?.newLeads ? { n: counts.newLeads, label: "new leads", tone: "bg-[#b8913f] text-navy", dot: "bg-[#b8913f]" }
     : key === "follow-ups" && counts?.overdue ? { n: counts.overdue, label: "overdue follow-ups", tone: "bg-[#e5484d] text-white", dot: "bg-[#e5484d]" }
     : null;
 
@@ -111,7 +111,7 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
         return (
           <div key={g.id} className="mb-4 last:mb-0">
             <button type="button" onClick={() => toggleGroup(g.id)} aria-expanded={open} aria-controls={listId}
-              className={`${inDrawer ? "" : "sb-text"} flex w-full items-center justify-between rounded-lg px-3 pb-1 pt-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[#94A9CE] outline-none hover:text-[#EAF0FA] focus-visible:ring-2 focus-visible:ring-gold`}>
+              className={`${inDrawer ? "" : "sb-text"} flex w-full items-center justify-between rounded-lg px-3 pb-1 pt-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[#b3a88f] outline-none hover:text-[#f5f0e6] focus-visible:ring-2 focus-visible:ring-gold`}>
               {g.label}
               <ChevronRight className={`size-3.5 transition-transform ${open ? "rotate-90" : ""}`} aria-hidden />
             </button>
@@ -128,9 +128,9 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
                       onMouseEnter={(e) => showTip(i.label, e.currentTarget)} onMouseLeave={() => setTip(null)}
                       onFocus={(e) => showTip(i.label, e.currentTarget)} onBlur={() => setTip(null)}
                       onClick={() => inDrawer && setDrawer(false)}
-                      className={`sb-item group relative flex h-9 items-center gap-3 rounded-xl px-3 text-[0.92rem] font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-gold ${on ? "bg-[#345A9C] text-[#EAF0FA]" : "text-[#A9B9D8] hover:bg-[#2A4A85] hover:text-[#EAF0FA]"}`}>
-                      {on && <span className="absolute inset-y-2 left-0 w-[3px] rounded-r-full bg-gold" aria-hidden />}
-                      <Icon className={`size-[1.1rem] shrink-0 ${on ? "text-gold" : "text-[#A9B9D8] group-hover:text-[#EAF0FA]"}`} aria-hidden />
+                      className={`sb-item group relative flex h-9 items-center gap-3 rounded-xl px-3 text-[0.92rem] font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-gold ${on ? "bg-[#1d4070] text-[#f5f0e6]" : "text-[#cfc6b4] hover:bg-[#13305a] hover:text-[#f5f0e6]"}`}>
+                      {on && <span className="absolute inset-y-2 left-0 w-[3px] rounded-r-full bg-[#b8913f]" aria-hidden />}
+                      <Icon className={`size-[1.1rem] shrink-0 ${on ? "text-[#d4b46a]" : "text-[#cfc6b4] group-hover:text-[#f5f0e6]"}`} aria-hidden />
                       <span className={`${inDrawer ? "" : "sb-text"} flex-1 truncate`}>{i.label}</span>
                       {b && <span className={`${inDrawer ? "" : "sb-text"} rounded-full px-2 py-0.5 text-xs font-bold ${b.tone}`} aria-hidden={!inDrawer}>{b.n}</span>}
                       {b && !inDrawer && <span className={`sb-dot absolute right-2 top-1.5 size-2 rounded-full ${b.dot}`} aria-hidden />}
@@ -149,12 +149,12 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
   const userBlock = (inDrawer: boolean) => (
     <div className="sb-foot shrink-0 border-t border-white/[.08] px-3 pb-6 pt-3">
       <div className="sb-foot-row flex items-center gap-2.5 px-1">
-        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-gold font-heading font-bold text-navy" aria-hidden>{staff.name.slice(0, 1).toUpperCase()}</span>
+        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#b8913f] font-heading font-bold text-navy" aria-hidden>{staff.name.slice(0, 1).toUpperCase()}</span>
         <div className={`${inDrawer ? "" : "sb-text"} min-w-0 flex-1`}>
-          <p className="truncate text-sm font-semibold text-[#EAF0FA]">{staff.name}</p>
-          <p className="text-xs text-[#A9B9D8]">{ROLE_LABEL[staff.role]}</p>
+          <p className="truncate text-sm font-semibold text-[#f5f0e6]">{staff.name}</p>
+          <p className="text-xs text-[#cfc6b4]">{ROLE_LABEL[staff.role]}</p>
         </div>
-        <SignOutButton className="grid size-9 shrink-0 place-items-center rounded-xl text-[#A9B9D8] outline-none transition-colors hover:bg-[#2A4A85] hover:text-[#EAF0FA] focus-visible:ring-2 focus-visible:ring-gold"
+        <SignOutButton className="grid size-9 shrink-0 place-items-center rounded-xl text-[#cfc6b4] outline-none transition-colors hover:bg-[#13305a] hover:text-[#f5f0e6] focus-visible:ring-2 focus-visible:ring-gold"
           labelClass="sr-only" onHover={(el) => showTip("Sign out", el)} onLeave={() => setTip(null)} />
       </div>
     </div>
@@ -162,7 +162,7 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
 
   const hamburger = (props: { onClick: (e: React.MouseEvent<HTMLButtonElement>) => void; expanded: boolean; controls: string; className?: string }) => (
     <button type="button" aria-label="Toggle menu" aria-expanded={props.expanded} aria-controls={props.controls} onClick={props.onClick}
-      className={`grid size-10 shrink-0 place-items-center rounded-xl text-[#EAF0FA] outline-none transition-colors hover:bg-[#2A4A85] focus-visible:ring-2 focus-visible:ring-gold ${props.className ?? ""}`}>
+      className={`grid size-10 shrink-0 place-items-center rounded-xl text-[#f5f0e6] outline-none transition-colors hover:bg-[#13305a] focus-visible:ring-2 focus-visible:ring-gold ${props.className ?? ""}`}>
       <Menu className="size-6" aria-hidden />
     </button>
   );
@@ -172,15 +172,11 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
       <a href="#admin-main" className="sr-only z-[60] rounded-lg bg-gold px-4 py-2 font-semibold text-navy focus:not-sr-only focus:fixed focus:left-3 focus:top-3">Skip to content</a>
 
       {/* Desktop sidebar */}
-      <aside id="admin-sidebar" className="sticky top-0 hidden h-dvh flex-col overflow-hidden bg-[#1F3B6E] lg:flex">
+      <aside id="admin-sidebar" className="sticky top-0 hidden h-dvh flex-col overflow-hidden bg-[#0b1f3a] lg:flex">
         <div className="flex shrink-0 items-center gap-2 px-3 py-2.5">
           {hamburger({ onClick: toggleCollapsed, expanded: !collapsed, controls: "admin-sidebar" })}
           <Link href="/admin" className="sb-text flex min-w-0 items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-gold">
-            <Image src="/brand/mark-64.png" alt="" width={32} height={32} className="rounded-lg" />
-            <span className="min-w-0 leading-tight">
-              <span className="block truncate font-heading font-bold text-[#EAF0FA]">Telangana Solar</span>
-              <span className="block text-xs text-gold">Staff dashboard</span>
-            </span>
+            <BrandLockup />
           </Link>
         </div>
         {nav(false)}
@@ -189,7 +185,7 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
 
       {/* Collapsed-rail tooltip (fixed, so the scrolling menu never clips it) */}
       {tip && collapsed && (
-        <div role="tooltip" className="pointer-events-none fixed left-[80px] z-50 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#1F3B6E] px-3 py-1.5 text-sm font-semibold text-white shadow-lg ring-1 ring-white/15 lg:block" style={{ top: tip.top }}>
+        <div role="tooltip" className="pointer-events-none fixed left-[80px] z-50 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#0b1f3a] px-3 py-1.5 text-sm font-semibold text-white shadow-lg ring-1 ring-white/15 lg:block" style={{ top: tip.top }}>
           {tip.label}
         </div>
       )}
@@ -199,14 +195,11 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
         <button type="button" tabIndex={-1} aria-label="Close menu" onClick={closeDrawer}
           className={`sb-fade absolute inset-0 bg-navy/60 ${drawer ? "opacity-100" : "opacity-0"}`} />
         <aside id="admin-drawer" role="dialog" aria-modal="true" aria-label="Admin menu" inert={!drawer}
-          className={`sb-slide absolute inset-y-0 left-0 flex w-[84%] max-w-xs flex-col bg-[#1F3B6E] shadow-2xl ${drawer ? "translate-x-0" : "-translate-x-full"}`}>
+          className={`sb-slide absolute inset-y-0 left-0 flex w-[84%] max-w-xs flex-col bg-[#0b1f3a] shadow-2xl ${drawer ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="flex shrink-0 items-center justify-between gap-2 px-4 py-3">
-            <span className="flex items-center gap-2.5">
-              <Image src="/brand/mark-64.png" alt="" width={32} height={32} className="rounded-lg" />
-              <span className="font-heading font-bold text-[#EAF0FA]">Telangana Solar</span>
-            </span>
+            <BrandLockup />
             <button ref={closeBtn} type="button" onClick={closeDrawer} aria-label="Close menu"
-              className="grid size-10 place-items-center rounded-xl text-[#EAF0FA] outline-none hover:bg-[#2A4A85] focus-visible:ring-2 focus-visible:ring-gold">
+              className="grid size-10 place-items-center rounded-xl text-[#f5f0e6] outline-none hover:bg-[#13305a] focus-visible:ring-2 focus-visible:ring-gold">
               <X className="size-6" aria-hidden />
             </button>
           </div>
@@ -228,12 +221,12 @@ export function AdminShell({ items, counts, staff, children }: { items: ShellIte
         .sb-closed { display: none; }
         /* Thin overlay-style scrollbar, only visible while hovering the menu; no arrow buttons. */
         .sb-scroll { scrollbar-width: thin; scrollbar-color: transparent transparent; }
-        .sb-scroll:hover, .sb-scroll:focus-within { scrollbar-color: rgba(234,240,250,.28) transparent; }
+        .sb-scroll:hover, .sb-scroll:focus-within { scrollbar-color: rgba(245,240,230,.28) transparent; }
         .sb-scroll::-webkit-scrollbar { width: 6px; }
         .sb-scroll::-webkit-scrollbar-button { display: none; height: 0; }
         .sb-scroll::-webkit-scrollbar-track { background: transparent; }
         .sb-scroll::-webkit-scrollbar-thumb { background: transparent; border-radius: 999px; }
-        .sb-scroll:hover::-webkit-scrollbar-thumb { background: rgba(234,240,250,.28); }
+        .sb-scroll:hover::-webkit-scrollbar-thumb { background: rgba(245,240,230,.28); }
         @media (min-width: 1024px) {
           .admin-grid { display: grid; grid-template-columns: var(--sbw, 17rem) minmax(0, 1fr); transition: grid-template-columns 180ms ease; }
           html[data-sb="collapsed"] .admin-grid { --sbw: 72px; }
@@ -291,7 +284,7 @@ function TopBar({ staff, canSearch, menuButton }: { staff: StaffInfo; canSearch:
 
   return (
     <header className="sticky top-0 z-30 flex items-center gap-2 border-b border-[#ece4cf] bg-[#fbf8f1]/90 px-3 py-2.5 backdrop-blur sm:gap-3 sm:px-6 lg:px-10">
-      <div className="rounded-xl bg-[#1F3B6E] lg:hidden">{menuButton}</div>
+      <div className="rounded-xl bg-[#0b1f3a] lg:hidden">{menuButton}</div>
       {canSearch ? (
         <form role="search" onSubmit={submit} className="relative min-w-0 flex-1 sm:max-w-md">
           <label htmlFor="admin-search" className="sr-only">Search leads by name, phone or TS number</label>
@@ -336,6 +329,21 @@ function TopBar({ staff, canSearch, menuButton }: { staff: StaffInfo; canSearch:
 }
 
 /** Same "SOON" badge everywhere: shown only while a module isn't built yet. */
+/** The website's logo (white "footer" version of the Charminar mark) for the navy sidebar. */
+function BrandLockup() {
+  return (
+    <span className="flex min-w-0 items-center gap-1.5">
+      <LogoMark light className="size-10 shrink-0" />
+      <span className="flex min-w-0 flex-col leading-none">
+        <span className="whitespace-nowrap font-heading text-[0.84rem] font-semibold tracking-[0.04em]">
+          <span className="text-white">TELANGANA</span> <span className="text-[#4ADE80]">SOLAR</span>
+        </span>
+        <span className="mt-1 text-[0.62rem] font-medium uppercase tracking-[0.14em] text-[#d4b46a]">Staff dashboard</span>
+      </span>
+    </span>
+  );
+}
+
 export function SoonBadge({ className = "" }: { className?: string }) {
   return <span className={`${className} inline-flex h-[18px] items-center rounded-md border border-gold/50 px-1.5 text-[0.6rem] font-bold leading-none tracking-wider text-gold`}>SOON</span>;
 }
