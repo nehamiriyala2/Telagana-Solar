@@ -1,0 +1,43 @@
+/* ==========================================================================
+   ADMIN THEME: the public site's palette (src/app/site-theme.css, "Heritage") applied to the staff area.
+   Every colour is a variable, so the palette changes here in one place.
+   Scope: any element with class "adm-theme" (Tailwind v4 utilities read these variables, so
+   bg-gold, text-navy, border-line etc. inside it switch to the site palette).
+   ========================================================================== */
+.adm-theme {
+  /* brand */
+  --color-navy: #0b1f3a;        /* site navy: headings, sidebar, dark panels */
+  --color-navy-800: #13305a;    /* site navy hover / gradient end */
+  --color-navy-700: #13305a;
+  --color-gold: #b8913f;        /* site antique gold: primary buttons (navy text 5.6:1), active bars, icons */
+  --color-amber: #a07c31;       /* site gold hover */
+  --color-yellow: #b8913f;
+  --color-gold-soft: #f1e7d2;   /* site gold tint: info notes, soft chips */
+  --color-gold-ink: #7a5c22;    /* gold as TEXT on light surfaces (AA) */
+  --color-silver: #ebe3d3;      /* light text on navy */
+  /* surfaces */
+  --color-cream: #f5f0e6;       /* page background (site ivory) */
+  --color-mist: #ebe3d3;        /* site sand: table headers, lanes */
+  --color-white: #ffffff;       /* cards */
+  --color-line: #e2d8c3;        /* warm borders */
+  --color-card-line: #e2d8c3;
+  /* text */
+  --color-ink: #0b1f3a;
+  --color-body: #3b4656;
+  --color-muted: #5f6673;
+  /* accents */
+  --color-accent: #b8913f;
+  --color-accent-hover: #a07c31;
+  --color-accent-tint: #f1e7d2;
+  --color-leaf: #2f6b4f;        /* site forest: positive states only */
+  --color-leaf-ink: #2f6b4f;
+  --color-danger: #c53030;      /* site danger: destructive actions */
+  /* admin-only semantic helpers */
+  --adm-panel: linear-gradient(160deg, #0b1f3a 0%, #13305a 100%);   /* login panel (site band gradient) */
+  --adm-shadow: 0 30px 60px -30px rgb(11 31 58 / 0.35);
+  --adm-glow: rgb(184 145 63 / 0.30);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adm-theme *, .adm-theme *::before, .adm-theme *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

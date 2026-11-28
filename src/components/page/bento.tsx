@@ -18,12 +18,14 @@ export function Bento({ items, className }: {
       {items.map(({ title, desc, Icon, photo }, i) => (
         <StaggerItem key={i} className="list-none">
           <div className="card-premium relative flex h-full flex-col overflow-hidden p-4">
-            <span aria-hidden className="pointer-events-none absolute right-4 top-2 z-0 font-heading text-[3.5rem] font-extrabold leading-none text-tint-mist">{String(i + 1).padStart(2, "0")}</span>
+            <span aria-hidden className="flex items-center gap-2 px-1 font-heading text-[1.75rem] font-extrabold leading-none text-accent tabular-nums">
+              {String(i + 1).padStart(2, "0")}<span className="h-px flex-1 bg-accent/30" />
+            </span>
             {photo ? (
-              <PhotoTile src={photo} alt="" className="relative z-10 mt-6 aspect-[5/4] w-full rounded-2xl bg-tint-ice text-primary"
+              <PhotoTile src={photo} alt="" className="relative z-10 mt-3 aspect-[5/4] w-full rounded-2xl bg-tint-ice text-primary"
                 fallback={<Icon className="size-10" strokeWidth={1.5} aria-hidden />} />
             ) : (
-              <span className="relative z-10 mt-6 grid size-14 place-items-center rounded-2xl bg-tint-ice text-primary"><Icon className="size-7" strokeWidth={1.6} aria-hidden /></span>
+              <span className="relative z-10 mt-3 grid size-14 place-items-center rounded-2xl bg-tint-ice text-primary"><Icon className="size-7" strokeWidth={1.6} aria-hidden /></span>
             )}
             <div className="relative z-10 mt-5 px-1 pb-1">
               <h3 className="font-heading text-[1.1875rem] font-bold leading-snug text-ink">{title}</h3>

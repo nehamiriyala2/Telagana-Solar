@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Loader2, Mail } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2, Mail } from "lucide-react";
 
 const RESEND_SECONDS = 30;
 
@@ -31,6 +31,7 @@ export function LoginForm({ next }: { next: string | null }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
+  const [done, setDone] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const boxes = useRef<(HTMLInputElement | null)[]>([]);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -65,6 +66,7 @@ export function LoginForm({ next }: { next: string | null }) {
     setBusy(true);
     const { status, data } = await post("/api/admin/auth/verify", { email: email.trim(), code });
     if (status === 200 && data.ok) {
+      setDone(true);
       window.location.assign(next ?? String(data.redirect ?? "/admin"));
       return;
     }
@@ -98,7 +100,7 @@ export function LoginForm({ next }: { next: string | null }) {
 
   const alert = (msg: string | null, tone: "error" | "info") => (
     <p role={tone === "error" ? "alert" : "status"} aria-live="polite"
-      className={tone === "error" ? "mt-4 rounded-xl bg-[#fdecea] px-4 py-3 text-sm text-danger" : "mt-4 rounded-xl bg-[#fff3d1] px-4 py-3 text-sm text-gold-ink"}>
+      className={tone === "error" ? "mt-4 rounded-[14px] border border-danger/20 bg-[#fdecea] px-4 py-3 text-sm text-danger" : "mt-4 rounded-[14px] border border-gold/30 bg-gold-soft px-4 py-3 text-sm text-gold-ink"}>
       {msg}
     </p>
   );
@@ -106,15 +108,15 @@ export function LoginForm({ next }: { next: string | null }) {
   if (step === "email") {
     return (
       <form onSubmit={requestCode} noValidate>
-        <h2 className="font-heading text-3xl font-extrabold">Welcome back</h2>
-        <p className="mt-2 text-[#4b5b75]">Sign in with your work email. We’ll send you a 6-digit code.</p>
-        <label htmlFor="admin-email" className="mt-8 block text-sm font-semibold">Email</label>
+        <h2 className="font-[family-name:var(--font-display)] text-[2rem] font-semibold leading-tight text-ink">Welcome back</h2>
+        <p className="mt-2 text-body">Sign in with your work email. We’ll send you a 6-digit code.</p>
+        <label htmlFor="admin-email" className="mt-8 block text-sm font-semibold text-navy">Work email</label>
         <input ref={emailRef} id="admin-email" type="email" inputMode="email" autoComplete="email" required value={email}
           onChange={(e) => setEmail(e.target.value)} aria-invalid={error ? true : undefined} aria-describedby={error ? "admin-login-error" : undefined}
-          className="mt-2 h-12 w-full rounded-xl border border-[#d6dbe4] bg-white px-4 text-base outline-none transition focus:border-gold focus:ring-4 focus:ring-gold/25"
+          className="mt-2 h-[52px] w-full px-4 text-base rounded-[14px] border border-line bg-white text-navy outline-none transition duration-200 placeholder:text-muted/70 focus:border-gold focus:ring-4 focus:ring-gold/25"
           placeholder="you@company.com" />
         <button type="submit" disabled={busy}
-          className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gold font-heading font-bold text-navy shadow-[0_12px_24px_-12px_rgb(245_168_0/0.8)] transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-navy/30 disabled:opacity-70">
+          className="mt-6 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[14px] bg-gold font-heading font-bold text-navy shadow-[0_14px_28px_-14px_rgb(184_145_63/0.9)] transition duration-200 ease-out hover:-translate-y-0.5 hover:bg-amber hover:shadow-[0_18px_32px_-14px_rgb(184_145_63/0.95)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-navy/30 disabled:translate-y-0 disabled:opacity-70">
           {busy ? <Loader2 className="size-5 animate-spin" aria-hidden /> : <Mail className="size-5" aria-hidden />}
           {busy ? "Sending…" : "Email me a code"}
         </button>
@@ -125,8 +127,8 @@ export function LoginForm({ next }: { next: string | null }) {
 
   return (
     <div>
-      <h2 className="font-heading text-3xl font-extrabold">Enter your code</h2>
-      <p className="mt-2 text-[#4b5b75]">We sent a 6-digit code to <b className="text-navy">{email.trim()}</b>. It expires in 10 minutes.</p>
+      <h2 className="font-[family-name:var(--font-display)] text-[2rem] font-semibold leading-tight text-ink">Enter your code</h2>
+      <p className="mt-2 text-body">We sent a 6-digit code to <b className="text-navy">{email.trim()}</b>. It expires in 10 minutes.</p>
       {info && !error && alert(info, "info")}
       <fieldset className="mt-6" disabled={busy}>
         <legend className="sr-only">6-digit sign-in code</legend>
@@ -135,19 +137,20 @@ export function LoginForm({ next }: { next: string | null }) {
             <input key={i} ref={(el) => { boxes.current[i] = el; }} value={d} inputMode="numeric" pattern="[0-9]*" maxLength={i === 0 ? 6 : 1}
               autoComplete={i === 0 ? "one-time-code" : "off"} aria-label={`Digit ${i + 1} of 6`}
               onChange={(e) => fill(i, e.target.value)} onKeyDown={(e) => onKey(i, e)} onFocus={(e) => e.target.select()}
-              className="h-14 w-full min-w-0 rounded-xl border border-[#d6dbe4] bg-white text-center font-heading text-2xl font-bold outline-none transition focus:border-gold focus:ring-4 focus:ring-gold/25 disabled:bg-[#f3f4f6]" />
+              className="h-14 w-full min-w-0 text-center font-heading text-2xl font-bold rounded-[14px] border border-line bg-white text-navy outline-none transition duration-200 placeholder:text-muted/70 focus:border-gold focus:ring-4 focus:ring-gold/25 disabled:bg-cream" />
           ))}
         </div>
       </fieldset>
-      {busy && <p className="mt-4 flex items-center gap-2 text-sm text-[#4b5b75]" role="status"><Loader2 className="size-4 animate-spin" aria-hidden />Checking…</p>}
+      {done ? <p className="mt-4 flex items-center gap-2 rounded-[14px] border border-leaf/25 bg-[#e8f1ec] px-4 py-3 text-sm font-semibold text-leaf" role="status"><CheckCircle2 className="size-4" aria-hidden />Signed in. Opening your dashboard…</p>
+        : busy && <p className="mt-4 flex items-center gap-2 text-sm text-body" role="status"><Loader2 className="size-4 animate-spin" aria-hidden />Checking…</p>}
       {error && alert(error, "error")}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm">
         <button type="button" onClick={() => { setStep("email"); setError(null); setInfo(null); }}
-          className="inline-flex items-center gap-1 font-semibold text-[#1a2b57] underline-offset-4 hover:underline">
+          className="inline-flex items-center gap-1 rounded font-semibold text-navy underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-gold">
           <ArrowLeft className="size-4" aria-hidden />Use a different email
         </button>
         <button type="button" onClick={() => requestCode()} disabled={countdown > 0 || busy}
-          className="font-semibold text-gold-ink underline-offset-4 hover:underline disabled:text-[#8a94a6] disabled:no-underline">
+          className="rounded font-semibold text-gold-ink underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-gold disabled:text-muted disabled:no-underline">
           {countdown > 0 ? `Resend code in ${countdown}s` : "Resend code"}
         </button>
       </div>

@@ -60,6 +60,6 @@ export const solutionBanners = {
 
 /** In-page picture on /schemes/pm-surya-ghar (house with the scheme sign), beside "What you get". */
 export const pmSuryaGharSign = {
-  src: "/solutions/pm-surya-ghar-sign.webp", width: 1672, height: 941, sun: { x: "8%", y: "4%" },
+  src: "/solutions/pm-surya-ghar-home.webp", width: 1672, height: 941, sun: { x: "8%", y: "4%" },
   alt: { en: "Home with rooftop solar panels and an inverter, next to a PM Surya Ghar sign", te: "పైకప్పు సోలార్ ప్యానెల్స్, ఇన్వర్టర్ ఉన్న ఇల్లు, పక్కన పీఎం సూర్య ఘర్ బోర్డు" },
 };
