@@ -1,8 +1,23 @@
 /**
- * Savings calculator. Pure functions; every number comes from src/config/calculator.ts.
+ * Savings calculator. Pure functions. Numbers come from Admin → Calculator (applyCalcSettings, set once per
+ * render by the site layout) with src/config/calculator.ts for everything admins don't edit.
+ * Homes use the DISCOM's telescopic domestic slabs; farm and business use a flat ₹/unit.
  * Used by the home widget, the calculator page, packages and the lead tagger.
  */
 import { calculatorConfig as C, type PropertyType, type SubsidyRule } from "@/config/calculator";
+import { DEFAULT_CALC, domesticBill, pickSize, unitsFromDomesticBill, type CalcSettings, type Discom } from "@/lib/calc-settings";
+
+let S: CalcSettings = DEFAULT_CALC;
+let DISTRICT_DISCOM: Record<string, Discom> = {};
+
+/** Called by the public layout with the saved settings (same values for every visitor). */
+export function applyCalcSettings(settings: CalcSettings, districtDiscom: Record<string, Discom> = {}) {
+  S = settings;
+  DISTRICT_DISCOM = districtDiscom;
+}
+export const calcSettings = () => S;
+export const discomFor = (district?: string | null): Discom => (district && DISTRICT_DISCOM[district]) || "TGSPDCL";
+const perKwMonth = () => S.unitsPerKwDay * 30;
 
 export type InputMode = "bill" | "units";
 
@@ -16,6 +31,8 @@ export interface CalcInput {
   district?: string | null;
   /** Override the subsidy rule (e.g. apartment RWA rule) */
   subsidyRule?: SubsidyRule;
+  /** Which DISCOM's slabs to use for homes (default: from district, else TGSPDCL). */
+  discom?: Discom;
 }
 
 export interface YearPoint { year: number; cumulative: number; net: number }
@@ -40,16 +57,25 @@ export interface CalcResult {
   projection: YearPoint[];
 }
 
-export const tariff = (t: PropertyType) => C.tariffPerUnit[t];
-export const unitsFromBill = (bill: number, t: PropertyType) => Math.max(0, bill / tariff(t));
-export const billFromUnits = (units: number, t: PropertyType) => Math.max(0, units * tariff(t));
+/** Average ₹/unit (homes: at a typical 300 units on the domestic slabs). */
+export const tariff = (t: PropertyType, d: Discom = "TGSPDCL") =>
+  t === "home" ? domesticBill(300, S.slabs[d], S.fixedCharge[d]) / 300 : S.flatTariff[t];
+export const unitsFromBill = (bill: number, t: PropertyType, d: Discom = "TGSPDCL") =>
+  t === "home" ? unitsFromDomesticBill(bill, S.slabs[d], S.fixedCharge[d]) : Math.max(0, bill / S.flatTariff[t]);
+export const billFromUnits = (units: number, t: PropertyType, d: Discom = "TGSPDCL") =>
+  t === "home" ? domesticBill(units, S.slabs[d], S.fixedCharge[d]) : Math.max(0, units * S.flatTariff[t]);
 
 export function sizeKw(monthlyUnits: number, t: PropertyType): number {
   if (monthlyUnits <= 0) return 0;
-  const raw = monthlyUnits / C.generationPerKwMonth;
+  const raw = monthlyUnits / perKwMonth();
+  if (t === "home") return pickSize(raw, S.systemSizes);
   const stepped = Math.ceil(raw / C.kwStep) * C.kwStep;
   return Math.min(C.maxKw[t], Math.max(C.minKw, stepped));
 }
+
+/** Home subsidy rule from the admin settings; farm/business keep the config rules. */
+const subsidyRule = (t: PropertyType): SubsidyRule =>
+  t === "home" ? { kind: "per-kw-tiers", tiers: S.subsidyTiers, cap: S.subsidyCap } : C.subsidy[t];
 
 export function subsidyFor(rule: SubsidyRule, kw: number, cost: number): number {
   if (rule.kind === "none") return 0;
@@ -69,8 +95,9 @@ export function subsidyFor(rule: SubsidyRule, kw: number, cost: number): number 
 
 export function calculate(input: CalcInput): CalcResult {
   const t = input.type;
-  const monthlyUnits = input.mode === "bill" ? unitsFromBill(input.value, t) : input.value;
-  const monthlyBill = input.mode === "bill" ? input.value : billFromUnits(input.value, t);
+  const d = input.discom ?? discomFor(input.district);
+  const monthlyUnits = input.mode === "bill" ? unitsFromBill(input.value, t, d) : input.value;
+  const monthlyBill = input.mode === "bill" ? input.value : billFromUnits(input.value, t, d);
 
   let kw = sizeKw(monthlyUnits, t);
   let roofLimited = false;
@@ -79,13 +106,14 @@ export function calculate(input: CalcInput): CalcResult {
     if (maxByRoof < kw) { kw = Math.max(0, maxByRoof); roofLimited = true; }
   }
 
-  const generationMonthly = kw * C.generationPerKwMonth;
-  const cost = Math.round(kw * C.costPerKw[t]);
-  const subsidy = subsidyFor(input.subsidyRule ?? C.subsidy[t], kw, cost);
+  const generationMonthly = kw * perKwMonth();
+  const cost = Math.round(kw * S.costPerKw[t]);
+  const subsidy = subsidyFor(input.subsidyRule ?? subsidyRule(t), kw, cost);
   const netCost = cost - subsidy;
   // Savings are capped at the bill: you cannot save more units than you use (net metering export not credited here).
+  // Homes: bill now minus the slab bill on the units still bought from the grid.
   const savedUnits = Math.min(generationMonthly, monthlyUnits);
-  const monthlySaving = Math.round(savedUnits * tariff(t));
+  const monthlySaving = Math.max(0, Math.round(billFromUnits(monthlyUnits, t, d) - billFromUnits(monthlyUnits - savedUnits, t, d)));
   const yearlySaving = monthlySaving * 12;
 
   const projection: YearPoint[] = [];
@@ -113,7 +141,7 @@ export function calculate(input: CalcInput): CalcResult {
     type: t, monthlyBill: Math.round(monthlyBill), monthlyUnits: Math.round(monthlyUnits), kw, roofLimited,
     roofNeededSqft: Math.round(kw * C.sqftPerKw), generationMonthly: Math.round(generationMonthly),
     cost, subsidy, netCost, monthlySaving, yearlySaving, paybackYears,
-    co2TonnesYear: Math.round(((savedUnits * 12 * C.co2KgPerUnit) / 1000) * 10) / 10,
+    co2TonnesYear: Math.round(((savedUnits * 12 * S.co2KgPerUnit) / 1000) * 10) / 10,
     lifetimeSaving: projection.at(-1)?.cumulative ?? 0,
     projection,
   };
@@ -121,7 +149,7 @@ export function calculate(input: CalcInput): CalcResult {
 
 /** For package cards: typical monthly bill range this size suits, and its generation. */
 export function packageFacts(kw: number, t: PropertyType) {
-  const gen = kw * C.generationPerKwMonth;
+  const gen = kw * perKwMonth();
   const bill = gen * tariff(t);
   const round = (n: number) => Math.round(n / 500) * 500;
   return { generationMonthly: Math.round(gen), billMin: round(bill * 0.75), billMax: round(bill * 1.1) };

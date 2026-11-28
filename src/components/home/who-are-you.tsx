@@ -53,7 +53,7 @@ export function WhoAreYou() {
           })}
           {/* 8th tile: not sure? → Find My Solar Plan */}
           <Reveal delay={0.18} className="h-full">
-            <li className="relative flex h-full min-h-[18rem] list-none flex-col justify-between overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-6 text-white shadow-[0_20px_44px_-20px_rgb(28_47_71/0.6)]">
+            <li className="relative flex h-full min-h-[18rem] list-none flex-col justify-between overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-6 text-white shadow-[0_20px_44px_-20px_rgb(11_31_58/0.6)]">
               <span aria-hidden className="grid size-12 place-items-center rounded-2xl bg-white/10"><Sparkles className="size-6 text-sun" /></span>
               <p className="mt-5 font-heading text-[1.375rem] font-bold leading-snug text-white">{t("who.quizCta")}</p>
               <GuideTrigger size="md" variant="white" className="mt-5 w-full">{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>

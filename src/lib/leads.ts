@@ -21,6 +21,14 @@ export interface LeadInput {
   packageId?: string | null;
   sourcePage: string;
   locale: "en" | "te";
+  /** Attribution (optional; the server also reads utm_* from the page URL) */
+  utm_source?: string | null;
+  utm_campaign?: string | null;
+  referrer?: string | null;
+  /** Customer ticked a consent box (forms have none yet) */
+  consent?: boolean;
+  /** District slug, when known separately from `location` */
+  district?: string | null;
   /** Honeypot: must stay empty */
   website?: string;
   /** ms since form render: bots submit instantly */

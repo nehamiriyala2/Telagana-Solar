@@ -5,24 +5,24 @@ import { cn } from "@/lib/utils";
 
 /** Buttons (pill, 44px): primary blue, secondary white with 1.5px blue border, accent = saffron highlight CTA (dark text, AA), white = on dark bands. */
 export const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,color,border-color] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,color,border-color] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-[#B8913F]/60 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-primary text-white hover:bg-primary-hover",
+        primary: "border border-[#B8913F]/70 bg-[#0B1F3A] text-[#F5F0E6] hover:bg-[#13305A]",
         sky: "bg-primary text-white hover:bg-primary-hover",
-        white: "bg-white text-primary hover:bg-tint-ice",
-        green: "bg-accent text-ink hover:bg-accent-hover",
-        accent: "bg-accent text-ink hover:bg-accent-hover",
-        whatsapp: "bg-whatsapp text-white hover:bg-whatsapp-hover",
-        outline: "border-[1.5px] border-primary bg-white text-primary hover:bg-tint-ice",
+        white: "bg-[#F5F0E6] text-[#0B1F3A] hover:bg-[#EBE3D3]",
+        green: "bg-[#B8913F] text-[#0B1F3A] hover:bg-[#A07C31]",
+        accent: "bg-[#B8913F] text-[#0B1F3A] hover:bg-[#A07C31]",
+        whatsapp: "bg-[#2F6B4F] text-white hover:bg-[#255640]",
+        outline: "border-[1.5px] border-[#0B1F3A] bg-transparent text-[#0B1F3A] hover:bg-[#EBE3D3]",
         ghost: "text-primary hover:bg-primary/5",
         solid: "bg-primary text-white hover:bg-primary-hover",
       },
       size: {
         sm: "h-10 px-4 text-caption",
         md: "h-11 px-6 text-base",
-        lg: "h-12 px-7 text-[1.0625rem]",
+        lg: "h-11 px-7 text-base",
         icon: "size-11 hover:translate-y-0",
       },
     },

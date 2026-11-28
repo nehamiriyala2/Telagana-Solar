@@ -9,7 +9,8 @@ import { UI_IMAGES } from "@/data/section-photos";
 import { SCHEME_ICONS } from "@/components/home/schemes-section";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BlurReveal, DrawLine, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
-import { SCHEMES } from "@/config/schemes";
+import type { SchemeSlug } from "@/config/schemes";
+import { schemeCards } from "@/lib/public-schemes";
 import { districts } from "@/data/districts";
 import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
@@ -18,6 +19,8 @@ import { site } from "@/config/site";
 import { pick } from "@/lib/utils";
 import { Wave } from "@/components/page/tone-section";
 import { SchemeHeroArt } from "@/components/page/scheme-hero-art";
+
+export const revalidate = 300;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -33,6 +36,8 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
   setRequestLocale(locale);
   const t = await getTranslations("schemes");
   const L = (v: { en: string; te: string }) => pick(v, locale);
+  // Published schemes from Admin → Schemes (built-in four without a database).
+  const cards = await schemeCards(locale);
 
   return (
     <>
@@ -51,8 +56,8 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       />
 
       {/* Districts marquee */}
-      <section aria-labelledby="districts-strip" className="relative overflow-hidden border-y border-[#245A96]/10 bg-[#DCEAF7] py-8 shadow-[inset_0_1px_0_#FFFFFF,0_18px_40px_-34px_rgb(28_47_71/0.45)] md:py-10">
-        <p id="districts-strip" className="container-page mb-2 flex items-center justify-center gap-2 text-center text-caption font-bold uppercase tracking-[0.08em] text-[#245A96] md:text-[0.9375rem]">
+      <section aria-labelledby="districts-strip" className="relative overflow-hidden border-y border-[#13305A]/10 bg-[#EBE3D3] py-8 shadow-[inset_0_1px_0_#FFFFFF,0_18px_40px_-34px_rgb(11_31_58/0.45)] md:py-10">
+        <p id="districts-strip" className="container-page mb-2 flex items-center justify-center gap-2 text-center text-caption font-bold uppercase tracking-[0.08em] text-[#13305A] md:text-[0.9375rem]">
           <MapPin className="size-4" aria-hidden />{L(D.marqueeLabel)}
         </p>
         <Marquee speed={80} gap="pr-3 md:pr-4" items={
@@ -61,7 +66,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
             return (
               <Link key={d.slug} href={`/solar-installation/${d.slug}`} className={main ? "city-chip city-chip--main" : "city-chip"}>
                 <MapPin className="size-4 md:size-[1.125rem]" aria-hidden />{pick(d.name, locale)}
-                {main && <span aria-hidden className="size-2 rounded-full bg-[#2B6CB0] shadow-[0_0_8px_#2B6CB0]" />}
+                {main && <span aria-hidden className="size-2 rounded-full bg-[#0B1F3A] shadow-[0_0_8px_#0B1F3A]" />}
               </Link>
             );
           })
@@ -72,23 +77,22 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <Stagger className="grid gap-5 md:grid-cols-2">
-            {SCHEMES.map((s) => {
-              const Icon = SCHEME_ICONS[s.slug];
+            {cards.map((s) => {
+              const Icon = SCHEME_ICONS[s.slug as SchemeSlug] ?? Landmark;
               return (
                 <StaggerItem key={s.slug} className="list-none">
                   <TiltCard max={5} className="h-full rounded-[1.25rem]">
-                    <Link href={`/schemes/${s.slug}`} className="zoom-frame group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-3 shadow-[0_10px_30px_rgb(28_47_71/0.10)] transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_22px_46px_rgb(28_47_71/0.16)]">
+                    <Link href={`/schemes/${s.slug}`} className="zoom-frame group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-3 shadow-[0_10px_30px_rgb(11_31_58/0.10)] transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_22px_46px_rgb(11_31_58/0.16)]">
                       <span className="relative block overflow-hidden rounded-2xl">
                         <PhotoTile src={UI_IMAGES.schemesPage[s.slug as keyof typeof UI_IMAGES.schemesPage]} alt="" className="zoom-img aspect-[21/9] w-full bg-tint-ice text-primary" fallback={<Icon className="size-10" aria-hidden />} />
-                        <span className="absolute left-3 top-3 grid size-14 place-items-center rounded-2xl bg-white/95 text-green-text shadow-sm"><Icon className="size-7" aria-hidden /></span>
-                        <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1.5 text-caption font-bold text-primary shadow-sm">{t(`items.${s.slug}.tag`)}</span>
+                        <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1.5 text-caption font-bold text-primary shadow-sm">{s.tag}</span>
                       </span>
                       <div className="flex flex-1 flex-col px-4 pb-4 md:px-6 md:pb-6">
-                      <h2 className="relative mt-5 font-heading text-[1.625rem] font-extrabold leading-tight tracking-[-0.02em] text-ink md:text-[2rem]">{t(`items.${s.slug}.name`)}</h2>
-                      <p className="relative mt-2 text-muted">{t(`items.${s.slug}.short`)}</p>
+                      <h2 className="relative mt-5 font-heading text-[1.625rem] font-extrabold leading-tight tracking-[-0.02em] text-ink md:text-[2rem]">{s.name}</h2>
+                      <p className="relative mt-2 text-muted">{s.short}</p>
                       <dl className="relative mt-6 grid gap-3 sm:grid-cols-2">
-                        <div className="rounded-2xl bg-[#DCEAF7] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary-hover">{t("cardWho")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardWho`)}</dd></div>
-                        <div className="rounded-2xl bg-[#DCEAF7] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary">{t("cardBenefit")}</dt><dd className="mt-1 text-caption text-ink">{t(`items.${s.slug}.cardBenefit`)}</dd></div>
+                        <div className="rounded-2xl bg-[#EBE3D3] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary-hover">{t("cardWho")}</dt><dd className="mt-1 text-caption text-ink">{s.cardWho}</dd></div>
+                        <div className="rounded-2xl bg-[#EBE3D3] p-4"><dt className="text-[0.75rem] font-bold uppercase tracking-wide text-primary">{t("cardBenefit")}</dt><dd className="mt-1 text-caption text-ink">{s.cardBenefit}</dd></div>
                       </dl>
                       <span className="relative mt-auto flex items-center gap-2 pt-6 font-semibold text-primary">{t("learnMore")}<ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></span>
                       </div>
@@ -108,19 +112,19 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
         <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.compareTitle)} emphasis={L(D.compareEmphasis)} />
-          <BlurReveal className="hidden overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-[0_24px_50px_-34px_rgb(28_47_71/0.35)] md:block">
+          <BlurReveal className="hidden overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-[0_24px_50px_-34px_rgb(11_31_58/0.35)] md:block">
             <table className="w-full text-left text-caption">
-              <thead className="bg-[#DCEAF7] text-[0.75rem] uppercase tracking-wide text-primary-hover">
+              <thead className="bg-[#EBE3D3] text-[0.75rem] uppercase tracking-wide text-primary-hover">
                 <tr>{(["scheme", "for", "who", "benefit", "via"] as const).map((c) => <th key={c} scope="col" className="px-5 py-4 font-bold">{L(D.compareCols[c])}</th>)}</tr>
               </thead>
               <tbody>
-                {SCHEMES.map((s) => (
-                  <tr key={s.slug} className="border-t border-line align-top transition-colors hover:bg-[#F1F6FC]">
-                    <th scope="row" className="px-5 py-5"><Link href={`/schemes/${s.slug}`} className="font-heading text-[1rem] font-bold text-ink hover:text-primary-hover">{t(`items.${s.slug}.name`)}</Link></th>
-                    <td className="px-5 py-5"><span className="rounded-full bg-[#DCEAF7] px-2.5 py-1 font-bold text-primary-hover">{t(`items.${s.slug}.tag`)}</span></td>
-                    <td className="px-5 py-5 text-ink">{t(`items.${s.slug}.cardWho`)}</td>
-                    <td className="px-5 py-5 text-ink">{t(`items.${s.slug}.cardBenefit`)}</td>
-                    <td className="px-5 py-5"><a href={s.officialUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-primary-hover hover:underline">{host(s.officialUrl)}</a></td>
+                {cards.map((s) => (
+                  <tr key={s.slug} className="border-t border-line align-top transition-colors hover:bg-[#F5F0E6]">
+                    <th scope="row" className="px-5 py-5"><Link href={`/schemes/${s.slug}`} className="font-heading text-[1rem] font-bold text-ink hover:text-primary-hover">{s.name}</Link></th>
+                    <td className="px-5 py-5"><span className="rounded-full bg-[#EBE3D3] px-2.5 py-1 font-bold text-primary-hover">{s.tag}</span></td>
+                    <td className="px-5 py-5 text-ink">{s.cardWho}</td>
+                    <td className="px-5 py-5 text-ink">{s.cardBenefit}</td>
+                    <td className="px-5 py-5">{s.officialUrl ? <a href={s.officialUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-primary-hover hover:underline">{host(s.officialUrl)}</a> : "-"}</td>
                   </tr>
                 ))}
               </tbody>
@@ -128,13 +132,13 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
           </BlurReveal>
           {/* Phones: one card per scheme */}
           <Stagger className="grid gap-4 md:hidden">
-            {SCHEMES.map((s) => (
+            {cards.map((s) => (
               <StaggerItem key={s.slug} className="list-none rounded-[1.25rem] border border-line bg-white p-5 shadow-soft">
-                <Link href={`/schemes/${s.slug}`} className="font-heading text-[1.125rem] font-bold text-ink">{t(`items.${s.slug}.name`)}</Link>
+                <Link href={`/schemes/${s.slug}`} className="font-heading text-[1.125rem] font-bold text-ink">{s.name}</Link>
                 <dl className="mt-3 space-y-2 text-caption">
-                  <div><dt className="font-bold text-primary-hover">{L(D.compareCols.who)}</dt><dd className="text-ink">{t(`items.${s.slug}.cardWho`)}</dd></div>
-                  <div><dt className="font-bold text-gold-ink">{L(D.compareCols.benefit)}</dt><dd className="text-ink">{t(`items.${s.slug}.cardBenefit`)}</dd></div>
-                  <div><dt className="font-bold text-muted">{L(D.compareCols.via)}</dt><dd><a href={s.officialUrl} target="_blank" rel="noopener noreferrer" className="break-all font-semibold text-primary-hover">{host(s.officialUrl)}</a></dd></div>
+                  <div><dt className="font-bold text-primary-hover">{L(D.compareCols.who)}</dt><dd className="text-ink">{s.cardWho}</dd></div>
+                  <div><dt className="font-bold text-gold-ink">{L(D.compareCols.benefit)}</dt><dd className="text-ink">{s.cardBenefit}</dd></div>
+                  <div><dt className="font-bold text-muted">{L(D.compareCols.via)}</dt><dd>{s.officialUrl ? <a href={s.officialUrl} target="_blank" rel="noopener noreferrer" className="break-all font-semibold text-primary-hover">{host(s.officialUrl)}</a> : "-"}</dd></div>
                 </dl>
               </StaggerItem>
             ))}
@@ -152,7 +156,7 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
             <Stagger as="ol" className="relative grid gap-8 md:grid-cols-4 md:gap-6">
               {D.process.map((p, i) => (
                 <StaggerItem key={i} className="relative flex gap-5 md:flex-col md:items-center md:text-center">
-                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-[#F1F6FC]">{i + 1}</span>
+                  <span className="icon-sun relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-heading text-h4 font-extrabold ring-8 ring-[#F5F0E6]">{i + 1}</span>
                   <div>
                     <h3 className="font-heading text-[1.125rem] font-bold text-ink">{L(p.title)}</h3>
                     <p className="mt-1 text-caption text-muted">{L(p.desc)}</p>
@@ -162,9 +166,9 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
             </Stagger>
           </div>
           <BlurReveal className="mt-12 flex flex-wrap justify-center gap-3">
-            {SCHEMES.map((s) => (
+            {cards.map((s) => (
               <Link key={s.slug} href={`/schemes/${s.slug}`} className="flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-caption font-semibold text-ink transition-colors hover:border-gold">
-                <CircleCheck className="size-4 text-leaf" aria-hidden />{t(`items.${s.slug}.name`)}
+                <CircleCheck className="size-4 text-leaf" aria-hidden />{s.name}
               </Link>
             ))}
           </BlurReveal>

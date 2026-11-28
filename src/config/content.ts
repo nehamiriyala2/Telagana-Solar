@@ -17,6 +17,11 @@ export interface Project {
   monthlySaving: number | null; // [EDIT] ₹ per month
   photo: string | null;    // [EDIT] e.g. "/projects/kondapur-5kw.webp"
   featured: boolean;
+  /** Set for projects published in Admin → Projects: missing optional facts are hidden instead of showing [EDIT]. */
+  fromAdmin?: boolean;
+  /** Title and all photos (admin projects). */
+  title?: string;
+  photos?: { src: string; alt: string }[];
   /** Case study (shown in the project pop-up). Real facts only; null shows [EDIT]. */
   caseStudy?: {
     scheme: string | null;              // [EDIT] e.g. "pm-surya-ghar" (slug from src/config/schemes.ts)

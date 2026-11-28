@@ -7,10 +7,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "tsx --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/db-migrate.ts",
+    "db:seed:districts": "tsx --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/seed-districts.ts",
+    "db:seed:demo": "tsx --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/seed-demo.ts",
+    "admin:create": "tsx --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/create-first-admin.ts",
+    "test": "vitest run",
+    "leads:import": "tsx --env-file-if-exists=.env.local scripts/import-sheet-leads.ts",
+    "db:seed:content": "tsx --env-file-if-exists=.env.local scripts/seed-content.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.9.0",
+    "@dnd-kit/core": "^6.3.1",
     "@radix-ui/react-accordion": "^1.3.1",
     "@radix-ui/react-slider": "^1.6.1",
     "@radix-ui/react-slot": "^1.5.0",
@@ -24,25 +32,32 @@
     "gsap": "^3.15.1",
     "lenis": "^1.3.27",
     "lucide-react": "^1.74.0",
+    "mysql2": "^3.24.6",
     "next": "^15.5.29",
     "next-intl": "^4.15.1",
+    "nodemailer": "^10.6.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "recharts": "^3.10.1",
     "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
     "tailwind-merge": "^3.7.0",
-    "three": "^0.187.0"
+    "three": "^0.187.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/node": "^26.6.6",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/three": "^0.187.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^15.5.29",
     "tailwindcss": "^4.3.5",
-    "typescript": "^6.0.3"
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.7"
   }
 }

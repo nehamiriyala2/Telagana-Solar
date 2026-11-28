@@ -28,7 +28,7 @@ export function HomeHeroArt({ locale }: { locale: string }) {
               height={679}
               priority
               sizes="(min-width: 1400px) 560px, (min-width: 1024px) 40vw, (min-width: 768px) 72vw, 100vw"
-              className="h-auto w-full object-contain drop-shadow-[0_30px_40px_rgb(28_47_71/0.16)]"
+              className="h-auto w-full object-contain drop-shadow-[0_30px_40px_rgb(11_31_58/0.16)]"
             />
           </div>
         </div>
@@ -60,9 +60,9 @@ function Chip({ k, label, delay = 0, compact = false }: { k: keyof typeof ICONS;
   const Icon = ICONS[k];
   return (
     <li className="relative list-none">
-      <div className={`${compact ? "" : "float-soft"} flex items-center gap-3 rounded-full border border-white bg-white/90 py-1.5 pl-1.5 pr-5 shadow-[0_14px_30px_-16px_rgb(28_47_71/0.4)] backdrop-blur`}
+      <div className={`${compact ? "" : "float-soft"} flex items-center gap-3 rounded-full border border-white bg-white/90 py-1.5 pl-1.5 pr-5 shadow-[0_14px_30px_-16px_rgb(11_31_58/0.4)] backdrop-blur`}
         style={compact ? undefined : { animationDelay: `${delay}s` }}>
-        <PhotoTile src={HOMES_HERO_PHOTOS[k]} alt="" className={`${compact ? "size-11" : "size-14 xl:size-16"} shrink-0 rounded-full bg-white text-gold-ink shadow-[0_6px_14px_-6px_rgb(28_47_71/0.45)] ring-[3px] ring-gold`}
+        <PhotoTile src={HOMES_HERO_PHOTOS[k]} alt="" className={`${compact ? "size-11" : "size-14 xl:size-16"} shrink-0 rounded-full bg-white text-gold-ink shadow-[0_6px_14px_-6px_rgb(11_31_58/0.45)] ring-[3px] ring-gold`}
           fallback={<Icon className="size-5" strokeWidth={2} aria-hidden />} />
         <span className={`font-heading text-[0.8125rem] font-bold leading-tight text-ink ${compact ? "" : "max-w-[7.5rem] xl:max-w-[8.5rem] xl:text-[0.875rem]"}`}>{label}</span>
       </div>

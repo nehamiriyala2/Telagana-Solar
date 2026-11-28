@@ -33,7 +33,7 @@ export function SubsidyBand() {
   return (
     <section className="container-page py-6" aria-labelledby="sub-title">
       <Reveal>
-        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#FDEBD6] px-6 py-12 md:px-14 md:py-16">
+        <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-[#F1E7D2] px-6 py-12 md:px-14 md:py-16">
           <div aria-hidden className="absolute -right-24 -top-24 -z-10 size-80 animate-glow rounded-full bg-transparent" />
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div className="max-w-2xl">
@@ -79,23 +79,25 @@ export function WhyUs() {
   );
 }
 
-export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"], title, premium = false }: { keys?: string[]; title?: string; premium?: boolean }) {
+/** `items` = published FAQs from Admin → Content (used when given); otherwise the message keys. */
+export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"], title, premium = false, items: custom }: { keys?: string[]; title?: string; premium?: boolean; items?: { q: string; a: string }[] }) {
   const t = useTranslations("faq");
+  const faqItems = custom?.length ? custom : keys.map((k) => ({ q: t(`${k}.q`), a: t(`${k}.a`) }));
   const tc = useTranslations("common");
   if (premium) {
     return (
       <section className="bg-cloud py-16 md:py-24" aria-labelledby="faq-title">
-        <div className="container-page grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+        <div className="container-page grid grid-cols-1 gap-10 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-4">
             <div className="lg:sticky lg:top-28">
               <SectionHeading premium align="left" eyebrow={t("eyebrow")} title={title ?? t("title")} className="mb-6" />
-              <div className="rounded-[1.25rem] border border-[#F8D9B5] bg-wash-green p-6">
+              <div className="rounded-[1.25rem] border border-[#E2D8C3] bg-wash-green p-6">
                 <p className="text-[0.9375rem] text-body">{tc("askWhatsapp")}</p>
                 <WhatsAppButton place="faq-card" className="mt-4 w-full" label={tc("askOnWhatsapp")} message={tc("askMessage")} />
               </div>
             </div>
           </div>
-          <Reveal className="lg:col-span-8"><Accordion premium items={keys.map((k) => ({ q: t(`${k}.q`), a: t(`${k}.a`) }))} /></Reveal>
+          <Reveal className="min-w-0 lg:col-span-8"><Accordion premium items={faqItems} /></Reveal>
         </div>
       </section>
     );
@@ -104,7 +106,7 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
     <section className="section" aria-labelledby="faq-title">
       <div className="container-page max-w-3xl">
         <SectionHeading eyebrow={t("eyebrow")} title={title ?? t("title")} />
-        <Reveal><Accordion items={keys.map((k) => ({ q: t(`${k}.q`), a: t(`${k}.a`) }))} /></Reveal>
+        <Reveal><Accordion items={faqItems} /></Reveal>
       </div>
     </section>
   );
@@ -112,13 +114,13 @@ export function FaqSection({ keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "
 
 const TYPE_TO_PERSONA: Record<"home" | "farm" | "business", GuidePersona> = { home: "urban", farm: "farmer", business: "shop" };
 
-/** Full-width deep-blue gradient band with a curved top edge, a 1px lighter top line and a subtle sun-ray pattern:
- *  white H2, white "Find My Solar Plan" button + green WhatsApp button. */
+/** Floating navy card (sun-ray pattern, 28px radius, soft shadow) on the ivory page background, with ivory space
+ *  below it so it never merges with the footer: H2, "Find My Solar Plan" button + green WhatsApp button. */
 export function FinalCta({ title, defaultType }: { title?: string; defaultType?: "home" | "farm" | "business" }) {
   const t = useTranslations();
   return (
-    <section id="book" className="sun-rays band-dark band-curve on-dark mb-12 scroll-mt-24 rounded-b-[50%_3rem] pb-24 md:mb-16 md:pb-32" aria-labelledby="cta-title">
-      <div className="container-page">
+    <section id="book" className="final-cta-wrap scroll-mt-24 bg-[#F5F0E6] px-4 pb-16 pt-14 md:px-6 md:pb-24 md:pt-20" aria-labelledby="cta-title">
+      <div className="final-cta-card sun-rays band-dark on-dark mx-auto max-w-[1180px] overflow-hidden rounded-[28px] px-5 py-12 shadow-[0_20px_50px_rgba(15,30,60,0.18)] md:px-8 md:py-[72px]">
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 id="cta-title" className="font-heading text-h2 font-extrabold text-white md:text-h2-lg">{title ?? t("cta.title")}</h2>
           <p className="on-dark-muted mx-auto mt-4 max-w-xl md:text-body-lg">{t("cta.subtitle")}</p>

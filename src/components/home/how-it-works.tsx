@@ -20,15 +20,15 @@ export function HowItWorks({ dark = false }: { premium?: boolean; dark?: boolean
   return (
     <section aria-labelledby="how-title"
       className={cn("relative isolate overflow-hidden py-16 md:py-24",
-        dark ? "band-curve bg-[linear-gradient(180deg,#2B6CB0_0%,#2B6CB0_55%,#2B6CB0_100%)] text-white" : "bg-mist")}>
+        dark ? "band-curve bg-[linear-gradient(180deg,#0B1F3A_0%,#0B1F3A_55%,#0B1F3A_100%)] text-white" : "bg-mist")}>
       {dark && <span aria-hidden className="deco-blob -right-32 top-10 size-[28rem] bg-white/15" />}
       <div className="container-page">
         <div className="mx-auto mb-12 max-w-3xl text-center md:mb-14">
           <p className={cn("inline-flex items-center gap-2 text-[0.8125rem] font-bold uppercase tracking-[0.18em]", dark ? "text-white" : "text-primary")}>
-            <Leaf className={cn("size-4", dark ? "text-[#FDEBD6]" : "text-green")} aria-hidden />{t("eyebrow")}
+            <Leaf className={cn("size-4", dark ? "text-[#F1E7D2]" : "text-green")} aria-hidden />{t("eyebrow")}
           </p>
           <h2 id="how-title" className={cn("mt-3 font-heading text-[clamp(2rem,3.4vw,2.75rem)] font-extrabold leading-[1.15] tracking-[-0.02em]", dark ? "text-white" : "text-ink")}>{t("title")}</h2>
-          <span aria-hidden className="mx-auto mt-4 block h-1 w-16 rounded-full bg-[#F2994A]" />
+          <span aria-hidden className="mx-auto mt-4 block h-1 w-16 rounded-full bg-[#B8913F]" />
         </div>
 
         <div className="relative">
@@ -38,8 +38,8 @@ export function HowItWorks({ dark = false }: { premium?: boolean; dark?: boolean
               <motion.li key={k} className="flex flex-col items-center text-center"
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}>
-                <span className="relative z-10 grid size-12 place-items-center rounded-full border-[3px] border-green bg-white font-heading text-[1.125rem] font-extrabold text-ink tabular-nums shadow-[0_6px_16px_-6px_rgb(28_47_71/0.4)]">{i + 1}</span>
-                <div className="mt-5 flex w-full flex-1 flex-col items-center rounded-[1.25rem] border border-white/70 bg-white/95 p-5 text-center shadow-[0_14px_34px_-14px_rgb(28_47_71/0.35)]">
+                <span className="relative z-10 grid size-12 place-items-center rounded-full border-[3px] border-green bg-white font-heading text-[1.125rem] font-extrabold text-ink tabular-nums shadow-[0_6px_16px_-6px_rgb(11_31_58/0.4)]">{i + 1}</span>
+                <div className="mt-5 flex w-full flex-1 flex-col items-center rounded-[1.25rem] border border-white/70 bg-white/95 p-5 text-center shadow-[0_14px_34px_-14px_rgb(11_31_58/0.35)]">
                   <span aria-hidden className="relative block h-24 w-full max-w-[9rem]">
                     <Image src={UI_IMAGES.steps[k]} alt="" fill sizes="144px" className="object-contain mix-blend-multiply" />
                   </span>

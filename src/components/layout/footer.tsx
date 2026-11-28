@@ -12,16 +12,16 @@ export function Footer() {
   const t = useTranslations();
   const locale = useLocale();
   const head = "mb-5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-gold-light";
-  const link = "text-[#DCEAF7] transition-colors hover:text-white";
+  const link = "text-[#EBE3D3] transition-colors hover:text-white";
   const phone = site.phone ?? "+91 75699 54054";
   const email = site.email ?? "elevaitelabs@gmail.com";
 
   return (
-    <footer className="border-t border-white/20 bg-primary-darkest pb-24 text-silver md:pb-0">
-      <div className="container-page grid gap-12 py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-12">
+    <footer className="site-footer bg-primary-darkest pb-24 pt-[72px] text-silver md:pb-8">
+      <div className="container-page grid gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <Logo variant="footer" />
-          <p className="mt-6 font-heading text-[1.125rem] font-semibold text-white">{t("footer.tagline")}</p>
+          <Logo variant="footer" className="[&>svg]:!size-10" />
+          <p className="mt-4 font-heading text-[1.125rem] font-semibold text-white">{t("footer.tagline")}</p>
           <p className="mt-3 max-w-sm text-caption leading-relaxed text-silver/70">{t("footer.about")}</p>
         </div>
 
@@ -32,6 +32,7 @@ export function Footer() {
               <li key={n.key}><Link href={n.href} className={link}>{t(`nav.${n.key}`)}</Link></li>
             ))}
             <li><Link href="/schemes" className={link}>{t("nav.schemes")}</Link></li>
+            <li><Link href="/guides" className={link}>{locale === "te" ? "గైడ్‌లు" : "Guides"}</Link></li>
           </ul>
         </nav>
 
@@ -58,7 +59,7 @@ export function Footer() {
               <span className="flex flex-wrap items-center gap-x-2 text-white">
                 <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:underline" title="Call us">{phone}</a>
                 <span aria-hidden className="text-silver/30">·</span>
-                <a href="https://wa.me/917569954054" target="_blank" rel="noopener noreferrer" className="text-silver/80 hover:text-white hover:underline" title="Chat on WhatsApp">WhatsApp</a>
+                <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-silver/80 hover:text-white hover:underline" title="Chat on WhatsApp">WhatsApp</a>
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -81,8 +82,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-2 py-6 text-[0.8125rem] text-silver/55 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-white/[0.12]">
+        <div className="container-page flex flex-col gap-2 pt-6 text-[0.8125rem] md:pr-24 text-silver/55 sm:flex-row sm:items-center sm:justify-between">
           <p>{t("footer.rights", { year: new Date().getFullYear() })}</p>
           <p className="flex gap-6"><Link href="/privacy" className="hover:text-white">{t("footer.privacy")}</Link><Link href="/terms" className="hover:text-white">{t("footer.terms")}</Link></p>
         </div>
