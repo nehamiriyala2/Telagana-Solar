@@ -13,6 +13,7 @@ import { BannerArt } from "@/components/page/banner-art";
 import { EmiCalculator } from "@/components/calculator/emi-calculator";
 import { SubsidyTimeline } from "@/components/page/subsidy-timeline";
 import { pageMeta } from "@/lib/seo";
+import { Develop } from "@/components/motion/develop";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -58,12 +59,12 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
             <SectionTitle tone="dark" index="03" title={t("loansTitle")} className="mb-8 md:mb-8" />
             <ul className="space-y-4">
               {([["l1", Banknote], ["l2", Landmark], ["l3", CalendarClock]] as const).map(([k, Icon], i) => (
-                <Reveal key={k} delay={i * 0.06}>
+                <Develop key={k} index={i} kind="row">
                   <li className="card-dark-glass flex items-center gap-5 p-4">
                     <PhotoTile src={UI_IMAGES.pay[k]} alt="" className="size-[72px] shrink-0 rounded-xl bg-white/10 text-white" fallback={<Icon className="size-7" strokeWidth={1.6} aria-hidden />} />
                     <div><h3 className="font-heading font-bold text-white">{t(`${k}.title`)}</h3><p className="on-dark-muted mt-1 text-caption">{t(`${k}.desc`)}</p></div>
                   </li>
-                </Reveal>
+                </Develop>
               ))}
             </ul>
           </div>
@@ -71,9 +72,9 @@ export default async function SubsidyPage({ params }: { params: Promise<{ locale
             <SectionTitle title={t("docsTitle")} className="mb-6 md:mb-6" />
             <ul className="grid gap-3">
               {(["d1", "d2", "d3", "d4", "d5"] as const).map((k, i) => (
-                <Reveal key={k} delay={i * 0.04}>
+                <Develop key={k} index={i} kind="row">
                   <li className="flex items-center gap-4 rounded-2xl border border-card-line bg-white p-2 pr-4 text-ink transition-colors hover:border-primary/40"><PhotoTile src={UI_IMAGES.docs[k]} alt="" className="h-12 w-20 shrink-0 rounded-lg bg-tint-ice text-primary" fallback={<FileText className="size-4" aria-hidden />} /><span className="font-medium">{t(k)}</span></li>
-                </Reveal>
+                </Develop>
               ))}
             </ul>
           </div>

@@ -3,7 +3,7 @@ import { ArrowRight, Check, Home, Store, Wheat } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { TiltCard } from "@/components/motion/tilt-card";
-import { Reveal } from "@/components/motion/reveal";
+import { Develop } from "@/components/motion/develop";
 
 const ITEMS = [
   { key: "homes", href: "/solutions/homes", Icon: Home, tint: "from-gold-soft to-white" },
@@ -19,7 +19,7 @@ export function Solutions() {
         <SectionHeading premium eyebrow={t("solutions.eyebrow")} title={t("solutions.title")} subtitle={t("solutions.subtitle")} />
         <ul className="grid gap-5 md:grid-cols-3">
           {ITEMS.map(({ key, href, Icon, tint }, i) => (
-            <Reveal key={key} delay={i * 0.08} className="h-full">
+            <Develop key={key} index={i} className="h-full">
               <li className="h-full list-none">
                 <TiltCard className="h-full rounded-card" max={5}>
                   <Link href={href} className={`group flex h-full flex-col rounded-card border border-line bg-gradient-to-b ${tint} p-7 shadow-soft transition-shadow duration-500 hover:shadow-lift md:p-8`}>
@@ -36,7 +36,7 @@ export function Solutions() {
                   </Link>
                 </TiltCard>
               </li>
-            </Reveal>
+            </Develop>
           ))}
         </ul>
       </div>

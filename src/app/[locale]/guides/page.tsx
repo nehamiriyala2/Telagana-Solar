@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
 import { publishedPosts } from "@/lib/public-content";
 import { pageMeta } from "@/lib/seo";
+import { Develop } from "@/components/motion/develop";
 
 export const revalidate = 300;
 
@@ -33,11 +34,11 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
         <div className="container-page">
           {!posts.length ? <p className="rounded-[1.25rem] border border-line bg-white p-10 text-center text-muted">{c.empty}</p> : (
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((p) => (
-                <li key={p.slug} className="list-none">
+              {posts.map((p, i) => (
+                <Develop as="li" key={p.slug} index={i % 3} className="list-none">
                   <Link href={`/guides/${p.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-soft transition-colors hover:border-gold/50">
                     {p.cover
-                      ? <span className="relative block aspect-[16/9] overflow-hidden"><Image src={p.cover} alt={p.coverAlt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" /></span>
+                      ? <span className="dv-photo relative block aspect-[16/9] overflow-hidden"><Image src={p.cover} alt={p.coverAlt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" /></span>
                       : <span aria-hidden className="grid aspect-[16/9] place-items-center bg-[#EBE3D3] text-primary"><BookOpen className="size-10" /></span>}
                     <span className="flex flex-1 flex-col p-6">
                       {p.kind === "news" && <span className="mb-2 text-caption font-bold uppercase tracking-wide text-gold-ink">{c.news}</span>}
@@ -46,7 +47,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
                       <span className="mt-auto flex items-center gap-1.5 pt-5 text-caption font-semibold text-primary-hover">{c.read}<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
                     </span>
                   </Link>
-                </li>
+                </Develop>
               ))}
             </ul>
           )}

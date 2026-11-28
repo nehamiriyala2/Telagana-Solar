@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { EnergyFlow } from "./energy-flow";
 import { DrawLine } from "@/components/motion/primitives";
 import { COMMON } from "@/lib/motion";
+import { Develop } from "@/components/motion/develop";
 
 const TYPES = [
   { key: "ongrid", accent: "bg-primary", head: "bg-tint-ice" },
@@ -51,7 +52,7 @@ export function Solar60() {
           </Reveal>
           <div className="grid gap-4 lg:col-span-5 lg:grid-rows-3">
             {cards.map(({ title, desc, img }, i) => (
-              <Reveal key={title} delay={0.08 + i * 0.08} className="h-full">
+              <Develop key={title} kind="row" delay={0.08} index={i} className="h-full">
                 <div className="card-premium flex h-full items-start gap-5 p-6">
                   <span aria-hidden className="relative size-16 shrink-0 overflow-hidden rounded-2xl bg-tint-ice">
                     <Image src={img} alt="" fill sizes="64px" className="object-cover" />
@@ -61,7 +62,7 @@ export function Solar60() {
                     <p className="mt-1.5 text-[0.9375rem] text-body">{desc}</p>
                   </div>
                 </div>
-              </Reveal>
+              </Develop>
             ))}
           </div>
         </div>
@@ -74,7 +75,7 @@ export function Solar60() {
         <DrawLine axis="x" duration={COMMON.underline} delay={0.2} className="mb-6 mt-3 block h-1 w-14 rounded-full bg-[linear-gradient(90deg,#0B1F3A,#B8913F)]" />
         <ul className="grid gap-5 md:grid-cols-3">
           {TYPES.map(({ key, accent, head }, i) => (
-            <Reveal key={key} delay={i * 0.08} className="h-full">
+            <Develop key={key} index={i} className="h-full">
               <li className="card-premium relative flex h-full list-none flex-col overflow-hidden">
                 <span aria-hidden className={cn("absolute inset-x-0 top-0 h-1", accent)} />
                 <div className={cn("flex items-center gap-4 px-6 pb-4 pt-5", head)}>
@@ -89,7 +90,7 @@ export function Solar60() {
                   <span><span className="font-semibold">{t("best")}:</span> {t(`${key}.best`)}</span>
                 </p>
               </li>
-            </Reveal>
+            </Develop>
           ))}
         </ul>
       </div>

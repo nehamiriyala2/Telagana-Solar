@@ -16,6 +16,18 @@
 @keyframes ts-in { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
 .ts-in { animation: ts-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+/* Ordinary grids (<Develop>): card fade-up + photo develops bottom → top, or row slides in from the right */
+@keyframes dv-up { from { opacity: 0; transform: translateY(var(--dv-rise, 20px)); } to { opacity: 1; transform: none; } }
+@keyframes dv-right { from { opacity: 0; transform: translateX(var(--dv-shift, 32px)); } to { opacity: 1; transform: none; } }
+@keyframes dv-wipe { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+.dv, .dv-row { opacity: 0; }
+.dv.dv-in { animation: dv-up var(--dv-card, 0.5s) var(--dv-ease, ease-out) var(--dv-d, 0s) both; }
+.dv-row.dv-in { animation: dv-right var(--dv-row, 0.5s) var(--dv-ease, ease-out) var(--dv-d, 0s) both; }
+.dv .dv-photo { clip-path: inset(100% 0 0 0); }
+.dv.dv-in .dv-photo { animation: dv-wipe var(--dv-photo, 0.7s) var(--dv-ease, ease-out) calc(var(--dv-d, 0s) + var(--dv-photo-at, 0.2s)) both; }
+
 @media (prefers-reduced-motion: reduce) {
-  .ef-glow, .ef-rays, .ts-in { animation: none !important; }
+  .ef-glow, .ef-rays, .ts-in, .dv, .dv-row, .dv .dv-photo { animation: none !important; }
+  .dv, .dv-row { opacity: 1; }
+  .dv .dv-photo { clip-path: none; }
 }

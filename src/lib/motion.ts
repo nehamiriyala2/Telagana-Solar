@@ -104,3 +104,19 @@ export const TRACK = {
   thumbFrom: 1.08,      // thumbnail scales 1.08 → 1
   active: 0.3,          // active-card highlight fade (CSS)
 };
+
+/**
+ * Generic grids site-wide (<Develop>): each grid uses the closest signature pattern.
+ * kind="card" → Pattern 3 look (card fades up, its photo develops bottom → top); kind="row" → Pattern 5 look
+ * (row slides in from the right). Stagger is by column so a row of cards enters left → right.
+ */
+export const DEVELOP = {
+  stagger: 0.08,        // between cards in the same row
+  card: 0.5,            // card fade-up
+  cardRise: 20,         // px
+  photoAt: 0.2,         // photo wipe starts after the card starts
+  photo: 0.7,           // bottom → top clip-path wipe
+  row: 0.5,             // row slide-in
+  rowShift: 32,         // px from the right
+  amount: 0.2,          // how much of the card must be visible
+};

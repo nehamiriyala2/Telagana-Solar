@@ -3,12 +3,12 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/motion/reveal";
 import { GuideTrigger } from "@/components/tools/triggers";
 import { PERSONA_ICONS } from "@/components/tools/persona-icons";
 import { PERSONAS, personaConfig } from "@/config/personas";
 import { personaMedia } from "@/data/personas-media";
 import { pick } from "@/lib/utils";
+import { Develop } from "@/components/motion/develop";
 
 /**
  * "Which solar suits you?" (homepage): 7 photo cards → /for/<persona> plus the "Not sure?" card, in a 4-column grid
@@ -28,10 +28,10 @@ export function WhoAreYou() {
             const Icon = PERSONA_ICONS[p];
             const m = personaMedia[p];
             return (
-              <Reveal key={p} delay={(i % 4) * 0.06} className="h-full">
+              <Develop key={p} index={i % 4} className="h-full">
                 <li className="h-full list-none">
                   <Link href={`/for/${p}`} className="card-premium zoom-frame group flex h-full flex-col overflow-hidden p-3">
-                    <span className="relative block aspect-[16/10] overflow-hidden rounded-[0.875rem] bg-tint-ice">
+                    <span className="dv-photo relative block aspect-[16/10] overflow-hidden rounded-[0.875rem] bg-tint-ice">
                       {m ? (
                         <Image src={m.card.src} alt={pick(m.alt, locale)} width={m.card.width} height={m.card.height} sizes="(min-width: 1024px) 18rem, (min-width: 640px) 50vw, 100vw" className="zoom-img size-full object-cover" style={{ objectPosition: m.focus ?? "50% 50%", filter: m.grade }} />
                       ) : (
@@ -48,17 +48,17 @@ export function WhoAreYou() {
                     </span>
                   </Link>
                 </li>
-              </Reveal>
+              </Develop>
             );
           })}
           {/* 8th tile: not sure? → Find My Solar Plan */}
-          <Reveal delay={0.18} className="h-full">
+          <Develop index={PERSONAS.length % 4} className="h-full">
             <li className="relative flex h-full min-h-[18rem] list-none flex-col justify-between overflow-hidden rounded-[1.25rem] bg-[image:var(--band-gradient)] p-6 text-white shadow-[0_20px_44px_-20px_rgb(11_31_58/0.6)]">
               <span aria-hidden className="grid size-12 place-items-center rounded-2xl bg-white/10"><Sparkles className="size-6 text-sun" /></span>
               <p className="mt-5 font-heading text-[1.375rem] font-bold leading-snug text-white">{t("who.quizCta")}</p>
               <GuideTrigger size="md" variant="white" className="mt-5 w-full">{t("common.bookVisit")}<ArrowRight aria-hidden /></GuideTrigger>
             </li>
-          </Reveal>
+          </Develop>
         </ul>
       </div>
     </section>

@@ -8,7 +8,7 @@ import { UI_IMAGES } from "@/data/section-photos";
 import { StatCounter } from "@/components/page/stat-counter";
 import { EditMark } from "@/components/ui/badge";
 import { TiltCard } from "@/components/motion/tilt-card";
-import { BlurReveal, Marquee, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { BlurReveal, Marquee } from "@/components/motion/primitives";
 import { team } from "@/config/content";
 import { site } from "@/config/site";
 import { districts } from "@/data/districts";
@@ -19,6 +19,7 @@ import { pick } from "@/lib/utils";
 import { Wave } from "@/components/page/tone-section";
 import { BannerArt } from "@/components/page/banner-art";
 import { Bento } from "@/components/page/bento";
+import { Develop } from "@/components/motion/develop";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -113,10 +114,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <Wave color="#FFFFFF" position="top" />
         <div className="container-page">
           <SectionTitle tone="dark" index="02" title={L(D.promiseTitle)} emphasis={L(D.promiseEmphasis)} />
-          <Stagger as="ol" className="grid gap-px overflow-hidden rounded-[1.25rem] bg-card-line p-px shadow-[0_24px_60px_-24px_rgb(0_0_0/0.45)] sm:grid-cols-2 md:grid-cols-4">
+          <ol className="grid gap-px overflow-hidden rounded-[1.25rem] bg-card-line p-px shadow-[0_24px_60px_-24px_rgb(0_0_0/0.45)] sm:grid-cols-2 md:grid-cols-4">
             {D.promise.map((p, i) => (
-              <StaggerItem key={i} className="zoom-frame group relative flex flex-col bg-white">
-                <span className="relative block aspect-[8/5] overflow-hidden">
+              <Develop as="li" key={i} index={i % 4} className="zoom-frame group relative flex flex-col bg-white">
+                <span className="dv-photo relative block aspect-[8/5] overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={UI_IMAGES.working[i]} alt="" loading="lazy" className="zoom-img size-full object-cover" />
                   <span aria-hidden className="absolute bottom-3 left-4 grid size-11 place-items-center rounded-xl bg-primary font-heading text-[1rem] font-extrabold text-white ring-2 ring-white tabular-nums">{String(i + 1).padStart(2, "0")}</span>
@@ -125,9 +126,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   <h3 className="font-heading text-[1.25rem] font-bold text-ink">{L(p.title)}</h3>
                   <p className="mt-2 text-[0.9375rem] text-body">{L(p.desc)}</p>
                 </div>
-              </StaggerItem>
+              </Develop>
             ))}
-          </Stagger>
+          </ol>
         </div>
       </section>
 
@@ -150,12 +151,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={t("teamTitle")} />
-          <Stagger className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((m, i) => (
-              <StaggerItem key={i} className="list-none">
+              <Develop as="li" key={i} index={i % 3} className="list-none">
                 <TiltCard max={5} className="h-full rounded-[1.25rem]">
                   <div className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-soft transition-all duration-300 hover:border-gold/50 hover:shadow-card hover:-translate-y-1">
-                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-mist">
+                    <div className="dv-photo relative aspect-[4/5] w-full overflow-hidden bg-mist">
                       {m.photo ? (
                         <Image
                           src={m.photo}
@@ -177,9 +178,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </div>
                   </div>
                 </TiltCard>
-              </StaggerItem>
+              </Develop>
             ))}
-          </Stagger>
+          </ul>
         </div>
       </section>
     </>

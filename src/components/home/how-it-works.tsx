@@ -14,14 +14,7 @@ const LAST = STEPS.length - 1;
 /** When circle i activates (desktop sequence, seconds after the band is in view). */
 const circleAt = (i: number) => M.firstCircle + i * STEP_GAP;
 
-/**
- * "How it works": five numbered steps, each a card with an illustration, joined by a line.
- * Used on every page that shows the process (home, solutions, persona and district pages).
- * - `dark` (homepage): navy band. Light (inner pages): the same cards on sand.
- * Motion (plays once at ~35% in view, timings in src/lib/motion.ts → STEPS):
- *   heading fades up → gold underline draws from the centre → circle 1 pulses → line draws to circle 2 → … → 5;
- *   each card rises 150 ms after its circle. Phones: vertical line on the left that fills with scroll.
- */
+
 export function HowItWorks({ dark = false }: { premium?: boolean; dark?: boolean }) {
   const t = useTranslations("how");
   const still = useStill();

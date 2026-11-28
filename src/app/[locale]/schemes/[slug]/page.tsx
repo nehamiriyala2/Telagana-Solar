@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CheckTick } from "@/components/ui/check-pill";
 import { SCHEME_ICONS } from "@/components/home/schemes-section";
 import { TiltCard } from "@/components/motion/tilt-card";
-import { BlurReveal, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { BlurReveal } from "@/components/motion/primitives";
 import { SCHEMES, type SchemeSlug } from "@/config/schemes";
 import { schemesPage as D } from "@/data/schemes";
 import { titleEmphasis } from "@/data/pages";
@@ -22,6 +22,7 @@ import { BannerArt, Sunlight } from "@/components/page/banner-art";
 import { pmSuryaGharSign, solutionBanners } from "@/data/solution-hero";
 import { SchemeSteps } from "@/components/page/scheme-steps";
 import { schemeView } from "@/lib/public-schemes";
+import { Develop } from "@/components/motion/develop";
 
 /**
  * Scheme page: hero → at a glance → benefit → who can apply → documents → steps (self-drawing line) → how we help → other schemes.
@@ -122,20 +123,20 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
 
             <BlurReveal className="rounded-[1.25rem] border border-line bg-white p-7 shadow-soft md:p-9">
               <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink">{t("who")}</h2>
-              <Stagger className="mt-5 space-y-3">
-                {v.who.map((w) => (
-                  <StaggerItem key={w} className="flex gap-3 rounded-2xl p-4 text-ink" style={{ background: "var(--accent-soft)" }}><CircleCheck className="mt-0.5 size-5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden />{w}</StaggerItem>
+              <ul className="mt-5 space-y-3">
+                {v.who.map((w, i) => (
+                  <Develop as="li" key={w} index={i} kind="row" className="flex gap-3 rounded-2xl p-4 text-ink" style={{ background: "var(--accent-soft)" }}><CircleCheck className="mt-0.5 size-5 shrink-0" style={{ color: "var(--accent)" }} aria-hidden />{w}</Develop>
                 ))}
-              </Stagger>
+              </ul>
             </BlurReveal>
           </div>
 
           <div className="space-y-6 lg:col-span-5">
             <BlurReveal delay={0.08} className="rounded-[1.25rem] border border-line bg-white p-7 shadow-soft md:p-9">
               <h2 className="font-heading text-h3 font-extrabold tracking-[-0.02em] text-ink">{t("documents")}</h2>
-              <Stagger className="mt-5 grid gap-2">
+              <ul className="mt-5 grid gap-2">
                 {v.documents.map((d, i) => (
-                  <StaggerItem key={d} className="flex items-center gap-4 rounded-2xl bg-cream px-4 py-3 text-ink">
+                  <Develop as="li" key={d} index={i} kind="row" className="flex items-center gap-4 rounded-2xl bg-cream px-4 py-3 text-ink">
                     {DOC_PICS[slug]?.[i] ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={`${DI}/${DOC_PICS[slug]![i]}.webp`} alt="" aria-hidden className="h-10 w-12 shrink-0 object-contain !bg-none" loading="lazy" />
@@ -143,9 +144,9 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
                       <span className="icon-primary-hover grid size-9 shrink-0 place-items-center rounded-xl"><FileText className="size-4" aria-hidden /></span>
                     )}
                     {d}
-                  </StaggerItem>
+                  </Develop>
                 ))}
-              </Stagger>
+              </ul>
             </BlurReveal>
             <BlurReveal delay={0.12} className="tone tone-navy rounded-[1.25rem] p-7 md:p-9">
               <h2 className="flex items-center gap-3 font-heading text-h3 font-extrabold tracking-[-0.02em] text-white"><span className="grid size-10 place-items-center rounded-xl text-ink" style={{ background: "var(--accent)" }}><HandHelping className="size-5" aria-hidden /></span>{t("help")}</h2>
@@ -176,11 +177,11 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
       <section className="tone tone-cream py-16 md:py-24">
         <div className="container-page">
           <SectionTitle title={L(D.otherTitle)} />
-          <Stagger className="grid gap-5 md:grid-cols-3">
-            {others.map((s) => {
+          <ul className="grid gap-5 md:grid-cols-3">
+            {others.map((s, i) => {
               const OIcon = SCHEME_ICONS[s.slug as SchemeSlug] ?? Landmark;
               return (
-                <StaggerItem key={s.slug} className="list-none">
+                <Develop as="li" key={s.slug} index={i % 3} className="list-none">
                   <TiltCard max={6} className="h-full rounded-[1.25rem]">
                     <Link href={`/schemes/${s.slug}`} className="group flex h-full flex-col rounded-[1.25rem] border border-line bg-white p-6 shadow-soft transition-colors hover:border-gold/50">
                       {SCHEME_LOGOS[s.slug] ? (
@@ -196,10 +197,10 @@ export default async function SchemePage({ params }: { params: Promise<{ locale:
                       <span className="mt-auto flex items-center gap-1.5 pt-5 text-caption font-semibold text-primary-hover">{t("learnMore")}<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
                     </Link>
                   </TiltCard>
-                </StaggerItem>
+                </Develop>
               );
             })}
-          </Stagger>
+          </ul>
         </div>
       </section>
     </div>

@@ -5,7 +5,6 @@ import { CircleCheck, ClipboardCheck, FileCheck2, Info, MapPin, Zap } from "luci
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/page/page-hero";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/motion/reveal";
 import { Solutions } from "@/components/home/solutions";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { districts } from "@/data/districts";
@@ -13,6 +12,7 @@ import { routing } from "@/i18n/routing";
 import { JsonLd, localBusinessJsonLd, pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
 import { districtContent } from "@/lib/public-content";
+import { Develop } from "@/components/motion/develop";
 
 /**
  * City landing pages: /solar-installation/hyderabad, /te/solar-installation/warangal …
@@ -86,13 +86,13 @@ export default async function CityPage({ params }: { params: Promise<{ locale: s
           <SectionHeading premium title={t("whyTitle", { city: name })} />
           <ul className="grid gap-4 md:grid-cols-3">
             {([["p1", ClipboardCheck], ["p2", FileCheck2], ["p3", Zap]] as const).map(([k, Icon], i) => (
-              <Reveal key={k} delay={i * 0.06}>
+              <Develop key={k} index={i}>
                 <li className="card-glass-light h-full list-none p-6">
                   <span className="float-soft icon-primary-hover grid size-12 place-items-center rounded-2xl"><Icon className="size-6" strokeWidth={1.6} aria-hidden /></span>
                   <h3 className="mt-5 font-heading font-bold text-ink">{t(`${k}.title`)}</h3>
                   <p className="mt-1 text-caption text-muted">{t(`${k}.desc`, { city: name })}</p>
                 </li>
-              </Reveal>
+              </Develop>
             ))}
           </ul>
         </div>

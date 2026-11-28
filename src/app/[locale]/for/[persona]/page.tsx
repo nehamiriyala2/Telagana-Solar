@@ -19,6 +19,7 @@ import { PERSONAS, personaConfig, type Persona } from "@/config/personas";
 import { routing } from "@/i18n/routing";
 import { JsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { schemeCards } from "@/lib/public-schemes";
+import { Develop } from "@/components/motion/develop";
 
 /** One page per visitor type: /for/urban, /for/farmer, /te/for/landlord … */
 export function generateStaticParams() {
@@ -65,7 +66,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
           </Reveal>
           <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
             {(["p1", "p2", "p3", "p4"] as const).map((k, i) => (
-              <Reveal key={k} delay={i * 0.06}>
+              <Develop key={k} index={i} kind="row">
                 <li className="card-glass-light flex h-full list-none gap-3 p-5">
                   <CircleCheck className="mt-0.5 size-5 shrink-0 text-leaf" aria-hidden />
                   <div>
@@ -73,7 +74,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ locale
                     <p className="mt-1 text-caption text-muted">{t(`personas.${p}.${k}.desc`)}</p>
                   </div>
                 </li>
-              </Reveal>
+              </Develop>
             ))}
           </ul>
         </div>

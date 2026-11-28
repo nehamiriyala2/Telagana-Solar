@@ -5,11 +5,12 @@ import { PageHero } from "@/components/page/page-hero";
 import { EditMark } from "@/components/ui/badge";
 import { CallButton, WhatsAppButton } from "@/components/ui/contact-buttons";
 import { ContactForm } from "@/components/page/contact-form";
-import { BlurReveal, Stagger, StaggerItem } from "@/components/motion/primitives";
+import { BlurReveal } from "@/components/motion/primitives";
 import { site } from "@/config/site";
 import { titleEmphasis } from "@/data/pages";
 import { pageMeta } from "@/lib/seo";
 import { pick } from "@/lib/utils";
+import { Develop } from "@/components/motion/develop";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -38,13 +39,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
           <div className="min-w-0 space-y-5 lg:col-span-5">
             <BlurReveal delay={0.08} className="tone tone-navy rounded-[1.25rem] p-6 shadow-[0_40px_80px_-40px_rgb(11_31_58/0.7)] md:p-8">
-              <Stagger className="space-y-5">
-                <Item Icon={Phone} label={t("callUs")} value={site.phone ? <a href={`tel:${site.phone}`} className="hover:underline">{site.phone}</a> : <EditMark label="[EDIT] phone" />} />
-                <Item Icon={MessageCircle} label={t("whatsappUs")} value={site.whatsapp ? `+${site.whatsapp}` : <EditMark label="[EDIT] WhatsApp" />} />
-                <Item Icon={Mail} label={t("emailUs")} value={site.email ? <a href={`mailto:${site.email}`} className="break-all hover:underline">{site.email}</a> : <EditMark label="[EDIT] email" />} />
-                <Item Icon={MapPin} label={t("visitUs")} value={address ?? <EditMark label="[EDIT] address" />} />
-                <Item Icon={Clock} label={t("hours")} value={t("hoursValue")} />
-              </Stagger>
+              <ul className="space-y-5">
+                <Item i={0} Icon={Phone} label={t("callUs")} value={site.phone ? <a href={`tel:${site.phone}`} className="hover:underline">{site.phone}</a> : <EditMark label="[EDIT] phone" />} />
+                <Item i={1} Icon={MessageCircle} label={t("whatsappUs")} value={site.whatsapp ? `+${site.whatsapp}` : <EditMark label="[EDIT] WhatsApp" />} />
+                <Item i={2} Icon={Mail} label={t("emailUs")} value={site.email ? <a href={`mailto:${site.email}`} className="break-all hover:underline">{site.email}</a> : <EditMark label="[EDIT] email" />} />
+                <Item i={3} Icon={MapPin} label={t("visitUs")} value={address ?? <EditMark label="[EDIT] address" />} />
+                <Item i={4} Icon={Clock} label={t("hours")} value={t("hoursValue")} />
+              </ul>
               <div className="mt-7 grid grid-cols-2 gap-2">
                 <CallButton place="contact-card" className="w-full" />
                 <WhatsAppButton place="contact-card" className="w-full" />
@@ -61,11 +62,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   );
 }
 
-function Item({ Icon, label, value }: { Icon: typeof Phone; label: string; value: React.ReactNode }) {
+function Item({ i, Icon, label, value }: { i: number; Icon: typeof Phone; label: string; value: React.ReactNode }) {
   return (
-    <StaggerItem className="flex gap-4">
+    <Develop as="li" kind="row" index={i} className="flex gap-4">
       <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-gold text-ink"><Icon className="size-5" aria-hidden /></span>
       <span className="min-w-0"><span className="on-dark-muted block text-caption">{label}</span><span className="block font-semibold text-white">{value}</span></span>
-    </StaggerItem>
+    </Develop>
   );
 }

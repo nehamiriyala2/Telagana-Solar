@@ -19,6 +19,7 @@ import { site } from "@/config/site";
 import { pick } from "@/lib/utils";
 import { Wave } from "@/components/page/tone-section";
 import { SchemeHeroArt } from "@/components/page/scheme-hero-art";
+import { Develop } from "@/components/motion/develop";
 
 export const revalidate = 300;
 
@@ -76,14 +77,14 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
       {/* Scheme cards */}
       <section className="bg-section-white py-16 md:py-24">
         <div className="container-page">
-          <Stagger className="grid gap-5 md:grid-cols-2">
-            {cards.map((s) => {
+          <ul className="grid gap-5 md:grid-cols-2">
+            {cards.map((s, i) => {
               const Icon = SCHEME_ICONS[s.slug as SchemeSlug] ?? Landmark;
               return (
-                <StaggerItem key={s.slug} className="list-none">
+                <Develop as="li" key={s.slug} index={i % 2} className="list-none">
                   <TiltCard max={5} className="h-full rounded-[1.25rem]">
                     <Link href={`/schemes/${s.slug}`} className="zoom-frame group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-line bg-white p-3 shadow-[0_10px_30px_rgb(11_31_58/0.10)] transition-[border-color,box-shadow] duration-500 hover:border-primary/40 hover:shadow-[0_22px_46px_rgb(11_31_58/0.16)]">
-                      <span className="relative block overflow-hidden rounded-2xl">
+                      <span className="dv-photo relative block overflow-hidden rounded-2xl">
                         <PhotoTile src={UI_IMAGES.schemesPage[s.slug as keyof typeof UI_IMAGES.schemesPage]} alt="" className="zoom-img aspect-[21/9] w-full bg-tint-ice text-primary" fallback={<Icon className="size-10" aria-hidden />} />
                         <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1.5 text-caption font-bold text-primary shadow-sm">{s.tag}</span>
                       </span>
@@ -98,10 +99,10 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
                       </div>
                     </Link>
                   </TiltCard>
-                </StaggerItem>
+                </Develop>
               );
             })}
-          </Stagger>
+          </ul>
           <p className="mt-6 text-center text-caption text-muted">{t("note")}</p>
         </div>
       </section>
@@ -131,18 +132,18 @@ export default async function SchemesIndex({ params }: { params: Promise<{ local
             </table>
           </BlurReveal>
           {/* Phones: one card per scheme */}
-          <Stagger className="grid gap-4 md:hidden">
-            {cards.map((s) => (
-              <StaggerItem key={s.slug} className="list-none rounded-[1.25rem] border border-line bg-white p-5 shadow-soft">
+          <ul className="grid gap-4 md:hidden">
+            {cards.map((s, i) => (
+              <Develop as="li" key={s.slug} index={i} kind="row" className="list-none rounded-[1.25rem] border border-line bg-white p-5 shadow-soft">
                 <Link href={`/schemes/${s.slug}`} className="font-heading text-[1.125rem] font-bold text-ink">{s.name}</Link>
                 <dl className="mt-3 space-y-2 text-caption">
                   <div><dt className="font-bold text-primary-hover">{L(D.compareCols.who)}</dt><dd className="text-ink">{s.cardWho}</dd></div>
                   <div><dt className="font-bold text-gold-ink">{L(D.compareCols.benefit)}</dt><dd className="text-ink">{s.cardBenefit}</dd></div>
                   <div><dt className="font-bold text-muted">{L(D.compareCols.via)}</dt><dd>{s.officialUrl ? <a href={s.officialUrl} target="_blank" rel="noopener noreferrer" className="break-all font-semibold text-primary-hover">{host(s.officialUrl)}</a> : "-"}</dd></div>
                 </dl>
-              </StaggerItem>
+              </Develop>
             ))}
-          </Stagger>
+          </ul>
         </div>
       </section>
 

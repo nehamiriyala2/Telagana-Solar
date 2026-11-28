@@ -4,10 +4,10 @@ import { PhotoTile } from "@/components/ui/photo-tile";
 import { UI_IMAGES } from "@/data/section-photos";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/motion/reveal";
 import { SCHEMES } from "@/config/schemes";
 import { cn } from "@/lib/utils";
 import type { SchemeCard } from "@/lib/public-schemes";
+import { Develop } from "@/components/motion/develop";
 
 export const SCHEME_ICONS = { "pm-surya-ghar": Home, "pm-kusum": Droplets, "net-metering": Gauge, "state-schemes": Landmark } as const;
 
@@ -39,10 +39,10 @@ export function SchemesSection({ only, title, premium = false, cards }: { only?:
             const Icon = SCHEME_ICONS[s.slug as keyof typeof SCHEME_ICONS] ?? Landmark;
             const st = STYLE[s.slug] ?? STYLE["state-schemes"];
             return (
-              <Reveal key={s.slug} delay={i * 0.07} className="h-full">
+              <Develop key={s.slug} index={i % 4} className="h-full">
                 <li className="h-full list-none">
                   <Link href={`/schemes/${s.slug}`} className="card-premium zoom-frame group flex h-full flex-col p-3">
-                    <span className="relative block overflow-hidden rounded-2xl">
+                    <span className="dv-photo relative block overflow-hidden rounded-2xl">
                       <PhotoTile src={UI_IMAGES.schemes[s.slug as keyof typeof UI_IMAGES.schemes]} alt="" className="zoom-img aspect-[16/10] w-full bg-tint-ice text-primary"
                         fallback={<Icon className="size-10" aria-hidden />} />
                       <span className={cn("absolute right-2.5 top-2.5 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-[0.8125rem] font-semibold shadow-sm", st.chip)}>
@@ -71,7 +71,7 @@ export function SchemesSection({ only, title, premium = false, cards }: { only?:
                     </span>
                   </Link>
                 </li>
-              </Reveal>
+              </Develop>
             );
           })}
         </ul>
